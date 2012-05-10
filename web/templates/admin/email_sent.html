@@ -1,0 +1,13 @@
+{assign var=title value="Email Users: Sent"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="email"}
+<center>
+
+<br /><h3>{$title|escape}</h3>
+
+Email sent to {$count|escape} users.
+<br /><br />
+<a href="email.php">Send another email</a>
+
+{include file="admin/footer.inc.html"}
+

@@ -1,0 +1,28 @@
+{assign var=title value='ePay'}
+{include file="header.html"}
+<center>
+<br />
+
+Please click "Pay by ePay" button to continue your payment with ePay, our authorized sales agent.
+<br /><br />
+
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+<FORM ACTION="{$request.SUBMIT_URL}" METHOD="POST">
+<INPUT TYPE="HIDDEN" NAME="PAGE"       VALUE="{$request.PAGE}">
+<INPUT TYPE="HIDDEN" NAME="ENCODED"    VALUE="{$request.ENCODED}">
+<INPUT TYPE="HIDDEN" NAME="CHECKSUM"   VALUE="{$request.CHECKSUM}">
+<INPUT TYPE="HIDDEN" NAME="URL_OK"     VALUE="{$request.URL_OK}">
+<INPUT TYPE="HIDDEN" NAME="URL_CANCEL" VALUE="{$request.URL_CANCEL}">
+
+<INPUT class="inputb" TYPE="SUBMIT" VALUE="Pay by ePay" ALT="Pay by ePay" TITLE="Pay by ePay">
+</FORM>
+
+</center>
+{include file="footer.html"}

@@ -1,0 +1,111 @@
+{assign var=title value="Coupon Batch"}
+{include file="admin/header.inc.html"}
+{include file="admin/coupon_nb.inc.html" selected="batches"}
+<center>
+<h3>{$title} #{$smarty.request.batch_id|escape}</h3>
+
+{if $error}
+<font color=red><b>{$error|escape}</b></font>
+<br /><br />
+{/if}
+
+
+{if $smarty.request.batch_id > 0}
+<div align=center>
+&nbsp;<b>Batch Settings</b> <a href="coupons.php?action=edit_batch&batch_id={$coupons.0.batch_id}">Change</a>
+&nbsp;<table bgcolor=#f0e0c0 style='font-family:Helvetica,sans-serif; font-size: 10pt; border-collapse: collapse;' 
+border=1 bordercolor=#e0c0b0>
+<tr><th>Usage Count</th>
+    <td>{$coupons.0.use_count|escape}</td>
+</tr>
+<tr><th>Member Usage Count</th>
+    <td>{$coupons.0.member_use_count|escape}</td>
+</tr>
+<tr><th>Discount</th>
+    <td>{$coupons.0.discount|escape}</td>
+</tr>
+
+<tr><th>Valid</th>
+{if $coupons.0.begin_date != '0000-00-00'}
+    <td>{$coupons.0.begin_date|amember_date_format} -
+    {$coupons.0.expire_date|amember_date_format}</td></tr>
+{else}
+    <td>not limited</td>
+{/if}
+</tr>
+<tr><th>Is Recurring</th>
+    <td>{if $coupons.0.is_recurring}Yes{else}No{/if}</td>
+</tr>
+<tr><th>Comment</th>
+    <td>{$coupons.0.comment|escape}</td>
+</tr>
+<tr><th>Product ID</th>
+    <td>{$coupons.0.product_id|escape}</td>
+</tr>
+</table></div>
+<br />
+
+<table class=hedit width=70%>
+<tr>
+    <th>Code</th>
+    <th>Count/Used</th>
+    <th>Disabled</th>
+    <th>&nbsp;</th>
+</tr>
+{foreach from=$coupons item=c}
+<tr>
+    <td>{$c.code|escape}</td>
+    <td>{$c.use_count}/{$c.used_count}</td>
+    <td>{if $c.locked}YES{else}NO{/if}</td>
+    <td>
+    <a href="coupons.php?action=delete_coupon&coupon_id={$c.coupon_id}" onclick="return confirm('Do you really want to delete this?')">Delete</a>
+    / <a href="coupons.php?action=edit_coupon&coupon_id={$c.coupon_id}">Edit</a>
+    </td>
+</tr>
+{/foreach}
+</table>
+
+{else} {* Particular Coupons *}
+
+<table class=hedit width=70%>
+<tr>
+    <th>Code</th>
+    <th>Discount</th>
+    <th>Valid</th>
+    <th>Comment</th>
+    <th>Products</th>
+    <th>Count/Used</th>
+    <th>Disabled</th>
+    <th>&nbsp;</th>
+</tr>
+{foreach from=$coupons item=c}
+<tr>
+    <td>{$c.code|escape}</td>
+    <td>{$c.discount|escape}</td>
+{if $c.begin_date != '0000-00-00'}
+    <td>{$c.begin_date|amember_date_format} -
+    {$c.expire_date|amember_date_format}</td>
+{else}
+    <td>not limited</td>
+{/if}
+    <td>{$c.comment|escape}</td>
+    <td>{$c.product_id|escape}</td>
+    <td>{$c.use_count}/{$c.used_count}</td>
+    <td>{if $c.locked}YES{else}NO{/if}</td>
+    <td>
+    <a href="coupons.php?action=delete_coupon&coupon_id={$c.coupon_id}" onclick="return confirm('Do you really want to delete this?')">Delete</a>
+    / <a href="coupons.php?action=edit_coupon&coupon_id={$c.coupon_id}">Edit</a>
+    </td>
+</tr>
+{/foreach}
+</table>
+
+{/if}
+
+{span count=$count}
+<br />
+<a href="coupons.php">Return to coupon batches</a>
+
+
+{include file="admin/footer.inc.html"}
+

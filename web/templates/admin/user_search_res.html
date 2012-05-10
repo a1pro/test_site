@@ -1,0 +1,44 @@
+{assign var=title value="Search Users"}
+{include file="admin/header.inc.html"}
+<center>
+<h3>{$title} ({php}print intval($GLOBALS['all_count']){/php})</h3>
+
+<b>Search resuls. You may refine your search <a href="users.php?action=search_form">here</a></b>
+<br /><br />
+{span}
+<br /><br />
+<table width=80% class=hedit>
+<tr>
+    <th>Login</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Payments</th>
+    <th>Status</th>
+    <th width=5%><font color=606060>Actions</font></th>
+</tr>
+{foreach from=$ul item=u}
+<tr class={cycle values="xx,odd"}>
+    <td> <a href="users.php?action=edit&member_id={$u.member_id}"><b>{$u.login}</b></a> </td>
+    <td> {$u.name_f|escape} {$u.name_l|escape} </td>
+    <td> <a href="mailto: {$u.email|escape}">{$u.email|escape}</a> </td>
+    <td> <a href="users.php?action=payments&member_id={$u.member_id}" title="Edit or Add Subscriptions">{if $u.count_of_completed}{$u.count_of_completed} - {$config.currency|default:"$"}{$u.summa_of_completed}{else}Never{/if}</a> </td>
+    <td>{if $u.data.is_active}
+    <b>Active</b>
+    {elseif $u.count_of_completed > 0}
+    <font color=red><b>Expired</b></font>
+    {else}
+    Pending
+    {/if}    
+    </td>
+    <td nowrap>
+            <a href="users.php?action=edit&member_id={$u.member_id}">Edit</a>
+            <a href="users.php?action=delete&member_id={$u.member_id}" onclick="return confirm('You want to delete user {$u.login|escape}?')">Delete</a>
+     </td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+
+{include file="admin/footer.inc.html"}
+

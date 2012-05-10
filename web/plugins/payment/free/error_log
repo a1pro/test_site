@@ -1,0 +1,2 @@
+[13-Sep-2010 04:05:50] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/getaudio/public_html/members/language/en.php on line 57
+[13-Sep-2010 04:05:50] PHP Parse error:  syntax error, unexpected $end in /home/getaudio/public_html/members/language/en.php on line 57

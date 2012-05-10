@@ -1,0 +1,201 @@
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit>
+<tr>
+    <th colspan=2><b>MEMBER FIELDS</b></th>
+<tr>
+<tr>
+    <th><b>Username<sup>*</sup></b></th>
+    <td><select name=login size=1>
+    <option value="">-- Please select --
+    {html_options options=$fields_gen selected=$predefined_fields.login}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Password<sup>*</sup></b></th>
+    <td><select name=pass size=1>
+    <option value="">-- Please select --
+    {html_options options=$fields_gen_fixed selected=$predefined_fields.pass}
+    </select>
+    fixed: <input type=text name=pass_fixed size=10 value="{$predefined_fields.pass_fixed}">
+    </td>
+</tr>
+<tr>
+    <th><b>Email</b></th>
+    <td><select name=email size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.email}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Name</b>
+    <br />
+    </th>
+    <td>
+    First name: <select name=name_f size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.name_f}
+    </select>    
+    <br />
+    Last name: <select name=name_l size=1>
+    <option value="">-- Please select --
+    {html_options options=$fields_emp selected=$predefined_fields.name_l}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Street Address</b></th>
+    <td><select name=street size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.street}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>City</b></th>
+    <td><select name=city size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.city}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>State</b></th>
+    <td><select name=state size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.state}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>ZIP</b></th>
+    <td><select name=zip size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.zip}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Country</b></th>
+    <td><select name=country size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.country}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Male/Female</b><br />
+    <small>1 - if male, 0 - if female</small></th>
+    <td><select name=is_male size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.is_male}
+    </select>
+    </td>
+</tr>
+{foreach from=$member_additional_fields item=f}{if $f.type ne "hidden"}
+<tr>
+    <th><b>{$f.title}</b><br />
+    <small>{$f.desc}</small></th>
+    	{assign var=fname value=$f.name}
+
+    <td><select name="{$f.name}" size=1>
+    {html_options options=$fields_emp selected=$predefined_fields.$fname}
+    </select>
+    </td>
+</tr>
+{/if}{/foreach}
+<tr>
+    <th colspan=2><b>SUBSCRIPTION</b></th>
+<tr>
+<tr>
+    <th><b>Subscription Type<sup>*</sup></b>
+    <br /><small>field must contain numeric id of subscription</small>
+    </th>
+    <td><select name=product_id size=1>
+    {html_options options=$fields_prod selected=$predefined_fields.product_id}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Subscription Begin Date<sup>*</sup></b>
+    <br /><small>date in format: <i>yyyy-mm-dd</i></small>
+    </th>
+    <td><select name=begin_date size=1>
+    {html_options options=$fields_emp_fixed selected=$predefined_fields.begin_date}
+    </select>
+    fixed: <input type=text name=begin_date_fixed size=10 maxlength=10 value="{$predefined_fields.begin_date_fixed}">
+    </td>
+</tr>
+<tr>
+    <th><b>Subscription Expire Date<sup>*</sup></b>
+    <br /><small>date in format: <i>yyyy-mm-dd</i></small>
+    </th>
+    <td><select name=expire_date size=1>
+    {html_options options=$fields_emp_fixed selected=$predefined_fields.expire_date}
+    </select>
+    fixed: <input type=text name=expire_date_fixed size=10 maxlength=10 value="{$predefined_fields.expire_date_fixed}">
+    </td>
+</tr>
+<tr>
+    <th><b>Subscription Payment System</b>
+    <br />
+    </th>
+    <td><select name=paysys_id size=1>
+    {html_options options=$fields_ps selected=$predefined_fields.paysys_id}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Payment Amount</b>
+    <br />
+    </th>
+    <td><select name=amount size=1>
+    {html_options options=$fields_emp_fixed selected=$predefined_fields.amount}
+    </select>
+	fixed: <input type=text name=amount_fixed size=10 maxlength=10 value="{$predefined_fields.amount_fixed}">
+    </td>
+</tr>
+<tr>
+    <th><b>Subscription Receipt#<sup>*</sup></b>
+    <br /><small>must be subscription id for PayPal<br />
+         transactions, and so on</small>
+    </th>
+    <td><select name=receipt_id size=1>
+    {html_options options=$fields_emp_fixed selected=$predefined_fields.receipt_id}
+    </select>
+    fixed: <input type=text name=receipt_id_fixed size=10 maxlength=10 value="{$predefined_fields.receipt_id_fixed|default:"IMPORT"}">
+    </td>
+</tr>
+<tr>
+    <th colspan=2><b>LIMIT IMPORT</b></th>
+<tr>
+<tr>
+    <th><b>Skip records</b>
+    </th>
+    <td>
+    skip first <input type=text name=skip_lines value="{$predefined_fields.skip_lines|default:'0'}" size=5 maxlength=10> records<br />
+    </td>
+</tr>
+<tr>
+    <th><b>Limit records</b>
+    </th>
+    <td>
+    import only <input type=text name=limit_records value="{$predefined_fields.limit_records|default:'0'}" size=5 maxlength=10> records<br />
+    </td>
+</tr>
+</table>
+<input type=hidden name=delim value="{$delim|escape}">
+<input type=hidden name=file_for_import value="{$file_for_import|escape}">
+<input type=hidden name=is_completed value=1> 
+<input type=hidden name=action value=import>
+<br />
+<input type=submit value="Submit">
+</form>
+
+
+{include file="admin/footer.inc.html"}

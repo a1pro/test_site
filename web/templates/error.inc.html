@@ -1,0 +1,10 @@
+{if $error}
+<a name="e">&nbsp;</a>
+<table class="errmsg" {if $style ne ""}style="$style"{/if} summary="Errors">
+<tr><td><ul>
+{foreach from=$error item=e}
+<li>{$e}</li>
+{/foreach}
+</ul></td></tr></table>
+<br />
+{/if}

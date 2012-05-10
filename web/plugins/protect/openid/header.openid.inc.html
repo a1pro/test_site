@@ -1,0 +1,29 @@
+{**
+ *
+ * OpenID v1.1
+ * Copyright 2010 (c) R Woodgate
+ * All Rights Reserved
+ *
+ * This file may not be distributed without permission.
+ *
+ * Purchasers of this plugin can modify it for the site
+ * it is installed on.
+ *
+ * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING
+ * THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE.
+ *
+ **}
+
+{php}
+global $db, $plugin_config, $config;
+$openid_config = $plugin_config['protect']['openid'];
+if(isset($_SERVER['HTTPS'])){
+$openid_dir = $config['root_surl'].'/plugins/protect/openid/';
+}else{
+$openid_dir = $config['root_url'].'/plugins/protect/openid/';
+}
+{/php}
+<!-- Simple OpenID Selector -->
+<link rel="stylesheet" smarty="smarty" href="{php}echo $openid_dir;{/php}css/openid.css" />
+<!-- /Simple OpenID Selector -->

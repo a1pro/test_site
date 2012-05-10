@@ -1,0 +1,24 @@
+{assign var="title" value=$smarty.const._TPL_THX_TITLE}
+{include file="header.html"}
+
+<strong>#_TPL_THX_ENJOY|<a href="{$config.root_url}/login.php">|</a>#</strong>
+<br />
+
+<!-- display payment receipt -->
+{if $payment.amount > "0.0"}
+
+#_TPL_THX_PAYPROC# <br />
+#_TPL_THX_ORDERREF|{$payment.payment_id}|{$payment.receipt_id}#<br />
+#_TPL_THX_DATETIME|{$payment.tm_completed|date_format:$config.time_format}#<br />
+
+<br /><br />
+
+{include file="receipt.inc.html"}
+<br /><br />
+
+
+{/if}{* END Of receipt display *}
+
+<p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p>
+
+{include file="footer.html"}

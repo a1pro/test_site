@@ -1,0 +1,32 @@
+{assign var="title" value="Email method verification"}
+{include file="admin/header.inc.html"}
+<center>
+<br />
+<div class=hdr>{$title|escape}</div>
+<hr>
+
+<a name="e">&nbsp;</a>
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+{$text_message}
+
+<br /><br />
+{if $a == 'info'}
+<input type=button value="&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;" onclick="window.close()">
+{else}
+<form method="GET" name="email_test" action="{$smarty.server.PHP_SELF|escape}">
+    <input type=hidden name=a value=info>
+    <input type=button value="&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;" onclick="window.close()">
+    <input type=button value="&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;" onclick="email_test.submit()">
+</form>
+{/if}
+<br /><br />
+
+</center>
+{include file="admin/footer.inc.html"}

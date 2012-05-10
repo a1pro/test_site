@@ -1,0 +1,1 @@
+Rename htaccess.dist to .htaccess if your PHP is installed and working as CGI 

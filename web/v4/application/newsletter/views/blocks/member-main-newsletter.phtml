@@ -1,0 +1,36 @@
+<?php
+$lists = Am_Di::getInstance()->newsletterListTable->getAllowed($this->user ? $this->user : Am_Di::getInstance()->user);
+$subscribed = Am_Di::getInstance()->newsletterUserSubscriptionTable->getSubscribedIds($this->user ? $this->user->pk() : Am_Di::getInstance()->auth->getUserId());
+if (!$lists) return; // hide block
+?>
+<ul>
+<?php
+foreach ($lists as $l):
+    $id = $l->pk();
+    $checked = in_array($id, $subscribed) ? 'checked="checked"' : '';
+?>
+    <li><input type="checkbox" class="newsletter-list" name="<?php echo $id?>" value="1" <?php echo @$checked?> id="list-<?php echo $id?>" />
+        <label for="list-<?php echo $id?>"><?php echo $l->title ?></label>
+    </li>
+<?php endforeach; ?>
+</ul>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("input.newsletter-list").change(function(){
+        var vars = {};
+        vars[this.name] = this.checked ? 1 : 0;
+        <?php if (!empty($this->s) && !empty($this->e)): ?>
+        vars.s = "<?php j($this->s); ?>";
+        vars.e = "<?php j($this->e); ?>";
+        <?php endif // end of unsubscribe-without-login code ?>
+        $.post(window.rootUrl + "/newsletter/ajax/update-subscription", vars);
+    });
+    $("#checkbox-unsubscribed").change(function(){
+        $("#member-main-newsletter").toggle( ! this.checked);
+    });
+    if ($("#checkbox-unsubscribed:checked").length)
+    {
+        $("#member-main-newsletter").hide();
+    }
+});
+</script>

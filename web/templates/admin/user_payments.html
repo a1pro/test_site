@@ -1,0 +1,136 @@
+{assign var=title value="User Payments/Subscriptions"}
+{include file="admin/header.inc.html"}
+{include file="admin/user_nb.inc.html" selected="payments"}
+<!-- JQuery Requered to handle expiration date change -->
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+
+<script language="JavaScript">
+    function recalculateExpire(){
+        var pid = document.getElementById('pid');
+        var begin_day = document.getElementById('begin_day');
+        var begin_month = document.getElementById('begin_month');
+        var begin_year = document.getElementById('begin_year');
+
+
+        var data = {'do'            : 'get_expire',
+                'product_id'    : pid.options[pid.selectedIndex].value,
+                'begin_date'   : begin_year.options[begin_year.selectedIndex].value+'-'+
+                            begin_month.options[begin_month.selectedIndex].value+'-'+
+                            begin_day.options[begin_day.selectedIndex].value
+            }
+    var resp = jQuery.ajax({
+        url: "ajax_cnt.php",
+        cache: false,
+        type: "POST",
+        dataType : "json",
+        data: data,
+        success :
+        function (response,textStatus){
+            var exp = response.expire_date.split('-');
+            var obj = {2:'expire_day', 1:'expire_month', 0:'expire_year'};
+            for (i in obj){
+                var v = document.getElementById(obj[i]);
+                for(j=0;j<v.options.length;j++){
+                    if(parseInt(v.options[j].value)==parseInt(exp[i])) v.selectedIndex = j;
+                }
+
+            }
+
+        }
+        });
+    }
+    $(document).ready(function () {
+        recalculateExpire();
+    });
+
+</script>
+
+<center>
+
+<h3>{$title}</h3>
+
+<table class=hedit width=95%>
+<tr>    
+    <th>Product</th>
+    <th>Period</th>
+    <th>Payment System</th>
+    <th>Receipt #</th>
+    <th>Amount, {$config.currency|default:"$"}</th>
+    <th>Paid</th>
+    <th>Status</th>
+    <th>&nbsp;</th>
+</tr>
+{foreach from=$payments item=p}
+<tr class={cycle values="xx,odd"}>
+    <td>{if (not $p.completed)}
+          {if ($p.items_count > 1)}
+              <font color=#0000a0>{$config.multi_title} ({$p.items_count} items)</font>
+          {else}
+              {lookup arr=$products key=$p.product_id}
+          {/if}
+        {else} {* completed *}
+          {if ($p.items_count > 1)}
+              <font color=#0000a0>{lookup arr=$products key=$p.product_id}</font>
+          {else}
+              {lookup arr=$products key=$p.product_id}
+          {/if}
+        {/if}
+    </td>
+    <td>{$p.begin_date|amember_date_format} - {$p.expire_date|amember_date_format:$config.date_format}
+    </td>
+    <td>
+        {lookup arr=$paysystems key=$p.paysys_id}
+    </td>
+    <td>{$p.receipt_id}</td>
+    <td>{$config.currency|default:"$"}{$p.amount}</td>
+    <td align=center>{if $p.completed}<b>YES</b>{else}NO{/if}</td>
+    <td>{if $p.completed}
+    {if $p.expire_date >= date('Y-m-d') and $p.begin_date <= date('Y-m-d') }
+    <b>Active</b>
+    {elseif $p.expire_date < date('Y-m-d') }
+    <font color=red><b>Expired</b></font>
+    {elseif $p.begin_date > date('Y-m-d') }
+    Future
+    {/if}
+    {else}
+    Not-Paid
+    {/if}
+    {if $p.data.CANCELLED}<br /><font color=red>CANCELLED</font>{/if}
+    {if $p.restart_url}<br /><a href="{$p.restart_url|escape}">ReStart Recurring</a>{/if}
+    {if $p.cancel_url && $p.completed}<br /><a href="{$p.cancel_url|escape}">Stop Recurring</a>{/if}
+    </td>
+    <td nowrap><a href="users.php?action=edit_payment&payment_id={$p.payment_id}&member_id={$p.member_id}">Edit</a>
+        <a href="users.php?action=del_payment&payment_id={$p.payment_id}&member_id={$p.member_id}" onclick="return confirm('Do you really want to delete this?')">Del</a>
+    </td>
+</tr>
+{/foreach}
+<tr>
+    <th colspan=8 align=center style='border:black solid 0px; background-color: white;'><br /><b>ADD NEW PAYMENT/SUBSCRIPTION</b></th>
+</tr>
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<tr class=odd>
+    <td><select class=small name=product_id size=1 id="pid" onChange='recalculateExpire();'>
+        {html_options options=$products}
+        </select>
+    </td>
+    <td><nobr>{html_select_date all_extra="class=small onChange='recalculateExpire();'"  day_extra="id='begin_day'" month_extra="id='begin_month'" year_extra="id='begin_year'" prefix="begin_date" time=$p.begin_date start_year="-10" end_year="2037" time=""}</nobr> -
+        <nobr>{html_select_date all_extra="class=small" day_extra="id='expire_day'" month_extra="id='expire_month'" year_extra="id='expire_year'" prefix="expire_date" time=$p.exipre_date start_year="-10" end_year="2037" time=""}</nobr>
+    </td>
+    <td>
+    <select class=small name=paysys_id size=1>
+        {html_options options=$paysystems selected="manual"}
+    </select>
+    </td>
+    <td><input class=small type=text name=receipt_id value="manual" size=10 class=small></td>
+    <td><input class=small type=text name=amount value="0" size=6 maxlength=6></td>
+    <td align=center><input class=small type=checkbox name=completed value=1 checked></td>
+    <td colspan=2 align=center><input class=small type=submit value="&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;"></td>
+    <input type=hidden name=payment_id value="">
+    <input type=hidden name=member_id value="{$member_id|escape}">
+    <input type=hidden name=action value=payment_add>
+</tr>
+</form>
+</table>
+<br />
+
+{include file="admin/footer.inc.html"}

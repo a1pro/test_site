@@ -1,0 +1,176 @@
+{assign var=title value="Edit Payment/Subscription"}
+{include file="admin/header.inc.html"}
+{include file="admin/user_nb.inc.html" selected="payments"}
+<center>
+
+<h3>{$title}</h3>
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit>
+<tr>
+    <th><b>Product</b></th>
+    <td><select name=product_id size=1>
+        {html_options options=$products selected=$p.product_id}
+        </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Subscription Begin</b></th>
+    <td>{html_select_date prefix="begin_date" time=$p.begin_date start_year="-10" end_year="2037"}
+    </td>
+</tr>
+<tr>
+    <th><b>Subscription End</b></th>
+    <td>{html_select_date prefix="expire_date" time=$p.expire_date start_year="-10" end_year="2037"}
+    {if $p.expire_date eq $smarty.const.RECURRING_SQL_DATE}
+    <br /><b>This date reserved to internally
+    <br />represent end of recurring subscription
+    <br />(that we does not known yet)</b>
+    {/if}
+    
+    </td>
+</tr>
+<tr>
+    <th><b>Payment System</b></th>
+    <td><select name=paysys_id size=1>
+        {html_options options=$paysystems selected=$p.paysys_id}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>Receipt #</b><br /><small>as received from payment system</small></th>
+    <td><input type=text name=receipt_id value="{$p.receipt_id|escape}" size="25" class=small></td>
+</tr>
+<tr>
+    <th><b>Amount, {$config.currency|default:"$"}</b></th>
+    <td><input type=text name=amount value="{$p.amount|escape}" size="10" ></td>
+</tr>
+<tr>
+    <th><b>Completed</b></th>
+    <td><input type=checkbox name=completed value=1 {if $p.completed}checked{/if}></td>
+</tr>
+{foreach from=$payment_additional_fields item=f}
+{if $f.type eq 'select'}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td><select name="{$field_name|escape}" size='{$f.size}'>
+    {html_options options=$f.options selected=$p.data.$field_name}
+    </select></td>
+</tr>
+{elseif $f.type eq 'readonly'}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td>{$p.data.$field_name}</td>
+</tr>
+{elseif $f.type eq 'hidden'}
+{else}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td><input type=text name={$field_name} value="{$p.data.$field_name|escape}">
+    </td>
+</tr>
+{/if}
+{/foreach}
+</table>
+<br />
+
+    <input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"></td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+    <input type=hidden name=payment_id value="{$p.payment_id}">
+    <input type=hidden name=member_id value="{$member_id|escape}">
+    <input type=hidden name=action value=payment_save>
+</form>
+
+{if $commissions}
+<h3>Related Affiliate Commissions</h3>
+<table class=hedit>
+<tr>
+    <th>Affiliate</th>
+    <th>Date/Payment Ref#</th>
+    <th>Commission</th>
+    <th>Paid to affiliate?</td>
+    <th>Void</td>
+</tr>    
+{foreach from=$commissions item=c}
+<tr>
+<form method="get" action="{$smarty.server.PHP_SELF|escape}">
+    <td><a href="users.php?action=edit&member_id={$c.caff_id}">{$c.email}</a></td>
+    <td>{$c.date|amember_date_format} - {$c.receipt_id|default:"&lt;empty&gt;"}</td>
+    <td>{$c.amount}</td>
+    <td>{if $c.payout_id}Yes, {$c.payout_id|amember_date_format}{else}No{/if}</td>
+    <input type=hidden name=void value="-1">
+    <td><input type=checkbox name=void value=1 {if $c.void_date}checked{/if} onclick="this.form.submit()">
+    {if $c.void_date}{$c.void_date|amember_date_format}{/if}
+    </td>
+    <input type=hidden name=member_id value="{$smarty.request.member_id|escape}">
+    <input type=hidden name=payment_id value="{$smarty.request.payment_id|escape}">
+    <input type=hidden name=commission_id value="{$c.commission_id|escape}">
+    <input type=hidden name=void_id value="{$c.void_id|escape}">
+    <input type=hidden name=action value="edit_payment">
+</form>
+</tr>
+{/foreach}
+</table>
+{/if}
+
+{if count($p.data.0.BASKET_PRODUCTS) > 1 }
+<font color=#0000a0><b>Several products has been selected during this 
+order.<br /> This record is 'parent' for all that:</b></font>
+<table bgcolor=#f0f0f0 style='font-size: 9pt; font-family: "MS Sans Serif", Helvetica;'>
+<tr bgcolor=#e0e0e0>
+    <th><b>Product</b></th>
+    <th><b>Price</b></th>
+</tr>
+{counter print=false assign=k start=0}
+{foreach from=$p.data.0.BASKET_PRICES item=pr key=i}
+<tr>
+    <td>{$i} - {$products.$i}</td>
+    <td align=right>{$pr|string_format:"%.2f"}</td>
+</tr>
+{/foreach}
+</table>
+{/if}
+{if $p.data.0.ORIG_ID > 0}
+<font color=#0000a0>This record has been created during multiple order. 
+View <a 
+href="users.php?payment_id={$p.data.0.ORIG_ID}&action=edit_payment&member_id={$p.member_id}">original 
+record</a>.<br /></font>
+{/if}    
+
+{if $p.data.0}<br />
+<b>DEBUG INFO: payment system actions</b>
+<!-- display payment details (from payment systems -->{/if}
+{foreach from=$p.data item=pp}{if is_array($pp)}
+<table style='font-size: 8pt;' bgcolor=#e0e0e0>
+    {foreach from=$pp item=ppp key=kkk}
+    <tr><th align=right>{$kkk|escape}&nbsp;</th><td>&nbsp;{if is_array($ppp)}{foreach from=$ppp item=pppp key=kkkk}{$kkkk|escape}=>{$pppp|escape}<br />{/foreach}{else}{$ppp|escape}{/if}</td></tr>
+    {/foreach}
+</table>
+<br /><br />
+{/if}{/foreach}
+
+{if $p.data.CANCELLED}
+<table style='font-size: 8pt;' bgcolor=#e0e0e0>
+    <tr><th align=right><b>CANCELLED</b>&nbsp;</th><td>&nbsp;{$p.data.CANCELLED_AT|escape}</td></tr>
+</table>
+<br /><br />
+{/if}
+
+{if $p.data.orig_expire_date ne ""}
+<table style='font-size: 8pt;' bgcolor=#e0e0e0>
+    <tr><th align=right>This subscription has been prorated to the following number of days:
+     {$p.data.prorated|escape}<br />
+     Original expiration date: {$p.data.orig_expire_date|amember_date_format|escape}
+     </td></tr>
+</table>
+<br /><br />
+{/if}
+
+{include file="admin/footer.inc.html"}

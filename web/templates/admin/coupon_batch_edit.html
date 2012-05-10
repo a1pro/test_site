@@ -1,0 +1,86 @@
+{assign var=title value="Edit Coupon Batch"}
+{include file="admin/header.inc.html"}
+{include file="admin/coupon_nb.inc.html"}
+<center>
+<h3>{$title|escape} #{$batch.batch_id|escape}</h3>
+
+{if $error}{foreach from=$error item=e}
+<font color=red><li><b>{$e|escape}</b></font>
+<br /><br />
+{/foreach}{/if}
+
+<form method=post action="coupons.php">
+<table class=vedit >
+<tr>
+    <th><b>Coupons Usage Count</b><br />
+    <small>how many times coupon can be used<br />
+    enter big value (ex.:<i>99999</i>) for unlimited</small>
+    </th>
+    <td><input type=text size=5 name=use_count value="{$batch.use_count|default:1|escape}"></td>
+</tr><tr>
+    <th><b>Member Coupons Usage Count</b><br />
+    <small>how many times coupon can be used<br />
+    by the same member
+    </th>
+    <td><input type=text size=5 name=member_use_count value="{$batch.member_use_count|default:1|escape}"></td>
+</tr><tr>
+    <th><b>Discount</b><br />
+    <small>order discount</small>
+    </th>
+    <td><input type=text size=3 name=discount_v value="{$batch.discount_v|default:10|escape}">
+    <select size=1 name=discount_t>{html_options options=$discount_types selected=$batch.discount_t}</select>
+    </td>
+</tr><tr>
+    <th><b>Comment</b><br />
+    <small>comment - visible only for admin</small>
+    </th>
+    <td><input type=text size=20 name=comment value="{$batch.comment|escape}"></td>
+</tr><tr>
+    <th><b>Dates</b><br />
+    <small>date range when coupon can be used</small>
+    </th>
+    <td>
+    <input type=checkbox name=disable_date value=1 
+        {if ($smarty.request.disable_date > 0) or ($batch.begin_date eq '0000-00-00')}checked{/if}>
+        Don't limit date of usage<br />
+     {html_select_date prefix="begin_date" time=$batch.begin_date start_year=-3 end_year=+3}<br />
+     {html_select_date prefix="expire_date" time=$batch.expire_date start_year=-3 end_year=+3}
+    </td>
+</tr><tr>
+    <th><b>Apply to recurring?</b><br />
+    <small>
+    apply coupon discount to recurring transactions?<br />
+    default is "no". "Member Usage Count" setting<br />
+    may work incorrectly if you enable this option,<br /> 
+    please set "Member Usage Count" to big value <br />
+    like "10000" if you enable this option<br />
+    </small>
+    </th>
+    <td><input type=checkbox name=is_recurring value=1 {if $batch.is_recurring}checked{/if}></td>
+</tr><tr>
+    <th><b>Locked</b><br />
+    <small>coupons batch disabled<br />prevent new signups with it, but allow<br />
+  current recurring subscribers to go with discount</small>
+    </th>
+    <td><input type=checkbox name=locked value=1 {if $batch.locked}checked{/if}></td>
+</tr><tr>
+    <th><b>Products</b><br />
+    <small>coupons can be used with selected products<br />
+    hold <i>Ctrl Key</i> to select multple products<br />
+    if nothing selected, coupon can be used with ANY product
+    </small>
+    </th>
+    <td><select name='product_id[]' size=5 multiple>
+    {php}$batch['product_id'] = split(',', $batch['product_id']){/php}
+    {html_options options=$products selected=$batch_selected}
+    </select>
+    </td>
+</tr>
+</table>
+<input type=hidden name=action value=save_batch>
+<input type=hidden name=batch_id value="{$batch.batch_id}">
+<input type=submit value="Save">
+</form>
+
+{include file="admin/footer.inc.html"}
+

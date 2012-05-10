@@ -1,0 +1,95 @@
+{assign var=title value="Affiliate commissions"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+<form action="{$smarty.server.PHP_SELF|escape}" method="get">
+<table class=hedit border=1 bordercolor=#909090>
+<tr>
+    <th>
+      &nbsp; &nbsp;
+        Period
+      &nbsp; &nbsp;
+</th>
+    <td> 
+      <select name=year_month>
+      {html_options options=$year_month_options selected=$smarty.request.year_month|default:$default_month}
+      </select>
+      &nbsp; &nbsp;
+
+    </td>
+</tr>
+<tr>
+    <th>
+      &nbsp; &nbsp;
+        Payout method<br />
+        <small>(payout will be displayed<br />
+        only for members choosed <br />
+        the following payout method)</small><br />
+      &nbsp; &nbsp;
+</th>
+    <td> 
+      <select name=payout_method size=1>
+      {html_options options=$payout_methods selected=$smarty.request.payout_method}
+      </select>
+      &nbsp; &nbsp;
+    </td>
+</tr>
+</table>
+<br />
+<input type=submit value=Display>
+</form>
+
+{if $smarty.request.year_month}{* if request was made *}
+
+{if count($rows) <= 0}
+<br /><b>No records found by your request</b>
+{else}
+<br /><h3>Search Results</h3>
+<script language=JavaScript>
+function check_all_btns(frm, v){
+    for (i=0;i<frm.elements.length;i++){
+        el = frm.elements[i];
+        if (el.type != 'checkbox') continue;
+        if (el.name == 'check_all') continue;
+        el.checked = v;
+    }
+}
+</script>
+<form method=post action="aff_commission.php">
+<table class=hedit>
+<tr>
+    <th>Login</th>
+    <th>Name</th>
+    {if $smarty.request.payout_method eq 'ALL'}<th>Payout method</th>{/if}
+    <th>Commissions (credit)</th>
+    <th>Corrections (debit)</th>
+    <th>To payout</th>
+    <th>Pay<br /><input type=checkbox name=check_all onclick='check_all_btns(this.form, this.checked)' onchange='check_all_btns(this.form, this.checked)'></th>
+</tr>
+{foreach from=$rows item=r}
+<tr>
+    <td>{$r.login|escape}</th>
+    <td>{$r.name_f|escape} {$r.name_l|escape}</td>
+    {if $smarty.request.payout_method eq 'ALL'}<td>{$r.aff_payout_type|escape}</td>{/if}
+    <td align=right>{if $r.credit_amount}{$r.credit_amount}{else}-&nbsp;&nbsp;{/if}</td>
+    <td align=right>{if $r.debit_amount != 0}<font color=red>{$r.debit_amount}</font>{else}-&nbsp;&nbsp;{/if}</td>
+    <td align=right>{if $r.to_pay < 0}<font color=red>{$r.to_pay}</font>{else}{$r.to_pay}{/if}</td>
+    <td>{if $r.to_pay > 0}
+    <input type=checkbox name="pay[{$r.member_id}]" value=1>
+    {/if}
+    </td>
+</tr>
+{/foreach}
+</table>
+<br />
+<input type=submit value='Mark checked commissions as paid today'>
+<input type=hidden name=year_month value="{$smarty.request.year_month|escape}">
+<input type=hidden name=payout_method value="{$smarty.request.payout_method|escape}">
+</form>
+{/if} {* there are rows *}
+
+
+{/if}
+
+
+{include file="admin/footer.inc.html"}

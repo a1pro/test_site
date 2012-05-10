@@ -1,0 +1,6 @@
+<Limit GET POST>
+allow from all
+</Limit>
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule 1\.php 2.php

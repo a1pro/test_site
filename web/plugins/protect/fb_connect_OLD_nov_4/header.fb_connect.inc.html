@@ -1,0 +1,53 @@
+{**
+ *
+ * Facebook Connect v1.3
+ * Copyright 2010 (c) R Woodgate
+ * All Rights Reserved
+ *
+ * This file may not be distributed without permission.
+ *
+ * Purchasers of this plugin can modify it for the site
+ * it is installed on.
+ *
+ * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING
+ * THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE.
+ *
+ **}
+
+{php}
+global $db, $plugin_config, $config;
+
+$fb_connect_config = $plugin_config['protect']['fb_connect'];
+$fbappid	 = trim($fb_connect_config['appid']);
+$fb_login_url = $config['root_url']."/signup.php";
+$fb_logout_url = $config['root_url']."/logout.php";
+
+{/php}
+<div id="fb-root"></div>
+<script type="text/javascript" smarty="smarty">
+	{literal}
+	window.fbAsyncInit = function() {
+	FB.init({appId: '{/literal}{php}echo $fbappid;{/php}{literal}', status: true, cookie: true,
+			 xfbml: true});
+	
+	FB.Event.subscribe('auth.sessionChange', function(response) {
+		if (response.session) {
+		  // A user has logged in, and a new cookie has been saved
+		  document.location.href = "{/literal}{php}echo $fb_login_url;{/php}{literal}";
+		} else {
+		  // The user has logged out, and the cookie has been cleared
+		  document.location.href = "{/literal}{php}echo $fb_logout_url;{/php}{literal}";
+		}
+	});
+	};
+  (function() {
+	var e = document.createElement('script');
+	e.type = 'text/javascript';
+	e.src = document.location.protocol +
+	  '//connect.facebook.net/en_GB/all.js';
+	e.async = true;
+	document.getElementById('fb-root').appendChild(e);
+  }());
+{/literal}
+</script>

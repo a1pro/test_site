@@ -1,0 +1,81 @@
+{assign var=title value="Export"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+
+Select fields to export:
+<table class=vedit>
+<tr>
+    <th><b>Member Fields</b>
+    <br /><small>Hold Ctrl to select multiple fields</small>
+    </th><td>
+    <select name='user_field[]' multiple size=10>
+    {html_options options=$user_fields selected=$user_field}
+    </select>
+    </td>
+</tr><tr>
+<tr>
+    <th><b>Subscription Fields</b>
+    <br /><small>Hold Ctrl to select multiple fields</small>
+    </th><td>
+    <select name='payment_field[]' multiple size=10>
+    {html_options options=$payment_fields selected=$payment_field}
+    </select>
+    </td>
+</tr><tr>
+<th>
+<b>Records to select</b>
+    <br /><small>Hold Ctrl to select multiple fields</small>
+</th><td>
+    <select name='subscr_type[]' multiple size=5>
+    {html_options options=$subscription_types selected=$subscr_type}
+    </select>
+</td>
+</tr><tr>
+<th>
+<b>Date Range</b>
+    <br /><small>Choose the beginning and the end of the range</small>
+</th><td>
+    <input type="checkbox" name="date_check" value="on">Enable date-range<br />
+    {html_select_date prefix="range_start" start_year="-10"} -
+    {html_select_date prefix="range_end" start_year="-10" end_year="2037"}
+</td>
+</tr><tr>
+<th>
+<b>Product list</b>
+    <br /><small>Hold Ctrl to select multiple fields</small>
+</th><td>
+    <select name='product_name[]' multiple size=5>
+    {html_options options=$prod_names selected=$product_name}
+    </select>
+</td>
+</tr><tr>
+<th>
+<b>Multiple Subscriptions</b>
+    <br /><small>how to handle multiple subscriptions for customer</small>
+</th><td>
+    <select name=multi_type size=3>
+    {html_options options=$multi_types selected=$multi_type}
+    </select>
+</td>
+</tr>
+</tr><tr>
+<th>
+<b>Output File Format</b>
+    <br /><small>default settings is a default Excel CSV format</small>
+</th><td>
+    Fields delimited by:
+    <input type=text name=delim value="{$delim}" size=3><br />
+    Fields quoted by " if contains delimiter:
+    <input type=checkbox name=quote value=1 checked><br />
+    Send me this file as Excel CSV file
+    <input type=checkbox name=send_file value=1 checked><br />
+</td>
+</tr>
+</table>
+<input type=submit value=Export>
+<input type=hidden name=export value=1>
+</form>
+
+{include file="admin/footer.inc.html"}

@@ -1,0 +1,22 @@
+{assign var=title value="Coupons"}
+{include file="admin/header.inc.html"}
+{include file="admin/coupon_nb.inc.html"}
+<center>
+<h3>{$title|escape}</h3>
+
+{if $error}
+<font color=red><b>{$error|escape}</b></font>
+<br /><br />
+{/if}
+
+{if $msg}
+<b>{$msg|escape}</b>
+<br /><br />
+{/if}
+
+<br />
+<a href="coupons.php">Return to coupon batches</a>
+
+
+{include file="admin/footer.inc.html"}
+

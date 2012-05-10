@@ -1,0 +1,29 @@
+{assign var=title value="Aflifate Clicks"}
+{include file="admin/header.inc.html"}
+{include file="admin/user_nb.inc.html" selected="aff_clicks"}
+<center>
+
+<h3><a href="users.php?action=aff_sales&member_id={$smarty.request.member_id|escape}">Affiliate stats</a> / {$title}</h3>
+
+<table class=hedit width=70%>
+<tr>
+    <th>Time</th>
+    <th>URL</th>
+    <th>Remote IP</th>
+    <th>HTTP Referrer</th>
+</tr>
+{foreach from=$list item=p}
+<tr class={cycle values="xx,odd"}>
+    <td> {$p.time|date_format:$config.time_format} </td>
+    <td> <a target=_blank href="{$p.url}">{$p.url}</a> </td>
+    <td> {$p.remote_addr} </td>
+    <td> <a target=_blank href="{$p.referrer}">{$p.referrer}</a> </td>
+</tr>
+{/foreach}
+</table>
+
+{span count=$count}
+
+<br /><br />
+
+{include file="admin/footer.inc.html"}

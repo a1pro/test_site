@@ -1,0 +1,5 @@
+<b>{$u.name_f} {$u.name_l}</b>
+{$u.street}
+{$u.city}
+{$u.state}
+{$u.zip}

@@ -1,0 +1,65 @@
+<h3>#_TPL_MEMBER_ADD_RENEW#</h3>
+{include file="error.inc.html"}
+
+<form id="payment" name="payment" method="post" action="member.php?tab=add_renew">
+<table class="vedit" width="100%">
+
+<!-- product selection code -->
+<tr><th>#_TPL_SIGNUP_MEMB_TYPE# *</th><td>
+{if $config.member_select_multiple_products}
+    {foreach from=$products_to_renew item=p}
+    <input type="checkbox" id="product{$p.product_id}" name="product_id[]" value="{$p.product_id|escape}"
+        {if in_array($p.product_id, (array)$smarty.request.product_id)}checked="checked"{/if}
+        />
+        <label for="product{$p.product_id}"><b>{$p.title} ({$p.terms})</b><br />
+        <span class="small">{$p.description}</span></label><br /><br />
+    {if $p.price <= 0.0 }
+    {assign var="paysys_id_not_required" value="1"}
+    {/if}
+    {/foreach}
+{else}
+<select name="product_id" size="1">
+    <option value="">#_TPL_MEMBER_SELECT#</option>
+{foreach from=$products_to_renew item=p}
+    <option value="{$p.product_id}"
+    {if $p.product_id == $smarty.request.product_id}selected="selected"{/if}>{$p.title} ({$p.terms})
+    </option>
+    {if $p.price <= 0.0 }
+    {assign var="paysys_id_not_required" value="1"}
+    {/if}
+{/foreach}
+</select>
+{/if}
+{if $paysys_id_not_required }
+      <input type="hidden" name="paysys_id_not_required" value="for javascript" />
+{/if}
+</td></tr>
+
+<!-- paysystem selection code -->
+{if $config.product_paysystem}{else}
+{if count($paysystems_select) > 1 }
+<tr>
+    <th>#_TPL_SIGNUP_PAYSYS# *</th>
+    <td><select name="paysys_id" size="1">
+    <option value=''>#_TPL_MEMBER_SELECT2#</option>
+    {html_options options=$paysystems_select selected=$smarty.request.paysys_id}
+</select></td></tr>
+{else}
+{foreach from=$paysystems_select item=p key=i}
+    <input type="hidden" name="paysys_id" value="{$i|escape}" />
+{/foreach}
+{/if}
+{/if}
+
+<!-- coupon text box -->
+{if $config.use_coupons}
+<tr>
+    <th><b>#_TPL_SIGNUP_COUPON_CODE#</b></th>
+<td>
+<input type="text" name="coupon" value="{$smarty.request.coupon|escape}" size="15" />
+</td></tr>
+{/if}
+</table><!-- end of add/renew subscription controls -->
+<input type="hidden" name="action" value="renew" />
+<br /><div style="text-align: center;"><input type="submit" value="&nbsp;&nbsp;&nbsp;#_TPL_MEMBER_ORDER_BUT#&nbsp;&nbsp;&nbsp;" /></div>
+</form>

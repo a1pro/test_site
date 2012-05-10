@@ -1,0 +1,25 @@
+{assign var="title" value=$smarty.const._TPL_UNSUBSCRIBE_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+<br /><br />
+#_TPL_UNSUBSCRIBE_CONFIRM|<strong>|{$email}|</strong>|{$config.site_title}#
+<br /><br />
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}" style="display:inline;">
+<input type="submit" value="#_TPL_UNSUBSCRIBE_UNSUB_BUT#" />
+<input type="hidden" name="e" value="{$email|escape}" />
+<input type="hidden" name="s" value="{$s|escape}" />
+<input type="hidden" name="confirm" value="1" />
+</form>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<form method="get" action="{$config.root_url}"  style="display:inline;">
+<input type="submit" value="#_TPL_UNSUBSCRIBE_NO_UNSUB_BUT#" />
+</form>
+
+<br/><br/>
+<br/><br/>
+
+{include file="footer.html"}

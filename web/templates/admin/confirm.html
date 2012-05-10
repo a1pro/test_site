@@ -1,0 +1,21 @@
+{include file="admin/header.inc.html"}
+<center>
+<br />
+<h3>{$title}</h3>
+
+<table width=60%><tr><td><b>{$message}</b></td></tr></table>
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+{foreach from=$vars item=i key=k}
+<input type=hidden name="{$k|escape}" value="{$i|escape}">
+{/foreach}
+<table width=30%>
+<tr>
+<td align=left><input type=submit name=confirm value=" Yes "></td>
+<td align=right><input type=submit name=confirm value=" No "></td>
+</tr>
+</table>
+
+</form>
+
+{include file="admin/footer.inc.html"}
+

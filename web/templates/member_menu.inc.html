@@ -1,0 +1,5 @@
+{php}
+include_once(dirname(__FILE__).'/../tabs.inc.php');
+$tabMenu = new TabMenu($_SESSION['_amember_user']['member_id']);
+echo $tabMenu->render();
+{/php}

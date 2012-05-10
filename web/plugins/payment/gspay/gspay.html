@@ -1,0 +1,38 @@
+{assign var="title" value="Processing transaction"}
+{include file="header.html"}
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<form name="mainform" action="https://secure.rdgateway.com/payment/pay.php" method="POST">
+<noscript>
+<br>
+<br>
+<center>
+<h1>Processing your Transaction</h1>
+<h2>
+JavaScript is currently disabled or is not supported
+by your browser.<br></h2>
+<h3>Please click Submit to continue
+the processing of your transaction.</h3>
+<input type="submit" value="Submit">
+</center>
+</noscript>
+<input type="hidden" name="siteID" value="{$vars.SITEID}">
+<input type="hidden" name="OrderDescription" value="{$vars.DESCRIPTION}">
+<input type="hidden" name="OrderID" value="{$vars.ORDERID}">
+{$vars.RECURRING_FIELDS}
+{$vars.TEST}
+<input type="hidden" name="returnUrl" value="{$vars.RETURNURL}">
+</form>
+<SCRIPT LANGUAGE="Javascript" >
+<!--
+function OnLoadEvent()
+{
+document.mainform.submit();
+}
+//-->
+</SCRIPT>
+<script type="text/javascript">
+$(document).ready(function(){
+		OnLoadEvent();
+});
+</script>
+{include file="footer.html"}

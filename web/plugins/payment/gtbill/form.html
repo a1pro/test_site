@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>GTBill Redirect</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no cache">
+<meta HTTP-EQUIV="Pragma" CONTENT="no cache">
+<meta HTTP-EQUIV="Expires" CONTENT="0">
+</head>
+<body OnLoad="AutoSubmitForm();">
+<form name="redirectForm" method="post" action="https://billing.GTBill.com/signup.aspx">
+<!--Required-->
+<input type="hidden" name="MerchantID" value="{$vars.merchant_id|escape}"/>
+<input type="hidden" name="SiteID" value="{$vars.site_id|escape}"/>
+<input type="hidden" name="PriceID" value="{$vars.price_id|escape}"/>
+<input type="hidden" name="CurrencyID" value="{$vars.currency_id|escape}"/>
+<!--Optional-->
+<input type="hidden" name="Firstname" value="{$vars.name_f|escape}"/>
+<input type="hidden" name="Lastname" value="{$vars.name_l|escape}"/>
+<input type="hidden" name="Address1" value="{$vars.street|escape}"/>
+<input type="hidden" name="Address2" value=""/>
+<input type="hidden" name="City" value="{$vars.city|escape}"/>
+<input type="hidden" name="State" value="{$vars.state|escape}"/>
+<input type="hidden" name="Country" value="{$vars.country|escape}"/>
+<input type="hidden" name="PostalCode" value="{$vars.zip|escape}"/>
+<input type="hidden" name="Email" value="{$vars.email|escape}"/>
+<input type="hidden" name="username" value="{$vars.login|escape}"/>
+<input type="hidden" name="password" value="{$vars.pass|escape}"/>
+<input type="hidden" name="MerchantReference" value="{$vars.payment_id|escape}"/>
+<input type="hidden" name="PriceListSiteID" value=""/>
+</form>
+<script language="Javascript">
+<!--
+function AutoSubmitForm() {
+document.redirectForm.submit();
+}
+//-->
+</script>
+<noscript>
+<center>
+<input type="submit" name="continue" value="Click here to Purchase">
+</center>
+</noscript>
+</form>
+</body>
+</html>

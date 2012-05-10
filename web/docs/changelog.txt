@@ -1,0 +1,1058 @@
+3.2.3 (Oct-13-2010)
+ - New payment plugins: bluepay_r, mpay
+ - New setting for Incemental Content plugin: Allow users to use links that was realeased while product was active after expiration of product
+ - Several Modifications in language files.
+ - Payment plugins fixes: twocheckout_r, paycom, paypal_pro,1shoppingcart, ogone, clickbank
+ - Integration plugins fixes: incremental_content, invision3,oscommerce,subusers
+ - Allow to create new users option for 1SC plugin(works for not recurring payments only)
+ - Ability to add tabs in member's area from plugins or site.inc.php
+ - Added separate signup email template for affiliates
+ - Login as user functionality for aMember CP.
+
+3.2.2 (Sep-08-2010)
+ - Integration Plugin fixes: phpBB3, subusers,
+ - Payment plugins fixes: paypal_r, google_checkout,quickpay,mydosh,twocheckout_r
+ - "Allow to add users from IPN messages" Clickbank and paypal plugins now use that new functionality
+
+3.2.1 (Aug-27-2010)
+ - Payment plugins fixes: paypal_r
+ - Integration plugins fixes: 4images
+ - New hooks defined to manage design.
+ - Helper functions for templates implemented.
+ - Change affiliate UI fixes.
+
+3.2.0 (Aug-25-2010)
+ - Fixed security issue
+ - New payment plugins: 
+    fastspring, plimus, clear2pay, paynl, netbilling_form, 
+    pay900, dibs, securepayau, premier_ps, mydosh
+ - New integration plugins: silverstripe, smf2, pap, sendpepper, mybb
+ - jQuery updated to v1.4.2
+ - Payment plugins fixes: 
+    gtbill, paypoint, clickbank, google_checkout, beanstream_remote, 
+    quickpay, segpay, authorize_cim, sagepayments, cc_core, paypal_r, 
+    paypal_pro, alertpay, moneris, zombaio, 
+ - Integration plugin fixes: 
+    vbulletin, joomla(added Jomsocial support), invision3, smf, 
+    mambo, drupal, wordpress, bbpress, 4images, discus, openrealty, 
+    pmd, isoft, subusers
+ - Impemented suggestions from this thread http://www.amember.com/forum/showthread.php?p=44712, to make integration with wordpress theme more easy
+ - Several fixes in templates and core aMember files. 
+ - Fixed issue with coupons not being applied to  products with free trial
+ - "Confirm email" function when email changed in profile
+ - Several modifications related to taxes. Added tax calculation for payments that being added manually from amember CP. Added tax value to payment reports.
+ - Implemented price groups for additional fields, now possible to include field depends on price_group  on signup and profile pages. 
+ - Japanese language support added
+ - New report for cancelled users
+ - Added support of multiple PayPal accounts (per product)
+ - Added ability to create an account after direct payment on PayPal (experimental)
+ - Added small payouts report to affiliate area
+ - Fixed several bugs in newsletters
+ - Change affiliate and assign affiliate functionality added in aMember CP
+ - Added "Affiliates" filter to amember CP -> Browse users
+ - Referred users report for each affiliate in aMember CP
+ - New plugin that allows to add additional subscription to user's account when user purchases a product
+ - New config option : Number of days for payment report on admin index page
+ 
+3.1.9 (Apr-13-2010)
+ - member.php (Membership Information Page) inteface improved with "tabs"
+ - "Rebuild Db" now handling data in chunks, this improves work with big databases;
+ - Fixed issues with PayPal plugin (new PayPal accounts)
+ - Recurring billing implemented for PayPal Pro plugin;
+ - Google Checkout plugin fixed and improved for recurring billing;
+ - Single-login fixed in vBulletin4 plugin
+ - Added ability to export expired users
+ - PHPMailer library upgraded to 2.0.4
+ - Added ablility to e-mail more than one notification about not-completed payment;
+ - Verotel plugin has been fixed;
+ - More than 200 small fixes and improvements to the core source and plugins;
+
+3.1.8 (May-27-2009)
+ - Fixed XSS issues mentioned on http://www.securityfocus.com/bid/35089/info
+ - 1SC plugin fixed
+ - Fixed bug with top 20 referrers in aMember affilaites view
+ - Allow to import multiple values for checkbox fields (like it is already done for multiselect fields)
+ - Worldpay: bug fixed: tax amount was not set for recurring payments
+ - Moneybookers: recurring payments support added
+ - Clickbank: incorrect amount was set for trial payments
+ - Paypal: tax amount is now transferred for non-recurring payments
+ - Allow to import CSV with 2 fields only
+ - eSolutions: plugin reworked to do recurring billing without storing CC info in aMember
+ - Captcha added to affiliate signup page
+ - Will now calculate expiration date automatically in aMember CP
+
+
+3.1.7 (Apr-10-2009)
+ - A minor security fix http://www.amember.com/p/Main/SecurityNote05
+ - A fix to XMLRPC interface to improve compatibility with InfusionSoft plugin
+ - Admin income recording fixed
+ - Fixed issue with downloading affiliate payout records in IE via https://
+ - Authorize.Net CIM plugin fixed to support free trials
+ - 2Checkout plugin bug fixed
+ - Google Checkout plugin fixed
+ - EPX payment plugin bug fixed
+ - PagSeguro payment plugin added
+ - Browser autoComplete disabled in Amember CP user info page
+ - WorldPay plugin updated (added new URLs)
+ - WordPress MU (wordpress_mu) plugin added 
+ - Chinese Language file has been updated
+
+3.1.6 (Jan-27-2009) 
+ - Payment plugins fixes: SecPay, ClickBank, WorldPay, PayFlow Pro,
+     Gate2Shop;
+ - Integration plugins fixes: phpList, SMF, iSoft, Kayako, OsCommerce;
+ - added fields to "E-mail to user" action at users action panel;
+ - added 'Re-Send Mail Verification Email' at users action panel ;
+ - report years select fixed;
+ - bugfix: do not add 2 tier commission if it is zero;
+ - bugfix: allow _ in e-mail addresses (check_email)
+ - added random part to invoiceId for paypal_pro, so it is always unique;
+
+3.1.5 (Dec-18-2008) non-public beta release
+ - Fixed a XSS problem in signup.php
+ - Chinese and Brazilian translations added
+ - Drupal, Gallery2, e107, phpBB3, Zencart, WordPress plugins fixed 
+ - 2Checkout, Worldpay, AllPay, BidPay, ClickAndBuy, GtBill, Realex,
+   Clickbank, Google Checkout, Secpay payment plugins modified
+ - Globill.Net, ePay, Migs  payment plugins added
+ - Fixed a login issue affecting installations of aMember on Windows
+ - Fixed a bug with reports 
+ - User status calculation bug fixed
+ - Fixed a bug - incorrect tax calculation when regional tax for state is set
+ - Fixed a bug with Authorize.Net AIM plugin - to void authorized $1 transactions in case of free trial 
+ 
+3.1.4 (Sep-10-2008)
+ - Bug fixed in Ogone payment plugin
+ - New rebilling process routine fixed (important for those who uses cc_core-based
+   plugins in aMember Pro 3.1.3)
+ - Added function to clean up admin log (to aMember CP -> Delete Old Records)
+ - Bug fixed with displaying currency in generated product terms
+ - Bug fixed with newsletters (duplicate messages sent to first 50 guests)
+
+3.1.3 (Sep-04-2008)
+ - PayFlow Pro plugin has been rewritten
+ - Added for testing Authorize.NET CIM payment plugin - it allows
+   to process recurring payments without storing credit card info
+   on your website. It is now BETA.
+ - WorldPay plugin fixed;
+ - New features added to IncrementalContent plugin;
+ - IncrementalContent plugin: fixed subscription start date calculation;
+ - SecPay fixed to do not clean up customer credit cards on 
+   processor failure;
+ - Removed % from aMember CP links to get better mod_security 
+   compatibility
+ - In Coupon, "Locked" flag will now prevent new signups, but 
+   existing recurring subscriptions will still get the discount.
+   This way cc_core plugins works the same as for example PayPal 
+ - Added positibilty to import multi-select fields (separeted by ^ )
+ - Invision2, pubBB, Joomla, Vanilla, Phorum plugins updated
+ - Fixed setting of session.cookie_domain in common.inc.php, so there should 
+   now be single cookie for both www.domain.com and domain.com without
+   additional configuration
+ - Implemented Google Analytics integration (aMember CP -> Setup -> Advanced)
+ - Fixed trial period setting on signup (affected several payment plugins);
+ - aMember will now display product terms instead of just price
+   on signup.php and member.php. This can be disabled at 
+   "aMember CP -> Setup -> Advanced : Display only Product Price in terms"
+   and generated terms can be customized in product settings
+ - admin can now review rebilling logs and run manual rebill
+   for cc_core-based plugins
+ - cc_core_rebill may now be running hourly (if cron job is set
+   accordingly), it will effectively help to don't lose any rebills
+ - amember.sql now contains db version markers in format ## 312 ##
+   it will speed-up run of upgrade_db a lot
+
+3.1.2 (Jul-04-2008)
+ - Fixed bug with processing recurring payments with cc_core
+   (for credit card plugins that store credit card info 
+    in your website database only)
+ - Socialengine integration plugin has been added
+ - WordPress and Vbullien3 plugins have been fixed
+ - Tier functionality has been added to iDevAffiliate plugin
+
+3.1.1 (Jul-01-2008)
+ - Fixed bug with displaying checkboxes in forms
+ - Fixed bug in e-mail validating regex
+ - Improved speed of Admin -> Rebuild function
+ - Perldesk plugin rewritten from scratch
+ - iRater,WordPress,4Images,TextPattern,ZenCart,XOOPS plugins fixed
+ - NetRegistry,ClickBank plugins fixed
+ - Fixed bug with attachments in function "mail_customer"
+ - Fixed bug in amember/resend.php file
+ - {$user.xxx} array is now assigned to member.html template
+ - Magento plugin has been added
+ - Fixed bug: Member's usage count was not checked for coupons
+ Fixed bugs in Newsletters:
+ - Subscription hasn't been added automatically from aMember CP after manual payment.
+ - Threads hasn't been displayed at member.php page (temporary quick fix).
+ - Countries and state management has been added to aMember CP -> Setup
+ - Output correct source encoding to HTTP headers (according to selected language)
+ - Added incremental_content as standart protect plugin
+ - Fixed Bug: Empty pdf invoice in payment receipt message
+ - Fixed Bug: Unable to assign newsletter thread to existing user. 
+ - Problem with coupons fixed (if not products selected in coupon configuration)
+
+3.1.0 (May-21-2008)
+ - 2-level Affiliate Program implemented along with improved affiliate transactions viewing;
+ - "Quick Search" (below the admin menu) has been improved and will now seek for payments 
+    as well as for members;
+ - Javascript validation on signup page has been improved and powered on JQuery (must see!);
+ - AJAX checking for unique username on signup page has been implemented;
+ - aMember lifetime will be automatically fetched from aMember website when needed;
+ - aMember now can fix/fetch lifetime license without uploading any files;
+ - Taxes and discounts works now correctly with PayPal and WorldPay;
+ - New Tax editor interface implemented
+ - Improved performance of "Rebuild Db" function;
+ - Improved updating customer records on subscription expiration and relation
+   to plugins;
+ - Improved admin user lookup - it will now search for payment too 
+   (by payment# and receipt#)
+ - Import process is now splitted to 2 steps: upload file, then define format
+ - Admin log recording and viewing implemented (all important actions are now logged
+   in aMember CP)
+ - CAPTCHA image verification for signup implemented (aMember CP->Setup->Advanced)
+ - If directory amember/templates_c is exists and writeable, and there is
+   .htaccess file inside, Smarty templates caching will be enabled automatically.
+   This will increase performance of the script up to 200% in some situations;
+ - It is now possible to cancel recurring billing from aMember CP (for cc_core plugins);
+ - Db settings editing for integration plugin have been improved and simplified;
+ - Additional checks added to ensure "Secure Root URL" is configured correctly in aMember;
+ - Added (again) "Send Pending E-Mail to Admin" option;
+ - Cron errors and problems will now be logged to database;
+ - aMember now have full database of countries and states, and AJAX-powered interface
+   implemented to select state on signup, profile, credit card info page and on admin side;
+
+3.0.9 
+ - Security Fix
+
+3.0.8 (Dec-15-2006)
+ - Changed newsletters archive output in member's area, only headers
+   will be displayed. Template "amember/templates/member.html"
+ - Added Signup Link Wizard (to aMember CP -> Manage Products)
+ - Joomla plugin fixed to support JACL
+ - French and Dutch translations added;
+ - E-Mail verification URL is now short and will always fit to one line
+   in e-mail client.
+ - IE7 compatibility fix - added "action" tag to all forms
+ --------------------------------------------------------------------
+ - Automatic Proxy configuration implemented for PayPal Pro plugin when installed
+   on GoDaddy webhosting;
+ - 1ShoppingCart fixed to not display cancel link (because it is not supported)
+ - "Vanco Services" payment plugin added;
+ - Fixed Canadian provinces in $config['states'] (US -> CA)
+ - Fixed Canadian provinces in PayPal (will use title instead of iso2 code)
+ - "Manual Euro Bank" plugin added;
+ - Fixed Customers Demography report (show additional fields)
+ - Fixed Smarty {span} function (start value in [>>] link) - 
+ - PhpList integration plugin added;
+ - OemPro plugin added;
+ - Added "Copy Product" option;
+ - Removed "Paymonde" payment plugin;
+ - Added "safepaysolutions" to affiliate payout methods;
+ - "Require" check didn't work for radio fields in profile page;
+ - Fixed bug with email_verified reset to zero on admin user edit;
+ - AlertPay plugin added;
+ - Import form didn't repopulate all selections in case of error. Fixed
+ - Fixed SMF plugin;
+ - Added Clear expired guests (and expired guest subscriptions) daily hook;
+ - Fixed bug with hook "fill_in_signup_form" call for additional fields;
+ - aMember will not e-mail payment receipt if payment total is $0.0
+ - Onetime_download plugin changed to support multiple download files
+   per one product;
+ - Generate Login/Password functions for affiliates fixed;
+ - Removed CURLOPT_FOLLOWLOCATION option because it does not work in 
+   safe_mode or when open_basedir enabled (in PayPal Pro plugin)
+ - Fixed bug when affiliate cookie not being set for domains like com.au
+ - Free plugin will display no error if user refreshes "thanks" page
+ - New PlugnPay payment plugin added;
+ - Fixed bug with unsubscribe link for guest's newsletters
+ - Safepay plugin fixed;
+ - Drupal plugin fixed;
+ - Fixed nasty bug in newsletter module (no messages was sent)
+ - Pass address info to PayPal for non-recurring billing
+
+3.0.7 (Oct-27-2006)
+ - 1ShoppingCart/MCSSL integration plugin added;
+ - GB changed to UK in country options;
+ - Newsletters module fixed;
+ - "Send Pending Email" function fixed;
+ - Affiliate stats bug fixed;
+ - Plugnpay bug fixed (currency code was not sent), XX changed to '' in state options;
+ - Fixed bug with zero autoresponders;
+ - Send cancel notifications to user and admin when user's cancel ;
+   PayPal subscription like it happens for "credit card" plugins;
+ - German translation added;
+ - Coppermine plugin major changes (beta) - now implemented via bridge 
+   in Coppermine
+ - OsCommerce plugin fixed to work with v.2.2ms2-060817
+ - AWeber, phpFusion integration plugins added
+ - Important fixes to Verotel plugin 
+ - Enabled session checking by user-agent in aMember Admin CP
+
+3.0.6 (Sep-21-2006)
+ - a problem caused amember/setup.php to slowly open page 4 of setup
+ was fixed;
+ - aMember will automatically detect and use HTTP proxy for outgoing
+ connections when running on GoDaddy;
+ - Fixed "recurring cancel" emails for cc_core plugins;
+ - Avoided warning on start_session in cron.php;
+ - SMF plugin bug fixed;
+ - Multiple order title was not passed to do_bill(..) - fixed;
+ - log_access.inc.php fixed and now will work for new_rewrite as well;
+ - E-Mail Users: do not word-wrap HTML e-mails;
+ - Affiliate Program statistic display fixed;
+ - Coppermine plugin fixed;
+ - SegPay plugin: Fixed a critical bug (Non-approved transactions were marked 
+ as paid in aMember);
+ - XCart plugin fixed: tested with X-Cart Gold 30-day trial (v4.1.3);
+ - Added separate displaying of paid and free active users to aMember CP index page;
+ - Joomla plugin fix: "Registered" access level in Joomla were able to see
+ and access menu items that were set to "Special" access level in Joomla;
+ - PayPal Pro upgraded to latest version PP PHP SDK, and is now able to
+ use SSL Signatures, instead of SSL certificate files;
+ - PayPro Pro plugin to correctly handle customers from GB;
+ - Fixed issue with product description not being passed to Auth.Net
+ - Mambo plugin fixed;
+ - PayPal_r plugin: Added IPN validation via get_url (curl) if possible
+ - PayPal_r plugin: Added option to reset user email to PayPal payer e-mail
+ - Nederlands translation added
+
+3.0.5 
+ - added option aMember CP -> Setup -> Advanced :  Hide customer passwords 
+   (disabled by default)
+ - Fixed Joomla single-login issue, it will now set a correct group in the 
+   session;
+ - BUG: bug with saving wrong passwords fixed;
+ - Visual HTML E-Mail editor removed (caused too many troubles);
+ - at aMember Cp->Affiliate Banners, removed live url checking;
+ - backup.php will now try to extend memory limit if set. if impossible,
+   it will disable compression to avoid "not enough memory" problems;
+ - a bug fixed in the new vBulletin3 plugin - incorrect work if vBulletin has 
+   table prefix set;
+ - Joomla plugin was completely rewritten to work with all security levels.
+   It now includes a mambot to do necessary redirects from Joomla side;
+ - Added mail_receipt_contact.pdf.txt template for PDF receipt;
+ - aMember will now automatically use cURL proxy on GoDaddy web host;
+ - a bug fixed in MaxMind fraud checking module (at cc_core):
+      http://www.maxmind.com/app/ccfd_promo?promo=CGICEN591
+ - phpBB plugin fixed (using $this in incorrect context)
+ - Serendipity plugin bugfixes;
+ - FusionBB plugin bugfixes and improvements;
+
+3.0.4 (stable, security bugfix)
+ - Fixed a serious XSS problem in "Access Log", "Error Log", you may 
+   find details of the issue here: http://www.amember.com/p/Main/SecurityNote03
+ - added options to (a) don't lowercase logins, (b) disallows spaces in login;
+ - several fixes to PDF invoices;
+ - FusionBB and Serendipity integration plugins added;
+ - ChronoPay plugin bug fixed;
+ - Verotel plugin bug fixed;
+ - GoogleCheckout payment plugin release candidate;
+ - User passwords are now invisible in aMember CP;
+ - fixed PasswordCall plugin for compatibilty with aMember3;
+ - ability added to export only expired users (aMember CP -> Export)
+ - new version of vBulletin3 plugin released - better single-login, automatic
+   redirects to aMember from vB3, export users from vB3;
+ - Spanish translation added
+ - added 60 min. duration for the admin session, after that admin must re-login
+ - added browser detection to admin sessions
+ - session_start() removed from all fields and moved to 
+        common.inc.php:start_amember_session() ;
+ - Fixed unset error in email_templates;
+ - BeanStream plugin fixed (total/subtotal displaying on thanks page);
+
+3.0.3 (stable)
+ - Serendipity integration plugin added;
+ - login.php:amember_redirect_url now stored in session to keep value
+   during login/signup process;
+ - French translation added
+ - Plugins multi-select (aMemberCP->Setup->Plugins) replaced to checkboxes
+ - Credit card fraud checking for cc_core plugins implemented. Have a look 
+   to find out more details and get your free account: 
+        http://www.maxmind.com/app/ccfd_promo?promo=CGICEN591
+ - BETA version of Google.Checkout plugin was added;
+ - signup.php may now use $config['amember_signup_template'] variable 
+   to choose alternative template. It allows to easliy create signup_xx.php
+   files as follows:
+     require_once('config.inc.php');
+     $config['amember_signup_template'] = 'signup_xx.html';
+     require_once('signup.php');
+ - AUD currency option was added to WorldPay plugin;     
+ - Added "Unlimited Downloads" option to onetime_download plugin;
+ - ClickBank plugin has been fixed to reflect latest changes of Clickbank
+   encryption algorithm;
+ - Innovtive payment plugin has been added;
+ - A critical bug with zero e-mail autoresponder has been fixed;
+ - Fixed a bug in newsletters module;
+ - PHPFox plugin added;
+          
+3.0.2 (beta)
+ - improved tax handling for "paypal_r" plugin (non-recurring transactions);
+   aMember will hovewer always pass "tax" = 0.00 for recurring transactions;
+ - thanks.php will now be delayed up to 15 seconds (if necessary) to wait 
+   for PayPal background postback;
+ - Coupons will now give discount only for first payment while used with PayPal;
+ - Coupons now cannot be used with Paypal trial periods;
+ - Paypal_r plugin CHANGED: there will be now a separate line for 
+   each recurring payment - for better stats;
+ - HTML editor (in e-mail templates) will now use absolute URLs 
+   instead of relative;
+ - added locale support for dates formatting;
+ - added swedish translation;
+ - tax report added;
+
+3.0.1 (beta)
+ - cron.php has been changed to call itself via curl when called from 
+   command line;
+ - long products list in new_rewrite replaced to "any" (cosmetic);
+ - added ability to open any generated PDF invoice from amember/member.php
+   NOTE - invoices are not saved, but generated online based on current 
+   payment information stored in database;
+ - payment plugins language files moved from amember/plugins/payment/language/
+   to main language file ( amember/language/LANG.php )
+ - a bug fixed in newsletters subscriptions module - upgrade necessary
+   if you are using it;
+ - templates/unsubscribe_link.inc.html reverted to plain English, because
+   correct internationalization of this message is impossible yet;
+
+3.0.0 (beta) 
+ - aMember is now multi-language (from member-side). Member can choose
+ language and if choosed, it will be saved into member profile on
+ signup. It is all configurable at aMember CP->Setup->Languages.
+ Currently only English and Russian translations are available, but translation is easy;
+ - added affiliates sign-up page and affiliates membership area; can be accessed at amember/aff_member.php and amember/aff_signup.php
+ - Added JavaScript validation to : signup,member payment,credit card info and "guest newsletter subscription" forms;
+ - E-Mail templates are now editable via web interface and are multi-lingual; you may find edit links at aMember CP->Setup->E-Mail;
+ - PDF Invoice can be now attached to "Receipt E-Mail" (aMember CP->Setup->E-Mail)
+ - Online version checking implemented;
+ - Secure send password implemented. You may now enable option
+ (aMember CP -> Setup -> Advanced) and aMember will email a
+ password change link instead of actual password;
+ - Newsletter Threads and e-mail message archive is now implemented; It can be managed from aMember CP->E-Mail Customers; member can manage subscriptions from amember/member.php, visitors can subscribe at amember/newsletter.php
+ - User-side temlpates were completely reworked and now are XHTML compatible. You can use amember/templates/css/site.css to do your own design modifications that won't be overwritten by next upgrade;
+ - E-Mail messages are now send using phpmailer library - it allows
+ to use SMTP with SMTP Authentication, SendMail and usual PHP mail()
+ - added auto-login after signup feature. You may now enable option
+ (aMember CP -> Setup -> Advanced)
+ - Added ability to choose "lifetime" as period of subscription in aMember CP;
+ - SMF integration plugin added;
+ - PayFlow Pro plugin fixed;
+ - Options at aMember CP->Manage Products->Edit were re-arragned to have
+ more logical order;
+ - aMember will now assign different "Renewal Groups" to all product by
+ default (during product addition);
+ - you may now configure title and description for each payment system
+ at aMember CP -> Setup -> PaysystemTitle;
+ - integration plugins are modified to give a warning to admin, and do not
+ cause other problems while not configured;
+ - dbm protection plugin removed;
+ - mail_recurring_members() function deleted;
+ - Profile change email option has been removed;
+ - Mail Pending Payments to admin option has been removed;
+ - Yes/No select boxes in aMember CP -> Setup replaced to checkboxes
+ - email attachments now can be located only inside amember/templates/ folder
+ (restricted by security reasons)
+ - mail_customer() function is now able to handle multi-part (HTML/text)
+ email messages
+ - aMember will not check and display error messages for wrong username
+ case;
+ - enable affiliate program, tax and coupons controls were moved to
+ aMember CP -> Setup from aMember CP -> Setup -> Advanced
+ - myVirtualCard plugin renamed to PayMonde
+ - bug fixed - hidden custom fields now will be filled-in with default
+ values on signup;
+ - aMember will now automatically set session.cookie_domain so
+ http://www.yoursite.com/amember/ will not ask you to re-login if you
+ are logged-in at http://yoursite.com/amember/
+ - aMember will now automatically check if your database structure matches
+ your upgraded aMember files;
+ - you may now edit list of countries and states at
+ aMember CP->Setup->Countries;
+ - coupons statistics and search implemented
+ - XML-RPC API implemented
+ - E-Mail a particular customer from "User Actions Page"
+ - BluePay plugin added;
+ - added option to "mass subscribe" pending users;
+ - fixed a potential trouble;
+ - added $config['site_title'] (aMember CP -> Setup : Site Title)
+ to use inside emails and templates;
+ - added confirmation when user clicks "unsubscribe" link in e-mail message;
+ - SecurePay plugin added;
+ - a checkbox "Subscribe to Newsletters" will appear on signup page if there is
+ at least one newsletter thread available to "All Members" or to "All Affiliates";
+ 
+2.4.1
+ - aMember will not cleanup credit card info on rebilling failure;
+ - an option added to email admin regarding account sharing violation;
+ - added ability to export checkboxes and multi-select fields;
+ - added header line to aMember Cp -> Export;
+ - export feature improved to limit ouput by products and by date range;
+ - added "Start Date" product option. Now it is possible to create products
+   with fixed start and expiration dates.
+
+2.4.0
+ - bruteforce login protection has been imporoved;
+ - aMember CP -> Setup will now automatically reload page after saving;
+ - added MoneyBookers affilaite payout option;
+ - added "affiliate signup type" option
+ - added option to do not pay affiliate commisions for free subscriptions;
+ - aMember will now use short affiliate URLs;
+ - internal: $HTTP_*_VARS are replaced to new style $_* auto-global vars.
+   aMember is now 100% incompatible with PHP < 4.1.0, but compatible with 
+   PHP 5
+ - important fix to beanstream_remote plugin. Everyone using
+   this plugin should upgrade ASAP.
+
+2.3.9
+ - a security problem problem fixed (XSS)
+ - ePassporte plugin added;
+ - outdated payment plugins removed;
+ - added a workaround to handling directory names on Windows;
+ - MySQL 5 compatibility fixed;
+ - template fixes;
+ - Yaskifo payment plugin added;
+ - "free" payment plugin will be always enabled - it is necessary for
+   100% discount coupons and free subscriptions if any provided;
+
+2.3.8
+ - very serious security problem fixed. You may find out details of the issue
+   here: http://www.amember.com/p/Main/SecurityNote00
+ - several bugfixes for PayFlow Pro and ccBill modules
+ - thanks.html template changed to display tax amount and discount (if any)
+ - aMember CP -> Protect Folders will now allow to protect a folder
+   even if it was unable to fetch server configuration test results;
+ - paypal_pro plugin finsihed;
+ - thanks.html template now contains receipt for customer purchase. It is 
+   commented out by default, but you can uncomment it by deleting {* and *}
+ - cc_core now has pontential ability to handle VbV transactions;
+ - cc_core now has ability to "Rebill On Failure"
+   NOTE: new block of code added to templates/cc/rebill_failed.txt
+ - cc_core will now notify members about their credit card expiration.
+   NOTE: new template added (to customize) templates/cc/card_expires.txt
+ - VbV support has been implemented for BeanStream payment plugin;
+ 
+2.3.7
+ - misc. template fixes;
+ - affiliate module bug fixed
+ - added support for PHP5 into config-dist.inc.php (affects only new installations)
+ - eProcessingNetwork module fixed to don't expose CC number in payment logs;
+ - fixed "currency" option for CC payment processors supported this;
+ - subscription_updated hook will be called now when user password is
+   updated after re-encryption of MD5 password;
+ - affiliate banners/links deletion/editing fixed;
+ - email function fixed to be more standarts compilant (to always use \r\n)
+ - it is possible to insert several license keys into aMember CP -> Setup -> License
+ - Invision2 and vBulletin3 plugin now allows to connect with other MySQL settings;
+   This function is experimental and it will be done for all other plugins later
+ 
+2.3.6
+ - According to new requirements of 2Checkout, new parameters handling added
+   to "twocheckout_r" plugin. All users of 2Checkout integration will have
+   to upgrade (at least plugin files) before April 1, 2005;
+ - small fix to new_rewrite plugin, it will not delete _vti_cnf folder;
+ - fixed a bug with signup.php?hide_paysys=xxxx
+ - added ability to configure different e-mail address for sending messages,
+   and to receive admin notifications from aMember;
+ - An important fix for ccBill plugin - fixed handling of renewal transactions
+   when cron job is running hourly;
+
+2.3.5
+ - 2Checkout plugin modified to have support for "new" 2CO interface for 
+   "old" accounts, upgrade is necessary if your 2CO ID is less than 200000;
+ - VeriSign PayFlow Link URL changed to reflect future changes announced
+   by VeriSign, upgrade is necessary for PayFlow Link users;
+ - "resend email verification" function fixed;
+ - aMember will automatically shift expiration date for subscription 
+   when e-check payment received via PayPal (to compensate for processing delay);
+ - htpasswd plugin modified, now there is no limit for number of customers 
+   in group when using htpasswd protection;
+ - PaymentsGateway plugin will now ask customers for CVV card code;
+ - phpNuke plugin updated to work with phpNuke 7.6;
+ 
+2.3.4
+ - aMember Pro will now choose appropriate loader automatically
+   (Zend Optimizer or ionCube Loader). No need to upload files for that;
+ - "Not-approved Users" screen now allows to quickly approve new members
+ - it is now possible to email affiliates from aMember CP -> Email Users
+ - SMARTY_DIR constant renamed to _SMARTY_DIR for better compatibility
+ - it is now possible to use user-specific variables in e-mail subject 
+   when sending e-mail from aMember CP -> Email Users
+ - paypal email checking is now case insensitive
+ - added ability to call signup.php as /amember/signup.php?hide_paysys=free
+   it will hide payment system select box and automatically choose "free"
+   payment system (for example)
+
+2.3.3 
+ - IMPORTANT: paypal_r payment plugin fixed, recurring subscriptions
+   were not handling correctly starting from 2.3.0
+ - IMPORTANT: backup databases list has not been full, so aMember CP
+   Backup function doesn't backup all tables (starting from 2.3.0)
+   File fixed: common.inc.php 
+ - IMPORTANT: code added cc_core plugin to pre-validate credit card#
+   before sending it to payment processor for processing - it may help
+   to save on transaction fees;
+ - IMPORTANT: affiliate program may not work correctly in some cases -
+   fixed;
+ - experimental trials handling added to "worldpay" payment plugin;
+ - user cannot login to member.php until his e-mail address is really
+   verified;
+ - it is now possible to configure if address info is optional or required
+   at "aMember CP -> Setup : Use Address Info"
+ - cdg plugin fixed;
+ - Invision2 plugin confugration issue fixed;
+
+2.3.2
+ - IMPORTANT: cc_core bugfix, in some situations rebill may not work 
+   in 2.3.0 and 2.3.1 versions - it is fixed;
+ - there was a PHP warning message in login.php - fixed;
+ - it is now possible to specify name of sender for all outgoing 
+   messages (aMember CP -> Setup -> E-Mail)
+ - alt text was not displayed in the affiliate banners - fixed;
+ - important bugfix for ccBill plugin - it is necessary to upgrade 
+   if you use recurring check or web900 subscriptions;
+ - myvirtualcard plugin changed to support individual site id
+   for each product (optionally)
+ - mambo plugin fixed to support Mambo 4.5.1
+ - added ability to search for locked user accounts;
+ - minor bugfixes (removed warnings about empty arrays);
+ - paysystems plugin removed;
+ - new affiliate payout methods added: StormPay, iKobo and e-gold;
+
+2.3.1
+ - bug fixed, unsubscribe feature (added to 2.3.0) was not really working
+
+2.3.0
+ - it is now possible (but still very dangerous!) to delete a product
+   that has active subscribers;
+ - it is now possible to disallow product subscription if user has
+   some other subscriptions (new field in product settings was added);
+ - unsubscribe feature added
+ - setup.php will now try to guess cURL path
+ - affiliate program is ready for beta-testing;
+ - brand new "paypal_r" - now able to intilligently handle both recurring
+   and not recurring transactions. beta-testing required;
+ - old "paypal" plugin has been removed;  
+ - 2Checkout plugin problem fixed;
+ - bug fixed in account sharing prevention routine 
+ - new_rewrite bug fixed (it did not protect folder index file)
+ - ability to search payments by product title added
+ - added option to limit renewals (aMember CP -> Setup -> Advanced)
+ - invision2 plugin added;
+ - vb3 plugin supports assigning several usergroups to member;
+ - cc_core doesn't display error message when enable new plugin;
+ - bug fixed - sending notification to admin about internal account changes;
+ - bug fixed - renewal_group is now used when ordering multiple products;
+ - several admin accounts can be created with different permissions; 
+
+2.2.0
+ - import fixed;
+ - twocheckout_r plugin fixed;
+ - twocheckout plugin removed;
+
+2.1.9
+ - new_rewrite protection method added;
+ - vBulletin3 plugin can now remove users from vB3 database
+   when user is removed from aMember;
+ - new, full-featured, "new_rewrite" protection method added
+ - "Use Address info" setting will automatically require all
+   address fields in the signup form to be filled-in;
+ - ionGate payment plugin removed;
+ - Ogone, Way2Pay, iKobo and EProcessingNetwork plugins added;
+ - Ability to send payment receipts was added;
+ - vBulletin plugin now uses usertitle from vBulletin usergroups
+   settings;
+ - A very serious bug fixed in the phpBB plugin - expired members
+   were not removed from the user-group
+ - Ability added to email admin each time when member info changed
+ - Added ability to disable expiration e-mails for selected products
+ - Smarty library upgraded to 2.6.2 version
+ - eWay plugin fixed to pass correct amount to payment system
+ - Rebuild DB function has been optimized for huge number of customers
+ - PostNuke plugin added
+ - admin/import_f.php added - it may import CSV file of any size 
+   from your server
+ - added ability to set payment system and receipt# during import
+ - problem with handling free trial on member.php page fixed
+
+2.1.8
+ - demographics report fixed to work better with new fields
+ - "directone_remote" payment plugin fixed
+ - "single-login" implemented for PhpNuke plugin (tested with phpNuke 7.1)
+ - photopost plugin fixed - now "Default Level" can be configured
+ - php_include protection will make automatic redirect after successfull 
+   authorization, so variables will be clean
+ - amember will use "mysql_connect" by default, not "mysql_pconnect"
+ - member.html template fixed to display currency configured in control 
+   panel instead of default "$"
+ - "worldpay" plugin modified - account settings must be changed according
+   to new readme, but now you can have several sites working with one 
+   worldpay account
+ - "eway" plugin fixed
+ - "authorize" plugin has been modified to don't require mhash PHP module
+ - a bug in aMember CP -> Protect Folder module fixed (only htpasswd
+   protection has been affected)
+ - worldpay plugin changed to handle multiple website using only one 
+   WorldPay account
+ - a bug in export routine has been fixed
+
+2.1.7
+ - ionCube loader updated to latest version
+ - "revecom" plugin updated and renamed to "paysystems"
+ - new integration interface for payment plugins
+
+2.1.6
+ - bruteforce attack protection added (doesn't work for htpasswd protection)
+ - BUG fixed with displaying some dates in access log, error log and another 
+   places
+ - PhotoPost plugin changed to don't delete customer when subscription expires
+ - better free trial handling added to LinkPoint plugin
+ - many improvements mande to Authorize.Net AIM plugin
+ - export fixed to handle added SQL fields 
+ - fixed bug with putting empty key values for select boxes for added fields
+ - added fields requirements checking added to signup form
+ - fixed bug related with default values of additional radio fields
+ - PayZIP (not-recurring) and so-called "AnyLink" payment plugins added
+ - bug with coupon counting fixed
+ - several fixes to Paysystems.com (revecom) plugin made
+
+2.1.5
+ - Email verification on signup added (configurable)
+ - "Customers Demography" Report will display option values for select fields
+ - PayPal chargebacks handling added to paypal_r (testing is necessary)
+ - search for payments added, payments display improved
+ - revecom (paysystems.com) plugin fixed to handle any periods, not only days
+ - paypal_r : checking periods fixed; subscr_id will be used as receipt_id;
+   subscription can be found by subscr_id, it makes import from PayPal possible
+ - backup file now can be compressed
+ - password is now encrypted in the cookie
+ - payflow_pro plugin changed to use cc_core interface
+ - docs/tester.php added
+
+2.1.4
+ - beaverpay (allresell) plugin added (no recurring billing)
+ - problem with upgrade_db.php script fixed
+ - problem with protect.php script fixed
+
+2.1.3
+ - fields now can be deleted and re-ordered from aMember CP
+ - added ability to protect folders from aMember CP 
+ - added auto-detection of available protection methods
+ - currency sign is now displaying in right places (before number)
+ - minor fixes to setup.php
+ - templates_c folder has been removed
+
+2.1.2 - 02/15/2004
+ - after installation values set for aMember CP -> Setup -> Advanced: 
+   "User can change the following fields"
+ - import.php fixed 
+ - nochex, iongate and efsnet plugins were fixed
+ - rewrite.php improved for more detailed error reporting, not it will
+   display 404 error page if file not found  
+ - added ability to set autoresponder as "0-tpl_filename" in product and 
+   config settings. It will be sent immediately after purchase and 
+   it may replace signup email
+
+2.1.1 - 02/11/2004
+ - a minor fix made in file amember/plugins/db/mysql/mysql.inc.php
+ 
+2.1.0 - 02/09/2004
+ - version numbering changed to be more logical
+ - ability to add fields from aMember control panel
+ - ability to re-order all products from one screen
+ - profile editing reworked - no template changes needed in any kind.
+   New Options: Setup -> Advanced : Profile fields, and for additional
+   fields it can be set individually
+ - it is not possible to generate username and password when adding 
+   user from admin control panel
+ - rewrite.php now supports new syntax - product # may be specified in the 
+   .htaccess
+ - vBulletin plugin fixed to support user titles and update stats in vB3 
+   database
+ - CDG plugin added
+ - Innovative payment plugin added
+ - ccBill plugin added
+ - DirectOne and DirectOne(remote) plugins added. DirectOne is a most
+   popular Australian payment processor
+ - UBBT plugin fixed
+ - A potential problem fixed in paypal_r plugin and the plugin will now
+   handle reversal transactions (Refund, Chargeback)
+ - Filter ability added to error log
+ - Weekly income report fixed
+1.9.3RC25
+ - CompuWorld integration plugin has been released
+ - phpnuke plugin upgraded to work with latest NSNGroups plugin
+ - it is now possible to require paid subscription (active or expired) for 
+   some product before user orders another product
+ - expire_mail will not be sent now, if user has ANY active subscription;
+ - offline payment plugin now able to display multiple products order info
+1.9.3RC24
+ - fixed a bug with rebillings in cc_core plugin (affects 
+   beanstream, echo and logiccommerce). That bug has been added in 
+   RC23
+ - paymentsgateway plugin improved to use new cc_core interface
+1.9.3RC23
+ - added ability to send automated emails (signup, expire emails) in html
+   format (add "Format: html" line) and send attachments (add 
+   "Attachment: filename"). Attachments should be uploaded to templates
+   folder - nobody will be able to steal it via http. If you put
+   a file to templates folder, you only need to specify filename, no
+   full path required;
+ - added support to send "autoresponse" emails after speicfied period
+   of subscription;
+ - it is not possible to use {if $user.data.status.111} any text {/if} 
+   to add product-specific sections to signup email template. 
+ - Gift certificate module updated - it now supports delayed emailing
+   of gift certificate to receiver, and has new readme file;
+ - Coupon routine now handles unused money on coupon - it will make
+   subscription longer proportionally
+ - Renewal Group product field added. Now aMember can calculate 
+   subscription date more intellgent for renewal payments
+ - ProBilling plugin fixed to work correctly on subscription expiration
+ - Product URL can be absolute or relative now. 
+   IMPORTANT - templates member.html and member_multi.html have been changed
+ - Ability to send emails with attachments added
+ - Email function modified to never time-out, also it is rewritten
+   to never reach memory limit
+ - SecureTrading payment plugin added                                          
+ - PrivatePay payment plugin added
+ - TheInternetCommerce payment plugin added
+ - MyVirtualCard payment plugin added
+ - Added ability to track trials subscribing (it is possible to set
+   that user can signup only once for some trial product). It works
+   with ECHO plugin only, but list will be extending
+ - ECHO credit card plugin added
+ - HiveMail plugin fixed (was not adding records to "alias" table)
+ - support for usergroups added to phpBB plugin
+ - BeanStream and BeanStream_remote plugin have been added
+ - language fixes (in both php files and templates)
+ - SecureTrading plugin added
+ - cc_core plugin added for better handling credit card payment processors
+   (important - templates changed in templates/cc/ folder!)
+
+1.9.3RC23
+ - StormPay.com, Payready and PasswordCall.de plugins added
+ - OxBill (not-completed) plugin removed
+ - Ability to send HTML emails has been added
+ - Mass subscribe function has been added
+ - Signup template fixed to work correctly with generated login/password
+   ("Check login" function had been affected by this bug)
+ - PerlDesk plugin fixed (pending field disappers ?)
+ - ListMail plugin fixed (use listnum instead of id)
+ - Invision Board plugin - now updates "last member" in Invision database
+ - Envolution plugin - rebuild function fixed
+
+1.9.3RC22
+ - WorldPay fix (IP change)
+ - clickbank, paypal and 2checkout plugins changed to work better
+   with affiliate programs
+
+1.9.3RC21 
+ - "class db" changed to "class amember_db" to avoid conflicts;
+ - php_include will store list of input data (GET, POST) into the session
+   vars and restore it as user log-in;
+ - member.php now accept price_group parameter too;
+ - ListMail module modified. Now it is possible to setup special list in 
+   ListMail for expired users. Once user renew subscription, he will
+   be removed from this list automatically.
+ - Option added for admin to receive email every time when user cancels 
+   subscription
+ - It is possible to add $config['use_mysql_connect'] to config.inc.php
+   to use mysql_connect instead of mysql_pconnect in aMember
+1.9.3RC20
+ - Added mod_auth_mysql plugin
+ - Added ability to edit username in profile.php
+ - Fixed mistake added in 1.9.3RC19 with PayPal trials handling
+1.9.3RC19
+ - Numberous fixes and additions
+ - Added free trial handing for Authorize.Net and PayFlow Pro
+ - Added "pending_mail to admin" notification
+ - Added import/editing/adding for credit card numbers
+ - CVV/CVV2 support implemented for Authorize AIM - template 
+    amember/templates/cc/cc_info.html updated too
+ - report function fixed ("3" has been displayed instead of "," separator)
+ - added ability to enter multiple URLs for product
+1.9.3RC11
+ - bug fixed in Invision board plugin, which prevents registered
+   members from signup in aMember Pro
+ - banning by IP, username and email added
+ - export function fixed
+ - protx plugin added
+ - nochex plugin added
+ - manual_cc plugin added
+ - perldesk integration plugin added
+ - added ability to limit rebill times (currently only to paypal_r
+   and authorize_aim plugins)
+ - IMPORTANT: bug fixed in Authorize.Net - renewal was not working
+ - Authorize.Net plugin - added ability to use command line "curl"
+1.9.3RC10
+ - added "pending_mail" ability
+ - fixed bug related with emailing
+1.9.3RC7
+ - fixed bug in WorldPay plugin
+ - simple memberslist plugin
+ - protecton from pressing BACK button when customer is logged-out
+ - added email configuration options
+ - members and payments display changed to use less memory
+ - admin products list has been improved
+ - twocheckout_r plugin has been changed to handle both recurring
+ and not-recurring transactions
+ - 2checkout bug fixed
+ - tax must be enabled on per-product basis
+ - fixed incorrect description for "expire email" settings
+ - don't use sharing protection by IP if user comes from AOL proxy
+ - license check is now case-insensitive
+ - "unified log-in" implemented for invision board plugin
+ - export additional member fields now possible
+1.9.3RC3
+ - error handling imporved on product editing screen
+ - worldpay plugin important fix (related with recurring billing 
+   processing)
+ - twocheckout_r plugin fixed to support both recurring and not-recurring 
+   plugins
+ - redirect function rewritten to use new template: "redirect.html"
+ - admin pages style improved
+ - error in templates/cc/cc_info.html (cc_street -> cc_zip)
+ - "coupons" section header added to signup*.html templates
+ - invision board small bug
+ - payflow_link plugin fixed 
+
+1.9.3RC0
+ - coupons have been fixed (used_count)
+ - bug fixed in signup* templates ($smary => $smarty)
+ - added regional and global tax calculation
+ - hivemail plugin added
+ - for additional protect plugins, password now checked during signup as well
+ - import function fixed to support added fields and better understand
+   Excel CSV format
+ - signup*.html templates has been fixed (JavaScript bugs)
+
+1.9.2
+ - "email about every payment" option added for admin
+ - added validate_signup_form / validate_member_form plugins hooks
+ - manual approval added 
+ - delete expired members option added
+ - in templates, it is not necessary anymore to place 
+   {literal} ... {/literal} around <script></script> and 
+   <style></style> blocks
+ - templates/cookie_login/login.html moved to templates/login.html
+ - added select for country/state
+ - added site.inc.php
+ - added search by additional fields
+ - config moved to database
+ - allow signup again if same username/email used and there is no 
+   competed payments on the account
+ - fixed user editing inteface, added "merge accounts" feature
+ - added "remember password in cookie" feature
+ - added multiple price_group feature to products
+ - added multi-select ability
+ - added user status display to admin
+ - export additional fields supported
+ - globill plugin
+ - added pluings : listmail, vbulletin, ubbt, phpnuke
+ - added worldpay plugin
+ 
+ - added product ordering
+ - fixed "Back" button in profile.html
+ 
+ - added span to admin
+ - added untested phpnuke,dbm plugins
+ - backup/restore functions added
+ - added "use_address_info" to config
+ - added product "scope" field
+ - added unique email checking by default
+ - cancel subscription link added for PayPal
+ - generate login function now use email, first&last name to generate 
+   username by default
+ - import/export features added
+ - htpasswd_secure plugin added
+ - probilling support added
+ - multicards support added
+ - secret key, generated by setup.php now shorter to fit into 2Checkout
+   input field
+ - twocheckout bug fixed (demo)
+
+1.8.4
+ - support added for multi-currency processing with PayPal (testing)
+ - paypal plugin now keep expire date untouched for not-recurring payments
+ - possible bugs fixed in thanks.php 
+ - added ability to set fixed date (yyyy-mm-dd) in product period field
+ - added ability to add another .htpasswd files "as is"
+ - added Revecom plugin (for testing)
+ - added Authorize.net payment plugin (for testing)
+ - fixed bug in PaPal plugin (not-recurring payments)
+
+1.8.3
+ - added qchex and e-gold expermental plugins
+ - added offline payment (Western Union, Money Order) plugin
+ - fixed bug with clear error and access logs
+
+1.8.2
+ - removed not-recurring paypal plugin
+ - log_access.inc.php fixed to work in more enviroments
+
+
+1.8.1
+ - added ability to add member fields
+ - fixed to work with register_globals = Off
+ - added logout link to member.php page
+ - signup_mail fixed to send only mail for first payment
+ - "redirect" parameter added to config_plugins - to redirect user after logout
+ - selected letter in admin users view now highlighted
+ - fixed date format in admin templates
+ - fixed bug with 'daily' hook (it was running hourly)
+
+1.7 - 08/20/02
+ - minor bug fixes in templates
+ - code cleanup
+ - fixed bug with template_cache_level=2 and member.php subscriptions display
+
+1.6 - 08/14/02
+  - (internal) added checking functions ability to admin/product.php, product.php
+  - added url field to products
+  - added ability to use plain text passwords in .htpasswd
+  - added ability to disable signup mail from config
+  - add version page to admin (version, php info)
+  - added active subscriptions listing to member.html page
+
+1.5 - 08/12/02
+  - fixed bug with "product duration field", added in 1.4 version
+  - finally :=) fixed Groups -> Group  in install.txt. Sorry, All!
+  - fixed incorrect <select> for cache level in setup.php (values: 0,0,0)
+
+1.4 - 08/11/02
+  - fixed bug when member renew their subscription ! IMPORTANT !
+  - set $_amember_id in session
+  - set $_amember_user in session
+  - set $_amember_product_ids in session
+  - set $_amember_subscriptions in session
+  - now assign $_amember_user to template and possible to user info in 
+    member.html template
+  - added ability to assign prefix for mysql tables during setup like 
+    'amember_'
+
+1.3 - 08/10/02
+  - .htpasswd, .htgroup files now updated often and correct
+  - added 2Checkout plugin. Thanks to James Mitchell(aka ReDucTor)!
+  - added "free signup" payment plugin
+  - "send lost password" feature added to cookie_login (and member.php)
+  - admin "info" page updated. .htaccess sample added to this page
+  - signup mail now send to user when payment completed
+  - setup.php now may send configs as files instead of save it
+
+1.2 - 08/02/02
+  - finally tested and fixed PayPal part. Now it working fine
+  - added fix to avoid slashing ' when magic_quotes_gpc enabled
+
+1.1 - 07/27/02
+  - added 2 workarounds to avoid problems on shared hosting with 
+    writing Smarty compiled templates (into templates_c)
+  - added ability to encrypt admin password in config file
+
+1.0 - first release
+  - now compatible with PHP 4.2.1
+  - users search was improved
+  - many other improvements was made
+  - documentation was reworked
+  - added check if user login exists
+
+0.9 - public beta 07/09/2002

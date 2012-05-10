@@ -1,0 +1,100 @@
+{assign var="title" value=$smarty.const._TPL_LOGIN_PLEASE_LOGIN}
+{include file="header.html"}
+<!--include file="error.inc.html"-->
+<!-- CENTRAL BLOCK-->
+    <div id="center">
+
+<div id="d_over_iframe"></div>
+         <!--MAIN CONTEINER-->
+<br>
+<br>
+            <div id="main_t">
+<div id="main_l">
+<div id=d_err_pw>
+	{include file="error.inc_login.html"}
+	<br />
+	<br />
+	</div>
+<div id="d_login_tab">
+<form name="login" method="post" {if $form_action}action="{$form_action}"{/if}>
+
+<table class="vedit" width="350">
+<tr>
+<th width="150">#_TPL_LOGIN_USERNAME#</th>
+<td><input type="text" name="amember_login" size="20" value="{$smarty.request.amember_login|escape}" title="Enter user name" {literal}onfocus="if(this.value=='UserName'){this.value=''}else{this.value=this.value}" onblur="if(this.value==''){this.value='UserName'}"{/literal} /></td>
+</tr>
+<tr>
+<th width="150">#_TPL_LOGIN_PASSWORD#</th>
+<td><input type="password" name="amember_pass" size="20" onfocus="this.value=''" {literal}onfocus="this.value=''" onblur="if(this.value==''){this.value='Password'}else{this.value=this.value}"{/literal}/></td>
+</tr>
+{if $this_config.remember_login && !$this_config.remember_auto}
+<tr>
+<td colspan="2" style='padding:0px; padding-bottom: 2px;'>
+<input type="checkbox" name="remember_login" value="1">
+<span class="small">#_TPL_LOGIN_REMEMBER_MY_PASSWORD#</span>
+</td>
+</tr>
+{/if}
+</table>
+<input type="hidden" name="login_attempt_id" value="{php}print time();{/php}" />
+{if $redirect_url}
+<input type="hidden" name="amember_redirect_url" value="{$redirect_url|escape}" />
+{/if}
+<br />
+
+<input type="submit" value="&nbsp;&nbsp;&nbsp;#_TPL_LOGIN_BTN_LOGIN#&nbsp;&nbsp;&nbsp;" />&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="&nbsp;&nbsp;&nbsp;#_TPL_LOGIN_BTN_BACK#&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)" class="login_button" />
+</form>
+
+<br />
+{include file="../plugins/protect/fb_connect/login.fb_connect.inc.html"}
+{include file="../plugins/protect/openid/login.openid.inc.html"}
+<br/>
+<p align="center">#_TPL_LOGIN_NOT_REGISTERED_YET# <a href="{$config.root_url}/{if $affiliates_signup}aff_{/if}signup.php">#_TPL_LOGIN_SIGNUP_HERE#</a></p>
+</div>
+<br />
+<div id="d_login_email">
+<h3 align="center">#_TPL_LOGIN_LOST_PASSWORD#?</h3>
+<!--<form action="{$config.root_url}/sendpass.php" method="post" name="sendpass">-->
+<form action="https://www.getaudiofromvideo.com/members/sendpass.php" method="post" name="sendpass">
+<table width="350" align="center" class="vedit">
+<tbody><tr>
+<th width="150">#_TPL_LOGIN_ENTER_YOUR_EMAIL_OR_USERNAME#</th>
+<td><input type="text" size="20" name="login"></td>
+</tr>
+</tbody></table>
+<br />
+<div id="d_input_getpass">
+<input type="submit" value="#_TPL_LOGIN_BTN_GET_PASSWORD#" />
+</div>
+</form>
+</div>
+
+	<br />
+    <hr>
+<!-- <p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p> -->
+
+</div>
+
+<div id="main_r">
+{include file="rblock.html"}
+</div>
+
+
+</div>
+
+
+     </div>
+</div>
+<!--Specific content-->
+<div id="d_getaudio_youtybe"></div>
+
+<script type="text/javascript">
+var x = document.getElementById('openid_form');
+	if(!x){
+		document.getElementById('fbButton').style.display='none';
+	}
+</script>
+{include file="footer.html"}

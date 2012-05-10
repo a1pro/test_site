@@ -1,0 +1,24 @@
+{assign var=title value="Coupons Generated"}
+{include file="admin/header.inc.html"}
+{include file="admin/coupon_nb.inc.html"}
+<center>
+<h3>{$title|escape}</h3>
+
+{if $error}{foreach from=$error item=e}
+<font color=red><li><b>{$e|escape}</b></font>
+<br /><br />
+{/foreach}{/if}
+
+Please copy the following generated coupon codes and use it for your advertising company.
+<br />
+
+<table><tr><td>
+<pre style='background-color: #f0f0f0; font-size: 9pt;'>
+{foreach from=$coupons item=c}{$c.code|escape}
+{/foreach}
+</pre></td></tr></table>
+
+<a href="coupons.php">Return to batches list</a>
+
+{include file="admin/footer.inc.html"}
+

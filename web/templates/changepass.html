@@ -1,0 +1,48 @@
+{assign var="title" value=$smarty.const._TPL_CHANGEPASSWORD_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+<!-- CENTRAL BLOCK-->
+    <div id="center">
+
+<div id="d_over_iframe"></div>
+         <!--MAIN CONTEINER-->
+<br/>
+<br/>
+            <div id="main_t">
+  <form name="changepass" method="post" action="sendpass.php">
+  <table class="vedit">
+
+    <tr>
+        <th><b>#_TPL_CHANGEPASSWORD_USERNAME#</b></th>
+        <td><strong>{$login}</strong></td>
+    </tr>
+
+    <tr>
+        <th>#_TPL_CHANGEPASSWORD_CHPWD#</th>
+        <td><input type="password" name="pass0" value="{$user.pass0|escape}" size="15" maxlength="15" /></td>
+    </tr>
+
+    <tr>
+        <th>#_TPL_CHANGEPASSWORD_CONFPWD#</th>
+        <td><input type="password" name="pass1" value="{$user.pass1|escape}" size="15" maxlength="15" /></td>
+    </tr>
+    </table>
+
+    <br />
+    <input type="hidden" name="do_change" value="1" />
+    <input type="hidden" name="s" value="{$code|escape}" />
+    <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CHANGEPASSWORD_SAVEBUT#&nbsp;&nbsp;&nbsp;&nbsp;" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CHANGEPASSWORD_BACKBUT#&nbsp;&nbsp;&nbsp;&nbsp;" onclick="window.location.href='{$config.root_url}/member.php'" />
+    </form>
+
+    <br /><br />
+         </div>
+</div>
+<!-- <p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p>-->
+
+{include file="footer.html"}

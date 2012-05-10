@@ -1,0 +1,92 @@
+{assign var="title" value=$smarty.const._TPL_SKYPAY_ADDRESS_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+{if $display_receipt }
+{include file="receipt.inc.html"}
+<br /><br />
+{/if}
+<form id="addressForm" method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class="vedit">
+
+<tr><th colspan="2" style='text-align:center'>
+#_TPL_SKYPAY_ADDRESS_ADDRINFO#<br />
+<div class="small">#_TPL_SKYPAY_ADDRESS_MUSTMATCH#</div>
+</th></tr>
+
+<tr>
+    <th>#_TPL_SKYPAY_ADDRESS_HOLDERNAME# *<br />
+    <div class="small">#_TPL_SKYPAY_ADDRESS_FLNAME|<br /># </div></th>
+    <td>
+    <input type="text" class="required" name=name_f size=15 value="{$address.name_f|escape}">
+    <input type="text" class="required" name=name_l size=15 value="{$address.name_l|escape}">
+    </td>
+</tr>
+
+
+<tr>
+    <th><b>#_TPL_SKYPAY_ADDRESS_STRADDR# *</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" class="required" name="street" value="{$address.street|escape}" />
+    </td>
+</tr>
+
+<tr>
+    <th><b>#_TPL_SKYPAY_ADDRESS_STRADDR2#</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" name="street2" value="{$address.street2|escape}" />
+    </td>
+</tr>
+
+<tr>
+    <th><b>#_TPL_SKYPAY_ADDRESS_ZIP# *</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" class="required" name="zip" value="{$address.zip|escape}" size="9" />
+    </td>
+</tr>
+
+<tr>
+    <th><b>#_TPL_SKYPAY_ADDRESS_CITY# *</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" class="required" name="city" value="{$address.city|escape}" />
+    </td>
+</tr>
+
+<tr>
+    <th><b>#_TPL_SKYPAY_ADDRESS_COUNTRY# *</b><br />
+    <div class="small"></div></th>
+    <td>
+    <select class="required" id="f_country" name="country" size="1">
+    {country_options selected=$address.country}</select>
+    </td>
+</tr>
+    
+</table>
+
+<br /> 
+<input type="hidden" name="member_id"  value="{$smarty.get.member_id|default:$smarty.request.member_id|escape}" />
+<input type="hidden" name="payment_id" value="{$smarty.request.payment_id|escape}" />
+<input type="hidden" name="register_transaction" value="1" />
+<input type="submit" name="paybtn" value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_SKYPAY_ADDRESS_SUBMIT_BUT#&nbsp;&nbsp;&nbsp;&nbsp;" />
+</form>
+
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.metadata.min.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.validate.pack.js?smarty"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#addressForm").validate({
+  	errorPlacement: function(error, element) {
+		error.appendTo( element.parent());
+	}
+    });
+});
+</script>
+ 
+{include file="footer.html"}

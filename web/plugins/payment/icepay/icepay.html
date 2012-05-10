@@ -1,0 +1,57 @@
+{assign var="title" value="Processing transaction"}
+{include file="header.html"}
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<form name="mainform" method='POST' action='https://pay.icepay.eu/checkout.aspx'>
+<br>
+<br>
+<center>
+<h1>Processing your Transaction</h1>
+<h3>Please specifies the issuer,language and click Pay to continue
+the processing of your transaction.</h3>
+</center>
+<input type='hidden' name='ic_paymentMethod' value='CREDITCARD'>
+<select name='ic_issuer' id='ic_issuer'>
+<option value='VISA' selected="selected">Visa</option>
+<option value='MASTER'>MasterCard</option>
+<option value='AMEX'>American Express</option>
+</select>
+<select name='ic_language'>
+<option value='EN' selected="selected">English</option>
+<option value='DE'>German</option>
+<option value='NL'>Netherlands</option>
+</select>
+
+<input type='hidden' name='ic_merchant' value='{$vars.merchant}'>
+<input type='hidden' name='ic_amount' value='{$vars.amount}'>
+<input type='hidden' name='ic_currency' value='{$vars.currency}'>
+<input type='hidden' name='ic_country' value='{$vars.country}'>
+<input type='hidden' name='ic_orderid' value='{$vars.orderid}'>
+<input type='hidden' name='ic_reference' value='{$vars.reference}'>
+<input type='hidden' name='ic_description' value='{$vars.description}'>
+<input type='hidden' name='ic_checksum' id='ic_checksum' value=''>
+<input type='hidden' name='ic_urlcompleted' value='{$vars.urlcompleted}'>
+<input type='hidden' name='ic_urlerror' value='{$vars.urlerror}'>
+<input type='hidden' name='ic_responsetype' value='REDIRECT'>
+<input type="submit" value="Pay" />
+</form>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("select#ic_issuer").change(function(){
+		__checksum();
+    });
+	__checksum();
+});
+function __checksum()
+{
+	var odb = $("select#ic_issuer").val();
+	{/literal}
+	if(odb=="VISA")
+		$("input#ic_checksum").val("{$vars.visa_checksum}");
+	if (odb=="MASTER")
+		$("input#ic_checksum").val("{$vars.master_checksum}");
+	if (odb=="AMEX")
+		$("input#ic_checksum").val("{$vars.amex_checksum}");
+	{literal}
+};
+</script>
+{include file="footer.html"}

@@ -1,0 +1,4 @@
+method1 POST
+url1    http://www.yoursite.com/amember/plugins/payment/securetrading/ipn.php
+fields1 orderref, name, address, town, county, postcode, formattedamount, timestamp, streference, stauthcode 
+pipe1 yes

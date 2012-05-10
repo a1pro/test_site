@@ -1,0 +1,44 @@
+{assign var=title value="Setup Affiliate Banners"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<h4 align="center">Banners</h4>
+{if $banners}
+<table class=hedit width=70%>
+<tr>
+    <th>Sample</th>
+    <th width=5%>&nbsp;</th>
+</tr>
+{foreach from=$banners item=b key=k}
+<tr class={cycle values="xx,odd"}>
+    <td>{$b.code}</td>
+    <td><a href="aff_banners.php?action=del_banner&banner_id={$k}" onclick='return confirm("Are you sure?")'>Delete</a>&nbsp;&nbsp;<a href="aff_banners.php?action=edit_banner&banner_id={$k}">Edit</a>
+    </td>
+</tr>
+{/foreach}
+</table>
+{/if}
+<a href="aff_banners.php?action=add_banner">Add new banner</a>
+
+<h4 align="center">Links</h4>
+{if $links}
+<table class=hedit width=70%>
+<tr>
+    <th>Sample</th>
+    <th width=5%>&nbsp;</th>
+</tr>
+{foreach from=$links item=b key=k}
+<tr class={cycle values="xx,odd"}>
+    <td>{$b.code}</td>
+    <td><a href="aff_banners.php?action=del_link&banner_id={$k}" onclick='return confirm("Are you sure?")'>Delete</a>&nbsp;&nbsp;<a href="aff_banners.php?action=edit_link&banner_id={$k}">Edit</a>
+    </td>
+</tr>
+{/foreach}
+</table>
+{/if}
+<a href="aff_banners.php?action=add_link">Add new link</a>
+
+
+{include file="admin/footer.inc.html"}
+

@@ -1,0 +1,218 @@
+{if $add}
+{assign var=title value="Add User"}
+{else}
+{assign var=title value="Edit User"}
+{/if}
+{include file="admin/header.inc.html"}
+{include file="admin/user_nb.inc.html" selected="user"}
+<center>
+
+<h3>{$title}</h3>
+
+<table><tr><td>{if $errors}{foreach from=$errors item=e}
+<font color=red><li><b>{$e}</b></font>
+{/foreach}{/if}</td></tr></table>
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit>
+<tr>
+    <th><b>Member ID#</b></th>
+    <td>{$u.member_id}<input type=hidden name=member_id value="{$u.member_id}"></td>
+</tr>
+<tr>
+    <th><b>Username</b></th>
+    <td><input type=text name=login value="{$u.login|escape}" size=32>
+    {if $u.login eq ""}
+    <input type=checkbox style='border: none;' name=generate_login value=1><font size=1>generate</font>
+    {/if}
+    </td>
+</tr>
+<tr>{if $u.pass ne ""}
+    <th><b>Change Password</b>
+    <br>{if $config.hide_password_cp}<small>enter new password here,<br>
+    or just leave this field blank<br>
+    </small>{/if}
+    </th>
+    {else}
+    <th><b>Password</b>
+    </th>
+    {/if}
+    <td> <input type=text name=pass 
+    {if ! $config.hide_password_cp } value="{$u.pass|escape}" {/if}
+    size=32>
+    {if $u.pass eq ""}
+    <input type=checkbox style='border: none;' name=generate_pass value=1><font size=1>generate</font>
+    {elseif $config.hide_password_cp }
+    <small><br>current password is not displayed</small>
+    {/if}
+    </td>
+</tr>
+<tr>
+    <th><b>Email</b></th>
+    <td> <input type=text name=email value="{$u.email|escape}" size=32></td>
+</tr>
+<tr>
+    <th><b>Real Name</b></th>
+    <td nowrap> 
+    <input type=text name=name_f value="{$u.name_f|escape}" size=14>
+    <input type=text name=name_l value="{$u.name_l|escape}" size=15>
+    </td>
+</tr>
+{if $config.use_address_info}
+<tr>
+    <th><b>Country</b></th>
+    <td><select name="country" id="f_country" size=1>
+    {country_options selected=$u.country}
+    </select></td>
+</tr>
+<tr>
+    <th><b>Street Address</b></th>
+    <td> <input type=text name=street value="{$u.street|escape}" size=32></td>
+</tr>
+<tr>
+    <th><b>City</b></th>
+    <td><input type=text name=city value="{$u.city|escape}" size=32></td>
+</tr>
+<tr>
+    <th><b>State</b></th><td>
+    <input type="text" name="state" id="t_state" size="30" value="{$u.state}" />
+    <select name="state" id="f_state" size="1" disabled="true" style='display: none;'>
+    {state_options selected=$u.state country=$u.country}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>ZIP Code</b></th>
+    <td><input type=text name=zip value="{$u.zip|escape}" size=8 maxlength=8></td>
+</tr>
+{/if}
+
+{$additional_fields_html}
+
+<tr>
+    <th><b>Unsubscribe</b><br />
+    <small>this will unsubscribe customer from:<br />
+    - messages that you send from aMember Cp;<br />
+    - autoresponder messages;<br />
+    - subscription expiration notices;
+    </small>
+    </th>
+    <td>
+    <input type=hidden name=unsubscribed value=0>
+    <input type=checkbox name=unsubscribed value=1 {if $u.unsubscribed eq "1"}checked{/if}>
+    check this box to unsubscribe
+    </td>
+</tr>
+
+<tr>
+    <th><b>Newsletter threads</b><br />
+    <small>this will subscribe customer to<br />
+    newsletter messages
+    </small>
+    </th>
+    <td>
+    <select name='threads[]' size=5 multiple>
+    {html_options options=$threads_list selected=$threads}
+    </select>    
+    </td>
+</tr>
+
+
+{if $config.use_affiliates}
+<tr>
+    <th><b>Is Affiliate?</b><br />
+    </th>
+    <td><select name=is_affiliate size=1>
+    <option value=0 {if ! $u.is_affiliate}selected{/if}>No</option>
+    <option value=1 {if $u.is_affiliate eq "1"}selected{/if}>Yes, member</option>
+    <option value=2 {if $u.is_affiliate eq "2"}selected{/if}>Yes, only affiliate</option>
+    </select></td>
+</tr>
+<tr>
+    <th><b>Affiliate Payout Type</b><br />
+    </th>
+    <td><select name=aff_payout_type size=1>
+    <option value=''>Not selected
+    {html_options options=$aff_payout_types selected=$u.aff_payout_type}
+    </select></td>
+</tr>
+{/if}
+
+<tr>
+    <th><b>Signup Info:</b></th>
+    <td><b>Time:</b> <i>{$u.added|date_format:$config.time_format}</i> <b>IP:</b> <i>{$u.remote_addr}</i></td>
+</tr>
+{if $aff}
+<tr>
+    <th><b>Affiliate</b></th>
+    <td>
+    #{$aff.member_id|escape}
+    <a href="users.php?action=edit&member_id={$aff.member_id}">{$aff.login|escape}</a>
+    {$aff.name_f|escape} {$aff.name_l|escape}<br />
+    <u>{$aff.email|escape}</u>
+    </td>
+</tr>
+{/if}
+</table>
+{php}
+global $member_additional_fields;
+foreach ((array)$member_additional_fields as $f){
+     if ($f['name'] == 'cc-hidden'){
+{/php}
+{* DISPLAY CREDIT CARD INPUT *}
+<br />
+<b>ADD/REPLACE CREDIT CARD INFO</b>
+<table class=vedit>
+<tr>
+    <th><b>Credit Card Number</b></th>
+    <td><input type=text name=cc_number size=20 maxlength=22></td>
+</tr>
+<tr>
+    <th><b>Credit Card Expiration</b></th>
+    <td>{html_select_date prefix="cc_expire_" end_year="+10" display_days=0 year_empty="[Select]" month_empty="[Select]" time="0000-00-00"}</td>
+</tr>
+</table>
+{* END DISPLAY CREDIT CARD INPUT *}
+{php} } } {/php}
+
+<br />
+<input type=submit onclick="confirm_cc_expire_change(this.form);" value="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+<input type=hidden name=action value={if $add}add_save{else}edit_save{/if}>
+</form>
+
+<br /><br />
+
+<!-- display payment details (from payment systems -->
+{if is_array($u.data.status) }
+    <table style='font-size: 8pt;' bgcolor=#e0e0e0>
+    <tr>
+    <th align=right>ACTIVE</th><td>&nbsp;{$u.data.is_active}</td></tr>
+    {foreach from=$u.data.status item=pp key=kk}
+        <tr><th align=right>{$kk|escape}&nbsp;</th><td>&nbsp;{$pp|escape}</td></tr>
+    {/foreach}
+    </table>
+{/if}
+<script type="text/javascript">
+
+function confirm_cc_expire_change(obj) {
+    if (obj.cc_expire_Month.value!='' && obj.cc_expire_Year.value!='' && obj.cc_number.value=='') {
+        if ( !confirm("Do you realy want to change Credit Card expiration date?") ) {
+            obj.cc_expire_Month.value ='';
+            obj.cc_expire_Year.value  ='';
+        }
+    }
+}
+
+</script>
+
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+{include file="js.country_state.js"}
+
+{include file="admin/footer.inc.html"}
+

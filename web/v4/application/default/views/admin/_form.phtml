@@ -1,0 +1,12 @@
+<?php
+/**
+ * To improve readability, form template is made as class
+ * in your template you can extend it or implement it completely
+ * another way (not recommended :) )
+ */
+if ($form instanceof Am_Form_SetupProxy)
+    $form = $form->getImp();
+/* @var $form Am_Form */
+$renderer = new Am_Form_Renderer_Admin();
+/* @var $renderer HTML_QuickForm2_Renderer_Default */
+echo $form->render($renderer);

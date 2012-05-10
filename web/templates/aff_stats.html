@@ -1,0 +1,106 @@
+{assign var="title" value=$smarty.const._TPL_AFF_STATS_TITLE}
+{include file="header.html"}
+<div id="center">
+
+<div id="d_over_iframe"></div>
+<!--MAIN CONTEINER-->
+<div id="main_t">
+    <div id="main_l">
+
+<div class="backend-wrapper">
+{include file="member_menu.inc.html" is_aff_member=1}
+{include file="error.inc.html"}
+<form method="post" action="aff.php">
+<table class="hedit" width="100%">
+<tr>
+    <th>
+      &nbsp; &nbsp;
+        #_TPL_AFF_STATS_PERIOD#
+      &nbsp; &nbsp;
+</th>
+    <td> 
+      <select name="year_month" size="1">
+      {html_options options=$year_month_options selected=$smarty.request.year_month|default:$default_month}
+      </select>
+      &nbsp; &nbsp;
+    </td>
+</tr>
+</table>
+<br />
+<input type="hidden" name="action" value="stats" />
+<div class="centered">
+<input type="submit" value="#_TPL_AFF_STATS_DISPLAY_BUT#" />
+</div>
+</form>
+<br />
+{if $days}
+
+<table class="hedit" width="100%">
+<tr>
+    <th>&nbsp;</th>
+    <th colspan="2">#_TPL_AFF_STATS_CLICKS#</th>
+    <th colspan="4">#_TPL_AFF_STATS_COMMISS#</th>
+</tr>
+<tr>
+    <th>#_TPL_AFF_STATS_DATE#</th>
+    <th>#_TPL_AFF_STATS_RAW#</th>
+    <th>#_TPL_AFF_STATS_UNIQUE#</th>
+    <th>#_TPL_AFF_STATS_TRANS#</th>
+    <th>#_TPL_AFF_STATS_CREDIT#</th>
+    <th>#_TPL_AFF_STATS_DEBIT#</th>
+    <th>#_TPL_AFF_STATS_TOTAL#</th>
+</tr>
+{foreach from=$days item=d key=dd}
+<tr>
+    <td style="text-align: center">{$d.dat|amember_date_format}</td>
+    <td style="text-align: right">{$d.raw|string_format:"%d"}</td>
+    <td style="text-align: right">{$d.uniq|string_format:"%d"}</td>
+    <td style="text-align: right">{$d.trans}</td>
+    <td style="text-align: right">{if $d.debit ne ""}<font color=red>{$d.debit}</font>{/if}</td>
+    <td style="text-align: right">{$d.credit}</td>
+    <td style="text-align: right">{if $d.total ne ""}{if $d.total < 0.0}<font color=red>{/if}{$d.total|string_format:"%.2f"}{/if}{if $d.total < 0.0}</font>{/if}</td>
+</tr>
+{/foreach}
+<tr>
+    <th>#_TPL_AFF_STATS_TOTAL_H#</th>
+    <th style="text-align: right">{$total.raw|string_format:"%d"}</th>
+    <th style="text-align: right">{$total.uniq|string_format:"%d"}</th>
+    <th style="text-align: right">{$total.trans|string_format:"%d"}</th>
+    <th style="text-align: right">{if $total.debit ne ""}<span style="color:red">{$total.debit|string_format:"%.2f"}</span>{/if}</th>
+    <th style="text-align: right">{$total.credit|string_format:"%.2f"}</th>
+    <th style="text-align: right">{if $total.total < 0.0}<span style="color:red">{/if}{$total.total|string_format:"%.2f"}{if $total.total < 0.0}</span>{/if}</th>
+</tr>
+</table>
+
+{/if}
+
+
+{if $refs}
+<h3 align=center>#_TPL_AFF_STATS_TOP20#</h3>
+<table align=center width=80% class=hedit>
+<tr>
+    <th colspan=2>#_TPL_AFF_STATS_CLICKS#</th>
+    <th rowspan=2>#_TPL_AFF_STATS_REFERRER#</th>
+</tr>
+<tr>
+    <th>#_TPL_AFF_STATS_RAW#</th>
+    <th>#_TPL_AFF_STATS_UNIQUE#</th>
+</tr>
+{foreach from=$refs item=r}
+<tr>
+    <td align=right>{$r.raw|string_format:"%d"}</td>
+    <td align=right>{$r.uniq|string_format:"%d"}</td>
+    <td align=left><a href="{$r.ref}" target=_blank>{$r.ref}</a></td>
+</tr>
+{/foreach}
+</table>
+
+{/if}
+</div>
+<br />
+<br />
+<br /><!-- <p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p> -->
+</div>
+</div>
+</div>
+{include file="footer.html"}

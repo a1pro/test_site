@@ -1,0 +1,40 @@
+{assign var="title" value=$smarty.const._TPL_AFFILIATE_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+<div id="center">
+
+<div id="d_over_iframe"></div>
+<!--MAIN CONTEINER-->
+<div id="main_t">
+    <div id="main_l">
+
+<div class="backend-wrapper">
+{include file="member_menu.inc.html" is_aff_member=1}
+<table><tr><td>
+{if $links}
+<b>#_TPL_AFFILIATE_TXT_LINKS#</b><br />
+{foreach from=$links item=l}
+<div>{$l.code}<br />
+<div class="small"><b>#_TPL_AFFILIATE_HTML_CODE#</b> <span class="code">{$l.code|escape:html}</span></div>
+</div>
+{/foreach}
+{/if}
+
+{if $banners}
+<b>#_TPL_AFFILIATE_BANNERS#</b><br />
+{foreach from=$banners item=l}
+{$l.code}</a><br />
+<small><b>#_TPL_AFFILIATE_HTML_CODE#</b> <font color=blue>{$l.code|escape:html}</font><br /></small>
+<br /><hr /><br />
+{/foreach}
+
+{/if}
+
+</td></tr></table>
+<br /><br /><br />
+</div>
+<!-- <p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p> -->
+</div>
+</div>
+</div>
+{include file="footer.html"}

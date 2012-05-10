@@ -1,0 +1,1 @@
+<!-- GA functionality moved to function "plugins.inc.php" ->  insert_google_analytics(...) -->

@@ -1,0 +1,424 @@
+<table_data name="email_template">
+    <row type="email_template">
+        <field name="name">send_security_code</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">Your Lost Password</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+You have requested your log-in information.
+
+     Your User ID:  %user.login%
+
+Follow a link below to change your password:
+  %url%
+    
+This link will be active %hours% hour(s).
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">send_security_code_admin</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">Your Lost Password</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+You have requested your admin log-in information.
+
+     Your User ID:  %user.login%
+
+Follow a link below to change your password:
+  %url%
+    
+This link will be active %hours% hour(s).
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">send_password_admin</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">New Admin Password</field>
+        <field name="txt">Dear Administrator,
+
+You have requested to reset your access credentials.
+
+     Your User ID:  %user.login%
+     New Password:  %pass%
+
+Please login to admin control panel at:
+     %root_url%/admin/
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">verify_guest</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - Newsletter Subscription</field>
+        <field name="txt">Dear %name%,
+
+You signed up for a guest subscription on %site_title%.
+
+To confirm subscription please follow a link:
+    %link%
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">manually_approve</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% Your signup is pending</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+Thank you for subscribing!
+
+We review all payments manually, so your payment 
+status is pending. You will receive email when your
+account will be approved. Thank you for your patience.
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">max_ip_actions</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">*** Account Sharing Violation Detected</field>
+        <field name="txt">There is an automated message from aMember Pro script. 
+An account violation has been detected for the following
+customer:
+  User details:
+    Username:   %user.login%
+    Email:      %user.email%
+    Name:       %user.name_f% %user.name_l%
+{if $config.max_ip_actions ne &quot;2&quot;}
+Customer account has been automatically locked.
+{/if}
+    
+It has reached configured limit of %config.max_ip_count% IP within
+%config.max_ip_period% minutes. Please login into aMember CP and review
+his access log. 
+
+If it looks like a script mistake, you may disable sharing violation checking 
+for this user in the &quot;User Profile&quot;, or disable it globally at aMember CP -&gt; 
+Setup -&gt; Advanced by setting &quot;Max Number of IP&quot; to something like &quot;99999&quot;.
+    
+--
+Your aMember Pro script 
+%root_url%/admin/
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">card_expires</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">Credit Card Expiration</field>
+        <field name="txt">Hello %user.name_f% %user.name_l%,
+
+Your credit card that we have on file for recurring billing will expire
+on %expires%. Next recurring billing for &quot;%product.title%&quot;
+is sheduled for %payment.expire_date|date%.
+
+To avoid any interruption of your subscription, please visit page
+%root_url%/member
+and update your credit card information. 
+
+Thank you!
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">cc_rebill_success</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% Subscription Renewed</field>
+        <field name="txt">Hello %user.name_f% %user.name_l%,
+
+Your subscription has been renewed automatically by our membership system.
+Your credit card was charged on $%payment.amount%.
+
+Next renewal date: %payment.expire_date|date%
+
+You may login to membership info page at :
+%root_url%/member
+
+Thank you!
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">cc_rebill_failed</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% Subscription Renewal Failed</field>
+        <field name="txt">Hello %user.name_f% %user.name_l%,
+
+Your subscription was not renewed automatically by membership system
+due to payment failure: &quot;%error%&quot;.
+
+{* If subscription has been pro-rated. *}
+{if $new_expire ne &quot;&quot; }
+Billing attempt will be automatically repeated %new_expire|date%,
+please add funds to your card or update your credit card information.
+{/if}
+
+You may update your credit card info here: 
+%root_url%/member
+
+Thank you for attention!
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">mail_cancel_admin</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - User subscription cancelled</field>
+        <field name="txt">User %user.login%, &quot;%user.name_f% %user.name_l%&quot; &lt;%user.email%&gt;
+has cancelled recurring subscription #%payment.payment_id% to product
+%product.title%.
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">mail_cancel_member</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - Subscription cancelled</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+Your subscription to &quot;%product.title%&quot; cancelled. Feel free to subscribe 
+again, you can do it here:
+  %root_url%/member
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">mail_expire</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - Your Subscription Expires</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+Your subscription on %site_title% expires  %payment.expire_date|date%.
+
+Please log-on to membership information page at:
+%root_url%/member
+and renew your subscription.
+
+Your login details:
+   Your User ID:  %user.login%  
+   Your Password: %pass%
+
+Thank you for your attention!
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+        <field name="day">1</field>
+    </row>
+    <row type="email_template">
+        <field name="name">send_payment_admin</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% *** New Payment</field>
+        <field name="txt">
+%invoice_text%
+
+User details:
+    Username:   %user.login%
+    Email:      %user.email%
+    Name:       %user.name_f% %user.name_l%
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">registration_mail</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% Registration</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+Thank you for registration on %site_title%!
+
+   Your User ID: %user.login% 
+   Your Password: %password%
+
+Log-on to your member pages at:
+%root_url%/member
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">send_signup_mail</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - Membership Information</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+Thank you for subscribing on %site_title%!
+
+   Your User ID: %user.login%  
+
+Log-on to your member pages at:
+%root_url%/member
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">send_payment_mail</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - Payment Receipt</field>
+        <field name="txt">Thank you for your order. You may find order details below:
+
+%invoice_text%
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+   <disabled-row type="email_template">
+        <field name="name">mail_not_completed</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - Signup is not finished</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+Thank you for signup! Unfortunately, you have not finished
+payment yet. If you have any troubles with payment,
+don't hesitate to contact us using the following 
+email address: %admin_email%.
+
+Despite the fact that your payment is not completed,
+a customer row has been created for you. 
+You may login to members area using the following 
+URL :
+  %root_url%/member
+  
+You member details are:
+   Your User ID: %user.login%  
+
+After logging-in, you may use &quot;Add/Renew Subscription&quot; controls
+to complete your payment.
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+        <field name="day">1</field>
+    </disabled-row>
+    <row type="email_template">
+        <field name="name">send_pending_email</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">Pending Payment</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+Thank you for signup. Your payment status is PENDING.
+Please complete payment as described.
+
+   Your User ID: %user.login%  
+
+Your may log-on to your member pages at:
+%root_url%/member
+and check your subscription status.
+
+Best Regards,
+Site Team
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">verify_email_signup</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - Account Verification</field>
+        <field name="txt">Hello %user.name_f% %user.name_l%,
+
+You (or someone else) has just registered an account on %site_title%.
+Clicking on the link below will activate the account:
+%url%
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">verify_email_profile</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">%site_title% - Account Verification</field>
+        <field name="txt">Hello %user.name_f% %user.name_l%,
+
+You (or someone else) has just changed email address in your account on %site_title%.
+Clicking on the link below will approve this change:
+%url%
+
+Please note that email address will be changed in your profile only if you will click on above link.
+If you didn't request email address change just disregard this message.
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+</table_data>

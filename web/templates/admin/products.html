@@ -1,0 +1,70 @@
+{assign var=title value="Products/Subscriptions Types List"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<table class=hedit width=95% border=1 bordercolor=#a0a0a0>
+<tr>
+    <th>Product #</th>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Duration</th>
+    <th>Scope</th>
+    <th>Group</th>
+    <th>Sort</th>
+    <th>Recurr.</th>
+    <th>Agr.</th>
+    <th>URL</th>
+    <th width=5%><font color=606060>Actions</font></th>
+</tr>
+{foreach from=$pl item=p}
+<tr class={cycle values="xx,odd"}>
+    <td> <a href="products.php?action=edit&product_id={$p.product_id}"><b>{$p.product_id}</b></a> </td>
+    <td> {$p.title} </td>
+    <td> {$p.price} </td>
+    <td> 
+    {if $p.expire_days eq $smarty.const.MAX_SQL_DATE}LIFETIME
+    {elseif strlen($p.expire_days) == 10 }
+    {$p.expire_days|amember_date_format}
+    {else}
+    {$p.expire_days}
+    {/if} 
+    
+    </td>
+    <td> {$p.scope|default:"all"} </td>
+    <td> {$p.price_group|default:"0"} </td>
+    <td> {$p.order|default:"0"} </td>
+    <td> {if $p.is_recurring}Yes{else}No{/if} </td>
+    <td> {if $p.need_agreement}Yes{else}No{/if} </td>
+    <td> <a href="{$p.url}" target=_blank>{$p.url}</a> </td>
+    <td nowrap>
+            <a href="products.php?action=edit&amp;product_id={$p.product_id}">Edit</a>
+            <a href="products.php?action=add&amp;copy_product_id={$p.product_id}">Copy</a>
+            <a href="products.php?action=delete&amp;product_id={$p.product_id}" onclick="return confirm('You want to delete product {$u.login}?')">Delete</a>
+     </td>
+</tr>
+{/foreach}
+</table>
+<br />
+<a href="products.php?action=add">Add New Product</a>
+&nbsp;&nbsp;&nbsp;
+<a href="products.php?action=reorder">Change order/groups</a>
+<br />
+<br /><br />
+<table width=70% bgcolor=#F0F0F0><tr><td>
+<small><b><div style='font-weight: bold;'>NOTES:</b><br />
+<li>Deleting existing subscriptions will affect existsing users.
+<li>Changing of subscription details such as duration and price
+will affect existing recurring subscriptions only if these are
+based on "Credit Card" payment plugins (when credit card information
+is stored in aMember database, and aMember initializes rebilling.
+In case of PayPal and other similar payment processors, changes will 
+not affect existing subscibers
+</small>
+</td><tr></table>
+<br />
+<a href="mass_subscribe.php">Mass subscribe members</a> <br />
+<a href="signup_link_wizard.php">Signup Link Wizard</a>
+
+{include file="admin/footer.inc.html"}
+

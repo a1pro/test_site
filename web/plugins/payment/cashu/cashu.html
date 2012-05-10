@@ -1,0 +1,43 @@
+{assign var="title" value="Processing transaction"}
+{include file="header.html"}
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<form name="mainform" action="https://www.cashu.com/cgi-bin/pcashu.cgi" method="POST">
+<noscript>
+<br>
+<br>
+<center>
+<h1>Processing your Transaction</h1>
+<h2>
+JavaScript is currently disabled or is not supported
+by your browser.<br></h2>
+<h3>Please click Submit to continue
+the processing of your transaction.</h3>
+<input type="image"
+src="http://www.cashu.com/images/newModel/buyIcons/icon_e3.gif"
+name="submit" alt="Make payments with cashU - it's fast, free and secure!">
+</center>
+</noscript>
+<input type="hidden" name="merchant_id" value="{$vars.merchant_id}">
+<input type="hidden" name="amount" value="{$vars.amount}">
+<input type="hidden" name="currency" value="{$vars.currency}">
+<input type="hidden" name="language" value="{$vars.language}">
+<input type="hidden" name="display_text" value="{$vars.display_text}">
+<input type="hidden" name="token" value="{$vars.token}">
+<input type="hidden" name="txt1" value="{$vars.txt1}">
+<input type="hidden" name="txt2" value="{$vars.txt2}">
+<input type="hidden" name="test_mode" value="{$vars.test_mode}">
+</form>
+<SCRIPT LANGUAGE="Javascript" >
+<!--
+function OnLoadEvent()
+{
+document.mainform.submit();
+}
+//-->
+</SCRIPT>
+<script type="text/javascript">
+$(document).ready(function(){
+		OnLoadEvent();
+});
+</script>
+{include file="footer.html"}

@@ -1,0 +1,23 @@
+{assign var="title" value=$smarty.const._TPL_CHANGEPASSWORD_FAILED_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+<div id="center">
+    <div id="d_over_iframe"></div>
+         <!--MAIN CONTEINER-->
+            <div id="main_t">
+                <div id="main_l">
+                    <div id=d_err_pw>
+                            <strong>#_TPL_CHANGEPASSWORD_FAILED_INCINFO#</strong><br />
+                                    {$message}
+                                    <br><br>
+                                    <a href="{$login_page}">#_TPL_CHANGEPASSWORD_FAILED_RETURN#</a>
+                            <br />
+                            <br />
+                    </div>
+                </div>
+            </div>
+</div>
+<!--Specific content-->
+<div id="d_getaudio_youtybe"></div>
+{include file="footer.html"}

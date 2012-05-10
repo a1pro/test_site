@@ -1,0 +1,280 @@
+/** aMember-specific styles here */
+
+/* properties for entire page and text inside tables */
+body, th, td {
+    font-family: Verdana, "Lucida Grande","Lucida Sans Unicode",geneva,verdana,sans-serif;
+    font-size: 0.9em;
+}
+/* properties for all input elements */
+input, textarea {
+    font-family: Verdana, "Lucida Grande","Lucida Sans Unicode",geneva,verdana,sans-serif;
+    font-size: 0.9em;
+}
+hr { 
+    background-color: #4479BE;
+    border: 0;
+    width: 100%;
+    height: 1px;
+}
+ul, li { list-style: disc; }
+a { color:#1f508f; }
+a:hover { text-decoration:none; }
+
+.small { font-size: x-small; font-weight: normal; }
+.powered, .powered a { font-size: x-small; color: #808080; margin: 0.5em 0em 0.5em 0em; }
+strong, .strong { font-weight: bold; }
+.text_disabled { color: ButtonFace; } 
+
+/* properties for headers */
+h1,h2,h3 {
+    color: #707070;
+    font-weight: bold;
+}
+
+h1,h2 {
+    text-align: center;
+    margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+h3 { margin: 1.5em 0 0.5em 0; }
+
+h1 { font-size: 140%; }
+h2 { font-size: 130%; }
+h3 { font-size: 120%; }
+
+/* other elements */
+div.centered { text-align: center; }
+div.centered table {
+    margin: 0 auto; 
+    text-align: left;
+}
+ul,ol { margin-left: 2em;}
+.code { font-family: "Courier New", Monospace; font-size: 120%; color: blue; } 
+
+/* vedit - vertical table (signup, profile edit) */
+.vedit {
+    border: solid 1px #8CACBB;
+}
+/* vedit - usual column (right) */
+.vedit td {
+    text-align: left;
+    vertical-align: middle;
+    padding: 15px 10px 10px 10px;
+
+    background-color: white;
+    border: solid 1px #8CACBB;
+}
+/* vedit - header column (left) */
+.vedit th {
+    padding: 10px 15px 10px 10px;
+    text-align: right;
+    vertical-align: middle;
+    font-weight: bold;
+
+    background-color: #DEE7EC;
+    border: solid 1px #8CACBB;
+}
+/* vedit - heading row */
+.vedit .headrow { font-weight: bold; text-align: center; }
+
+
+/* hedit - horizontal table (payments list) */
+.hedit {
+    border: solid 1px #8CACBB;
+}
+/* hedit - usual column */
+.hedit td {
+    padding: 5px;
+    background-color: #E0E0E0;
+    font-size: 8pt;
+    background-color: white;
+    border: solid 1px #8CACBB;
+}
+/* hedit - header column */
+.hedit th {
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+
+    background-color: #DEE7EC;
+    border: solid 1px #8CACBB;
+}
+
+table.errmsg
+{
+    font-family: Helvetica, Verdana, sans-serif;
+    font-size: 90%;
+    background-color: red;
+    border: #cc0000 1px solid;
+    margin: 5px 0px 5px 0px;
+}
+table.errmsg td
+{
+    padding: 5px 50px 5px 5px;
+    font-weight: bold;
+}
+table.errmsg td li
+{
+    list-style: square;
+}
+
+/* Receipt table from thanks.html */
+.receipt td {
+    background-color: #F0F0F0;
+    border: solid 1px black;
+    padding: 2px 4px 2px 4px;
+}
+.receipt th {
+    background-color: #C0C0C0;
+    border: solid 1px black;
+    font-weight: bold;
+    padding: 2px 4px 2px 4px;
+}
+.receipt td.total {
+    background-color: #C0C0C0;
+    border: solid 1px black;
+}
+.receipt {
+    border-collapse: collapse;
+}
+
+/* Newsletters table on member.php */
+.newsletters div {
+    padding: 5px;
+    margin: 5px;
+}
+.newsletters div.disabled {
+    color: #505050;
+}
+
+.newsletters .small {padding-left:1em;}
+
+
+/* Error message label on signup page */
+label.error {
+    padding-left: 3px;
+	color: red;
+	font-style: italic;
+	font-weight: normal;
+}
+input.error {
+    border: 2px solid red;
+}
+
+.menu-tabs {
+    text-align:left;
+    margin-bottom:1.5em;
+    padding:0em;
+    background:#eee;
+}
+    .menu-tabs > ul {
+        margin:0;
+        padding:0;
+        border-bottom:1px solid #8CACBB;
+    }
+
+    .menu-tabs > ul li {
+        float:left;
+        margin:0;
+        padding:0 0.4em;
+        list-style: none;
+    }
+    
+    .menu-tabs > ul li.last {
+        clear:both;
+        float:none
+    }
+
+    .menu-tabs a {
+        color: black;
+        font-weight:normal;
+        font-size:9pt;
+        display: block;
+        padding: 5px 5px 7px;
+        white-space: nowrap;
+    }
+    
+    .menu-tabs a.expandable {
+        padding-right: 20px;
+    }
+    
+    .menu-tabs > ul li.active a {
+        color:#1f508f;
+    }
+
+    .menu-tabs div.tab {
+        
+        position: relative;
+        
+        background:#DEE7EC;
+        border: 1px solid #8CACBB;
+        margin-top:5px;
+        margin-bottom:-1px;
+        z-index:5;
+    }
+
+    .menu-tabs > ul li.active div.tab {
+        border-bottom-color:white;
+        background:white;
+    }
+
+    .menu-tabs div.arrow {
+        width: 7px;
+        height: 5px;
+        overflow: hidden;
+        float: right;
+        margin: 8px;
+        background:url('./arrow.png') no-repeat left;
+    }
+
+    .menu-tabs > ul li.active div.arrow {
+        background:url('./arrow.png') no-repeat right;
+    }
+
+    .menu-tabs > ul li:hover div.tab {
+        background:white;
+        border-bottom-color:white;
+    }
+
+    .menu-tabs > ul li:hover div.submenu {
+        display:block
+    }
+
+    .menu-tabs div.submenu {
+        display:none;
+        position:absolute;
+        border:1px solid #8CACBB;
+        background: white;
+        padding:0;
+    }
+
+    .menu-tabs div.submenu ul {
+        margin:0;
+        padding:0;
+    }
+
+    .menu-tabs div.submenu li {
+        display: list-item;
+        float: none;
+        list-style: none;
+        padding: 0;
+    }
+
+    .menu-tabs div.submenu li a {
+        border: none;
+        padding: 5px;
+        margin: 0;
+        display: block;
+        background: #DEE7EC;
+    }
+
+    .menu-tabs div.submenu li a:hover {
+        background: white;
+    }
+
+
+div.backend-wrapper {
+    width: 780px;
+    display: inline-block;
+    text-align:left
+}

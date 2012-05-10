@@ -1,0 +1,22 @@
+{assign var=title value="#_TPL_NEWSLETTER_ARCHIVE#"}
+{include file="header.html"}
+<div class="backend-wrapper">
+{include file="member_menu.inc.html"}
+<table width="100%"><tr><td>
+<h2 style='text-align:left; margin-left: 0px;'>{$a.subject}</h2>
+
+{if !$a.is_html}<pre>{/if}{$a.message}{if !$a.is_html}</pre>{/if}
+
+<div class="small">{$a.add_date|amember_date_format}</div>
+
+</td></tr></table>
+
+<br />
+<br />
+<a href="javascript: history.back(-1)">#_TPL_NEWSLETTER_BACK#</a>
+<br />
+<br />
+<br />
+</div>
+{include file="footer.html"}
+

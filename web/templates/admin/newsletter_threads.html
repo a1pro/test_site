@@ -1,0 +1,37 @@
+{assign var=title value="Newsletter Threads"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="threads"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+{span}
+<br /><br />
+
+<table width=80% class=hedit border=1 bordercolor=#909090>
+<tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Active</th>
+    <th>View Subscribers</th>
+    <th width=5%><font color=606060>Actions</font></th>
+</tr>
+{foreach from=$tl item=t}
+<tr class={cycle values="xx,odd"}>
+    <td> <a href="newsletter_threads.php?action=edit&thread_id={$t.thread_id}"><b>{$t.title|escape}</b></a> </td>
+    <td> {$t.description|escape} </td>
+    <td align=center> {if $t.is_active}Yes{else}No{/if} </td>
+    <td align=center> {$t.subscribers} </td>
+    <td nowrap>
+            <a href="newsletter_threads.php?action=edit&thread_id={$t.thread_id|escape}">Edit</a>
+            <a href="newsletter_threads.php?action=delete&thread_id={$t.thread_id|escape}" onclick="return confirm('You want to delete thread {$t.title|escape}?')">Delete</a>
+     </td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+<br />
+<a href="newsletter_threads.php?action=new">Add Newsletter Thread</a>
+
+{include file="admin/footer.inc.html"}
+

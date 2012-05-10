@@ -1,0 +1,63 @@
+{assign var=title value="Coupon Batches"}
+{include file="admin/header.inc.html"}
+{include file="admin/coupon_nb.inc.html" selected="batches"}
+<center>
+<h3>{$title}</h3>
+
+{if $error}
+<font color=red><b>{$error}</b></font>
+<br /><br />
+{/if}
+
+{if $config.use_coupons ne "1"}
+<font color=red><b>To enable coupons on your signup and membership info page, enable
+<i><a href="setup.php">aMember CP -> Setup</a> : Allow usage of Coupons</i></b></font>
+<br /><br />
+{/if}
+
+
+<table class=hedit width=70%>
+<tr>
+    <th>Batch ID</th>
+    <th>Coupons<br />Count</th>
+    <th>Begin<br />Date</th>
+    <th>Expire<br />Date</th>
+    <th>Count/Used</th>
+    <th>Disabled</th>
+    <th>&nbsp;</th>
+</tr>
+{foreach from=$batches item=b}
+{if $b.batch_id == 0}
+<tr>
+    <td><a href="coupons.php?action=view_batch&batch_id={$b.batch_id}"><small>Particular<br />coupons</small></a></td>
+    <td>{$b.coun}</td>
+    <td>{$b.begin_date1|amember_date_format} -<br /> {$b.begin_date2|amember_date_format}</td>
+    <td>{$b.expire_date1|amember_date_format} -<br /> {$b.expire_date2|amember_date_format}</td>
+    <td>{$b.use_count}/{$b.used_count}</td>
+    <td>{$b.locked_count}</td>
+    <td>&nbsp;</td>
+</tr>
+{else}
+<tr>
+    <td><a href="coupons.php?action=view_batch&batch_id={$b.batch_id}">{$b.batch_id}</a></td>
+    <td>{$b.coun}</td>
+    <td>{$b.begin_date1|amember_date_format}</td>
+    <td>{$b.expire_date1|amember_date_format}</td>
+    <td>{$b.use_count}/{$b.used_count}</td>
+    <td>{$b.locked_count}</td>
+    <td>
+    <a href="coupons.php?action=delete_batch&batch_id={$b.batch_id}" onclick="return confirm('Are you sure?')">Delete</a>
+    / <a href="coupons.php?action=edit_batch&batch_id={$b.batch_id}">Edit</a>
+    </td>
+</tr>
+{/if}
+{/foreach}
+</table>
+
+{span count=$count}
+<br />
+<a href="coupons.php?action=generate_form">Generate Coupons</a>
+
+
+{include file="admin/footer.inc.html"}
+

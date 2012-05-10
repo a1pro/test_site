@@ -1,0 +1,69 @@
+{assign var=title value="Affiliate commissions"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+<form action="{$smarty.server.PHP_SELF|escape}" method="get">
+<table class=hedit border=1 bordercolor=#909090>
+<tr>
+    <th>
+      &nbsp; &nbsp;
+        Period
+      &nbsp; &nbsp;
+</th>
+    <td> 
+    till {$dat2}
+    </td>
+</tr>
+<tr>
+    <th>
+      &nbsp; &nbsp;
+        Payout method<br />
+      &nbsp; &nbsp;
+</th>
+    <td> 
+      {$payout_methods[$smarty.request.payout_method]|escape}
+    </td>
+</tr>
+</table>
+</form>
+
+{if $smarty.request.year_month}{* if request was made *}
+
+{if count($rows) <= 0}
+<br /><b>No records found by your request</b>
+{else}
+
+{if $payout_export}
+    <a href="aff_commission.php?action=aff_payout_export&payout_sess_id={$payout_sess_id|escape}">Export Payout records for "{$payout_methods[$smarty.request.payout_method]|escape}"</a><br />
+{/if}
+
+{foreach from=$links item=link}
+    {$link}
+{/foreach}
+
+<br /><h3>Commissions to pay</h3>
+<table class=hedit>
+<tr>
+    <th>Login</th>
+    <th>Name</th>
+    {if $smarty.request.payout_method eq 'ALL'}<th>Payout method</th>{/if}
+    <th>To payout</th>
+    <th>{if $smarty.request.payout_method neq 'ALL'}{$payout_methods[$smarty.request.payout_method]|escape} {/if}Account ID</th>
+</tr>
+{foreach from=$rows item=r}
+<tr>
+    <td>{$r.login|escape}</th>
+    <td>{$r.name_f|escape} {$r.name_l|escape}</td>
+    {if $smarty.request.payout_method eq 'ALL'}<td>{$r.aff_payout_type|escape}</td>{/if}
+    <td align=right>{if $r.to_pay < 0}<font color=red>{$r.to_pay}</font>{else}{$r.to_pay}{/if}</td>
+    <td>{$r.account_id|escape}</td>
+</tr>
+{/foreach}
+</table>
+{/if} {* there are rows *}
+
+
+{/if}
+<br /><br />
+<a href="aff_commission.php">Pay other commissions</a>
+{include file="admin/footer.inc.html"}

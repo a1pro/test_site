@@ -1,0 +1,27 @@
+{assign var=title value=$smarty.const._PLUG_PAY_EPASSPORT_HTML_TITLE}
+{include file="header.html"}
+<center>
+<br />
+
+#_PLUG_PAY_EPASSPORT_HTML_CLICKPAY#<br /><br />
+
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+<FORM ACTION="https://www.epassporte.com/secure/eppurchase.cgi" METHOD="POST">
+<INPUT TYPE="HIDDEN" NAME="acct_num" VALUE="{$this_config.account}">
+<INPUT TYPE="HIDDEN" NAME="pi_code" VALUE="{$this_config.product}">
+<INPUT TYPE="HIDDEN" NAME="amount" VALUE="{$payment.amount}">
+<INPUT TYPE="HIDDEN" NAME="product_name" VALUE="{$product.description}">
+<INPUT TYPE="HIDDEN" NAME="return_url" VALUE="{$config.root_url}/plugins/payment/epassporte/epass-return.php">
+<INPUT class="inputb" TYPE="SUBMIT" VALUE="Pay by ePassporte" ALT="Pay by ePassporte" TITLE="Pay by ePassporte">
+<input type=hidden name="user1" value="{$payment.payment_id}">
+</FORM>
+
+</center>
+{include file="footer.html"}

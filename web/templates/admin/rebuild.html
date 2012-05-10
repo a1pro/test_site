@@ -1,0 +1,188 @@
+{assign var=title value="Rebuild DB"}
+{include file="admin/header.inc.html"}
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<style>
+    #error{
+        text-align : center;
+        color : red;
+    }
+    #pbtable{
+        visibility :hidden;
+    }
+    #progressbar{
+        font-size:8pt;
+        padding:2px;
+        border:solid black 1px;
+        text-align: left;
+        display: inline-block;
+    }
+    #rebuild_htpasswd{
+        visibility: hidden;
+    }
+    div.stage_table{
+        display:table;
+    }
+    div.stage_row{
+        display: table-row;
+    }
+    div.stage_col{
+        display: table-cell;
+        padding: 3px;
+    }
+</style>
+<center>
+<br /><h3>{$title}</h3>
+
+<p>This page allows you to rebuild aMember's Secondary User Databases. It can be 
+useful in case of serious problems, such as a manual update of the 
+SQL database or a secondary user database crash.
+</p>
+<p>The <i>Secondary User Database</i> is a slave database of members profiles,
+for example, the <i>.htpasswd</i> file, the database of customers in phpNuke, and so on.</p>
+<p>Rebuild Process can take a lot of time. Do not close browser window when rebuild!</p>
+</center>
+<div align="center" id="pblink">
+    <a id ="rebuild_start" href='#'>
+        <b>Click here to start Rebuild</b>
+    </a>
+</div>
+<div align="center">
+<div id="pbtable" class="stage_table">
+    <div id="rebuild_stage1" class="stage_row">
+        <div class="stage_col">
+            Rebuild Status&nbsp;&nbsp;
+        </div>
+        <div class="stage_col">
+            <div id="progressbar">
+                {section name=pb loop=20}
+                    <span id="pb_item{$smarty.section.pb.iteration}">&nbsp; &nbsp;</span>
+                {/section}
+            </div>
+        </div>
+        <div class="stage_col">
+            <span id="pbvalue"></span>
+        </div>
+    </div>
+    <div class="stage_row" id="rebuild_htpasswd">
+        <div class="stage_col">
+            Rebuild htpasswd file
+        </div>
+        <div class="stage_col">
+            Please wait this can take a while.
+        </div>
+        <div class="stage_col">
+            <span id="htpasswd_rebuild_status"></span>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+<script language="JavaScript">
+var total;
+var count = 20;
+var processed = 0;
+var percentage = 0;
+
+function rebuildStart(){
+    // First disable link block and enable Rebuild block; 
+    jQuery('#pblink').css("visibility","hidden");
+    jQuery('#pbtable').css("visibility","visible");
+    // Now get count of users that should be rebilled.
+        getUsersCount();
+            // Now show values;
+
+            while(processed < total){
+                updatePBValue(total, processed);
+                updatePB(total, processed);
+                // Process records.
+                getRebuild(processed, count);
+        
+                processed +=count;
+            }
+            // show that everything is processed already;
+            updatePBValue(total, processed);
+            updatePB(total, processed);
+
+            // Now rebuild htpasswd if exists;
+            rebuildHtpasswd();
+}
+
+function rebuildHtpasswd(){
+    jQuery("#rebuild_htpasswd").css("visibility", "visible");
+    getRebuildHtpasswd();
+    jQuery("#htpasswd_rebuild_status").html("<b>done</b>");
+}
+function updatePBValue(total, processed){
+    var pr;
+    if(total>0) pr = ((processed>total? total:processed) / total) * 100;
+    else pr=100;
+    jQuery("#rebuild_stage1 #pbvalue").html(pr.toFixed(2) + '%&nbsp;&nbsp;' +'('+(processed>total? total:processed)+'/'+total+')');
+    if(pr==100)  jQuery("#rebuild_stage1 #pbvalue").html("<b>done</b>");
+}
+
+function updatePB(total, processed){
+    var pbCurrent;
+    if(total>0) pbCurrent = (processed / total) * 20;
+    else pbCurrent =20;
+    for(var i=1;i<=pbCurrent.toFixed(0);i++){
+        jQuery("#rebuild_stage1 #pb_item"+i).css("backgroundColor", '#E9E9C9');
+    }
+}
+
+function getUsersCount(){
+    jQuery.ajax({
+        url: "rebuild.php",
+        cache: false,
+        type: "POST",
+        dataType: "json",
+        async: false,
+        data: "action=getcount",
+        success : function(data, textStatus){
+            total = data.msg;
+        },
+        error : function(req, error,ex){
+            if(confirm('There was an error handling your request. Try again?')){
+                getUsersCount();
+            }else{
+                jQuery("#pbtable").html("<div id='error'>There was an error in database rebuild! Please try again later.</div>");
+            }
+        }
+        });
+    return ;
+}
+
+function getRebuild(start, count){
+    jQuery.ajax({
+        url: "rebuild.php",
+        cache: false,
+        type: "POST",
+        async: false,
+        dataType: "json",
+        data: 'action=rebuild&start='+start+'&count='+count
+        });
+}
+
+
+function getRebuildHtpasswd(){
+    jQuery.ajax({
+        url: "rebuild.php",
+        cache: false,
+        type: "POST",
+        async: false,
+        dataType: "json",
+        data: 'action=rebuild_htpasswd'
+        });
+}
+
+
+jQuery("document").ready(function (){
+    jQuery("#rebuild_start").click(function(){
+       rebuildStart();
+    })
+});
+</script>
+
+{include file="admin/footer.inc.html"}
+

@@ -1,0 +1,38 @@
+{assign var=title value="Admin accounts"}
+{include file="admin/header.inc.html"}
+<center>
+<h3>{$title}</h3>
+
+{if $error}
+<font color=red><b>{$error}</b></font>
+<br /><br />
+{/if}
+
+<table class=hedit width=70%>
+<tr>
+    <th>Admin</th>
+    <th>E-Mail</th>
+    <th>Last login</th>
+    <th width=5%>Superuser</th>
+    <th width=5%>&nbsp;</th>
+</tr>
+{foreach from=$list item=r}
+<tr>
+    <td>{$r.login|escape}</td>
+    <td>{$r.email|escape}</td>
+    <td>{if $r.last_login}{$r.last_login|escape} / {$r.last_ip|escape}{/if}</td>
+    <td>{if $r.super_user}<b>Yes</b>{else}No{/if}</td>
+    <td><nobr>
+    <a href="admins.php?action=edit&admin_id={$r.admin_id}">Edit</a>
+    / 
+    <a href="admins.php?action=delete&admin_id={$r.admin_id}" onclick="return confirm('Are you sure?')">Delete</a>
+    </nobr></td>
+{/foreach}
+</table>
+
+<br />
+<a href="admins.php?action=add">Add admin</a>
+
+
+{include file="admin/footer.inc.html"}
+

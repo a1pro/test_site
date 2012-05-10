@@ -1,0 +1,55 @@
+{* This file is included into amember/thanks.html and cc/cc_info.html 
+   for displaying of payment receipt information
+*}
+
+{php}//{* do not edit lines from these to ending /php! }
+$p = $this->_tpl_vars['payment'];
+global $db;
+$subtotal = 0;
+
+if (!$p['data']['0']['BASKET_PRICES'])
+    $p['data']['0']['BASKET_PRICES'] = array($p['product_id'] => $p['amount']);
+    
+foreach ($p['data']['0']['BASKET_PRICES'] as $pid => $price){
+    $pr = $db->get_product($pid);
+    $pr['subtotal'] = $pr['trial1_price'] ? $pr['trial1_price'] : $pr['price'];
+    $subtotal += $pr['subtotal'];
+    $receipt_products[$pid] = $pr;
+}
+$this->assign('receipt_products', $receipt_products);
+$this->assign('subtotal', $subtotal);
+$this->assign('total', array_sum($p['data']['0']['BASKET_PRICES']));
+{/php}{* End of PHP code, don't touch above *}
+
+<table class="receipt">
+<tr>
+    <th>#_TPL_THX_PRDTITLE#</th>
+    <th style="width: 10%; text-align: right;">#_TPL_THX_PRICE#</th>
+</tr>
+{foreach from=$receipt_products item=p}
+<tr>
+    <td>{$p.title}</td>
+    <td style="text-align: right">{$config.currency|default:"$"}{$p.subtotal|string_format:"%.2f"}</td>
+</tr>
+{/foreach}
+<tr>
+    <td class="total"><strong>#_TPL_THX_SUBTOTAL#</strong></td>
+    <td class="total" style="text-align: right"><strong>{$config.currency|default:"$"}{$subtotal|string_format:"%.2f"}</strong></td>
+</tr>
+{if $payment.data.COUPON_DISCOUNT ne "" }
+<tr>
+    <td><strong>#_TPL_THX_DISCOUNT#</strong></td>
+    <td style="text-align: right"><strong>{$config.currency|default:"$"}{$payment.data.COUPON_DISCOUNT|string_format:"%.2f"}</strong></td>
+</tr>
+{/if}
+{if $payment.tax_amount ne ""}
+<tr>
+    <td><strong>#_TPL_THX_TAX#</strong></td>
+    <td style="text-align: right"><strong>{$config.currency|default:"$"}{$payment.tax_amount|string_format:"%.2f"}</strong></td>
+</tr>
+{/if}
+<tr>
+    <td class="total"><strong>#_TPL_THX_TOTAL#</strong></td>
+    <td class="total" style="text-align: right"><strong>{$config.currency|default:"$"}{$total|string_format:"%.2f"}</strong></td>
+</tr>
+</table>

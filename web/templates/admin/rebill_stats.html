@@ -1,0 +1,60 @@
+{assign var=title value="Rebill Log"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3><a href="rebill_log.php?do=rebill_log">Rebill Log</a> / Rebill Stats</h3>
+
+
+<form method="get" action="{$smarty.server.PHP_SELF|escape}">
+<table class=hedit>
+<tr>
+    <th>
+      &nbsp; &nbsp;
+        Period
+      &nbsp; &nbsp;
+</th>
+    <td> 
+      <select name=year_month onchange="this.form.submit()">
+      {html_options options=$year_month_options selected=$smarty.request.year_month|default:$default_month}
+      </select>
+      &nbsp; &nbsp;
+    </td>
+</tr>
+</table>
+<br />
+<input type=hidden name=do value=rebill_stats>
+</form>
+
+<table class=hedit width=70%>
+<tr>
+	<th rowspan=2>Date</th>
+	<th colspan=4>Transactions breakdown</th>
+	<th rowspan=2>&nbsp;</th>
+</tr>
+<tr>
+	<th>Total</th>
+	<th>Not processed</th>
+	<th>Success</th>
+	<th>Declined</th>
+</tr>
+{foreach from=$list item=p key=dat}
+<tr class={cycle values="xx,odd"}>
+<td>{$dat|amember_date_format}</td>
+<td style="text-align: right"><a href="rebill_log.php?q={$dat}&q_where=payment_date">{if $p.total.cnt}{$p.total.cnt} ({$config.currency}{$p.total.amount}){/if}</a></td>
+<td style="text-align: right; color: red;">{if $p.null.cnt}{$p.null.cnt} ({$config.currency}{$p.null.amount}){/if}</td>
+<td style="text-align: right">{if $p.0.cnt}{$p.0.cnt} ({$config.currency}{$p.0.amount}){/if}</td>
+<td style="text-align: right; color: red;">{if $p.1.cnt}{$p.1.cnt} ({$config.currency}{$p.1.amount}){/if}</td>
+<td>
+{if (time() - strtotime($dat)) > 0 }{if (time() - strtotime($dat)) < 60 * 60 * 24 * 30 }
+<a href="rebill_log.php?do=rebill&dat={$dat}">Run Rebill Manually</a>
+{/if}{/if}
+</td>
+</tr>
+{/foreach}
+</table>
+<br />
+
+<div class="small" style="width: 50%">Please note that rebill log may contain more than 1 record for each scheduled rebill. For example if first
+payment attempt has failed without any status response, next hour aMember will try to rebill it again, but old
+status record will be kept in the log for debugging purproses.</div>
+
+{include file="admin/footer.inc.html"}

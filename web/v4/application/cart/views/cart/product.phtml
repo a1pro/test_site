@@ -1,0 +1,10 @@
+<?php
+$title=$product->getTitle() . ' : ' . $di->config->get('site_title');
+$this->setLayout('cart/layout.phtml');
+?>
+<?php
+$displayProductDetails = true;
+include $this->_script('cart/_product.phtml') 
+?>
+
+<a href=""><?php __e("Back to shopping cart") ?></a>

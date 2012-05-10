@@ -1,0 +1,107 @@
+{assign var="title" value=$smarty.const._TPL_AFF_PAYOUT_TITLE}
+{include file="header.html"}
+<div id="center">
+
+<div id="d_over_iframe"></div>
+<!--MAIN CONTEINER-->
+<div id="main_t">
+    <div id="main_l">
+
+<div class="backend-wrapper">
+{include file="member_menu.inc.html" is_aff_member=1}
+{include file="error.inc.html"}
+<form method="post" action="aff.php">
+<table class="vedit" width="100%">
+<tr>
+    <th>#_TPL_AFF_PAYOUT_METHOD#</th>
+    <td><select name="aff_payout_type" size="1" onchange="this.form.type_change.value=1; this.form.submit()">
+    <option value=''>#_TPL_AFF_PAYOUT_NOT_SELECTED#</option>
+    {html_options options=$aff_payout_types selected=$u.aff_payout_type}
+    </select></td>
+</tr>
+{if $u.aff_payout_type eq "paypal"}
+<tr>
+    <th>#_TPL_AFF_PAYOUT_PP_EMAIL#</th>
+    <td><input type="text" name="aff_paypal_email" value="{$u.data.aff_paypal_email}" /></td>
+</tr>
+{/if}
+
+{if $u.aff_payout_type eq "safepay"}
+<tr>
+    <th>#_TPL_AFF_PAYOUT_SAFEPAY_EMAIL#</th>
+    <td><input type="text" name="aff_safepay_email" value="{$u.data.aff_safepay_email}" /></td>
+</tr>
+{/if}
+
+{if $u.aff_payout_type eq "stormpay"}
+<tr>
+    <th>#_TPL_AFF_PAYOUT_STORM_EMAIL#</th>
+    <td><input type="text" name="aff_stormpay_email" value="{$u.data.aff_stormpay_email}" /></td>
+</tr>
+{/if}
+{if $u.aff_payout_type eq "ikobo"}
+<tr>
+    <th>#_TPL_AFF_PAYOUT_IKOBO_EMAIL#</th>
+    <td><input type="text" name="aff_ikobo_email" value="{$u.data.aff_ikobo_email}" /></td>
+</tr>
+{/if}
+{if $u.aff_payout_type eq "moneybookers"}
+<tr>
+    <th>#_TPL_AFF_PAYOUT_MBKRS_ID#</th>
+    <td><input type="text" name="aff_moneybookers_email" value="{$u.data.aff_moneybookers_email}" /></td>
+</tr>
+{/if}
+{if $u.aff_payout_type eq "egold"}
+<tr>
+    <th>#_TPL_AFF_PAYOUT_EGOLD_ACC#</th>
+    <td><input type="text" name="aff_egold_id" value="{$u.data.aff_egold_id}" /></td>
+</tr>
+{/if}
+
+{if $u.aff_payout_type eq "check"}
+<tr>
+    <th>#_TPL_AFF_PAYOUT_CHECK_PTO#</th>
+    <td nowrap="nowrap"><input type="text" name="aff_check_payable_to" value="{$u.data.aff_check_payable_to|escape}" size="30" maxlength="50" />
+    </td>
+</tr>
+<tr>
+    <th>#_TPL_AFF_PAYOUT_STREET#</th>
+    <td><input type="text" name="street" value="{$u.street|escape}" size="30" maxlength="50" />
+    </td>
+</tr>
+<tr>
+    <th>#_TPL_AFF_PAYOUT_CITY#</th>
+    <td><input type="text" name="city" value="{$u.city|escape}" size="15" maxlength="15" />
+    </td>
+</tr>
+<tr>
+    <th>#_TPL_AFF_PAYOUT_STATE#</th>
+    <td><input type="text" name="state" value="{$u.state|escape}" size="3" maxlength="15" />
+    </td>
+</tr>
+<tr>
+    <th>#_TPL_AFF_PAYOUT_ZIP#</th>
+    <td><input type="text" name="zip" value="{$u.zip|escape}" size="6" maxlength="15" />
+    </td>
+</tr>
+<tr>
+    <th>#_TPL_AFF_PAYOUT_COUNTRY#</th>
+    <td><select name="country" id="country" size="1">
+         {country_options options=$config.country_options selected=$u.country}
+    </select></td>
+</tr>
+{/if}    
+</table>
+<br />
+<div class="centered">
+<input type="hidden" name="save" value="1" />
+<input type="hidden" name="type_change" value="0" />
+<input type="hidden" name="action" value="payout_info" />
+<input type="submit" value="&nbsp;&nbsp;&nbsp;#_TPL_AFF_PAYOUT_SAVE_BUT#&nbsp;&nbsp;&nbsp;" />
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+{include file="footer.html"}

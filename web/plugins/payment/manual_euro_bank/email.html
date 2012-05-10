@@ -1,0 +1,26 @@
+{if $signup}
+		Signup has been made with 'Manual EURO Bank' plugin.
+{else}
+		Rebill is to be made with 'Manual EURO Bank' plugin
+{/if}
+		Product: {$currency|default:"$"}{$payment.amount} {$product.title}
+		Login: {$member.login}
+		Account Holder Name: {$manual_euro.bank_name}
+		Account Number: {$manual_euro.bank_an}
+		Bank Identifier Code: {$manual_euro.bank_bic}
+		Bank Name: {$manual_euro.bank_bank_name}
+		
+			- Address Info -
+		Street Address: {$member.street}
+		City: {$member.city}
+{if $manual_euro_config.state}
+		State: {$member.state}
+{/if}
+		ZIP: {$member.zip}
+		Country: {$member.country}
+{if $manual_euro_config.phone}
+		Phone: {$manual_euro.bank_phone}
+{/if}
+		
+	Please login and check it:
+	{$admin_url}/users.php?action=edit_payment&payment_id={$payment.payment_id}&member_id={$member.member_id}

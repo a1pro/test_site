@@ -1,0 +1,90 @@
+{assign var=title value="Mass Subscribe"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+<table width=70% bgcolor=#F0F0F0><tr><td>
+<small>
+This function allows you to mass subscribe members. It is useful,
+for example, if you have created a new product and want to subscribe
+all your current members to this product. There is a lot of settings
+and this operation CANNOT be reversed. Make backup before using this
+function.
+</small>
+</td><tr></table>
+<br /><br />
+
+
+<form method=post action="mass_subscribe.php#e">
+<a name="e">&nbsp;</a>
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<table class=vedit>
+<tr>
+  <th><b>Select members to subscribe:</b><br />
+  <small>hold Ctrl to select multiple records</small></th>
+  <td><select name='select_from[]' size=7 multiple>
+  {html_options options=$select_from_options selected=$smarty.request.select_from}
+  </select>
+  </td>
+</tr>
+
+<tr>
+  <th><b>Period assigment policy</b><br />
+  <small>how should aMember assign subscription dates for <br />
+  added subscriptions</small></th>
+  <td><select name='assign_date' size=3>
+  {html_options options=$assign_date_options selected=$smarty.request.assign_date}
+  </select>
+  
+  <br /><small>if you choosed "Fixed dates" in selection above,<br />
+             please enter necessary dates (format <i>mm/dd/yyyy</i><br />
+              or <i>dd-mm-yyyy</i>):<br />
+  from: <input type=text name=period_begin size=10 maxlength=10 value="{$smarty.request.period_begin|escape}">
+  to: <input type=text name=period_end size=10 maxlength=10  value="{$smarty.request.period_end|escape}">
+  </td>
+</tr>
+
+<tr>
+  <th><b>Product for new subscription</b><br />
+  <small>user will get subscription to this product</small></th>
+  <td><select name='product_id' size=1>
+  <option value=''>*** Please choose a product ***
+  {html_options options=$products selected=$smarty.request.product_id}
+  </select>
+  
+  </td>
+</tr>
+
+<tr>
+  <th><b>Payment comment for new subscription</b><br />
+  <small>you can label added subscriptions with some word,<br />
+  it will be assigned to receipt # field,<br />
+  so it will be easier to track it later.<br />
+  This comment will be visible for member<br />
+  Keep empty or enter "GRANT" if you are <br />
+  not sure what to enter.
+  </small></th>
+  <td>
+  <input type=text name=receipt_id value="{$smarty.request.receipt_id|escape}" size=11 maxlength=10>
+  </td>
+</tr>
+
+</table>
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Continue&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+<input type=hidden name=action value=mass_subscribe_confirm>
+</form>
+
+{include file="admin/footer.inc.html"}

@@ -1,0 +1,73 @@
+{include file="header.html"}
+<center>
+<div class="hdr">{$description}</div>
+<br />
+
+<form name="signup" method="post" action="https://www.vancoservices.com/cgi-bin/webplus.vps">
+<input type="hidden" name="COMPANY_CODE" value="{$this_config.company_code}" />
+<input type="hidden" name="CUSTOMER_ID" value="{$member_id}" />
+<input type="hidden" name="START_DATE" value="{$start_date}" />
+<input type="hidden" name="RETURN_PAGE" value="{$url}/plugins/payment/vanco/ipn.php?payment_id={$payment.payment_id}&" />
+<input type="hidden" name="AMOUNT" value="{$payment.amount}" />
+<table class="vedit">
+<tr>
+    <th><b>Your Name</b><br />
+    <div class="small">First and Last Name</div></th>
+    <td><input type="text" name="FIRST_NAME" size="15" value="{$first_name}" />&nbsp;&nbsp;&nbsp;<input type="text" name="LAST_NAME" size="15" value="{$last_name}" />
+    </td>
+</tr>
+<tr>
+    <th><b>Credit Card Number</b><br />
+    <div class="small"></div></th>
+    <td><input type="text" name="CREDIT_CARD" size="20" maxlength="22" value="{$credit_card}" />
+    </td>
+</tr>
+<tr>
+    <th><b>Card Expire</b><br />
+    <div class="small">for example: 0507</div></th>
+    <td><input type="text" size=4 name="EXPIRATION" value="{$expiration}" />
+</tr>
+<tr>
+	<th colspan="2" style='text-align:center'>
+	<b>Address Info</b><br />
+	<div class="small"></div>
+	</th>
+</tr>
+<tr>
+    <th><b>Street Address</b><br />
+    <div class="small"></div></th>
+    <td><input type="text" name="ADDRESS" size=30 value="{$address}" />
+    </td>
+</tr>
+<tr>
+    <th><b>City</b><br />
+    <div class="small"></div></th>
+    <td><input type="text" name="CITY" size=20 value="{$city}" />
+    </td>
+</tr>
+<tr>
+    <th><b>State</b><br />
+    <div class="small"></div></th>
+    <td>
+    <select name="STATE" size="1">{html_options options=$config.state_options selected=$state}</select>
+    </td>
+</tr>
+<tr>
+    <tr>
+    <th><b>ZIP</b><br />
+    <div class="small"></div></th>
+    <td><input type="text" name="ZIP" size="9" value="{$zip}" /> 
+    </td>
+</tr>
+<tr>
+    <th><b>Country</b><br />
+	<div class="small"></div></th>
+    <td><select name="COUNTRY_CODE" size="1">{html_options options=$config.country_options selected=$country_code}</select>
+    </td>
+</tr>
+</table>
+<br />
+<input type="submit" name="paybtn" value="&nbsp;&nbsp;&nbsp;&nbsp;Subscribe and Pay ({$config.currency|default:"$"}{$payment.amount})&nbsp;&nbsp;&nbsp;&nbsp;" />
+</form>
+</center>
+{include file="footer.html"}

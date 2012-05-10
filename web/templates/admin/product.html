@@ -1,0 +1,252 @@
+{if $add}
+{assign var=title value="Add Product/Subscription"}
+{else}
+{assign var=title value="Edit Product/Subscription"}
+{/if}
+{include file="admin/header.inc.html"}
+{include file="admin/js.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<a name="e">&nbsp;</a>
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+
+<form method="post" action="products.php#e">
+<table class="vedit" width="80%">
+<tr>
+    <th width=50%><b>Product #</b></th>
+    <td> <b>{$p.product_id}</b></td>
+</tr>
+<tr>
+    <th><b>Title <font color=red>*</font></b><br /><small>Will be displayed to user</small></th>
+    <td><input type=text name=title {if $p.title}value="{$p.title|escape}"{/if}> </td>
+</tr>
+<tr>
+    <th><b>Description <font color=red>*</font></b><br /><small>Will be displayed to user<br />
+    on signup page below the title</small></th>
+    <td><textarea rows=5 cols=40 name=description>{$p.description|escape:"html"}</textarea> </td>
+</tr>
+<tr class="odd">
+<td colspan=2 style='text-align: center; font-weight: bold'>Subscription Terms</td>
+</tr>
+<tr>
+    <th><b>Price <font color=red>*</font></b><br />
+    <small>Enter only digits (and period, if necessary).<br />
+    Do not enter commas ',' or dollar sign '$'</small></th>
+    <td><input type=text name=price {if $p.price ne ""}value="{$p.price|escape}"{/if}> </td>
+</tr>
+
+{foreach from=$product_additional_fields item=f}
+{if $f.type eq 'select'}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td><select name="{$field_name|escape}" size='{$f.size}'>
+    {html_options options=$f.options selected=$p.$field_name}
+    </select>
+    </td>
+</tr>
+{elseif $f.type eq 'multi_select'}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td><select name="{$field_name|escape}[]" size='{$f.size}' multiple>
+    {html_options options=$f.options selected=$p.$field_name}
+    </select>
+    </td>
+</tr>
+{elseif $f.type eq 'textarea'}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td><textarea name="{$field_name|escape}" rows=5 cols=30>{$p.$field_name}</textarea>
+    </td>
+</tr>
+{elseif $f.type eq 'checkbox'}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td><input type="hidden" name="{$field_name}" value="" />
+    <input type="checkbox" style='border-width: 0px' name="{$field_name}" value=1 {if $p.$field_name}checked{/if} />
+    </td>
+</tr>
+{elseif $f.type eq 'period'}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td>
+    {if $field_name eq "expire_days"}
+    <input type="text" name="{$field_name}[count]" id="{$field_name}[count]" 
+        value="{$p.$field_name.count}" size="12" maxlength="10" />
+    <select name="{$field_name}[unit]" name="{$field_name}[unit]" size="1" >
+    {html_options options=$period_options selected=$p.$field_name.unit}
+    </select>
+    {else}
+    <input type="text" name="{$field_name}[count]" id="{$field_name}[count]" 
+        value="{$p.$field_name.count}" size="4"  />
+    <select name="{$field_name}[unit]" name="{$field_name}[unit]" size="1" >
+    {html_options options=$trial_period_options selected=$p.$field_name.unit}
+    </select>
+
+    {/if}
+    </td>
+</tr>
+{elseif $f.type eq "header"}
+<tr class="odd">
+<td colspan=2 style='text-align: center; font-weight: bold'>{$f.title}</td>
+</tr>
+{elseif $f.type eq 'hidden'}
+{else}
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.description}</small></th>
+    {assign var=field_name value=$f.name}
+    <td><input type=text name={$field_name} {if $p.$field_name ne ""}value="{$p.$field_name|escape}"{/if}
+    {if $f.size}size="{$f.size|escape}"{/if}
+    id="t_{$f.name|escape}">
+    {if $f.name eq 'terms'}
+    <div class="small"><b>Default:</b> {$p.terms_default|escape}<br />
+    <i>(will be automatically updated according to change of product settings)</i>
+    </div>
+    {/if}
+    </td>
+</tr>
+{/if}
+{/foreach}
+
+</table>
+<script language="javascript">
+  frm = document.forms[0];
+  el = frm.signup_email_checkbox;
+  if (el)
+    x = (el.checked) ? showLayer('signup_email_div') : hideLayer('signup_email_div');
+</script>
+
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+<input type=hidden name=action value={if $add}add_save{else}edit_save{/if}>
+<input type=hidden name=product_id value="{$p.product_id|escape}">
+
+<br /><br />
+<table class="vedit" width="80%">
+<tr class="odd"><td colspan=2 align="center"><b>E-Mail Settings</b></td></tr>
+<tr>
+    <th width=50%><b>Use Customized Signup E-Mail</b><br />
+    <small>use special e-mail message for this product</small></th>
+    <td>
+    <a name="send_signup_mail"></a>
+    {if !$p.product_id}
+    <i>Please save new product first, then click Edit to change this option</i>
+    {else}
+    <input type=checkbox name="signup_email_checkbox" onclick="this.checked ? showLayer('signup_email_div') : hideLayer('signup_email_div')"
+    {if $send_signup_mail_tpl}checked{/if}>
+    <span id="signup_email_div" style="{if !$send_signup_mail_tpl}visibility: hidden{/if}">
+    <a href="email_templates.php?a=edit&tpl=send_signup_mail&product_id={$p.product_id}">Edit E-Mail Template</a>
+    / <a href="email_templates.php?a=del&tpl=send_signup_mail&product_id={$p.product_id}" onclick="return confirm('Are you sure?')">Delete</a>
+
+    </span>
+    {/if}
+    </td>
+</tr>
+<tr>
+    <th><b>Expire Notifications</b><br />
+    <small>send email to user when his subscription expires<br />
+	email will not be sent for products with recurring billing<br />
+     0 - send message in the day of expiration<br />
+    -1 - send message one day after expiration<br />
+     2 - send message 2 days before expiration<br />
+	there can be comma-separated list of values<br />
+    </small>
+    </th><td valign="top">
+    <a name="mail_expire"></a>
+
+    <label for="dme0">
+    <input id="dme0" type=radio name="dont_mail_expire" value='' style="border: none;" {if $p.dont_mail_expire eq ""}checked{/if} />
+    Use default setting (aMember CP->Setup->E-Mail)</label><br />
+
+    <label for="dme1" >
+    <input id="dme1" type=radio name="dont_mail_expire" value='1' style="border: none;" {if $p.dont_mail_expire eq "1"}checked{/if} />
+    Do not email expiration notices for this product (regardless of global setting)</label><br />
+
+    <label for="dme2" >
+    <input id="dme2" type=radio name="dont_mail_expire" value='2' style="border: none;" {if $p.dont_mail_expire eq "2"}checked{/if} />
+    EMail expiration notices for this product (regardless of global setting)</label><br />
+
+    <br />
+
+
+    {if !$p.product_id}
+    <i>Please save new product first, then click Edit to change this option</i>
+    {elseif !$config.demo}
+    {$mail_expire_field}
+    {/if}
+    </td>
+</tr>
+{if !$config.demo}
+<tr>
+    <th><b>Send Automatic Emails</b><br />
+    <small>user can receive automatic emails<br />
+    after signup. You can setup series of emails<br />
+    to be sent.<br />
+    0 - message will be sent immediately after purchase<br />
+    2 - message will be sent 2 days after purchase<br />
+    </small>
+    </th><td valign="top">
+
+    <a name="mail_autoresponder"></a>
+    {if !$p.product_id}
+    <i>Please save new product first, then click Edit to change this option</i>
+    {else}
+    {$mail_autoresponder_field}
+    {/if}
+    </td>
+</tr>
+{/if}
+
+{if !$config.demo}
+<tr>
+    <th><b>"Not-Completed Payment" Notification</b><br />
+    <small>number of days when above notification must be send.<br/>
+1 means 1 day after payment<br/>
+2 means 2 days after payment<br/>
+    </small>
+    </th><td valign="top">
+
+    <a name="mail_not_completed"></a>
+    {if !$p.product_id}
+    <i>Please save new product first, then click Edit to change this option</i>
+    {else}
+    {$mail_not_completed_field}
+    {/if}
+    </td>
+</tr>
+{/if}
+
+
+</table>
+
+
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+
+
+</form>
+{if defined('INCREMENTAL_CONTENT_PLUGIN')}{include file="../plugins/protect/incremental_content/product.html"}{/if}
+</center>
+{include file="admin/footer.inc.html"}

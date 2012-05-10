@@ -1,0 +1,28 @@
+<?php
+$title = ___('Confirmation sent');
+$this->setLayout('layout.phtml');
+?>
+<?php __e("New guest subscribe confirmation has been e-mailed to you") ?>.
+<?php __e("Please check your mailbox") ?>.
+<?php __e("Either click on the confirmation link in the e-mail message or enter confirmation code here"); ?>.
+<a href="<?php p(REL_ROOT_URL)?>"><?php __e("Return")?></a>
+<br /><br />
+
+<?php include $this->_script('_error.phtml'); ?>
+
+<div class="am-form">
+<form method="post" action="<?php p(REL_ROOT_URL)?>/newsletter/subscribe/confirm">
+<fieldset>
+    <legend>&nbsp;&nbsp;<?php __e("Enter Confirmation Code") ?></legend>
+    <div class="row">
+        <div class="element-title"><?php __e("Confirmation Code")?></div>
+        <div class="element"><input type="text" name="k" value="<?php p(@$_REQUEST['k'])?>" size="40"/></div>
+     </div>
+    <div class="row">
+        <div class="element"><input type="submit" value="<?php __e("Confirm")?>" size="40"/></div>
+     </div>
+</fieldset>
+</form>
+</div>
+
+

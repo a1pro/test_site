@@ -1,0 +1,79 @@
+{assign var=title value="Email To Users: Type"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="email"}
+<center>
+
+<br /><h3>{$title}</h3>
+
+<form method=post name=mail enctype="multipart/form-data" action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit>
+<tr>
+    <th><b>Select a category of<br /> users to send e-mail</b></th>
+    <td>
+    <select name='email_type[]' size=5 multiple>
+    {html_options options=$email_types selected=$vars.email_type}
+    </select>    
+    </td>
+</tr>
+<tr>
+    <th><b>Choose e-mail Subject</b></th>
+    <td><input type=text name=subj value="{$vars.subj|default:"Your membership"|escape}" size=32></td>
+</tr>
+<tr>
+    <th><b>Choose e-mail Format</b></th>
+    <td>
+    <input style='border: none;' type=radio name=is_html value=0 {if not $vars.is_html}checked{/if}>
+    Plain Text (recommended)  <br />
+    <input style='border: none;' type=radio name=is_html value=1 {if $vars.is_html}checked{/if}>
+    HTML (your message text must be valid HTML)
+    </td>
+</tr>
+<tr>
+    <th><b>Add e-mail attachment(s)</B><br /> ({php}print ini_get('upload_max_filesize'){/php} max)</th>
+    <td> 
+         {foreach from=$uploaded_files item=f}
+         {$f}<br />
+         {/foreach}
+    
+         <input type=file name='file[0]'><br />
+         <input type=file name='file[1]'><br />
+         <input type=submit name=upload value="Upload files" style='font-size: 7pt;'>
+    </td>
+</tr>
+</table>
+<br />
+<textarea name=text cols=70 rows=20>{$vars.text|escape}</textarea>
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;&nbsp;">
+<input type=hidden name="files" value="{$files|escape}">
+<input type=hidden name="action" value="preview">
+<br />
+
+</form>
+
+<script language=JavaScript>
+    function ins_tag(tag){
+        elem = document.forms['mail'].elements['text'];
+        elem.value = elem.value + ' ' + tag + ' '; 
+        elem.focus();
+    }
+</script>
+<style>
+    .tag {
+        background-color: #FCFCFC;
+    }
+</style>
+
+<table bgcolor=#F0F0F0><tr><td>
+You may use following tags to personalize email:
+<ul><pre style='font-size: 9pt;'>{literal}
+    <span class=tag>{$user.name}</span>    - first and last name <a href="javascript:ins_tag('{$user.name}')">(insert)</a>
+    <span class=tag>{$user.email}</span>   - email <a href="javascript:ins_tag('{$user.email}')">(insert)</a>
+    <span class=tag>{$user.name_f}</span>  - first name <a href="javascript:ins_tag('{$user.name_f}')">(insert)</a>
+    <span class=tag>{$user.name_l}</span>  - last name <a href="javascript:ins_tag('{$user.name_l}')">(insert)</a>
+    <span class=tag>{$user.login}</span>   - login <a href="javascript:ins_tag('{$user.login}')">(insert)</a>
+    <span class=tag>{$user.pass}</span>    - password <a href="javascript:ins_tag('{$user.pass}')">(insert)</a>
+{/literal}</pre></ul>
+</td></tr></table>
+{include file="admin/footer.inc.html"}
+

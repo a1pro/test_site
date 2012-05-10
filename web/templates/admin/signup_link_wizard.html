@@ -1,0 +1,108 @@
+{assign var=title value="Signup Link Wizard"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<script language="JavaScript">
+function getValue(select){
+	if (select.selectedIndex < 0) return "";
+	return select.options[select.selectedIndex].value;
+	
+}
+
+function buildUrl(frm){
+	div = document.getElementById('link');{/literal}	
+	url = "{$config.root_url|escape:"javascript"}/signup.php";{literal}
+	params = [];
+	if (v = getValue(frm.price_group))
+		params.push("price_group="+encodeURIComponent(v));
+	if (v = getValue(frm.product_id))
+		params.push("product_id="+encodeURIComponent(v));
+	if (v = getValue(frm.hide_paysys)) {
+		frm.paysys_id.disabled = true;
+		params.push("hide_paysys="+encodeURIComponent(v));
+	} else {
+		frm.paysys_id.disabled = false;
+		if (v = getValue(frm.paysys_id))
+			params.push("paysys_id="+encodeURIComponent(v));
+	}
+	if (params) 
+		url += "?" + params.join("&");
+	div.innerHTML = "<a target='_blank' href='"+url+"'>"+url+"</a>";
+}
+</script>
+
+<table width="60%"><tr><td>
+<p>You can use several parameters to customize aMember signup page when you are referring to it.
+In the table below, you will see parameters, descriptions and will be able to choose from available
+values. Once signup link is generated, you can insert it to your corresponding HTML pages, so peoples can click it.</p>
+<form action="{$smarty.server.PHP_SELF|escape}">
+<table width="100%" class="vedit">
+<tr>
+	<th><b>Price Group</b><br />
+	<small>You can limit list of products are displayed on signup page
+	To do that, just visit product settings, and configure "Price Group"
+	fields for products. Then go back here, and choose which price group
+	products you would like to see on signup page.
+	</small>
+	</th>
+	<td width="40%"> 
+	<select name="price_group" size=1  onchange='buildUrl(this.form)'>
+	<option value=''>Display all products (default)</option>
+	{html_options options=$price_groups selected=$smarty.request.price_group}
+	</select>
+	</td>
+</tr>
+<tr>	
+	<th><b>Pre-select Product</b><br />
+	<small>You can choose a product that will be initially selected (or checked) 
+	on signup page
+	</small>
+	</th>
+	<td width="40%"> 
+	<select name="product_id" size=1 onchange='buildUrl(this.form)'>
+	<option value=''>Do not pre-select a product (default)</option>
+	{html_options options=$products_list selected=$smarty.request.product_id}
+	</select>
+	</td>
+</tr>
+<tr>	
+	<th><b>Choose only one payment system</b><br />
+	<small>this system will be automatically choosen, 
+	and don't displayed at all on signup page.
+	That is very useful for <b>"Free Signup"</b> if all selected
+	products are free. 
+	</small>
+	</th>
+	<td width="40%"> 
+	<select name="hide_paysys" size=1  onchange='buildUrl(this.form)'>
+	<option value=''>Do not hide payment systems select (default)</option>
+	{html_options options=$paysys_list selected=$smarty.request.hide_paysys}
+	</select>
+	</td>
+</tr>
+<tr>	
+	<th><b>Pre-select Payment System</b><br />
+	<small>You can choose payment system that will be initially selected (or checked) 
+	on signup page
+	</small>
+	</th>
+	<td width="40%"> 
+	<select name="paysys_id" size=1  onchange='buildUrl(this.form)'>
+	<option value=''>Do not pre-select a paysystem (default)</option>
+	{html_options options=$paysys_list selected=$smarty.request.paysys_id}
+	</select>
+	</td>
+</tr>
+</table>
+</form>
+<br>
+<table width="100%" bgcolor="#F0F0F0" bordercolor=gray border=1 style='border-collapse: collapse;' cellpadding=5><tr><td>
+<b>
+<font size="+1">Use signup link</font>
+<div id="link"><a target='_blank' href="{$config.root_url}/signup.php">{$config.root_url}/signup.php</a></div>
+</b>
+</td></tr></table>
+<br><br>
+</td></tr></table>
+{include file="admin/footer.inc.html"}

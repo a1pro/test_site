@@ -1,0 +1,51 @@
+{**
+ *
+ * Facebook Connect v1.4
+ * Copyright 2010 (c) R Woodgate
+ * All Rights Reserved
+ *
+ * This file may not be distributed without permission.
+ *
+ * Purchasers of this plugin can modify it for the site
+ * it is installed on.
+ *
+ * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING
+ * THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE.
+ *
+ **}
+
+{php}
+global $db, $plugin_config, $config;
+$fb_connect_config = $plugin_config['protect']['fb_connect'];
+$fbappid = trim($fb_connect_config['appid']);
+$fbperms = array();
+if ($fb_connect_config['newaccount'] || ($fb_connect_config['fbemail'] && $fb_connect_config['forceperms']) )
+	$fbperms[] = 'email';
+if ($fb_connect_config['publish_stream'] && $fb_connect_config['forceperms'])
+	$fbperms[] = 'publish_stream';
+$fbperms[] = 'offline_access';
+$fbperms = implode(',',$fbperms);
+$fbuser = fb_connect_get_fbuser();
+$button_txt = ($fb_connect_config['loginbtntxt'])?$fb_connect_config['loginbtntxt']:'Connect with Facebook';
+echo "\n<!--fb_connect: login output-->\n";
+if ($fbuser) {
+	echo "<p style='width:50%;margin:1em auto;text-align:left;'><img src='https://graph.facebook.com/{$_SESSION['fbme']['id']}/picture' align='left' style='padding-right:1em;'> <strong>{$_SESSION['fbme']['name']}</strong>, you've successfully logged in to Facebook. <span style='color:red'>Now please login to your account on our site to complete the link.</span> You will only have to do this once. If you don't have an account with us, please <a href='{$config['root_url']}/plugins/protect/fb_connect/signup.php'>signup here</a>.</p>";
+	
+	if (!$fb_connect_config['forceperms'] && $fb_connect_config['loginoffer']) {
+		if ( ($fb_connect_config['fbemail'] && !$fb_connect_config['newaccount']) || $fb_connect_config['publish_stream'] )
+			echo "<div style='width:50%;margin:1em auto 0;text-align:left;'><p><strong>Before you link your account...</strong> Grant optional permissions to enhance your experience:</p><ul>";
+		if ($fb_connect_config['fbemail'] && !$fb_connect_config['newaccount'])
+			echo "<li><a href='https://graph.facebook.com/oauth/authorize?client_id=$fbappid&redirect_uri={$config['root_url']}/login.php&scope=email'>Sync With Facebook Email</a>. <small>Automatically update your email address whenever it changes in Facebook</small></li>";	
+		if ($fb_connect_config['publish_stream'])
+			echo "<li><a href='https://graph.facebook.com/oauth/authorize?client_id=$fbappid&redirect_uri={$config['root_url']}/login.php&scope=publish_stream'>Allow Facebook Wall Updates</a>. <small>Put a notice on your Wall whenever you order a new product from us</small></li>";
+		if ( ($fb_connect_config['fbemail'] && !$fb_connect_config['newaccount']) || $fb_connect_config['publish_stream'] )
+			echo "</ul></div>";
+	}
+	echo "<p style='text-align:center'><fb:login-button size=\"small\" autologoutlink=\"true\"></fb:login-button></p>";
+	
+} else {
+	echo "<p style='margin:1em 0;text-align:center;'><fb:login-button size=\"medium\" perms=\"$fbperms\">$button_txt</fb:login-button></p>";
+}
+echo "\n<!--fb_connect: /login output-->\n";
+{/php}

@@ -1,0 +1,56 @@
+{assign var=title value="Lookup Results"}
+{include file="admin/header.inc.html"}
+<style>
+	div.results {
+		font-size: 120%;
+	}
+</style>
+<br /><h3>{$title}</h3>
+<center>
+{if $smarty.request.q eq ''}
+	Your query was empty.
+{else}
+<h5>Found {php}echo count($this->get_template_vars('ur'));{/php} members matching the search string (it will show only first 20 records anyway)</h5>
+{if $ur}
+<table class="hedit" align="center">
+<tr>
+<th>Username</th>
+<th>Name</th>
+<th>E-Mail</th>
+</tr>
+{foreach from=$ur item=u}
+<tr class={cycle values="xx,odd"}>
+<td><a href="{$u.link|escape}">{$u.login}</a></td>
+<td>{$u.name_f|escape} {$u.name_l|escape}</td>
+<td><strong>&lt;{$u.email|escape}&gt;</strong></td>
+</tr>
+{/foreach}
+</table>
+{/if}
+
+<h5>Found {php}echo count($this->get_template_vars('pr'));{/php} payments/invoices matching the search string (it will show only first 20 records anyway)</h5>
+{if $pr} 
+<table class="hedit" align="center">
+<tr>
+<th>Username</th>
+<th>Name</th>
+<th>E-Mail</th>
+<th>Payment</th>
+<th>Receipt</th>
+<th>Rayment System</th>
+</tr>
+{foreach from=$pr item=u}
+<tr class={cycle values="xx,odd"}>
+<td>{$u.login|escape}</td>
+<td>{$u.name_f|escape} {$u.name_l|escape}</td>
+<td><strong>&lt;{$u.email|escape}&gt;</strong></td>
+<td><a href="{$u.link|escape}">{$u.payment_id}</a></td>
+<td>{$u.receipt_id|escape}</td>
+<td>{$u.paysys_id|escape}</td>
+</tr>
+{/foreach}
+</table>
+{/if}
+{/if}{* if $q == "" *}
+</center>
+{include file="admin/footer.inc.html"}

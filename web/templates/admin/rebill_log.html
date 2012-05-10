@@ -1,0 +1,48 @@
+{assign var=title value="Rebill Log"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>Rebill Log / <a href="rebill_log.php?do=rebill_stats">Rebill Stats</a></h3>
+
+
+<form method=get>
+<table class=vedit align=center><tr><th>
+<input type=text name=q size=30 value="{$smarty.request.q|escape}" style='font-size: 8pt;'>
+<select name='q_where' size=1 style='font-size: 8pt;'>
+{html_options options=$q_where_options selected=$smarty.request.q_where}
+</select>
+<input type=submit value="Filter by string" style='font-size: 8pt;'>
+</tr></th></table>
+</form>
+<br/>
+
+<table class=hedit width=70%>
+<tr>
+    <th>Time (started / processed)</th>
+    <th>Date of rebilling</th>
+    <th>Member</th>
+    <th>Payments</th>
+    <th>Product</th>
+    <th>Amount</th>
+    <th colspan="2">Status</th>
+</tr>
+{foreach from=$list item=p}
+<tr class={cycle values="xx,odd"}>
+    <td><nobr> {$p.added_tm|date_format:$config.time_format} 
+    {if $p.status_tm}/ {$p.status_tm|date_format:$config.time_format}{/if}
+    </nobr></td>
+    <td>{$p.payment_date|date_format:$config.date_format}</td> 
+    <td><a href="users.php?action=edit&member_id={$p.member_id}" target="_blank">{$p.login|escape}</a> / {$p.name_f|escape} {$p.name_l|escape}</td>
+    <td>
+    <a href="users.php?action=edit_payment&member_id={$p.member_id|escape}&payment_id={$p.payment_id|escape}" target=_blank>{$p.payment_id}</a>
+    / <a href="users.php?action=edit_payment&member_id={$p.member_id|escape}&payment_id={$p.rebill_payment_id|escape}" target=_blank>{$p.rebill_payment_id}</a>
+    </td> 
+    <td>{$p.title|escape}</td>
+    <td style='text-align: right;'>{$config.currency}{$p.amount}</td>
+    <td>{$p.status_string}</td><td>{$p.status_msg}</td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+
+{include file="admin/footer.inc.html"}

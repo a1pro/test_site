@@ -1,0 +1,51 @@
+{assign var="title" value=$smarty.const._TPL_MEMBER_TITLE}
+{include file="header.html"}
+<div id="center">
+
+<div id="d_over_iframe"></div>
+<br>
+<br>
+<!--MAIN CONTEINER-->
+<div id="main_t">
+    <div id="main_l">
+
+<div class="backend-wrapper">
+{include file="member_menu.inc.html"}
+{if $smarty.get.tab eq "add_renew"}
+    {include file="member_add_renew.html"}
+{elseif $smarty.get.tab eq "payment_history"}
+    {include file="member_payment_history.html"}
+{elseif $smarty.get.tab eq "newslatter_archive"}
+    {include file="member_newslatter_archive.html"}
+{else}
+    {include file="member_main.html"}
+{/if}
+</div>
+<br /><br />
+<!-- <p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p> -->
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.metadata.min.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.validate.pack.js?smarty"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("form#payment").validate({
+    rules: {
+		{/literal}{if !$config.member_select_multiple_products}{literal}
+		product_id: "required", 
+		{/literal}{else}{literal}
+		"product_id[]": "required", 
+		{/literal}{/if}{literal}
+    	paysys_id: "required"
+	},
+  	errorPlacement: function(error, element) {
+		error.appendTo( element.parent());
+	}
+    });
+});
+</script>
+
+{include file="footer.html"}

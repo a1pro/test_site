@@ -1,0 +1,16 @@
+{assign var=title value="Version Info"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<table><tr><td style='font-size: 1.0em;' nowrap>
+<ul>
+    <li>Script Version: <b>{$config.version}</b>
+</ul>
+</td></tr></table><br /><br />
+
+{php}phpinfo(1|4|8|16|32){/php}
+
+
+{include file="admin/footer.inc.html"}
+

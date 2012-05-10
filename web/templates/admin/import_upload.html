@@ -1,0 +1,65 @@
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form method=post enctype="multipart/form-data" action="{$smarty.server.PHP_SELF|escape}">
+<br /><br />
+<table class=vedit>
+<tr>
+    <th colspan=2 style="text-align: center;"><b>Select CSV File</b>
+	<br /><small>'Upload file' or 'Path to file'
+	</small>
+	</th>
+<tr>
+<tr>
+    <th><b>Upload file</b></th>
+    <td><input type=file name=file><br>
+    </td>
+</tr>
+<tr>
+    <th><b>Path to file</b>
+	<br /><small>full path to file on server<br />
+	(filename only if file is<br />
+	in 'data' or 'admin' folder)
+	</small>
+	</th>
+    <td><input type=text name="use_uploaded" value="{$preselected_file}" size=47>
+	{if $previous_files}
+	<br /><small>previous values:<br />
+	{foreach from=$previous_files item=fn}
+	{$fn}<br />
+	{/foreach}
+	{/if}
+    </td>
+</tr>
+<tr>
+    <th><b>File format<sup>*</sup></b>
+    </th>
+    <td>
+    fields delimited by <input type=text name=delim value="{$delim|default:';'}" size=1 maxlength=1><br />
+    </td>
+</tr>
+<tr>
+    <th colspan=2 style="text-align: center;">
+	<small>If you wish to import fields with multi-select values,<br /> 
+	please use ^ as values separator.<br />
+	</small>
+	</th>
+<tr>
+</table>
+<input type=hidden name=action value=upload>
+{$hidden}
+<br />
+<input type=submit value="Next">
+</form>
+
+
+{include file="admin/footer.inc.html"}

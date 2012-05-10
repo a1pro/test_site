@@ -1,0 +1,31 @@
+{assign var=title value="Newsletter Members"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="members"}
+<center>
+<br /><h3>{$title}</h3>
+
+{span}
+<br /><br />
+
+<table width=80% class=hedit border=1 bordercolor=#909090>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Subscriptions</th>
+</tr>
+{foreach from=$ml item=m}
+<tr class={cycle values="xx,odd"}>
+    <td> <a href="users.php?action=edit&member_id={$m.member_id}">{$m.name_f|escape} {$m.name_l|escape}</a> </td>
+    <td> <a href="mailto:{$m.email|escape}">{$m.email|escape}</a> </td>
+    <td> {$m.threads} </td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+
+<br />
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+
+{include file="admin/footer.inc.html"}
+

@@ -1,0 +1,44 @@
+{assign var="title" value=$smarty.const._TPL_AFF_STATS_TITLE}
+
+{include file="error.inc.html"}
+
+{if $months}
+
+<table class="hedit" width="100%">
+<tr>
+    <th rowspan="2">#_TPL_AFF_STATS_DATE#</th>
+    <th colspan="2">#_TPL_AFF_STATS_CLICKS#</th>
+    <th colspan="4">#_TPL_AFF_STATS_COMMISS#</th>
+</tr>
+<tr>
+    <th>#_TPL_AFF_STATS_RAW#</th>
+    <th>#_TPL_AFF_STATS_UNIQUE#</th>
+    <th>#_TPL_AFF_STATS_TRANS#</th>
+    <th>#_TPL_AFF_STATS_CREDIT#</th>
+    <th>#_TPL_AFF_STATS_DEBIT#</th>
+    <th>#_TPL_AFF_STATS_TOTAL#</th>
+</tr>
+{foreach from=$months item=m key=mm}
+<tr>
+    <td align="center"><a href="aff.php?year_month={$mm}&amp;action=stats">{$m.dat}</a></td>
+    <td align="right">{$m.raw|string_format:"%d"}</td>
+    <td align="right">{$m.uniq|string_format:"%d"}</td>
+    <td align="right">{$m.trans}</td>
+    <td align="right">{if $m.debit ne ""}<font color=red>{$m.debit}</font>{/if}</td>
+    <td align="right">{$m.credit}</td>
+    <td align="right">{if $m.total ne ""}{if $m.total < 0.0}<font color=red>{/if}{$m.total|string_format:"%.2f"}{/if}{if $m.total < 0.0}</font>{/if}</td>
+</tr>
+{/foreach}
+<tr>
+    <th>#_TPL_AFF_STATS_TOTAL_H#</th>
+    <th style="text-align: right">{$total.raw|string_format:"%d"}</th>
+    <th style="text-align: right">{$total.uniq|string_format:"%d"}</th>
+    <th style="text-align: right">{$total.trans|string_format:"%d"}</th>
+    <th style="text-align: right">{if $total.debit ne ""}<span style="color:red">{$total.debit|string_format:"%.2f"}</span>{/if}</th>
+    <th style="text-align: right">{$total.credit|string_format:"%.2f"}</th>
+    <th style="text-align: right">{if $total.total < 0.0}<span style="color:red">{/if}{$total.total|string_format:"%.2f"}{if $total.total < 0.0}</span>{/if}</th>
+</tr>
+</table>
+
+{/if}
+

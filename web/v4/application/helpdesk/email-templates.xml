@@ -1,0 +1,38 @@
+<table_data name="email_template">
+    <row type="email_template">
+        <field name="name">helpdesk.notify_new_message</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">New Message</field>
+        <field name="txt">Dear %user.name_f% %user.name_l%,
+
+You have recieved a new message for your ticket.
+
+     Follow a link below to view this message:
+     %url%
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+    <row type="email_template">
+        <field name="name">helpdesk.notify_new_message_admin</field>
+        <field name="lang">en</field>
+        <field name="format">text</field>
+        <field name="subject">New Message</field>
+        <field name="txt">
+            
+You have recieved a new message in helpdesk
+
+     Follow a link below to view this message:
+     %url%
+
+--
+Best Regards,
+%site_title%
+%root_url%
+        </field>
+    </row>
+</table_data>

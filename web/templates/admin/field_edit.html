@@ -1,0 +1,271 @@
+{assign var=title value="Additional Fields: Edit"}
+{include file="admin/header.inc.html"}
+{include file="admin/common.js"}
+
+<center>
+<br /><h3>{$title}</h3>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{ /if}
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit width=90%>
+<tr>
+    <th width=30%><b>Field Name</b><br />
+    <small></small></th>
+    <td>
+    {if $smarty.request.action eq "add"}
+    <input type=text name=name size=20 maxlength=32 value="{$f.name|escape}">
+    {else}
+    <b>{$f.name}</b>
+    <input type=hidden name=name value="{$f.name|escape}">
+    {/if}
+    
+    </td>
+</tr>
+<tr>
+    <th><b>Field Title</b><br />
+    <small></small></th>
+    <td><input type=text name=title size=20 maxlength=32 value="{$f.title|escape}"></td>
+</tr>
+<tr>
+    <th><b>Field Description</b><br />
+    <small>for dispaying on signup<br />
+           and profile editing screen<br />
+           (for user)</small></th>
+    <td><textarea name=description cols=18 rows=4>{$f.description|escape}</textarea></td>
+</tr>
+<tr>
+    <th><b>Field Type</b><br />
+    <small>sql field will be<br /> 
+          added to table structure<br />
+          common field will not<br />
+          we recommend you to choose<br />
+          second option</small></th>
+    <td>
+    <input onclick="showLayer('sql_type_l', 1)" type=radio name=sql value=1 {if $f.sql}checked{/if} style='border: none;' >
+    SQL (could not be used for multi-select and checkbox fields)<br />
+    <input onclick="showLayer('sql_type_l', 0)" type=radio name=sql value=0 {if not $f.sql}checked{/if} style='border: none;' >Common field (default)<br />
+    </td>
+</tr>
+<tr id=sql_type_l style='display: none;'>
+    <th><b>SQL field type</b><br />
+    <small>if you are unsure, choose first type (string)</small></th>
+    <td>
+    <select name=sql_type size=1>
+    {html_options options=$sql_type_options selected=$f.sql_type}
+    </input>
+    </td>
+</tr>
+
+<tr>
+    <th><b>Display Type</b><br />
+    <small></small></th>
+    <td>
+    <input style='border: none;' onclick="switch_layers(this.value)" type=radio name=type value=text {if $f.type eq 'text'}checked{/if}><b>Text</b><br />
+    <input style='border: none;' onclick="switch_layers(this.value)" type=radio name=type value=select {if $f.type eq 'select'}checked{/if}><b>Select (single value)</b><br />
+    <input style='border: none;' onclick="switch_layers(this.value)" type=radio name=type value=multi_select {if $f.type eq 'multi_select'}checked{/if}><b>Select (multiple values)</b><br />
+    <input style='border: none;' onclick="switch_layers(this.value)" type=radio name=type value=textarea {if $f.type eq 'textarea'}checked{/if}><b>TextArea</b><br />
+    <input style='border: none;' onclick="switch_layers(this.value)" type=radio name=type value=radio {if $f.type eq 'radio'}checked{/if}><b>RadioButtons</b><br />
+    <input style='border: none;' onclick="switch_layers(this.value)" type=radio name=type value=checkbox {if $f.type eq 'checkbox'}checked{/if}><b>CheckBoxes</b><br />
+    </td>
+</tr>
+
+<tr id=values style='display: none;'>
+    <th><b>Field Values</b><br />
+    <small>This list displays pipe-separated<br />
+    list of field keys (internal values),<br />
+    values (human-readable) and<br />
+    default value indicators<br />
+    (1-default value, 0-not default value)<br />
+    For example, the following lines will<br />
+    create country list, where USA<br />
+    is selected by default:<br />
+    USA|United States|1<br />
+    UK|United Kingdom|0<br />
+    CA|Canada|0<br />
+</small></th>
+    <td>
+    <textarea name=values cols=40 rows=10>{$f.values|escape:"html"}</textarea>
+    </td>
+</tr>
+<tr id=size style='display: none;'>
+    <th><b>Size of input field</b><br />
+    <small></small></th>
+    <td>
+    <input  type=text name=size value="{$f.size|default:20|escape}" size=6>
+    </td>
+</tr>
+<tr id=textarea_size style='display: none;'>
+    <th><b>Size of textarea field</b><br />
+    <small></small></th>
+    <td>
+    Columns: <input type=text name=cols value="{$f.cols|default:20}" size=6><br />
+    Rows: &nbsp;&nbsp;&nbsp; <input type=text name=rows value="{$f.rows|default:5|escape}" size=6>
+    </td>
+</tr>
+<tr id=text_default style='display: none;'>
+    <th><b>Default value for field</b><br />
+    <small></small></th>
+    <td>
+    <input type=text name=default value="{$f.default|escape}" size=40>
+    </td>
+</tr>
+
+
+<tr>
+    <th><b>Visibility of the field</b><br />
+    <small></small></th>
+    <td>
+    <table border=0 cellpadding=0 cellspacing=2>
+    	<tr>
+    		<td style="border:0px;padding:0px;">Display in signup form?</td>
+    		<td style="border:0px;padding:0px;">
+		    <select name=display_signup size=1>
+		    <option value="0" {if $f.display_signup eq "0"}selected{/if}>Don't display
+		    <option value="1" {if $f.display_signup eq "1"}selected{/if}>Display and allow editing
+		    </select>
+		   </td>
+    	</tr>
+    	<tr>
+    		<td style="border:0px;padding:0px;">Display in profile form?</td>
+    		<td style="border:0px;padding:0px;">
+		    <select name=display_profile size=1>
+		    <option value="0" {if $f.display_profile eq "0"}selected{/if}>Don't display
+		    <option value="1" {if $f.display_profile eq "1"}selected{/if}>Display and allow editing
+		    <option value="-1" {if $f.display_profile eq "-1"}selected{/if}>Display only, editing is not allowed
+		    </select>
+		   </td>
+		</tr>
+		<tr>
+    		<td style="border:0px;padding:0px;">Display in affiliate signup form?</td>
+    		<td style="border:0px;padding:0px;">
+		    <select name=display_affiliate_signup size=1>
+		    <option value="0" {if $f.display_affiliate_signup eq "0"}selected{/if}>Don't display
+		    <option value="1" {if $f.display_affiliate_signup eq "1"}selected{/if}>Display and allow editing
+		    </select>
+		   </td>
+    	</tr>
+    	<tr>
+    		<td style="border:0px;padding:0px;">Display in affiliate profile form?</td>
+    		<td style="border:0px;padding:0px;">
+		    <select name=display_affiliate_profile size=1>
+		    <option value="0" {if $f.display_affiliate_profile eq "0"}selected{/if}>Don't display
+		    <option value="1" {if $f.display_affiliate_profile eq "1"}selected{/if}>Display and allow editing
+		    <option value="-1" {if $f.display_affiliate_profile eq "-1"}selected{/if}>Display only, editing is not allowed
+		    </select>
+		   </td>
+		</tr>
+   </table>
+    </td>
+</tr>
+<tr>
+    <th><b>Validation function</b><br />
+    <small>choose a function to validate entered value</small></th>
+    <td><select name=validate_func size=1>
+    {html_options options=$validate_functions selected=$f.validate_func}
+    </select></td>
+</tr>
+</table>
+
+<input type=submit value="Submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="Back" onclick="window.location='fields.php'">
+
+<input type=hidden name=save value=1>
+{if $smarty.request.action eq "add"}
+<input type=hidden name=action value=add>
+{else}
+<input type=hidden name=action value=edit>
+{/if}
+</form>
+
+<SCRIPT language=JavaScript>
+function switch_layers(type){
+    switch (type){
+        case 'text':
+            showLayer('values', 0);
+            showLayer('size', 1);
+            showLayer('textarea_size', 0);
+            showLayer('text_default', 1);
+            back_sql_types();
+            break;
+        case 'textarea':
+            showLayer('values', 0);
+            showLayer('size', 0);
+            showLayer('textarea_size', 1);
+            showLayer('text_default', 1);
+            clear_sql_types();
+            break;
+            break;
+        case 'multi_select':
+        case 'select':
+            showLayer('values', 1);
+            showLayer('size', 1);
+            showLayer('textarea_size', 0);
+            showLayer('text_default', 0);
+            clear_sql_types();
+            break;
+        case 'checkbox':
+        case 'radio':
+            showLayer('values', 1);
+            showLayer('size', 0);
+            showLayer('textarea_size', 0);
+            showLayer('text_default', 0);
+            clear_sql_types();
+            break;
+        break;
+    }
+    if (type == 'checkbox' || type == 'multi_select'){
+        toggle_sql_type(false);
+    } else {
+        toggle_sql_type(true);
+    }
+}
+
+
+
+frm = document.forms[0];
+
+elem = frm.type;
+for (i=0;i<elem.length;i++)
+    if (elem[i].checked)
+        switch_layers(elem[i].value);
+elem = frm.sql;
+for (i=0;i<elem.length;i++)
+    if (elem[i].checked) {
+        showLayer('sql_type_l', elem[i].value);
+    }
+
+function clear_sql_types(){
+    elem = document.forms[0].sql_type;
+    if (elem.selectedIndex != 2) {
+        prev_opt = elem.selectedIndex;
+        elem.selectedIndex = 2;
+    }
+}
+function back_sql_types(){
+    elem = document.forms[0].sql_type;
+    if ((elem.selectedIndex == 2) && prev_opt)
+        elem.selectedIndex = prev_opt;
+}
+function toggle_sql_type(enable){
+    field = document.forms[0].sql;
+    if (enable == true){
+        field[0].disabled = false;
+    } else { 
+        field[0].disabled = true;
+        field[1].checked = true;
+    }
+}
+
+</SCRIPT>
+
+
+</center>
+{include file="admin/footer.inc.html"}

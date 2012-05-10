@@ -1,0 +1,51 @@
+{if $add}
+{assign var=title value="Add Newsletter Guest"}
+{else}
+{assign var=title value="Edit Newsletter Guest"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="guests"}
+{/if}
+<center>
+
+<br /><h3>{$title|escape}</h3>
+
+<table><tr><td>{if $errors}{foreach from=$errors item=e}
+<font color=red><li><b>{$e|escape}</b></font>
+{/foreach}{/if}</td></tr></table>
+
+<form method=post name=add_newsletter_guest action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit>
+<tr>
+    <th><b>Name</b></th>
+    <td>
+    <input type=text name=guest_name value="{$vars.guest_name|escape}" size=41>  
+    </td>
+</tr>
+<tr>
+    <th><b>Email</b></th>
+    <td><input type=text name=guest_email value="{$vars.guest_email|escape}" size=41></td>
+</tr>
+<tr>
+    <th>Subscriptions</th>
+    <td>
+    <select name='threads[]' size=5 multiple>
+    {html_options options=$threads_list selected=$threads}
+    </select>    
+    </td>
+</tr>
+</table>
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+<input type=hidden name=action value={if $add}create{else}update{/if}>
+<input type=hidden name=guest_id value="{$guest_id|escape}">
+<br />
+
+</form>
+
+{include file="admin/footer.inc.html"}
+

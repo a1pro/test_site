@@ -1,0 +1,35 @@
+{if $az}
+<table class=userslist><tr><td>
+&nbsp;&nbsp;
+{if $smarty.request.letter eq ''}
+<span style='background-color: #F0F0F0;'><b>&nbsp;ALL&nbsp;</b></span>
+{else}
+<a href="users.php?status={$smarty.request.status|escape}">ALL</a>&nbsp;
+{/if}
+{foreach from=$az key=l item=ct}
+    {if $l eq $smarty.request.letter[0]}
+    <span style='background-color: #F0F0F0;'><b>&nbsp;{$l}&nbsp;</b></span>
+    {else}
+    {php}
+    $l = $this->_tpl_vars['l'];
+    $url = $_SERVER['REQUEST_URI'];
+    $url = preg_replace('/letter=\w/', "letter=$l", $url);
+    if (!preg_match('/letter=/', $url))
+        if (preg_match('/\?/', $url)) 
+            $url .= "&letter=$l";
+        else
+            $url .= "?letter=$l";
+    $url = htmlspecialchars($url);
+    print "<a href=\"$url\">{$l}</a>&nbsp;\n";
+    {/php}
+    {/if}
+{/foreach}
+{if $smarty.request.letter eq ''}
+<span style='background-color: #F0F0F0;'><b>&nbsp;ALL&nbsp;</b></span>
+{else}
+<a href="users.php?status={$smarty.request.status|escape}">ALL</a>&nbsp;
+{/if}
+&nbsp;&nbsp;
+</td></tr></table>
+<br />
+{/if}

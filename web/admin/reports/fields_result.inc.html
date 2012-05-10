@@ -1,0 +1,29 @@
+<br /><h3>{$title}</h3>
+
+<center>
+
+
+{foreach from=$report item=rep key=field}
+<h3>{$field}</h3>
+
+<table class=hedit>
+<tr>
+    <th>Value</th>
+    <th>Count</th>
+    <th>Percentage</th>
+</tr>
+
+{foreach from=$rep key=v item=i}
+<tr class={cycle values="xx,odd"}>
+<td align=right>{$v}</td>
+<td align=right>{$i.count}</td>
+<td align=right>{$i.percent}</td>
+</tr>
+{/foreach}
+
+</table>
+{/foreach}
+
+<br /><a href="report.php"><small>New Report</small></a>
+
+</center>

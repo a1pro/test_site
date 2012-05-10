@@ -1,0 +1,26 @@
+<b>#_TPL_THX_YOUR_INVOICE# {$payment.payment_id} #_TPL_THX_FROM# {$payment.tm_completed|amember_date_format}</b>
+<br />
+<br />
+#_TPL_THX_PRDTITLE#|#_TPL_THX_PRICE#
+<br />
+<hr>
+{foreach from=$products item=p}
+<fill>{$p.title}|{$config.currency|default:"$"}{$p.price|string_format:"%.2f"}</fill>
+<br />
+{/foreach}
+<hr>
+<b>#_TPL_THX_SUBTOTAL#</b>|{$config.currency|default:"$"}{$subtotal|string_format:"%.2f"}
+<br />
+{if $payment.data.COUPON_DISCOUNT ne "" }
+<hr>
+<b>#_TPL_THX_DISCOUNT#</b>|{$config.currency|default:"$"}{$payment.data.COUPON_DISCOUNT|string_format:"%.2f"}
+<br />
+{/if}
+{if $payment.tax_amount ne ""}
+<hr>
+<b>#_TPL_THX_TAX#</b>|{$config.currency|default:"$"}{$payment.tax_amount|string_format:"%.2f"}
+<br />
+{/if}
+<hr>
+<hr>
+<b>#_TPL_THX_TOTAL#</b>|<b>{$config.currency|default:"$"}{$total|string_format:"%.2f"}</b>

@@ -1,0 +1,1153 @@
+/* CSS Document */
+
+
+* {
+	margin:0px;
+	padding:0px;
+}
+html {
+	height:100%;
+}
+body {
+	min-height:100%;
+	position:relative;
+	min-width:1200px;
+	margin:0px;
+}
+* html body {
+	height:100%;
+}
+h, p, li, ul, span, a {
+	font-family:Gisha, Helvetica, Arial, sans-serif;
+}
+
+/*	INDEX PAGE	*/
+p.main {
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:5px;
+	font-size:14px;
+	font-family:Gisha, Arial, verdana;
+	color:#333333;
+	text-indent:15px;
+}
+.iframe_cont {
+	height:90px;
+	border:0px;
+	width:728px;
+	left: 0pt;
+	position: absolute;
+	top: 0pt;
+}
+a.forgot_pass {
+	text-align:center;
+	font-size:12px;
+	color:#00347a;
+	padding-left:20px;
+}
+a.forgot_pass:hover {
+	text-align:center;
+	font-size:12px;
+	color:#999999;
+	padding-left:20px;
+}
+a.forgot_pass:active {
+	text-align:center;
+	font-size:12px;
+	color:#FFFFFF;
+	padding-left:20px;
+}
+a.feedback a {
+	color:#666666;
+}
+a.feedback:hover, a.feedback:active {
+	color:#CCCCCC;
+}
+a.contfeedback {
+	outline:none;
+	border:0px;
+	text-decoration: none;
+	border-width:0px;
+	border-color:#FFFFFF;
+}
+/* a link*/
+a:link, a:visited {
+	color:#0000FF;
+	text-decoration:none;
+}
+/*	MENU LINK */
+a.button_m {
+	display: block;
+	float: left; 
+	font: bold 13px arial, sans-serif;
+	color: #02275c;
+	text-decoration: none;
+	text-align:center;
+	width:98px;
+	height:41px;
+	background:url(http://getaudiofromvideo.com/img/button_menu2.gif) no-repeat;
+	/*padding-right: 25px; 
+  	outline: none; /* ������� �������� ������� � FireFox, ������� ���������� ��� ����� */
+}
+a.button_m span {
+	display: block;
+	line-height: 12px;
+	background:url(http://getaudiofromvideo.com/img/button_menu2.gif) no-repeat;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+a.button_m:hover {
+	color:003b89;
+}
+a.button_m:hover span {
+	background:url(http://getaudiofromvideo.com/img/button_menu_press.gif) no-repeat;
+	color:003b89;
+}
+a.button_m:active span {
+	color: #222;
+	/*padding: 8px 0 12px 23px; /* �������� ����� �� 1px */
+	font-size:12px;
+	color:#336D8C;
+	background:url(http://getaudiofromvideo.com/img/button_menu_active.gif) no-repeat;
+}
+/*	END MENU LINK */
+
+/*	MENU REGISTRATION*/
+a.button_r {
+	display: block;
+	float: left; 
+	font: bold 13px arial, sans-serif;
+	color: #ffffff;
+	text-decoration: none;
+	text-align:center;
+	outline: none; 
+	border:none;
+	cursor:pointer;
+}
+
+
+a.button_r {
+	width:106px;
+	height:30px;
+	background:url(http://getaudiofromvideo.com/img/button_registers_red.gif) no-repeat;
+}
+
+
+a.button_r span{
+	display:block;
+	line-height:12px;
+	padding-top:8px;
+	padding-bottom:8px;
+}
+
+a.button_r span {
+	background:url(http://getaudiofromvideo.com/img/button_registers_red.gif) no-repeat;
+}
+a.button_r:hover{
+	color:003b89;
+}
+
+
+a.button_r:hover span {
+	background:url(http://getaudiofromvideo.com/img/button_registers_red_press.gif) no-repeat;
+}
+a.button_r:active span{
+	font-size:12px;
+	color:#336D8C;
+}
+
+
+a.button_r:active span {
+	background:url(http://getaudiofromvideo.com/img/button_registers_red_active.gif) no-repeat;
+}
+
+
+
+a.button_l {
+	display: block;
+	float: left; 
+	font: bold 13px arial, sans-serif;
+	color: #ffffff;
+	text-decoration: none;
+	text-align:center;
+	outline: none; 
+	border:none;
+	cursor:pointer;
+	width:100px;
+	height:30px;
+}
+a.button_l span {
+	display: block;
+	outline: none; 
+	line-height: 12px;
+	background:url(http://getaudiofromvideo.com/img/button_login2.gif) no-repeat;
+	padding-top:8px;
+	padding-bottom:15px;
+	border:none;
+}
+a.button_l:hover {
+	color:003b89;
+}
+a.button_l:hover span {
+	background:url(http://getaudiofromvideo.com/img/button_login_press.gif) no-repeat;
+}
+
+.button_l:active span {
+	font-size:13px;
+	color:#336D8C;
+	background:url(http://getaudiofromvideo.com/img/button_login_active.gif) no-repeat;
+}
+
+
+/*	END MENU REGISTRATION */
+
+
+/*	BUTTON CONVERT */
+.button_c {
+	display: block;
+	float: left; 
+	font: bold 14px arial, sans-serif;
+	color: #02275c;
+	text-decoration: none;
+	text-align:center;
+	width:104px;
+	height:40px;
+	background:url(http://getaudiofromvideo.com/img/button_form.gif) no-repeat;
+	border:none;
+  	outline: none; 
+	cursor:pointer;
+}
+.button_c span {
+	display: block;
+	outline: none; 
+	line-height: 12px;
+	background:url(http://getaudiofromvideo.com/img/button_form.gif) no-repeat;
+	padding-top:13px;
+	padding-bottom:15px;
+	border:none;
+}
+.button_c:hover {
+	color:#666666;
+}
+.button_c:hover span {
+	background:url(http://getaudiofromvideo.com/img/button_form_press.gif) no-repeat;
+	color:#666666;
+}
+.button_c:active span {
+	font-size:13px;
+	color:#336D8C;
+	background:url(http://getaudiofromvideo.com/img/button_form_active.gif) no-repeat;
+}
+/*	END BUTTON CONVERT */
+
+
+/*	BUTTON INSTAL */ 
+a.button_i {
+	display: block;
+	float: left; /* ����� ������ �� ������������� �� ��� ������ ������������� �����, � �������������� ������� */
+	font: bold 14px arial, sans-serif;
+	color: #ffffff;
+	text-decoration: none;
+	text-align:left;
+	width:196px;
+	height:48px;
+	background:url(http://getaudiofromvideo.com/img/button_install2.gif) no-repeat;
+	/*padding-right: 25px; /* ������ ��� "���������� ������" */
+  	outline: none; /* ������� �������� ������� � FireFox, ������� ���������� ��� ����� */
+}
+a.button_i span {
+	display: block;
+	line-height: 12px;
+	background:url(http://getaudiofromvideo.com/img/button_install2.gif) no-repeat;
+	padding-top:5px;
+	padding-bottom:7px;
+	padding-left:10px;
+}
+a.button_i:hover {
+	color:#666666;
+}
+a.button_i:hover span {
+	background:url(http://getaudiofromvideo.com/img/button_install_press2.gif) no-repeat;
+	color:#666666;
+}
+a.button_i:active span {
+	font-size:13px;
+	color:#336D8C;
+	background:url(http://getaudiofromvideo.com/img/button_install_active2.gif) no-repeat;
+}
+a.button_i p {
+	text-align:left;
+	color:#FFFFFF;
+	font-size:10px;
+}
+a.button_i:hover p {
+	text-align:left;
+	color:#CCCCCC;
+	font-size:10px;
+}
+a.button_i:active p {
+	text-align:left;
+	color:#FFFFFF;
+	font-size:9px;
+	padding-left:10px;
+}
+a.button_i p.t2 {
+	text-align:left;
+	color:#FFFFFF;
+	font-size:14px;
+	padding-top:5px;
+}
+a.button_i:hover p.t2 {
+	text-align:left;
+	color:#CCCCCC;
+	font-size:14px;
+	padding-top:5px;
+}
+a.button_i:active p.t2 {
+	text-align:left;
+	color:#FFFFFF;
+	font-size:13px;
+	padding-left:10px;
+	padding-top:5px;
+}
+/*	END BUTTON INSTAL */ 
+
+a.text_f {
+	color:#FFFFFF;
+}
+a.text_f:hover {
+	color:#FFFFFF;
+	text-decoration:underline;
+}
+a.text_f:active {
+	color:#FFFFFF;
+	text-decoration:underline;
+}
+/* end a link*/
+
+
+a.link_inst {
+	color:#022356;
+	font-size:14px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.img_instal {
+	width:15px;
+	height:15px;
+	padding-left:0px;
+	padding-right:5px;
+}
+.p_paragraf_instal {
+	margin-top:10px;
+	padding-left:40px;
+}
+.button_instal {
+	margin-top:30px;
+	margin-left:35px;
+}
+.span_convert {
+	margin-bottom:30px;
+	margin-top:25px;
+}
+.button_browse {
+	margin-top:25px;
+	margin-left:5px;
+	margin-right:5px;
+}
+.exaple_li {
+	color:#424242;
+	font-size:14px;
+	padding-bottom:10px;
+}
+.input_convert {
+	padding-top:3px;	padding-bottom:3px;
+	width:300px;
+	margin-left:0px;	padding-top:3px;	padding-bottom:3px;
+}
+.input_search_f {
+	width:300px;
+	margin-left:10px;
+	margin-top:5px;
+	font-size:16px;	padding-top:3px;	padding-bottom:3px;
+}
+.input_select_f {
+	width:120px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:2px;
+	font-size:14px;	padding-top:3px;	padding-bottom:3px;	
+}
+.input_select_i {
+	width:120px;
+	/*height:35px;*/
+	margin-right:10px;
+	font-size:20px;
+	font-style:italic;
+	color:#333333;
+	padding-top:6px;	padding-bottom:6px;
+	text-align:center;
+	/*vertical-align:middle;	/*vertical-align:middle;
+	margin-right:10px;
+	margin-left:10px;
+	margin-top:2px;*/
+	font-size:14px;
+}
+.select_menu {
+	height:20px;
+	width:100px;
+}
+.img_diagram {
+	float:left;
+	padding-top:30px;
+	padding-left:30px;
+	padding-right:10px;
+}
+.img_diagram1, .img_diagram2 {
+	float:left;
+	padding-top:5px;
+	padding-right:5px;
+}
+.img_diagram2 {
+	padding-right:13px;
+	height:61px;
+}
+.ol_par, .ol_par_bott, .ol_par_bott2 {
+	padding-right:15px;
+	padding-left:10px;
+	color:#00347d;
+	font-size:20px;
+	/*font-weight:bold;*/
+	font-weight:normal;
+	font-family: sans-serif, Helvetica, Arial;
+}
+.ol_par {
+	padding-top:30px;
+}
+.ol_par_bott {
+	padding-top:15px;
+}
+.ol_par_bott2 {
+	padding-top:15px;
+	padding-left:60px
+}
+.ol_par2 {
+	color:#000000;
+	font-size:14px;
+}
+.ol_par3 {
+	color:#00347d;
+	font-size:14px;
+	padding-left:10px;
+	font-weight:bold;
+}
+.ol_par4 {
+	color:#00347d;
+	font-size:20px;
+	padding-left:10px;
+	font-weight:bold;
+}
+.ol_text_bott {
+	padding-left:63px;
+	padding-right:5px;
+	padding-bottom:5px;
+	padding-top:5px;
+	font-size:14px;
+}
+.ol_text_term {
+	padding:10px 10px 10px 10px;
+	font-size:14px;
+}
+.ol_par, .ol_par2, .ol_par3, .ol_par4, .ol_text_bott, .ol_text_term {
+	font-family:Arial, Helvetica, sans-serif;
+}
+ol.step {
+	padding-top:5px;
+	padding-bottom:0px;
+	padding-left:10px;
+	font-size:18px;
+	color:#02327a;
+	font-weight:bold;
+	font-family:Gisha, Arial, Verdana;
+}
+
+.guard_security{
+
+}
+
+
+/* TEXT */
+.text_said {
+	font-style:italic;
+	font-weight:bold;
+}
+.text_check {
+	color:#dad8db;
+	font-size:14px;
+}
+.ch_check {
+	width:12px;
+	height:12px;
+}
+.text_ex {
+	color:#dad8db;
+	font-size:13px;
+	margin-left:20px;
+}
+
+table.t_search_box{
+	width:100%;
+	border:0px;		margin-top:17px;
+}
+
+.text_then {
+	clear:both;
+	color:#02327a;
+	font-size:14px;
+	text-align:center;
+}
+.text_s_box {
+	color:#02327a;
+	font-size:14px;
+	text-align:left;
+	text-indent:20px;
+	font-family:Gisha, Arial, verdana;
+}
+.text_conv {
+	color:#dad8db;
+	font-size:14px;
+	text-align:left;
+	padding-left:20px;
+	padding-top:5px;
+}
+.text_inst {
+	padding:5px;
+}
+.text_reg {
+	font-family:Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#00347a;
+	text-align:left;
+	margin-left:20px;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+.text_input_reg {
+}
+.text_search_box {
+	/*font-family:Verdana, Arial, Helvetica, sans-serif;*/
+	font-family:Gisha, Arial, Verdana;
+	font-size:32px;
+	color:#335c92;
+	text-align:left;
+	margin-left:25px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.text_instal_box span {
+	float:right;
+	color: rgb(61, 148, 255);
+	padding-left:5px;
+	padding-right:40px;
+	font-size:14px;
+}
+p.text_inst strong {
+	font-weight:normal;
+}
+.text_footer {
+	color:#dad8db;
+	font-family:Leelawadee, Arial, Verdana;
+	text-align:center;
+	margin:0;
+}
+.text_footer_title {
+	color:#dad8db;
+	float:left;
+	font-size:20px;
+	font-weight:bold;
+	font-family:Leelawadee, Arial, Verdana;
+	line-height:0;
+	padding-top:20px;
+	padding-left:10px;/*padding-right:10px;*/
+}
+.text_footer_text {
+	color:#007eff;
+	font-size:12px;
+	font-family:Leelawadee;
+	line-height:18px;
+	margin:0;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:10px;
+	padding-top:5px;
+}
+/* END TEXT */
+.input_reg_cl {
+	font-size:14px;
+	padding-bottom:2px;	padding-top:2px;
+	width:252px;
+	border:0px;
+	font-family:Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#818181;
+}
+.intput_search {	border:1px solid #BFBFBF;	color:#333333;	font-family:"Times New Roman",Times,serif;	font-size:20px;	font-style:italic;	margin-left:20px;	/*margin-top:20px;	margin-bottom:2px;	width:550px;*/}
+.intput_convert {
+	height:22px;
+	width:250px;
+	border:1px solid #bfbfbf;
+	margin-top:20px;
+	margin-bottom:2px;
+	margin-left:20px;
+}
+.search_form {
+	width:740px;
+}
+.footerLinks {
+	float:right;
+	list-style:none outside none;
+	/*margin:8px 10px 0 0;*/
+	margin-top:8px;
+	margin-right:0px;
+	padding:0;
+}
+.footerLinks li {
+	float:left;
+	font-size:12px;
+	margin:0 5px;
+	padding:0;
+	color:#FFFFFF;
+}
+.footerLinks span {
+	color:#FFFFFF;
+	margin:0 5px;
+}
+a.footer_link {
+	text-decoration:none;
+	font-size:12px;
+	color:#FFFFFF;
+}
+a.footer_link:hover {
+	text-decoration:underline;
+	font-size:12px;
+	color:#FFFFFF;
+}
+a.footer_link:active {
+	text-decoration:underline;
+	font-size:12px;
+	color:#FFFFFF;
+}
+.footercopyright {
+	float:left;
+	color:#dad8db;
+	font-size:13px;
+	padding-top:7px;
+	padding-left:10px;
+	padding-bottom:7px;
+}
+#min_width {
+	width:800px;
+}
+#div_f_banner {
+	float:left;
+}
+/*.main {
+  /*border: 1px solid #B0BCC2;
+  border-width: 0 1px;*/
+  /*	margin-top:20px;
+  	padding: 0 12px;
+  	height:auto;
+  	position:relative;
+  	width:934px;
+}*/
+
+.dig {
+	list-style:decimal;
+	padding-left:10px;
+	padding-top:10px;
+	list-style-position:inside;
+}
+.rule_title_ul {
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:10px;
+	text-align:center;
+	color:#000000;
+	font-size:24px;
+}
+/*	ul style*/
+ul.video_block {
+}
+li.video_block {
+	color:#007eff;
+	font-size:14px;
+	padding-left:10px;
+	padding-bottom:10px;
+	list-style-position:inside;
+	list-style-type:none;
+}
+/*	end ul style*/
+
+.span_footer {
+	color:#dad8db;
+	padding-left:30px;
+	margin-top:20px;
+}
+/*  SMALL ELEMENTS	*/
+
+.db-wrapper, span.db-wrapper {
+	color:#554E1B;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:900;
+	line-height:14px;
+	text-align:center;
+}
+.db-container, .db-body, .db-count, .db-copy {
+	display:block;
+}
+.db-wrapper span span .db-large {
+	background:url("/img/button/diggThis.png") no-repeat scroll 0 0 transparent;
+	height:72px;
+	padding:4px 0;
+	width:50px;
+}
+.db-wrapper span span span span.db-count {
+	padding-top:4px;
+	text-align:center;
+}
+.db-wrapper span span span span.db-copy {
+	color:#BBA872;
+	font-size:10px;
+	font-weight:500;
+	line-height:10px;
+	text-align:center;
+}
+.db-wrapper span span .db-large .db-anchor {
+	height:33px;
+	margin-top:10px;
+}
+/*	END INDEX PAGE	*/
+/*	CSS Pages Site	*/
+
+/*	About us	*/
+
+p.abus_title {
+	color:#000099;
+	font-family:Gisha, Arial, verdana;
+	font-size:24px;
+	font-weight:bold;
+	padding:5px;
+}
+p.abus_text_red {
+	color:#FF0000;
+	font-size:14px;
+	font-family:Gisha, Arial, verdana;
+	text-align:center;
+	padding:5px;
+}
+p.abus_text_str, p.abus_text_c {
+	color:#333333;
+	font-family:Gisha, Arial, verdana;
+	font-size:24px;
+	font-weight:bold;
+	padding:5px;
+}
+p.abus_text_str {
+	padding:5px;
+}
+p.abus_text_c {
+	text-align:center;
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:5px;
+}
+/*	End About us	*/
+
+/*	FAQ		*/
+p.faq, ul.faq {
+	color:#000000;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:18px;
+}
+ul.faq {
+	padding-left:15px;
+	list-style:decimal;
+	list-style-position:inside;
+}
+/*	End FAQ		*/
+/*	Contact Us	*/
+textarea {
+	font-family:Verdana, "Lucida Grande", "Lucida Sans Unicode", geneva, verdana, sans-serif;
+	font-size:0.9em;
+}
+.style18 {
+	margin:0 0 10px;
+	width:200px;
+}
+.style19 {
+	margin:0 0 10px;
+	width:300px;
+}
+/*	End Contact Us	*/
+
+/*	CONVERT VIDEO	*/
+a.back_res_s,.back_res_s:active{	color:#cccccc;	font-size:18px;	font-family:"Times New Roman",Times,serif;}a.back_res_s:hover{	color:#eaeaea;	font-size:18px;}a.click_to_change{
+	display:block;
+	font-size:15px;
+	text-align:center;
+	color:#FFFFFF;
+	width:142px;
+	height:18px;
+	cursor:pointer;
+	background:url(http://getaudiofromvideo.com/img/click_to_here.gif) no-repeat;
+}
+
+a.click_to_change span{
+	background:url(http://getaudiofromvideo.com/img/click_to_here.gif) no-repeat;
+}
+
+a.click_to_change:hover{
+	font-size:14px;
+	text-align:center;
+	color:#496283;
+	width:142px;
+	height:18px;
+	cursor:pointer;
+	background:url(http://getaudiofromvideo.com/img/click_to_here_press.gif) no-repeat;
+}
+
+a.click_to_change:hover span{
+	background:url(http://getaudiofromvideo.com/img/click_to_here_press.gif) no-repeat;
+}
+
+table td.back_to_search{	width:440px;	border:1px solid #cccccc; 	padding-bottom:5px;	background:#e3e4e8;} 
+table.convert {
+	border:1px solid #cccccc;
+	width:770px;
+	height:auto;
+	border-style:solid;
+	padding:10px;
+}
+table.convert td {
+	border:0px solid #cccccc;
+	border-style:solid;
+	padding:0px;
+}
+table.convert_con {
+	border:1px solid #cccccc;
+}
+.myTable {
+	border-left:1px solid #4e952e;
+	border-top:1px solid #4e952e;
+}
+.myTable td, .myTable th, .myTable td.ak {
+	border-right:1px solid #4e952e;
+	border-bottom:1px solid #4e952e;
+}
+.convert_title {
+	text-align:center;
+	font-size:18px;
+	width:100%;
+	color:#CCCCCC;
+}
+.obj_class {
+}
+a.large {
+	font-size:18px;
+}
+p span.start {
+	margin-left:95px;
+}
+p span.end {
+	margin-left:85px;
+}
+p span.import1 {
+	margin-left:64px;
+}
+p span.import2 {
+	margin-left:16px;
+}
+p span.format {
+	margin-left:42px;
+}
+p span.start, span.end, span.import1, span.import2, span.format {
+	font-size:12px;
+	color:#80b9ca;
+}
+p.edit {
+	font-size:14px;
+	text-align:center;
+	padding:5px;		margin-left:48px;
+}
+p.downl {	float:right;	padding-top:5px;
+}
+p.text_convert {
+	padding-top:2px;
+	font-size:14px;
+	padding-left:80px;
+}
+table td.all_ret {
+	border:1px solid #cccccc;
+	width:370px;
+}
+table td.video_box {
+	border:1px solid #cccccc;
+	width:400px;
+}
+table td.top {
+	border-top:1px solid #cccccc;
+}
+table td.bottom {
+	border-bottom:1px solid #cccccc;
+	border-style:solid;
+}
+table td.left {
+	border-left:1px solid #cccccc;
+}
+table td.right {
+	border-right:1px solid #cccccc;
+}
+table td.bottom_w {
+	border-bottom:3px solid #0b0069;
+	border-style:solid;
+}
+table td.relv {
+	border-bottom:1px solid #cccccc;
+	border-right:1px solid #cccccc;		border-top:1px solid #cccccc;
+}
+table td.relvb {
+	border-bottom:1px solid #cccccc;
+}
+/*	END CONVERT VIDEO	*/
+
+/*	SEARCH RESULT	*/
+.search_r {
+	border:1px solid #cccccc;
+	padding:0px;
+	/*background:#f5f5f5;*/
+	background:url(http://getaudiofromvideo.com/img/search_res.gif) repeat;
+}
+/*.search_cont{
+	background:#f5f5f5;
+}*/
+.search_div {
+	float:left;
+	/*border:0px;*/
+	padding:1px;
+	height:100%;
+	width:126px;
+	border:2px solid #cccccc;
+	/*border-right-style:double;*/
+}
+
+.search_text_res {
+	float:left;
+	/*margin-left:10px;*/
+	margin-top:7px;
+	margin-bottom:5px;	margin-right:5px;	margin-left:10px;
+	width:400px;
+	height:auto;
+	display:block;
+}
+
+.search_text_res_small {
+	float:left;
+	width:175px;
+	height:auto;
+}
+
+.search_img {
+	border:0px;
+	padding-right:3px;
+	padding-top:7%;
+	padding-left:3px;
+	width:120px;
+	height:90px;
+}
+
+.search_img_small {
+	border:0px;
+	width:60px;
+	height:45px;
+}.search_div_small {	float:left;	width:60px;	height:45px;	padding:1px;	border:1px solid #cccccc;}.bord_input {	border:1px solid #9e9e9e;}.url_input {	float:right;	border:1px solid #9e9e9e;		width:100%;	margin-bottom:5px;	padding-top:3px;	padding-bottom:3px;	}.ID3_track_no {	width:40px;}
+.ID3_album {	width:98px;}.ID3_year {	float:right;	width:105px;}
+.ID3_comment {
+	width:190px;
+}.ID3_genre {	float:right;	width:105px;}
+.ID3_album,.ID3_year,.ID3_comment,.ID3_genre,.ID3_track_no {	border:1px solid #9e9e9e;	padding-top:2px;	padding-bottom:2px;}
+.search_class {
+	border:1px solid #cccccc;
+}
+p.search_class_text {
+	text-align:center;
+	font-size:16px;
+}
+a.search_res, a.search_res:hover {	font-family:Arial,Helvetica,sans-serif;	font-size:14px;	/*padding-left:10px;	padding-right:5px;*/	text-decoration:underline;
+}
+a.search_res, a.search_res_small {
+	color:#1c4b67;
+}
+a.search_res:hover, a.search_res_small:hover {
+	color:#86a8bc;
+}
+a.search_res_small, a.search_res_small:hover {
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-decoration:underline;
+}
+.text_search_res, .text_search_title, .text_search_res_small {
+	font-family:Arial, Gisha, verdana;
+	color:#000000;
+	padding-bottom:5px;
+}
+.text_search_res {
+	font-size:12px;
+	/*padding-left:10px;*/
+	/*padding-right:5px;*/
+}
+.text_search_res_small {
+	font-size:12px;
+	padding-top:2px;
+}
+.text_search_title {
+	font-size:16px;
+	padding-left:10px;
+}
+.text_search_time {
+	color:#09A503;	font-size:12px;	/*padding-left:10px;*/	/*padding-right:5px;*/	/*padding-bottom:5px;*/
+}
+.text_search_time_small {
+	font-size:10px;
+	color:#09a503;
+	padding-top:2px;}
+table.search_res_t {
+	width:560px;
+}td.pad {	padding-top:10px;}p.file_name_url{	padding-bottom:5px;	font-size:18px;}p.under_input {	padding-top:5px;}
+p.sky_text {
+	padding:10px;
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+}
+/*	SEARCH RESULT	*/
+
+/*	REGISTER FORM	*/
+.vedit {
+	border:1px solid #8CACBB;
+}
+input, textarea {
+	font-family:Verdana, "Lucida Grande", "Lucida Sans Unicode", geneva, verdana, sans-serif;
+	font-size:0.9em;
+}
+.small {
+	font-size:x-small;
+	font-weight:normal;
+}
+.td_vedit {
+	background-color:#DEE7EC;
+/*	border:1px solid #8CACBB;
+	font-weight:bold;
+	padding:10px 15px 10px 10px;
+	text-align:right;
+	vertical-align:middle;*/
+}
+.vedit td {
+	background-color:white;
+	border:1px solid #8CACBB;
+	padding:15px 10px 10px;
+	text-align:left;
+	vertical-align:middle;
+}.center_submit {	margin-left:auto;	margin-right:auto;}
+.powered, .powered a {
+	color:#808080;
+	font-size:x-small;
+	margin:0.5em 0;
+}
+input, textarea {
+	font-family:Verdana, "Lucida Grande", "Lucida Sans Unicode", geneva, verdana, sans-serif;
+	font-size:0.9em;
+}
+ul.regiseter_list {
+	/*background:url(http://getaudiofromvideo.com/img/ul_reg.gif) no-repeat;*/
+
+	list-style:disc outside none;
+}
+table.reg_form_table {
+	font-size:12px;
+	color:#000033;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+.tbb {
+	border-bottom:1px solid #000033;
+}
+.tbbl_h, .tbbl_l {
+	border-bottom:1px solid #000033;
+	border-left:1px solid #000033;
+}
+.tbl_h, .tbl_l {
+	border-left:1px solid #000033;
+}
+.reg_form_l, .reg_form_h, .tbl_h, .tbl_l, .tbbl_h, .tbbl_l {
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:7px;
+	padding-bottom:7px;
+}
+.reg_form_l, .tbl_l, .tbbl_l {
+	background:#ecedf1;
+}
+.reg_form_h, .tbl_h, .tbbl_h, .tbb {
+	background:#dedfe3;
+}
+.reg_form_center {
+	text-align:center;
+}
+.text_premio_title {
+	font-size:17px;
+	font-family:"Times New Roman", Times, serif;
+	text-align:center;
+}
+.text_premio {
+	font-size:16px;
+	font-family:"Times New Roman", Times, serif;
+	text-align:center;
+}
+/*ul.regiseter_list li{
+	/*list-style:url(http://getaudiofromvideo.com/img/aroww.gif);
+	list-style-position:inside;
+	color:#000000;	
+	padding-left:10px;
+	padding-right:10px;
+}*/
+
+.vedit .headrow {
+	font-weight:bold;
+	text-align:center;
+}
+.regVideo {
+	/*height:434px;*/
+	width:auto;/*background:url(http://getaudiofromvideo.com/img/reg_backgr.gif) repeat-x;*/
+}
+.whyReg {
+	/*height:434px;*/
+	width:900px;/*background:url(http://getaudiofromvideo.com/img/reg_backgr.gif) repeat-x;*/
+}
+h3.reg_red_text {
+	color: red;
+	font-family: arial;
+	font-size: 16px;
+	font-weight: bold;
+	background:#dfe0e4;
+}
+
+/*	END REGISTER FORM	*/
+ /* Style css in Registration Form */
+.input_log{
+ float:left;
+}
+
+.input_back{
+ float:right;
+}/*	 LOGIN	*/.login_button {	float:right;}

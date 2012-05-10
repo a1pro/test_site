@@ -1,0 +1,64 @@
+{assign var=title value="Coupon view"}
+{include file="admin/header.inc.html"}
+<center>
+<h3>Coupon Batch #{$coupons.0.batch_id}</h3>
+
+{if $error}
+<font color=red><b>{$error|escape}</b></font>
+<br /><br />
+{/if}
+
+
+<div align=center>
+&nbsp;<table bgcolor=#f0e0c0 style='font-family:Helvetica,sans-serif; font-size: 10pt; border-collapse: collapse;' 
+border=1 bordercolor=#e0c0b0>
+<tr><th>Usage Count</th>
+    <td>{$coupons.0.use_count|escape}</td>
+</tr>
+<tr><th>Member Usage Count</th>
+    <td>{$coupons.0.member_use_count|escape}</td>
+</tr>
+<tr><th>Discount</th>
+    <td>{$coupons.0.discount|escape}</td>
+</tr>
+
+<tr><th>Valid</th>
+{if $coupons.0.begin_date != '0000-00-00'}
+    <td>{$coupons.0.begin_date|amember_date_format} -
+    {$coupons.0.expire_date|amember_date_format|escape}</td></tr>
+{else}
+    <td>not limited</td>
+{/if}
+</tr>
+<tr><th>Is Recurring</th>
+    <td>{if $coupons.0.is_recurring}Yes{else}No{/if}</td>
+</tr>
+<tr><th>Comment</th>
+    <td>{$coupons.0.comment|escape}</td>
+</tr>
+<tr><th>Product ID</th>
+    <td>{$coupons.0.product_id|escape}</td>
+</tr>
+</table></div>
+<br />
+
+<table class=hedit width=70%>
+<tr>
+    <th>Code</th>
+    <th>Count/Used</th>
+    <th>Disabled</th>
+</tr>
+{foreach from=$coupons item=c}
+<tr>
+    <td>{$c.code|escape}</td>
+    <td>{$c.use_count}/{$c.used_count}</td>
+    <td>{if $c.locked}YES{else}NO{/if}</td>
+</tr>
+{/foreach}
+</table>
+
+<br />
+<a href="javascript:window.close()">Close window</a>
+</center>
+</body>
+</html>

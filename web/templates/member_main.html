@@ -1,0 +1,99 @@
+<!-- display links to protected areas for customer -->
+<div style="width:50%; float:left;">
+{if $smarty.session._amember_products}{* Customer have active subscriptions, display it if config allows *}
+    <h3>#_TPL_MEMBER_SUBSCR#</h3>
+    <ul>
+    {foreach from=$member_products item=p}
+    <li>
+    {if $p.url gt "" }
+        <a href="{$p.url}">{$p.title}</a>
+    {else}
+        <b>{$p.title}</b>
+    {/if}
+    </li>
+    {foreach from=$p.add_urls item=t key=url}
+        <li><a href="{$url}">{$t}</a></li>
+    {/foreach}
+    {/foreach}
+    </ul>
+{else}{* Customer doesn't have any active subscriptions *}
+    <h3>#_TPL_MEMBER_NO_SUBSCR#</h3>
+    #_TPL_MEMBER_USE|<i>|</i>#<br />
+    #_TPL_MEMBER_ORDER_SUBSCR#<br />
+{/if}
+<ul>
+{foreach from=$left_member_links item=t key=u}
+    <li> <a href="{$u|escape}">{$t}</a></li>
+{/foreach}
+</ul>
+<!-- end of display links to protected areas for customer -->
+
+<!-- newsletters form -->
+<br>
+<h3>#_TPL_NEWSLETTER_SUBSCRIPTIONS#</h3>
+<script language="JavaScript" type="text/javascript">
+<!--
+function checkboxes(num){
+    if (num == 1){
+        is_checked = document.subs.unsubscribe.checked;
+        for (i = 0; i < document.subs.elements.length; i++){
+            if (document.subs.elements[i].name == 'threads[]' && document.subs.elements[i].checked){
+                is_checked = false;
+            }
+        }
+        document.subs.unsubscribe.checked = is_checked;
+    }
+    if (num == 2){
+        for (i = 0; i < document.subs.elements.length; i++){
+            if (document.subs.elements[i].name == 'threads[]'){
+                if (document.subs.unsubscribe.checked){
+                    document.subs.elements[i].checked = false;
+                }
+                document.subs.elements[i].disabled = document.subs.unsubscribe.checked;
+
+            }
+        }
+        if (document.subs.unsubscribe.checked){
+            document.getElementById('newsletters_td').className = 'disabled';
+        } else {
+            document.getElementById('newsletters_td').className = '';
+        }
+    }
+}
+-->
+</script>
+
+<form method="post" name="subs" action="{$smarty.server.PHP_SELF|escape}">
+
+<div class="newsletters">
+<div id="newsletters_td" {if $unsubscribed}class="disabled"{else}{/if}>
+{foreach from=$threads_list item=tr}
+{if $tr.is_active}
+<input type="checkbox" id="tr{$tr.thread_id}" name="threads[]" value="{$tr.thread_id}"
+    {if $threads[$tr.thread_id] eq '1'}checked="checked"{/if}
+    onclick="checkboxes(1)" {if $unsubscribed}disabled="disabled"{/if} />
+<label for="tr{$tr.thread_id}">{$tr.title}</label><br /><div class="small">{$tr.description}</div>
+{/if}
+{/foreach}
+</div>
+<div>
+<input type="checkbox" id="unsubscribe" name="unsubscribe" value="1" {if $unsubscribed}checked="checked"{/if} onclick="checkboxes(2)" />
+<label for="unsubscribe"><strong>#_TPL_NEWSLETTER_UNSUBSCRIBE#</strong></label>
+</div>
+</div>
+<input type="hidden" name="action" value="newsletters_update" />
+<input type="submit" value="&nbsp;&nbsp;&nbsp;#_TPL_NEWSLETTER_UPDATE_SUBSCRIPTIONS#&nbsp;&nbsp;&nbsp;" />
+</form>
+<!-- end of newsletters form -->
+</div>
+<div style="width:50%; float:left">
+<h3>#_TPL_MEMBER_USEFUL_LINKS#</h3>
+<ul>
+<li><a href="{$config.root_url}/logout.php">#_TPL_MEMBER_LOGOUT#</a></li>
+<li><a href="{$config.root_url}/profile.php">#_TPL_MEMBER_CH_PSWD#</a></li>
+{foreach from=$member_links item=t key=u}
+<li><a href="{$u|escape}">{$t}</a></li>
+{/foreach}
+</ul>
+</div>
+<div style="clear:both"></div>

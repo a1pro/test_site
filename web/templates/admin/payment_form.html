@@ -1,0 +1,23 @@
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<tr>
+    <td><select name=product_id size=1>
+        {html_options options=$products selected=$p.product_id}
+        </select>
+    </td>
+    <td><nobr>{html_select_date prefix="begin_date" time=$p.begin_date  start_year="-10" end_year="2037"}</nobr> -
+        <nobr>{html_select_date prefix="expire_date" time=$p.exipre_date  start_year="-10" end_year="2037"}</nobr>
+    </td>
+    <td>
+    <select name=paysys_id size=1>
+        {html_options options=$paysystems selected=$p.paysys_id}
+    </select>
+    </td>
+    <td><input type=text name=receipt_id value="{$p.receipt_id|escape}" size=10 class=small></td>
+    <td><input type=text name=amount value="{$p.amount|escape}" size=6 maxlength=6></td>
+    <td align=center><input type=checkbox name=completed value=1 {if $p.completed}checked{/if}></td>
+    <td><input type=submit value=Save></td>
+    <input type=hidden name=payment_id value="{$p.payment_id|escape}">
+    <input type=hidden name=member_id value="{$member_id|escape}">
+    <input type=hidden name=action value=payment_save>
+</tr>
+</form>

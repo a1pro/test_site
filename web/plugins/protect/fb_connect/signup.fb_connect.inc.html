@@ -1,0 +1,45 @@
+{**
+ *
+ * Facebook Connect v1.4
+ * Copyright 2010 (c) R Woodgate
+ * All Rights Reserved
+ *
+ * This file may not be distributed without permission.
+ *
+ * Purchasers of this plugin can modify it for the site
+ * it is installed on.
+ *
+ * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING
+ * THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE.
+ *
+ **}
+
+{php}
+global $db, $plugin_config, $config, $vars;
+$fb_connect_config = $plugin_config['protect']['fb_connect'];
+$fbappid = trim($fb_connect_config['appid']);
+$fbperms = array();
+if ($fb_connect_config['newaccount'] || ($fb_connect_config['fbemail'] && $fb_connect_config['forceperms']) )
+	$fbperms[] = 'email';
+if ($fb_connect_config['publish_stream'] && $fb_connect_config['forceperms'])
+	$fbperms[] = 'publish_stream';
+$fbperms[] = 'offline_access';
+$fbperms = implode(',',$fbperms);
+$fbuser = fb_connect_get_fbuser();
+list($l, $p) = fb_connect_check_logged_in();
+$button_txt = ($fb_connect_config['signupbtntxt'])?$fb_connect_config['signupbtntxt']:'Connect with Facebook';
+
+echo "\n<!--fb_connect: signup output-->\n";
+if (strlen($l) && strlen($p)) {
+	echo "<script type=\"text/javascript\">document.location.href = \"{$config['root_url']}/login.php\";</script>";
+} else if ($fbuser) {
+	$msg = ($vars['fb'] == 'email')?"but we couldn't create your account automatically as there was a problem with your email address (missing, too long or already registered)":"and we've pre-filled the signup form with your Facebook details";
+	echo "<p style='width:400px;margin:1em auto;text-align:left;'><img src='https://graph.facebook.com/{$_SESSION['fbme']['id']}/picture' align='left' style='padding-right:1em;'> <strong>{$_SESSION['fbme']['name']}</strong>, you've successfully logged in to Facebook $msg. <span style='color:red'>Now please complete the rest of this form to register your account.</span></p>";
+	echo "<p style='width:400px;margin:1em auto;text-align:center'><fb:login-button size=\"small\" autologoutlink=\"true\"></fb:login-button></p>";
+	
+} else if ( in_array($vars['price_group'], split(',',$fb_connect_config['price_group'])) ) {
+	echo "<p style='margin:1em 0;text-align:center;'><fb:login-button size=\"medium\" perms=\"$fbperms\" onlogin='document.location.href=\"{$config['root_url']}/plugins/protect/fb_connect/signup.php\";'>$button_txt</fb:login-button></p>";
+}
+echo "\n<!--fb_connect: /signup output-->\n";
+{/php}

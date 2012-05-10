@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Redirect to PaySbuy</title>
+    <link rel="stylesheet" type="text/css"
+        href="{$config.root_surl}/templates/css/reset.css" />
+    <link rel="stylesheet" type="text/css"
+        href="{$config.root_surl}/templates/css/amember.css" />
+    <link rel="stylesheet" type="text/css"
+        href="{$config.root_surl}/templates/css/site.css" />
+</head>
+<body onload="document.signup.submit()">
+
+<br /><br />
+<div class="centered">
+
+<h1>{$title}</h1>
+<hr />
+<br />
+<p align="center">
+
+<form name="signup" method="post" action="https://www.paysbuy.com/paynow.aspx">
+{foreach from=$vars item=v key=k}
+<input type="hidden" name="{$k}" value="{$v}">
+{/foreach}
+<input type="submit" value="Go to PaySbuy">
+</form>
+
+</p>
+</div>
+</body></html>

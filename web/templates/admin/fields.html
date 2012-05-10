@@ -1,0 +1,48 @@
+{assign var=title value="Additional Fields"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<form method=post action="fields.php">
+<table class=hedit width=90%>
+<tr>
+    <th>Name<br /><small>(internal)</small></th>
+    <th>Title<br /><small>(for display)</small></th>
+    <th>Field Type</th>
+    <th>Display Type</th>
+    <th>Validation function</th>
+    <th>Order</th>
+    <th>&nbsp;</th>
+</tr>
+{assign var=i value=1}
+{foreach from=$fields item=f}
+<tr class={cycle values="xx,odd"}>
+    <td>{$f.name|escape}</td>
+    <td>{$f.title|escape}</td>
+    <td>{if $f.sql}SQL field ({$f.sql_type|escape}){else}-{/if}</td>
+    <td>{$f.type|escape}</td>
+    <td>{$f.validate_func|escape}</td>
+    <td align=center>{if $f.from_config} <input type=text name='order[{$f.name|escape}]' value="{$i}" 
+    class=small size=5 style='text-align: center'></td>
+    {math equation="x + 1" x=$i assign=i}
+    {/if}
+    <td>
+    {if $f.from_config}
+    <a href="fields.php?name={$f.name|escape}&action=edit">Edit</a>&nbsp;
+    <a href="fields.php?name={$f.name|escape}&action=delete" onclick="return confirm('Are you sure you want to delete field and all related data from database?')">Drop</a>
+    {else}
+    <font color=gray>Edit</font>
+    <font color=gray>Drop</font>
+    {/if}
+    </td>
+</tr>
+{/foreach}
+</table>
+<br /><br />
+<input type=button value="Add field" onclick="window.location='fields.php?action=add'" style='width: 120pt;'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="Save new fields order" style='width: 120pt;'>
+<input type=hidden name=action value="reorder">
+</form>
+</center>
+{include file="admin/footer.inc.html"}

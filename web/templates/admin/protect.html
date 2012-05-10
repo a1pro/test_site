@@ -1,0 +1,38 @@
+{assign var=title value="Protected Folders"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<table class=hedit width=95% border=1 bordercolor=#a0a0a0>
+<tr>
+    <th>Path</th>
+    <th>URL</th>
+    <th>Method</th>
+    <th>Products allowed</th>
+    <th width=5%><font color=606060>Actions</font></th>
+</tr>
+{foreach from=$folders item=p}
+<tr class={cycle values="xx,odd"}>
+    <td> {$p.path} </td>
+    <td> <a href="{$p.url}" target=_blank>{$p.url}</a> </td>
+    <td> {$p.method} </td>
+    <td> {$p.product_ids} </td>
+    <td nowrap>
+            <a href="protect.php?action=edit&folder_id={$p.folder_id}">Edit</a>
+            <a href="protect.php?action=delete&folder_id={$p.folder_id}" onclick="return confirm('Are you sure you want to remove protection from folder?')">Delete</a>
+     </td>
+</tr>
+{foreachelse}
+<tr class={cycle values="xx,odd"}>
+    <td bgcolor=white align=center colspan=5>
+    -- No protected folders yet --
+     </td>
+</tr>
+{/foreach}
+</table>
+<br />
+<a href="protect.php?action=add">Protect Another Folder</a>
+<br />
+<br /><br />
+
+{include file="admin/footer.inc.html"}

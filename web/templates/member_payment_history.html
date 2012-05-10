@@ -1,0 +1,34 @@
+<h3>#_TPL_MEMBER_PYMNT_HIST#</h3>
+<table class="hedit" width="100%">
+<tr>
+    <th>#_TPL_MEMBER_PRODUCT#</th>
+    <th colspan="2">#_TPL_MEMBER_PERIOD#</th>
+    <th>#_TPL_MEMBER_PAYSYS#</th>
+    <th>#_TPL_MEMBER_AMOUNT#</th>
+    {if $config.send_pdf_invoice}<th>#_TPL_MEMBER_PDF_INVOICE#</th>{/if}
+</tr>
+{foreach from=$payments item=p}
+<tr {if $p.is_active}style='font-weight: bold;'{/if}>
+    <td>{lookup arr=$products key=$p.product_id}
+    {if $p.data.CANCELLED}<br /><div class="small" style="font-color: red; font-weight: bold;">#_TPL_MEMBER_CANCELLED#</div>
+    {elseif $p.cancel_url}<br /><a href="{$p.cancel_url}" target=top onclick="return confirm('#_TPL_MEMBER_CANCEL_SUBSCR#')">#_TPL_MEMBER_CANCEL#</a>
+    {/if}
+    </td>
+    <td nowrap="nowrap">{$p.begin_date|amember_date_format}</td>
+    <td nowrap="nowrap">{if $p.expire_date eq "2012-12-31"} - {else}
+         {$p.expire_date|amember_date_format}{/if}</td>
+    <td>
+        {if $p.paysys_id == 'manual'}
+            #_PLUG_PAY_MANUAL_TITLE#
+        {else}
+            {lookup arr=$paysystems key=$p.paysys_id}
+        {/if}
+    </td>
+    <td style="text-align: right">{$config.currency|default:"$"}{$p.amount}&nbsp;</td>
+{if $config.send_pdf_invoice}<td style="text-align: center">
+{if true or !(($config.member_select_multiple_products or $config.select_multiple_products) and $p.data.0.ORIG_ID)}<a href="member.php?action=get_invoice&amp;id={$p.payment_id}">#_TPL_MEMBER_INVOICE#</a>{else}&nbsp;{/if}
+</td>{/if}
+
+</tr>
+{/foreach}
+</table>

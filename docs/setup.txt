@@ -1,0 +1,5 @@
+sudo apt-get install apache2 libapache2-mod-php5 php5 php5-mysql php5-curl mysql-client mysql-server git
+
+
+CREATE USER 'getaudio_admin'@'localhost' IDENTIFIED BY 'eclipse2004';
+GRANT ALL ON getaudio_registrations.* TO 'getaudio_admin'@'localhost';

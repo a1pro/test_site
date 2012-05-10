@@ -1,0 +1,46 @@
+{assign var=title value="User Access Log"}
+{include file="admin/header.inc.html"}
+{include file="admin/user_nb.inc.html" selected="access_log"}
+<center>
+
+<h3>{$title}</h3>
+
+<table class=hedit width=70%>
+<tr>
+    <th>Time</th>
+    <th>Member</th>
+    <th>URL</th>
+    <th>Remote IP</th>
+    <th>HTTP Referrer</th>
+</tr>
+{foreach from=$list item=p}
+<tr class={cycle values="xx,odd"}>
+    <td> {$p.time|date_format:$config.time_format} </td>
+    <td> {$p.login} </td>
+    <td> {$p.url|escape} </td>
+    <td> {$p.remote_addr|escape} </td>
+    <td> {$p.referrer|escape} </td>
+</tr>
+{/foreach}
+</table>
+
+{span count=$count}
+
+<br /><br />
+<table width=70% bgcolor=#F0F0F0><tr><td>
+<b><div style='font-weight: bold;'>ACCESS LOG NOTES:</b><br />
+aMember logs each access, including users accessing protected pages.
+This helps you to detect and control Sales Agreement violations, such
+as access from different IP networks using the same password, which
+may be an indication that someone is sharing their password with
+someone who isn't supposed to have access.<br /><br />
+<font color=red>Please remember that aMember cannot log access to pages protected
+with .htpasswd.
+With new_rewrite protection it only logs first access, so account 
+sharing protection is working, but you cannot see which pages user accessed.</font>
+
+</td><tr></table>
+
+
+
+{include file="admin/footer.inc.html"}

@@ -1,0 +1,40 @@
+{assign var=title value=$smarty.const._PLUG_PAY_PAYCOM_HTML_TITLE}
+
+{include file="header.html"}
+<center>
+<br />
+
+#_PLUG_PAY_PAYCOM_HTML_TEXT1|<a href="http://www.billingsupport.com/index.html">|</a>#<br /><br />
+
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form name=signup method=post action="https://wnu.com/secure/fpost.cgi">
+{* paycom parameters *}
+<input type=hidden name="co_code" value="{$this_config.co_code}">
+<input type=hidden name="product_id" value="{$product.paycom_id}">
+<input type=hidden name="reseller" value="a">
+<input type=hidden name="zip" value="{$member.zip|escape}">
+<input type=hidden name="email" value="{$member.email|escape}">
+<input type=hidden name="country" value="{$member.country|escape}">
+<input type=hidden name="no_userpass" value="1">
+<input type=hidden name="name" value="{$member.name_f|escape} {$member.name_l|escape}">
+<input type=hidden name="street" value="{$member.street|escape}">
+<input type=hidden name="phone" value="{$member.phone|escape}">
+<input type=hidden name="city" value="{$member.city|escape}">
+<input type=hidden name="state" value="{$member.state|escape}">
+<input type=hidden name="pi_returnurl" value="{$config.root_url}/plugins/payment/paycom/resp.php">
+<input type=hidden name="response_post" value="1">
+<input type=hidden name="x_payment_id" value="{$payment.payment_id}">
+
+<input  class="inputb" type=submit value=#_PLUG_PAY_PAYCOM_HTML_SUBMBUT#>
+</form>
+
+</center>
+{include file="footer.html"}

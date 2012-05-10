@@ -1,0 +1,10 @@
+{* YOU NEVER NEED TO EDIT THIS FILE *}
+{* This block of code will be inserted to signup.html and profile.htm for each addtitional field *}
+<tr>
+<th><b>{$f.title}</b>
+{if $f.description}<br /><div class="small">{$f.description}</div>{/if}
+</th>
+<td>
+    {$value|escape}
+</td>
+</tr>

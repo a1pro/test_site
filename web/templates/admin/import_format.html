@@ -1,0 +1,59 @@
+{if $import_f}
+{assign var=title value="Import. Step 2 of 4: Please check file format"}
+{else}
+{assign var=title value="Import. Step 2 of 4: Please upload file"}
+{/if}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{ /if}
+{if $warn}
+<table><tr><td>
+{foreach from=$warn item=e}
+<li><b>Warning: </b>{$e|escape}</font>
+{/foreach}
+</td></tr></table>
+{ /if}
+
+<form method=post enctype="multipart/form-data" action="{$smarty.server.PHP_SELF|escape}">
+
+<br /><br />
+File format example:
+<table bgcolor=#f0f0f0><tr><td><font face=Courier>
+{$format|escape}
+</font></td></tr></table>
+<br /><br />
+
+{if $import_f}
+<input type=hidden name=action value=upload>
+{$hidden|escape}
+<input type=submit value="Continue">
+</form>
+
+{else}
+
+<table class=vedit>
+<tr>
+    <th colspan=2><b>UPLOAD FILE</b></th>
+<tr>
+<tr>
+    <th><b>File<sup>*</sup></b></th>
+    <td><input type=file name=file>
+    </td>
+</tr>   
+</table>
+<input type=hidden name=action value=upload>
+{$hidden}
+<input type=submit value="Upload">
+</form>
+{/if}
+
+{include file="admin/footer.inc.html"}
+

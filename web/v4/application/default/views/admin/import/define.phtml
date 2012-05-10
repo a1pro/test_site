@@ -1,0 +1,53 @@
+<?php $this->setLayout('admin/layout.phtml'); ?>
+<div id="import-area">
+    <?php echo $table ?>
+    <br />
+    <?php echo $form ?>
+</div>
+<div class="info">
+    <p><strong><?php __e('Please note: aMember do not change password and login for users to generated value in case of record with such email address is already exists in database and you decide to update existing record (if record with same email/username already exists in database) while import on next step') ?></strong></p>
+</div>
+<script type="text/javascript">
+    (function($){
+        function setupHooks() {
+            $('input.datepicker').datepicker({
+                dateFormat:window.uiDateFormat,
+                changeMonth: true,
+                changeYear: true
+            });
+
+            $("#import-area input, #import-area select").change(function(){
+                $(this.form).ajaxSubmit({
+                    target: '#import-area'
+                });
+            })
+
+            $("select[name^=field_]").each(function(){
+                if (this.value == 'FIXED') {
+                    $(this).next().show();
+                } else {
+                    $(this).next().hide();
+                }
+            });
+            $("select[name^=field_]").change(function(){
+                if (this.value == 'FIXED') {
+                    $(this).next().show();
+                } else {
+                    $(this).next().hide();
+                }
+            });
+            $("input[type=button]").click(function(){
+                this.form.action = this.form.action.replace(/(\/)[a-z]+(\/*)$/, '$1back$2');
+                this.form.submit();
+            })
+
+        }
+
+        $(function(){
+            $('#import-area').ajaxSuccess(function(){
+                setupHooks();
+            });
+            setupHooks();
+        });
+    })(jQuery)
+</script>

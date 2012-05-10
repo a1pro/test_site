@@ -1,0 +1,138 @@
+<html><head>
+</head>
+
+{assign var=title value="Edit E-Mail Template"}
+{include file="admin/header.inc.html"}
+
+<center>
+
+<br /><h3>{$title}</h3>
+
+<form method=post action="email_templates.php">
+<table><tr><td><!-- align entire form -->
+
+{if $error}
+<table class="errmsg" width=100%><tr><td>
+{foreach from=$error item=e}
+<li>{$e}</li>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<table class="vedit" width=100%><!-- align top controls / text-edit -->
+
+<tr><th><b>Template</b></th>
+<td>{$tpl|escape}<br />
+<small>{$tpl_name|escape}</small>
+</td></tr>
+
+<tr><th><b>Language</b></th>
+<td>
+<select size="1" name="l" onchange="formReload(this.form, 1)">
+{html_options options=$lang_options selected=$l}</select>
+
+{if $copy_lang_options}
+&nbsp;&nbsp;&nbsp;&nbsp;
+<em>Copy from another language</em>
+<select name=copy_lang onchange="formReload(this.form, 1)" style="background-color: ButtonFace">
+<option value="" selected>** COPY ** </option>
+{html_options options=$copy_lang_options}
+</select>
+{/if}
+
+</td></tr>
+
+
+{if $smarty.request.product_id}
+<tr>
+    <th><b>Product#</b></th>
+    <td>{$smarty.request.product_id|escape}
+    ({php}$p = $GLOBALS['db']->get_product($_REQUEST['product_id']); print $p['title']{/php})
+    </td>
+</tr>
+{/if}
+
+{if $day ne ""}
+<tr>
+    <th><b>Day when message will be sent</b></th>
+    <td><input type=text name=day value="{$day|escape}" size="5" readonly style="background-color: ButtonFace" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <em>Edit another day message</em>
+    <select name="another_day" size="1" onchange="formReload(this.form, 1)" style="background-color: ButtonFace">
+    <option value="" selected>** EDIT ** </option>
+    {html_options options=$another_day_options}
+    </select>
+    </td>
+</tr>
+{/if}
+
+<tr>
+<th><b>E-Mail Message Type</b></th>
+<td><select size=1 name="format" onchange="formReload(this.form, -1)">
+{html_options options=$format_options selected=$format}
+</select>
+</td></tr>
+
+<tr><th><b>Subject</b></th>
+<td><input type=text name=subject size=60 value="{$subject|escape}" /></td>
+</tr>
+
+</table> <!-- end of controls align -->
+
+<b>E-Mail Message</b><br />
+<div style="border: solid 1px ButtonShadow">
+<textarea name="txt" id="txt" cols="78" rows="25" style="border: none">{$txt|escape}</textarea>
+</div>
+
+{if $format eq "multipart"}
+<b>Alternative E-Mail Text (in plain-text format}</b><br />
+<div style="border: solid 1px ButtonShadow">
+<textarea name="plain_txt" cols="78" rows="25" style="border: none">{$plain_txt|escape}</textarea>
+</div>
+{/if}
+
+<b>E-Mail Variables:</b><br />
+<select size=5 onclick="insertVariable(this)" class="small" style="background-color: ButtonFace">
+<option value=''>** Please choose an option below and it will be inserted into email message **</option>
+{html_options options=$tags}
+</select><br />
+
+<b>Attachments:</b><br />
+<div class="smalltext">Upload your file to <em>amember/templates/</em> folder and enter filename</div>
+{foreach from=$attachments item=a}
+<input type=text class="small" name='attachments[]' size=60 value="{$a|escape}" /><br />
+{/foreach}
+<input type=text class="small" name='attachments[]' size=60 value="" /> <br />
+<input type=text class="small" name='attachments[]' size=60 value="" /> <br />
+
+</td></tr>
+</table>
+<br />
+
+<input type=hidden name=a value="{$smarty.request.a|escape}" />
+<input type=hidden name=product_id value="{$smarty.request.product_id|escape}" />
+<input type=hidden name=email_template_id value="{$email_template_id|escape}" />
+<input type=hidden name=tpl value="{$tpl|escape}" />
+<input type=hidden name=save value="1" />
+<input type=hidden name=reload value="0" />
+
+<input type=submit value="&nbsp;&nbsp;Update&nbsp;&nbsp;" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="window.location='{$back_location|escape}'"/>
+</form>
+
+<script type"text/javascript">
+function insertVariable(el){
+    if (!el.selectedIndex) return;
+    txt = el.form.elements.txt;
+    txt.value = txt.value + el.options[ el.selectedIndex ].value;
+    el.selectedIndex = -1;
+}
+function formReload(frm, reload){
+    frm.elements.reload.value = reload;
+    frm.submit();
+}
+</script>
+
+</center>
+{include file="admin/footer.inc.html"}

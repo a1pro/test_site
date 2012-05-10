@@ -1,0 +1,39 @@
+{assign var="title" value=$smarty.const._TPL_SKYPAY_PAY_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+{if $display_receipt }
+<h4>#_TPL_SKYPAY_PRODUCT_BILLING#</h4>
+{include file="receipt.inc.html"}
+<br />
+{/if}
+{if $display_address }
+<h4>#_TPL_SKYPAY_ADDRESS_BILLING#</h4>
+{include file="../plugins/payment/skypay/templates/display_address.html"}
+<br />
+{/if}
+{if $result}
+	<p class="payment_module">
+			<img src="{$config.root_surl}/plugins/payment/skypay/powered-by-skypay1.gif" alt="Pay with Skypay" />
+	</p>
+	<form action="{$paymentUrl}" method="POST" id="skypay_form">
+		<input type="hidden" name="transactionID" VALUE="{$transactionID}" />
+		<input type="hidden" name="encBlock" value="{$encBlock}" />
+		{if $testmode}
+			Skypay payment module running in Test mode.<br />
+		{/if}
+		<input type="submit" value ="{$smarty.const._TPL_SKYPAY_PAY_SUBMIT}" />
+	</form>
+{else}
+	<p class="payment_module">
+		<strong style="color:red;">
+			There was an error registering your transaction with Skypay.<br />
+			Error {$errNum}: {$errStr}.<br />
+			Please refresh to try again and contact us if it keeps happenning.<br />
+			Sorry for any inconvenience caused.
+		</strong>
+	</p>
+{/if}
+{$successForm}
+ 
+{include file="footer.html"}

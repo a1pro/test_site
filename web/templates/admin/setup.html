@@ -1,0 +1,62 @@
+{assign var=title value="aMember Pro Configuration"}
+{include file="admin/header.inc.html"}
+
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+{include file="admin/js.other_db.js"}
+
+{assign var=selected value=$notebook}
+{include file="admin/setup_nb.inc.html"}
+<center>
+<h3>{$title} : {$notebook|escape}<br />
+<font color=gray size=1><b>{$notebooks.$notebook.comment}</b></font><br />
+</h3>
+<a name="e">&nbsp;</a>
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+{if $notebook eq "Plugins"}
+<div align=left style='font-size: xx-small; width: 300px;'>
+You may enable <b>cc_demo</b> payment plugin for testing purposes.
+Once you have it enabled, go to <b>aMember CP -> Setup -> CC Demo</b> and read readme.
+Don't forget to disable it when testing is finished!<br /><br />
+</div>
+{/if}
+
+<form method=post action="setup.php#e">
+<table class=vedit>
+{foreach from=$fields item=f}
+{if $f.type eq "header"}
+<tr class="odd">
+<td colspan=2 style='text-align: center; font-weight: bold'>{$f.title}</td>
+</tr>
+{elseif not $f.special_edit }
+<tr>
+    <th><b>{$f.title}</b><br /><small>{$f.desc}</small></th>
+    <td>{$f.edit}</td>
+</tr>
+{else}{$f.edit}{/if}
+{/foreach}
+</table>
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+<input type=hidden name=notebook value="{$notebook|escape}">
+<input type=hidden name=save value=1>
+</form>
+
+{if $readme ne ""}
+<table bgcolor=#e0f0f0><tr><td>
+<pre style='font-size: 9pt; text-align: left;'>{$readme}</pre>
+</td></tr></table>
+{/if}
+
+{include file="admin/footer.inc.html"}

@@ -1,0 +1,31 @@
+{assign var=title value="Newsletter Guests"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="guests"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+{span}
+<br /><br />
+
+<table width=80% class=hedit border=1 bordercolor=#909090>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Subscriptions</th>
+</tr>
+{foreach from=$gl item=g}
+<tr class={cycle values="xx,odd"}>
+    <td> {$g.guest_name|escape} </td>
+    <td> <a href="mailto:{$g.guest_email|escape}">{$g.guest_email|escape}</a> </td>
+    <td> {$g.threads|escape} </td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+
+<br />
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+
+{include file="admin/footer.inc.html"}
+

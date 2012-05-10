@@ -1,0 +1,19 @@
+ 
+                       CC PLUGIN FEATURES KEYS
+
+title       - plugin title (default title)
+description - plugin description (default)
+currency    - payment system supports different currencies.
+              value for this key must be array of possible currencies.
+phone       - phone is 1: accepted field, 2: required fied
+company     - company is accepted field for this payment system
+code        - payment system supports CVV codes=1; requires CVV codes=2
+
+(also - defined in cc.html, adds $config.cc_)
+cc_type_options
+cc_name or cc_name_f
+cc_company
+cc_phone
+cc_code
+
+

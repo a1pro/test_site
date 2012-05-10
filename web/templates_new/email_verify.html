@@ -1,0 +1,18 @@
+{if $source=='profile'}
+{assign var="title" value=$smarty.const._TPL_EMAIL_VER_TITLE_PROFILE}
+{else}
+{assign var="title" value=$smarty.const._TPL_EMAIL_VER_TITLE}
+{/if}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+{if $source=='profile'}
+#_TPL_EMAIL_VER_TEXT_PROFILE#
+{else}
+#_TPL_EMAIL_VER_TEXT#
+{/if}
+<br /><br />
+<p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p>
+
+</center>
+{include file="footer.html"}

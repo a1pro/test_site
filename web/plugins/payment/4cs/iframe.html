@@ -1,0 +1,42 @@
+{assign var="title" value="Processing transaction"}
+{include file="header.html"}
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<form name="mainform" action="{$vars.TRANPAGE}" method="POST" target="forcs">
+<noscript>
+<br>
+<br>
+<center>
+<h1>Processing your Transaction</h1>
+<h2>
+JavaScript is currently disabled or is not supported
+by your browser.<br></h2>
+<h3>Please click Submit to continue
+the processing of your transaction.</h3>
+<input type="submit" value="Submit">
+</center>
+</noscript>
+<input type="hidden" name="MERCHKEY" VALUE="{$vars.MERCHKEY}" />
+<input type="hidden" name="TRANTYPE" VALUE="{$vars.TRANTYPE}"/>
+<input type="hidden" name="CURR" VALUE="{$vars.CURR}" />
+<input type="hidden" name="INVOICE" VALUE="{$vars.INVOICE}" />
+<input type="hidden" name="TRANID" VALUE="{$vars.TRANID}" />
+<input type="hidden" name="AMT" VALUE="{$vars.AMT}" />
+<input type="hidden" name="URLAPPROVED" VALUE="{$vars.URLAPPROVED}"/>
+<input type="hidden" name="URLOTHER" VALUE="{$vars.URLOTHER}"/>
+</form>
+<SCRIPT LANGUAGE="Javascript" >
+<!--
+function OnLoadEvent()
+{
+document.mainform.submit();
+}
+//-->
+</SCRIPT>
+<iframe width="100%" height="360" align="center" name="forcs">
+</iframe>
+<script type="text/javascript">
+$(document).ready(function(){
+		OnLoadEvent();
+});
+</script>
+{include file="footer.html"}

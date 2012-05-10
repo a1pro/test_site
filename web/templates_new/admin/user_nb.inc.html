@@ -1,0 +1,45 @@
+{if $member_id}{else}{assign var=member_id value=$u.member_id}{/if}
+{if $member_id}{else}{assign var=member_id value=$smarty.post.member_id}{/if}
+{if $member_id}{else}{assign var=member_id value=$smarty.get.member_id}{/if}
+{if !$member_id}{assign var=hide_notebook value=1}{/if}
+{if !$hide_notebook}
+{if $member_id}{else}{assign var=member_id value=$u.member_id}{/if}
+{if $member_id}{else}{assign var=member_id value=$smarty.post.member_id}{/if}
+{if $member_id}{else}{assign var=member_id value=$smarty.get.member_id}{/if}
+{if $config.use_affiliates && $u.is_affiliate > 0}
+    {assign var=pc value="20%"}
+{else}
+    {assign var=pc value="25%"}
+{/if}
+
+<table width=100% cellspacing=1 cellpadding=0 class=notebook><tr>
+    <td width={$pc} class={if $selected eq "user"}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=edit">User Info</a>
+    </td>
+    <td width={$pc} class={if $selected eq "payments"}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=payments">User Payments/Subscriptions</a>
+    </td>
+    <td width={$pc} class={if $selected eq "actions"}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=actions">Actions</a>
+    </td>
+    <td width={$pc} class={if $selected eq "access_log"}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=access_log">Access Log</a>
+    </td>
+    {if $config.use_affiliates && $u.is_affiliate > 0}
+    <td width={$pc} class={if ($selected eq "aff_clicks") || ($selected eq "aff_sales") || ($selected eq "referred_users")}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=aff_sales">Affiliate Stats</a>
+    </td>
+    {/if}
+</tr>
+</table><br/>
+{if $u.member_id}
+<table class="hedit" align="center">
+    <tr>
+        <td>
+            USER: <b>#{$u.member_id}</b>  login: <b>{$u.login}</b> email: <b><a href="users.php?action=actions&member_id={$u.member_id}#email">{$u.email}</a></b> name: <b>{$u.name_f} {$u.name_l}</b>
+        </td>
+        <td><a href="users.php?action=login_as_user&member_id={$u.member_id}" target="_blank">Login as '{$u.login}'</a></td>
+    </tr>
+</table>
+{/if}
+{/if}

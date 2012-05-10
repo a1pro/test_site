@@ -1,0 +1,88 @@
+{assign var=title value=$smarty.const._PLUG_PAY_MULTICARD_HTML_TITLE}
+{include file=$header}
+<center>
+<br />
+<div class=hdr>{$title}</div>
+<hr>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form name=signup method=post action="https://secure.multicards.com/cgi-bin/order2/processorder1.pl">
+{* multi-cards internal parameters *}
+<input type=hidden name=deferred_entry value=1>
+<input type=hidden name=mer_id value={$this_config.mer_id}>
+<input type=hidden name=num_items value=1>
+<input type=hidden name=mer_url_idx value={$page_id}>
+<input type=hidden name=item1_desc value="{$product.title|escape}">
+<input type=hidden name=item1_price value="{$product.price}">
+<input type=hidden name=item1_qty value="1">
+<input type=hidden name=user1 value={$payment.payment_id}>
+<input type=hidden name=user2 value={$payment.member_id}>
+{* /end of multi-card parameters *}
+
+<table align=center class=vedit>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_MULTICARD_HTML_CNAME#</b><br />
+    <small>#_PLUG_PAY_MULTICARD_HTML_4CONT#</small></th>
+    <td nowrap><input type=text name=cust_name value="{$smarty.request.name_f|escape} {$smarty.request.name_l|escape}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_MULTICARD_HTML_EMAIL#</b><br />
+    <small>#_PLUG_PAY_MULTICARD_HTML_4CONTE#</small></th>
+    <td nowrap><input type=text name=cust_email value="{$smarty.request.email|escape}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_MULTICARD_HTML_CNAME#</b><br />
+    <small>#_PLUG_PAY_MULTICARD_HTML_ASONCC|<b>|</b>#</small></th>
+    <td nowrap><input type=text name=card_name value="{$smarty.request.name_f|escape} {$smarty.request.name_l|escape}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_MULTICARD_HTML_ADDRESS#</b><br />
+    <small>#_PLUG_PAY_MULTICARD_HTML_ADDOFCC|<b>|</b>#</small></th>
+    <td nowrap><input type=text name=cust_address1 value="{$smarty.request.street|escape}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_MULTICARD_HTML_CITY#</b><br />
+    <small>#_PLUG_PAY_MULTICARD_HTML_EXCITY|<b>|</b>|<br />|<i>|</i>#
+    </small></th>
+    <td nowrap><input type=text name=cust_city value="{$smarty.request.city|escape}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_MULTICARD_HTML_COUNTRY#</b><br />
+    <small>#_PLUG_PAY_MULTICARD_HTML_EXCOUNTRY|<b>|</b>#
+    </small></th>
+    <td nowrap><input type=text name=cust_country value="{$smarty.request.country|escape}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_MULTICARD_HTML_STATE#</b><br />
+    <small>#_PLUG_PAY_MULTICARD_HTML_EXSTATE|<b>|</b>#
+    </small></th>
+    <td nowrap><input type=text name=cust_state value="{$smarty.request.state|escape}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_MULTICARD_HTML_ZIP#</b><br />
+    <small>#_PLUG_PAY_MULTICARD_HTML_EXZIP|<b>|</b>|<br />#<br />
+    #_PLUG_PAY_MULTICARD_HTML_IFNOTUSA|<i>|</i>#
+    </small></th>
+    <td nowrap><input type=text name=cust_zip value="{$smarty.request.zip|escape}" size=30>
+    </td>
+</tr>
+</table>
+<input type=submit value=#_PLUG_PAY_MULTICARD_HTML_SUB_BUT#>
+
+</form>
+</center>
+{include file=$footer}

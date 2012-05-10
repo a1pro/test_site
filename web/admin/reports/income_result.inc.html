@@ -1,0 +1,29 @@
+<br /><h3>{$title}</h3>
+
+<center>
+
+<table class=hedit>
+<tr>
+{foreach from=$header item=i}<th>{$i}</th>
+{/foreach}
+</tr>
+
+{foreach from=$report item=r}
+<tr class={cycle values="xx,odd"}>
+{foreach from=$r item=i}
+<td align=right>{$i}</td>
+{/foreach}
+</tr>
+{/foreach}
+
+<tr class={cycle values="xx,odd"}>
+{foreach from=$totals item=i}
+<th align=right>&nbsp;{$i}</th>
+{/foreach}
+</tr>
+</table>
+<b>Average Customer Value: {$acv}</b>
+<br>
+<br /><a href="report.php"><small>New Report</small></a>
+
+</center>

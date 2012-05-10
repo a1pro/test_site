@@ -1,0 +1,45 @@
+{assign var=title value="#_TPL_NEWSLETTER_ARCHIVE#"}
+{include file="header.html"}
+<div class="backend-wrapper">
+{include file="member_menu.inc.html"}
+<table class="hedit" width="100%">
+<tr>
+    <th>#_TPL_NEWSLETTER_DATE#</th>
+    <th>#_TPL_NEWSLETTER_SUBJECT#</th>
+    <th>#_TPL_NEWSLETTER_MESSAGE#</th>
+    <th>#_TPL_NEWSLETTER_THREADS#</th>
+</tr>
+{foreach from=$al item=a}
+<tr class={cycle values="xx,odd"}>
+    <td>{$a.add_date|amember_date_format}</td>
+    <td><b>{$a.subject}</b></td>
+    <td>{if !$a.is_html}<pre>{/if}{php}
+    $message = $this->_tpl_vars['a']['message'];
+    $message = strip_tags($message);
+    $archive_id = $this->_tpl_vars['a']['archive_id'];
+    if (strlen($message) > 255) {
+        print (substr($message, 0, 255) . " <a href=newsletter.php?a=archive&archive_id=".$archive_id.">...</a>");
+    } else {
+        print ($message);
+    }
+    {/php}{if !$a.is_html}</pre>{/if}</td>
+    <td>
+    {foreach from=$a.threads item=thread_title key=thread_id name=titles}
+    {if $thread_id}
+        <a href="newsletter.php?a=archive&thread_id={$thread_id}">{$thread_title}</a>{if not $smarty.foreach.titles.last}, {/if}
+    {/if}
+    {/foreach}
+    </td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+<br />
+<br />
+<center>
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_NEWSLETTER_BACK#&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+</center>
+</div>
+{include file="footer.html"}
+

@@ -1,0 +1,59 @@
+{assign var=title value="Mass Subscribe: Confirmation"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+<form method=post action="mass_subscribe.php#e">
+<a name="e">&nbsp;</a>
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<table class=vedit>
+<tr>
+  <th><b>Members to subscribe</b><br />
+  </th>
+  <td>{$select_from} 
+  <br /><br /><i>({$count_members|escape} members)</i>
+  </td>
+</tr>
+
+<tr>
+  <th><b>Period assigment policy</b><br />
+  <td>{$assign_date|escape}
+  </td>
+</tr>
+
+<tr>
+  <th><b>Product for new subscription</b><br />
+  <small></small></th>
+  <td>{$product|escape}
+  
+  </td>
+</tr>
+
+<tr>
+  <th><b>Payment comment for new subscription</b><br />
+</th>
+  <td>
+  {$receipt_id|escape}
+  </td>
+</tr>
+
+</table>
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Subscribe members&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+<input type=hidden name=action value=mass_subscribe>
+<input type=hidden name=vars value="{$vars|escape}">
+</form>
+
+{include file="admin/footer.inc.html"}

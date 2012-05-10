@@ -1,0 +1,25 @@
+{assign var=title value="Choose Report Type"}
+{include file="admin/header.inc.html"}
+<br /><h3>{$title}</h3>
+
+<center>
+<form action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit align=center>
+<tr>
+<th>
+Please choose a report:
+</th><td>
+<select name=report size=5>
+{html_options options=$reports selected=$smarty.request.report}
+</select>
+</td>
+</tr>
+</table>
+<br />
+<input class=small type=submit value="Proceed >">
+</form>
+
+
+</center>
+{include file="admin/footer.inc.html"}
+

@@ -1,0 +1,657 @@
+[29-Dec-2010 12:07:44] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[29-Dec-2010 13:05:07] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[29-Dec-2010 15:40:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[29-Dec-2010 19:24:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[29-Dec-2010 22:39:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[30-Dec-2010 01:23:38] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[30-Dec-2010 01:32:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[30-Dec-2010 02:23:20] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[30-Dec-2010 02:23:20] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[30-Dec-2010 03:22:29] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[30-Dec-2010 04:58:56] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[30-Dec-2010 05:04:50] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[30-Dec-2010 05:31:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[30-Dec-2010 07:53:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[30-Dec-2010 08:09:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[30-Dec-2010 08:14:39] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[30-Dec-2010 08:20:20] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[01-Jan-2011 13:05:02] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[01-Jan-2011 13:15:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[01-Jan-2011 13:19:06] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[01-Jan-2011 13:24:04] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[01-Jan-2011 13:36:53] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[01-Jan-2011 13:39:06] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[01-Jan-2011 13:41:11] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[01-Jan-2011 13:41:11] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[01-Jan-2011 13:47:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[01-Jan-2011 13:56:21] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[01-Jan-2011 17:26:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[02-Jan-2011 01:25:39] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[02-Jan-2011 08:04:35] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[06-Jan-2011 09:36:09] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[06-Jan-2011 09:44:26] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[06-Jan-2011 09:48:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[06-Jan-2011 09:52:39] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[06-Jan-2011 09:56:47] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Jan-2011 09:56:47] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Jan-2011 10:01:09] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[06-Jan-2011 10:05:06] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[06-Jan-2011 10:09:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[06-Jan-2011 10:13:20] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[06-Jan-2011 10:17:25] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[06-Jan-2011 22:12:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[06-Jan-2011 22:16:44] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[06-Jan-2011 22:46:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[06-Jan-2011 22:50:08] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Jan-2011 22:50:08] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Jan-2011 23:03:09] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[06-Jan-2011 23:06:29] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[06-Jan-2011 23:19:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[06-Jan-2011 23:53:17] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[07-Jan-2011 02:15:09] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[07-Jan-2011 02:21:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[07-Jan-2011 06:45:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[07-Jan-2011 06:48:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[08-Jan-2011 20:24:57] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[08-Jan-2011 20:50:45] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[08-Jan-2011 21:10:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[08-Jan-2011 21:23:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[08-Jan-2011 21:43:12] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[08-Jan-2011 22:02:37] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Jan-2011 22:02:37] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Jan-2011 22:22:08] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[08-Jan-2011 22:35:01] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[08-Jan-2011 22:41:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[08-Jan-2011 23:33:22] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[09-Jan-2011 04:54:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[09-Jan-2011 11:43:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[09-Jan-2011 11:54:58] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[09-Jan-2011 11:54:58] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[09-Jan-2011 12:12:07] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[09-Jan-2011 13:03:17] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[09-Jan-2011 17:19:27] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[09-Jan-2011 18:10:39] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[09-Jan-2011 18:16:23] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[09-Jan-2011 18:27:46] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[09-Jan-2011 18:33:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[09-Jan-2011 21:40:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[12-Jan-2011 21:45:46] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[12-Jan-2011 21:45:46] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[12-Jan-2011 21:58:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[12-Jan-2011 22:07:12] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[12-Jan-2011 22:23:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[12-Jan-2011 22:28:45] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[12-Jan-2011 22:33:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[12-Jan-2011 23:15:03] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[12-Jan-2011 23:27:44] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[12-Jan-2011 23:49:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[13-Jan-2011 00:02:07] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[13-Jan-2011 07:44:26] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[13-Jan-2011 07:47:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[13-Jan-2011 07:51:38] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[13-Jan-2011 13:39:19] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[13-Jan-2011 13:42:33] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[13-Jan-2011 13:42:33] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[13-Jan-2011 14:04:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[13-Jan-2011 14:07:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[13-Jan-2011 14:41:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[13-Jan-2011 16:29:46] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[13-Jan-2011 18:49:00] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[19-Jan-2011 16:41:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[19-Jan-2011 16:41:39] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[19-Jan-2011 16:43:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[19-Jan-2011 19:52:46] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[19-Jan-2011 19:54:13] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[19-Jan-2011 20:51:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[20-Jan-2011 06:25:36] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[20-Jan-2011 06:25:46] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[20-Jan-2011 06:27:53] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[02-Feb-2011 10:09:00] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[02-Feb-2011 10:09:00] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[02-Feb-2011 10:23:33] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[02-Feb-2011 10:28:29] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[02-Feb-2011 10:31:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[02-Feb-2011 10:31:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[02-Feb-2011 10:35:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[02-Feb-2011 10:37:46] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[02-Feb-2011 10:45:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[02-Feb-2011 10:49:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[02-Feb-2011 10:56:21] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[02-Feb-2011 11:03:44] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[02-Feb-2011 11:07:06] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[02-Feb-2011 11:07:06] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[02-Feb-2011 11:07:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[02-Feb-2011 11:17:24] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[02-Feb-2011 11:42:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[02-Feb-2011 11:55:45] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[02-Feb-2011 11:59:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[02-Feb-2011 12:06:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[02-Feb-2011 12:13:29] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[02-Feb-2011 12:40:05] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[02-Feb-2011 22:53:10] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[02-Feb-2011 22:53:10] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[02-Feb-2011 22:59:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[02-Feb-2011 23:03:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[02-Feb-2011 23:10:29] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[02-Feb-2011 23:27:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[02-Feb-2011 23:28:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[02-Feb-2011 23:38:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[02-Feb-2011 23:45:40] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[02-Feb-2011 23:56:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[03-Feb-2011 00:02:51] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[03-Feb-2011 00:05:20] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[03-Feb-2011 00:06:38] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Feb-2011 00:06:38] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Feb-2011 00:07:02] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[03-Feb-2011 00:14:05] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[03-Feb-2011 00:17:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[03-Feb-2011 00:21:06] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[03-Feb-2011 00:24:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[03-Feb-2011 00:34:41] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[03-Feb-2011 00:35:09] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[03-Feb-2011 00:41:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[03-Feb-2011 04:30:13] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[03-Feb-2011 09:13:53] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[03-Feb-2011 09:31:36] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[03-Feb-2011 09:35:09] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Feb-2011 09:35:09] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Feb-2011 09:38:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[03-Feb-2011 09:45:56] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[03-Feb-2011 09:52:53] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[03-Feb-2011 10:14:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[03-Feb-2011 10:31:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[03-Feb-2011 10:39:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[03-Feb-2011 10:53:13] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[03-Feb-2011 11:51:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[03-Feb-2011 11:59:40] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[03-Feb-2011 12:07:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[03-Feb-2011 12:19:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[03-Feb-2011 12:26:35] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Feb-2011 12:26:35] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Feb-2011 12:42:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[03-Feb-2011 12:53:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[03-Feb-2011 12:57:41] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[03-Feb-2011 13:01:36] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[03-Feb-2011 13:25:02] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[04-Feb-2011 15:49:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[04-Feb-2011 15:54:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[04-Feb-2011 15:57:27] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[04-Feb-2011 16:05:09] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[04-Feb-2011 16:54:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[04-Feb-2011 17:02:38] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[04-Feb-2011 17:02:38] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[04-Feb-2011 17:14:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[04-Feb-2011 17:17:04] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[04-Feb-2011 17:18:14] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[04-Feb-2011 17:19:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[05-Feb-2011 04:47:23] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[05-Feb-2011 04:47:23] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[05-Feb-2011 04:50:00] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[05-Feb-2011 04:54:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[05-Feb-2011 04:59:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[05-Feb-2011 05:10:56] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[05-Feb-2011 05:12:38] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[05-Feb-2011 05:17:24] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[05-Feb-2011 05:25:12] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[05-Feb-2011 05:30:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[05-Feb-2011 05:42:24] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[05-Feb-2011 05:42:24] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[05-Feb-2011 05:45:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[05-Feb-2011 05:52:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[05-Feb-2011 05:59:18] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[05-Feb-2011 06:00:29] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[05-Feb-2011 06:09:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[05-Feb-2011 06:13:00] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[05-Feb-2011 06:23:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[05-Feb-2011 06:26:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[05-Feb-2011 06:29:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[05-Feb-2011 06:33:12] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[06-Feb-2011 05:15:48] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Feb-2011 05:15:48] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Feb-2011 05:18:06] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[06-Feb-2011 05:27:56] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[06-Feb-2011 05:29:12] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[06-Feb-2011 05:30:18] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[06-Feb-2011 05:32:12] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[06-Feb-2011 05:34:21] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[06-Feb-2011 05:35:00] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Feb-2011 05:35:00] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Feb-2011 05:36:47] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[06-Feb-2011 05:37:21] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[06-Feb-2011 05:39:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[06-Feb-2011 05:41:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[06-Feb-2011 05:43:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[06-Feb-2011 05:43:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[06-Feb-2011 05:48:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[06-Feb-2011 05:48:27] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[06-Feb-2011 05:50:41] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[06-Feb-2011 05:52:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[06-Feb-2011 05:55:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[06-Feb-2011 06:31:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[06-Feb-2011 19:04:07] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Feb-2011 19:04:07] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[06-Feb-2011 19:09:47] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[06-Feb-2011 19:11:41] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[06-Feb-2011 19:15:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[06-Feb-2011 19:17:31] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[06-Feb-2011 19:19:18] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[06-Feb-2011 19:21:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[06-Feb-2011 19:23:07] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[06-Feb-2011 19:25:06] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[06-Feb-2011 19:27:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[08-Feb-2011 04:05:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[08-Feb-2011 04:06:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[08-Feb-2011 04:12:27] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[08-Feb-2011 04:13:15] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[08-Feb-2011 04:15:23] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[08-Feb-2011 04:17:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[08-Feb-2011 04:24:56] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[08-Feb-2011 04:27:08] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Feb-2011 04:27:08] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Feb-2011 04:29:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[08-Feb-2011 04:31:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[08-Feb-2011 06:18:59] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Feb-2011 06:18:59] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Feb-2011 06:27:01] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[08-Feb-2011 06:28:25] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[08-Feb-2011 06:30:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[08-Feb-2011 06:33:18] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[08-Feb-2011 06:34:17] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[08-Feb-2011 06:38:44] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[08-Feb-2011 06:41:12] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[08-Feb-2011 06:43:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[08-Feb-2011 06:45:26] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[08-Feb-2011 15:38:41] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[08-Feb-2011 15:39:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[08-Feb-2011 15:40:12] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[08-Feb-2011 15:42:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[08-Feb-2011 15:47:05] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[08-Feb-2011 15:49:29] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[08-Feb-2011 15:53:47] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Feb-2011 15:53:47] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Feb-2011 18:22:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[08-Feb-2011 18:22:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[08-Feb-2011 18:22:57] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[08-Feb-2011 20:10:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[08-Feb-2011 20:20:38] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[08-Feb-2011 20:28:35] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[08-Feb-2011 20:37:46] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Feb-2011 20:37:46] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[08-Feb-2011 20:42:22] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[08-Feb-2011 20:47:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[08-Feb-2011 20:51:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[08-Feb-2011 21:14:44] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[08-Feb-2011 21:24:02] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[08-Feb-2011 21:39:45] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[10-Feb-2011 03:51:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[10-Feb-2011 04:39:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[10-Feb-2011 04:40:21] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[10-Feb-2011 04:43:36] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[10-Feb-2011 04:44:40] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[10-Feb-2011 04:46:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[10-Feb-2011 04:48:53] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Feb-2011 04:48:53] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Feb-2011 04:54:45] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[10-Feb-2011 05:01:20] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[10-Feb-2011 05:08:51] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[10-Feb-2011 05:10:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[10-Feb-2011 05:12:21] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[10-Feb-2011 05:12:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[10-Feb-2011 05:14:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[10-Feb-2011 05:16:11] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Feb-2011 05:16:11] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Feb-2011 05:18:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[10-Feb-2011 05:21:44] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[10-Feb-2011 05:30:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[10-Feb-2011 05:33:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[10-Feb-2011 05:36:07] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[10-Feb-2011 17:29:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[10-Feb-2011 19:23:26] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[10-Feb-2011 19:24:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[10-Feb-2011 19:26:20] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[10-Feb-2011 19:29:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[10-Feb-2011 19:30:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[10-Feb-2011 19:33:19] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[10-Feb-2011 19:35:58] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Feb-2011 19:35:58] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Feb-2011 19:38:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[10-Feb-2011 19:44:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[10-Feb-2011 19:49:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[10-Feb-2011 23:32:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[10-Feb-2011 23:38:08] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[10-Feb-2011 23:39:12] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[10-Feb-2011 23:41:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[10-Feb-2011 23:42:27] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[10-Feb-2011 23:44:20] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[10-Feb-2011 23:45:33] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[10-Feb-2011 23:49:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[10-Feb-2011 23:56:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[11-Feb-2011 00:03:52] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[11-Feb-2011 00:03:52] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[11-Feb-2011 08:56:35] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[11-Feb-2011 08:57:02] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[11-Feb-2011 09:05:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[11-Feb-2011 09:06:22] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[11-Feb-2011 09:07:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[11-Feb-2011 09:09:26] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[11-Feb-2011 09:12:25] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[11-Feb-2011 09:15:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[11-Feb-2011 09:18:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[11-Feb-2011 09:24:54] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[11-Feb-2011 09:24:54] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[11-Feb-2011 09:31:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[11-Feb-2011 09:34:22] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[11-Feb-2011 09:42:36] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[12-Feb-2011 03:36:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[12-Feb-2011 03:36:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[12-Feb-2011 03:39:32] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[12-Feb-2011 03:51:02] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[12-Feb-2011 03:54:51] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[12-Feb-2011 03:54:51] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[12-Feb-2011 04:07:12] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[12-Feb-2011 04:10:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[12-Feb-2011 04:14:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[12-Feb-2011 04:19:51] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[12-Feb-2011 04:25:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[12-Feb-2011 04:58:26] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[12-Feb-2011 05:00:23] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[12-Feb-2011 05:00:23] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[12-Feb-2011 05:02:18] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[12-Feb-2011 05:04:17] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[12-Feb-2011 05:06:08] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[12-Feb-2011 05:13:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[12-Feb-2011 05:15:56] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[12-Feb-2011 05:17:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[12-Feb-2011 05:21:21] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[12-Feb-2011 05:25:18] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[13-Feb-2011 01:53:24] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[13-Feb-2011 02:00:36] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[14-Feb-2011 02:35:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[14-Feb-2011 02:37:09] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[14-Feb-2011 02:40:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[14-Feb-2011 02:42:13] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[14-Feb-2011 02:44:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[14-Feb-2011 02:48:46] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Feb-2011 02:48:46] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Feb-2011 02:52:13] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[14-Feb-2011 02:53:46] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[14-Feb-2011 02:56:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[14-Feb-2011 02:57:12] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Feb-2011 02:57:12] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Feb-2011 02:57:21] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[14-Feb-2011 03:00:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[14-Feb-2011 03:01:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[14-Feb-2011 03:02:09] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[14-Feb-2011 03:02:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[14-Feb-2011 03:04:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[14-Feb-2011 03:07:47] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[14-Feb-2011 03:32:33] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[14-Feb-2011 03:34:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[14-Feb-2011 03:44:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[14-Feb-2011 15:01:05] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[14-Feb-2011 15:02:22] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[14-Feb-2011 15:04:02] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[14-Feb-2011 15:07:33] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[14-Feb-2011 15:08:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[14-Feb-2011 15:10:19] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[14-Feb-2011 15:12:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[14-Feb-2011 15:14:09] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Feb-2011 15:14:09] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Feb-2011 15:15:50] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[14-Feb-2011 15:24:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[14-Feb-2011 15:34:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[14-Feb-2011 15:36:18] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[14-Feb-2011 15:39:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[14-Feb-2011 15:51:24] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[14-Feb-2011 16:19:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[14-Feb-2011 17:25:06] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[14-Feb-2011 17:27:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[14-Feb-2011 17:28:18] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Feb-2011 17:28:18] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[15-Feb-2011 02:24:39] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[15-Feb-2011 02:26:06] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[15-Feb-2011 02:29:36] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[15-Feb-2011 02:30:23] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[15-Feb-2011 02:31:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[15-Feb-2011 02:33:44] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[15-Feb-2011 02:43:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[15-Feb-2011 02:44:48] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[15-Feb-2011 02:44:48] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[15-Feb-2011 02:51:25] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[15-Feb-2011 02:58:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[15-Feb-2011 03:51:54] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[15-Feb-2011 03:55:50] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[15-Feb-2011 03:57:06] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[15-Feb-2011 04:03:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[15-Feb-2011 04:06:13] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[15-Feb-2011 04:06:13] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[15-Feb-2011 04:11:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[15-Feb-2011 04:15:20] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[15-Feb-2011 04:17:56] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[15-Feb-2011 04:20:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[15-Feb-2011 04:21:50] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[03-Mar-2011 09:30:35] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[03-Mar-2011 09:34:05] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[03-Mar-2011 09:47:36] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[03-Mar-2011 09:48:16] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[03-Mar-2011 09:51:04] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[03-Mar-2011 09:58:00] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Mar-2011 09:58:00] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Mar-2011 09:59:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[03-Mar-2011 10:11:52] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Mar-2011 10:11:52] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Mar-2011 10:12:46] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[03-Mar-2011 10:17:19] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[03-Mar-2011 10:23:18] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[03-Mar-2011 10:24:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[05-Mar-2011 05:36:39] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[05-Mar-2011 05:52:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[05-Mar-2011 06:03:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[05-Mar-2011 06:19:39] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[05-Mar-2011 06:30:22] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[05-Mar-2011 06:35:45] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[05-Mar-2011 06:46:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[05-Mar-2011 06:49:14] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[05-Mar-2011 06:49:14] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[05-Mar-2011 06:51:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[05-Mar-2011 06:51:56] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[05-Mar-2011 06:54:44] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[05-Mar-2011 07:01:50] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[05-Mar-2011 07:07:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[05-Mar-2011 07:17:26] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[05-Mar-2011 08:09:19] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[05-Mar-2011 08:17:02] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[05-Mar-2011 08:22:41] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[05-Mar-2011 08:25:22] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[05-Mar-2011 08:28:20] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[05-Mar-2011 08:28:20] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[05-Mar-2011 08:33:53] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[10-Mar-2011 06:22:22] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[10-Mar-2011 06:31:45] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[10-Mar-2011 06:35:06] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[10-Mar-2011 06:37:23] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[10-Mar-2011 06:41:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[10-Mar-2011 06:47:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[10-Mar-2011 06:48:52] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Mar-2011 06:48:52] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Mar-2011 06:51:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[10-Mar-2011 06:58:41] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[10-Mar-2011 07:04:04] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[10-Mar-2011 19:11:00] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Mar-2011 19:11:00] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[10-Mar-2011 19:19:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[10-Mar-2011 19:33:25] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[10-Mar-2011 19:47:36] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[10-Mar-2011 19:50:38] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[10-Mar-2011 19:51:38] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[10-Mar-2011 19:57:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[10-Mar-2011 20:03:47] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[10-Mar-2011 20:13:10] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[10-Mar-2011 20:15:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[13-Mar-2011 04:06:45] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[13-Mar-2011 04:06:45] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[13-Mar-2011 04:18:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[13-Mar-2011 04:21:00] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[13-Mar-2011 04:33:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[13-Mar-2011 04:42:26] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[13-Mar-2011 04:49:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[13-Mar-2011 04:52:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[13-Mar-2011 04:54:22] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[13-Mar-2011 04:59:17] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[13-Mar-2011 05:08:41] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[13-Mar-2011 12:01:51] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[13-Mar-2011 12:02:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[13-Mar-2011 12:08:00] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[13-Mar-2011 12:18:18] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[13-Mar-2011 12:18:18] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[13-Mar-2011 19:57:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[13-Mar-2011 20:00:11] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[13-Mar-2011 20:03:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[13-Mar-2011 20:09:02] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[13-Mar-2011 20:21:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[13-Mar-2011 22:00:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[14-Mar-2011 00:42:36] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Mar-2011 00:42:36] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[14-Mar-2011 00:51:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[14-Mar-2011 00:56:20] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[14-Mar-2011 00:59:46] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[23-Mar-2011 00:32:19] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[23-Mar-2011 00:34:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[23-Mar-2011 00:36:21] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[23-Mar-2011 00:40:14] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[23-Mar-2011 00:41:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[23-Mar-2011 00:45:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[23-Mar-2011 00:56:18] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[23-Mar-2011 00:56:18] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[23-Mar-2011 01:00:09] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[23-Mar-2011 01:11:35] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[23-Mar-2011 01:21:17] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[25-Mar-2011 03:55:17] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[25-Mar-2011 03:55:17] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[25-Mar-2011 04:04:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[25-Mar-2011 04:14:08] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[25-Mar-2011 04:22:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[25-Mar-2011 04:25:17] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[25-Mar-2011 04:32:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[25-Mar-2011 04:36:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[25-Mar-2011 04:41:48] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[25-Mar-2011 04:46:15] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[25-Mar-2011 05:00:05] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[26-Mar-2011 03:30:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[26-Mar-2011 03:33:04] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[26-Mar-2011 03:35:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[26-Mar-2011 03:36:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[26-Mar-2011 03:38:56] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[26-Mar-2011 03:40:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[26-Mar-2011 03:43:24] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[26-Mar-2011 03:47:19] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[26-Mar-2011 03:49:41] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[26-Mar-2011 03:49:41] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[26-Mar-2011 04:14:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[27-Mar-2011 02:29:00] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[27-Mar-2011 02:29:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[27-Mar-2011 02:33:00] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[27-Mar-2011 02:38:14] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[27-Mar-2011 02:38:14] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[27-Mar-2011 02:39:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[27-Mar-2011 02:50:00] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[27-Mar-2011 02:54:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[27-Mar-2011 02:57:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[27-Mar-2011 02:59:53] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[27-Mar-2011 03:03:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[27-Mar-2011 23:34:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[27-Mar-2011 23:42:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[27-Mar-2011 23:46:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[27-Mar-2011 23:48:35] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[27-Mar-2011 23:49:11] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[27-Mar-2011 23:49:55] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[27-Mar-2011 23:52:05] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[27-Mar-2011 23:52:05] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[27-Mar-2011 23:52:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[27-Mar-2011 23:54:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[27-Mar-2011 23:55:50] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[30-Mar-2011 08:30:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[30-Mar-2011 08:41:02] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[30-Mar-2011 08:43:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[30-Mar-2011 08:45:51] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[30-Mar-2011 08:48:52] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[30-Mar-2011 08:49:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[30-Mar-2011 08:51:17] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[30-Mar-2011 08:51:17] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[30-Mar-2011 08:51:46] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[30-Mar-2011 08:52:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[30-Mar-2011 08:54:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[03-Apr-2011 03:17:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[03-Apr-2011 03:18:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[03-Apr-2011 03:21:24] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[03-Apr-2011 03:21:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[03-Apr-2011 03:23:20] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Apr-2011 03:23:20] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[03-Apr-2011 03:25:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[03-Apr-2011 03:29:00] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[03-Apr-2011 03:37:40] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[03-Apr-2011 03:38:58] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[03-Apr-2011 03:40:03] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[23-Jul-2011 17:02:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[23-Jul-2011 17:04:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[23-Jul-2011 17:05:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[23-Jul-2011 17:06:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[23-Jul-2011 17:07:39] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[23-Jul-2011 17:08:38] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[23-Jul-2011 17:09:40] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[23-Jul-2011 17:10:41] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[23-Jul-2011 17:11:57] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[23-Jul-2011 17:12:43] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[23-Jul-2011 17:12:43] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[24-Jul-2011 09:03:37] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[24-Jul-2011 09:05:34] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[24-Jul-2011 09:06:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[24-Jul-2011 09:07:32] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[24-Jul-2011 09:08:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[24-Jul-2011 09:09:30] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[24-Jul-2011 09:10:33] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[24-Jul-2011 09:11:28] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[24-Jul-2011 09:12:27] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[24-Jul-2011 09:13:41] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[24-Jul-2011 09:13:41] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[28-Jul-2011 19:31:23] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[28-Jul-2011 19:33:47] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[28-Jul-2011 19:35:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[28-Jul-2011 19:38:05] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[28-Jul-2011 19:42:36] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[28-Jul-2011 19:43:04] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[28-Jul-2011 19:44:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[28-Jul-2011 19:47:07] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[28-Jul-2011 19:47:07] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[28-Jul-2011 19:49:17] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[28-Jul-2011 19:51:36] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[29-Jul-2011 03:06:46] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[29-Jul-2011 03:07:45] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[29-Jul-2011 03:08:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[29-Jul-2011 03:09:43] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[29-Jul-2011 03:10:49] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[29-Jul-2011 03:11:42] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[29-Jul-2011 03:12:48] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[29-Jul-2011 03:13:39] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[29-Jul-2011 03:14:39] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[29-Jul-2011 03:14:39] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[29-Jul-2011 03:15:38] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[29-Jul-2011 14:49:17] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[29-Jul-2011 14:50:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[29-Jul-2011 14:51:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[29-Jul-2011 14:53:01] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[29-Jul-2011 14:54:13] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[29-Jul-2011 14:55:12] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[29-Jul-2011 14:56:47] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[29-Jul-2011 14:57:27] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270
+[29-Jul-2011 15:01:50] PHP Warning:  require_once(Mail/mimeDecode.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[29-Jul-2011 15:01:50] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoapmime.php on line 36
+[29-Jul-2011 15:01:59] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.xmlschema.php on line 17
+[29-Jul-2011 21:14:54] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_fault.php on line 14
+[29-Jul-2011 21:16:35] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_parser.php on line 14
+[29-Jul-2011 21:17:31] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_val.php on line 17
+[29-Jul-2011 21:18:27] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_server.php on line 17
+[29-Jul-2011 21:19:22] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soap_transport_http.php on line 14
+[29-Jul-2011 21:20:19] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.wsdl.php on line 13
+[29-Jul-2011 21:21:29] PHP Fatal error:  Class 'nusoap_base' not found in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/class.soapclient.php on line 25
+[29-Jul-2011 21:22:21] PHP Fatal error:  Cannot redeclare class soapclient in /home/getaudio/public_html/members/plugins/payment/bidpay/lib/nusoap.php on line 7270

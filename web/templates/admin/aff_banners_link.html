@@ -1,0 +1,33 @@
+{assign var=title value="Affiliate Link"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<table><tr><td>{if $errors}{foreach from=$errors item=e}
+<font color=red><li><b>{$e|escape}</b></font>
+{/foreach}{/if}</td></tr></table>
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit>
+<tr>
+  <th><b>URL to redirect after click</b></th>
+  <td><input type=text name=url size=50 value="{$b.url|escape}"></td>
+</tr>
+<tr>
+  <th><b>Link Title</b><br />
+  <small></small></th>
+  <td><input type=text name=title size=50 value="{$b.title|escape}"></td>
+</tr>
+</table>
+<br />
+<input type=submit value="Save">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button onclick="window.location='aff_banners.php';" value="Back">
+<input type="hidden" name="action" value="{$smarty.request.action|escape}"/>
+<input type="hidden" name="save" value="1"/>  
+<input type="hidden" name="banner_id" value="{$smarty.request.banner_id|escape}"/>
+
+</form>
+
+{include file="admin/footer.inc.html"}
+

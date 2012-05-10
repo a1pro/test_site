@@ -1,0 +1,208 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    postition: absolute;
+}
+
+li {
+    margin-left: 1em;
+}
+
+body, th, td {
+    font-family: Helvetica, Verdana, sans-serif;
+    font-size: 9pt;
+    text-align: left;
+}
+
+input, textarea, select {
+    font-family: "MS Sans Serif", Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+a, a:visited {
+    color: #0000d0;
+}
+a:hover {
+    color: #5050ff;
+}
+
+h3 {
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+}
+
+.hedit {
+    font-size: 14px;
+    border-collapse: collapse;
+    border: #606060 1px solid;
+}
+.hedit th {
+    padding: 3px;
+    background-color: #E9E9C9;
+    border: #909090 1px solid;
+}
+.hedit td {
+    padding: 3px;
+    background-color: #F9F9E9;
+    border: #909090 1px solid;
+}
+.hedit tr.odd td {
+    background-color: #F0F0FF;
+}
+
+.vedit {
+    background-color: #909090;
+    font-size: 14px;
+    border-collapse: collapse;
+    border: #606060 1px solid;
+}
+.vedit td {
+   text-align: left;
+   padding: 7px;
+   padding-left:  10px;
+   background-color: #F9F9E9;
+   border: #a0a0a0 1px solid;
+}
+.vedit td input, .vedit td textarea, .vedit td select {
+    font-size: 8pt;
+    border: #909090 1px solid;
+}
+.vedit th {
+   padding: 7px;
+   padding-right: 10px;
+   text-align: right;
+   background-color: #E9E9C9;
+   font-weight: normal;
+}
+.vedit tr.odd td {
+    background-color: #F0F0FF;
+}
+
+table.notebook {
+   background-color: #C0C0B0;
+   font-size: 15px;
+}
+table.notebook td {
+   padding: 5px;
+   text-align: center;
+   background-color: #E9E9C9;
+}
+table.notebook td.sel {
+  font-weight: bold;
+  background-color: #F9F9E9;
+}
+table.notebook td.notsel {
+}
+
+.small {
+    font-size: 8pt;
+    border: #909090 1px solid;
+}
+
+div.small {
+    font-size: 8pt;
+    border-width: 0px;
+}
+
+.userslist {
+    background-color: #c0c0a0;
+}
+
+.infotbl {
+    border-collapse: collapse;
+    background-color: #faface;
+}
+.infotbl td,  .infotbl th {
+    font-family: Verdana;
+    font-size: 10px;
+    border: #c0c0b0 1px solid;
+}
+.infotbl th {
+    background-color: #e0e0a0;
+}
+td#infotblnum, th#infotblnum{
+    text-align: right;
+}
+.smallheader {
+    color: red;
+    font-family: Verdana;
+    font-size: 9px;
+    font-weight: bold;
+}
+.smalltext {
+    font-family: Verdana;
+    font-size: 9px;
+}
+table.errmsg
+{
+    font-family: Helvetica, Verdana, sans-serif;
+    font-size: 10pt;
+    background-color: red;
+    border: #cc0000 1px solid;
+    margin: 5px 0px 5px 0px;
+}
+table.errmsg td
+{
+    padding: 5px 50px 5px 5px;
+    font-weight: bold;
+}
+table.errmsg td li
+{
+    list-style: square;
+}
+
+div.checkbox_list {
+    overflow: auto;
+    background-color: white;
+    border: solid 1px #909090;
+    text-align: left;
+}
+
+table.checkbox_list {
+    border-collapse: collapse;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+table.checkbox_list td, table.checkbox_list tr {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background-color: white;
+    font-family: "MS Sans Serif", Helvetica, sans-serif;
+    font-size: 8pt;
+    border-style: none;
+    text-align: left;
+}
+table.checkbox_list td.sel {
+    background-color: #316AC5;
+    color: white;
+}
+table.checkbox_list td input {
+    border-style: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+ul.admin_menu_section {
+    padding: 0px;
+    margin-top: 0px;
+    margin-left: 0.6em;
+    font-size: 9pt;
+}
+ul.admin_menu_indent { padding: 0px; margin-left: 0.4em; font-weight: normal; } 
+li.menu_item {  list-style: circle; } 
+li.sect_head {  font-weight: bold;  }
+/* Error message label on signup page */
+label.error {
+    padding-left: 3px;
+	color: red;
+	font-style: italic;
+	font-weight: normal;
+}
+input.error {
+    border: 2px solid red;
+}
+.right {
+    text-align: right;
+}

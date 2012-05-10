@@ -1,0 +1,55 @@
+{assign var=title value="Products/Subscriptions Types List"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<form action="products.php" method=post>
+<table class=hedit border=1 bordercolor=#a0a0a0>
+<tr>
+    <th>Product #</th>
+    <th>Title</th>
+    <th>Sort</th>
+    <th>Price Group</th>
+    <th>Renewal Group</th>
+</tr>
+{foreach from=$pl item=p}
+<tr class={cycle values="xx,odd"}>
+    <td> <b>{$p.product_id}</b></td>
+    <td>&nbsp;&nbsp; {$p.title} &nbsp;&nbsp;</td>
+    <td align=center> <input type=text class=small name="order-{$p.product_id}" value="{$p.order|escape}" size=5> </td>
+    <td align=center> <input type=text class=small name="price_group-{$p.product_id}" value="{$p.price_group|escape}" size=5> </td>
+    <td align=center> <input type=text class=small name="renewal_group-{$p.product_id}" value="{$p.renewal_group|escape}" size=5> </td>
+</tr>
+{/foreach}
+</table>
+<input type=submit value="Save changes">
+<input type=hidden name=action value=reorder_save>
+</form>
+<br />
+<a href="products.php?">Return to product list</a>
+<br />
+<br />
+<table width=40%><tr><td>
+<b>Sorting order</b> - this is a numeric field. Products will be sorted according to this number, then alphabetically<br />
+<br />
+<b>Price Group ID</b> -
+this is a numeric field. 
+Products with a <b>negative</b> price_group will not be displayed on the default Signup page.<br />
+You can link to an alternate Signup page like this <i>signup.php?price_group=-1</i>
+to display products ONLY from Price Group -1.<br />
+<br />
+<b>Renewal Group</b> - Value in this field defines how aMember will calculate
+subscription start date when user renews his membership.
+If user has subscription to a product WITH THE SAME renewal
+group already, aMember will use expiration date of previous
+subscription as start date for new subscription. If user hasn't
+such subscriptions, aMember will use current date as start date.
+Basically, products which grants the same level of access must
+have the same Renewal Group value. Example of this value : "BASIC".
+If this field has negative numeric value, it will always set subscription
+start date to current date, allowing member to have several subscriptions
+to the same product.
+
+</td></tr></table>
+{include file="admin/footer.inc.html"}
+

@@ -1,0 +1,24 @@
+{assign var="title" value=$smarty.const._TPL_CC_VERIFY_CODE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+<h1>#_TPL_CC_INFO_CALLING#: {$phone_number}</h1>
+<form name="verify_code" id="verify_code" method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class="vedit">
+<tr>
+    <th><b>#_TPL_CC_INFO_VERIFY_CODE#</b><br />
+    <div class="small">#_TPL_CC_INFO_VERIFY_CODE_MORE#</div></th>
+    <td><input type="text" name="cc_verify_code" size="4" maxlength="4" value="" />
+    </td>
+</tr>
+</table>
+<br /> 
+<input type="hidden" name="member_id" value="{$member_id|escape}" />
+<input type="hidden" name="payment_id" value="{$payment_id|escape}" />
+<input type="hidden" name="ccfd_verify_code" value="1" />
+<input type="hidden" name="action" value="verify_code" />
+<input type="submit" name="checkbtn" value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CC_INFO_SUBMIT_VERIFY#&nbsp;&nbsp;&nbsp;&nbsp;" />
+</form>
+
+
+{include file="footer.html"}

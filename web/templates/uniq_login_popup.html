@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{$title}</title>
+<style>
+body, td, th { font-family: "Helvetica", sans-serif; font-size: 9pt; } 
+div.centered { text-align: center; }
+div.centered table {
+    margin: 0 auto; 
+    text-align: left;
+}
+</style>
+</head>
+<body><div class="centered">
+
+<br />
+  <table><tr>
+  <td style="font-family: serif; font-size: 48pt; {if $error}color: red;{/if} font-weight: bold;">!</td>
+  <td style="{if $error}color: red;{/if} font-weight: bold;">
+  {$text}
+  </td></tr></table>
+  
+<br/><br/>
+<a href="javascript: window.close()">#_TPL_UNIQ_LOGIN_CLOSE#</a>
+
+</div></body></html>

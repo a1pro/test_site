@@ -1,0 +1,112 @@
+{**
+ *
+ * Copyright (C) 2010 Kencinnus, LLC. All rights reserved.
+ *
+ * This file may not be distributed by anyone outside of
+ * Kencinnus, LLC or authorized contractors as specified.
+ *
+ * Purchasers of this plugin can modify it for the site
+ * it is installed on.
+ *
+ * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING
+ * THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE.
+ *
+ * All Support Questions regarding this plugin should be sent to http://www.kencinnus.com/contact
+ *
+ * (See amail_aweber.inc.php for revision history.)
+ *
+ **}
+
+{if $vars.from}
+  {assign var="title" value="But wait! You're not done yet..."}
+  {include file="header.html"}
+  <div id="thanksmail">
+  <table cellpadding="5" align="center" width="60%">
+    <tr>
+      <td align="left">
+
+        <p>Hello {$vars.name}, we need you to confirm your email address ({$vars.from}) in order for you to receive your userid and password. Please check your email in a few moments.</p>
+
+        <ol>
+          <li>
+            <p>
+              You will receive a verification email asking you to verify your email. This email will come from:
+            </p><p>
+              &quot;{$config.admin_email_name} [{$config.admin_email}]&quot;
+            </p><p>
+              And it will look something like this:
+            </p>
+
+            <!-- Start Sample Email Div -->
+            <div style="border:1px solid black;width:500px;margin:0 auto 0 auto;padding:20px;font-family:'Courier New', Courier, monospace;font-size:12px;">
+              <p>
+                <u><strong>Subject</strong></u><br />
+                Response Required, confirm your request for information from {$config.site_title}.
+              </p><p>
+                <strong><u>Message</u></strong><br />
+              </p><p>
+                We received your request for information from {$config.site_title}<br />
+                Before we begin sending you the information you<br />
+                requested, we want to be certain we have your permission.<br />
+                ------------------------------------------------ <br />
+                CONFIRM BY VISITING THE LINK BELOW: <br />
+                <br />
+                https://www.aweber.com/z/c/?xxxxxxxx <br />
+                <br />
+                Click the link above to give us permission to send you<br />
+                information. It's fast and easy! If you cannot click the<br />
+                full URL above, please copy and paste it into your web<br />
+                browser. <br />
+                -------------------------------------------------- <br />
+                If you do not want to confirm, simply ignore this message.  <br />
+                <br />
+                Thank You, <br />
+                <br />
+                {$config.site_title}
+              </p>
+            </div>
+            <!-- End Sample Email Div -->
+
+            <p><strong>Click on the verification link in that email when you receive it.</strong></p>
+
+            <p><span style="background-color: #FFFF00">If you don't receive a verification email,</span></strong> either your email provider is blocking our email, or your email reader is blocking our email. Please check your junk mail settings and folders to make sure you allow email from &quot;{$config.admin_email}&quot;.</p>
+
+          </li><li>
+
+            <p>As soon as you verify your email, you will receive your userid and password for the site. What's more, you will be placed on our special &quot;insiders&quot; list where you'll receive web site updates, advance notice of special offers, and more.</p>
+
+          </li>
+        </ol>
+
+        <p>Oh, and one more thing. Why do we  send a request for verification by email? We do this to ensure that others don't use this form to send you unwanted email. It's to protect your privacy.</p>
+
+        <p>
+          Best regards always,<br />
+          &nbsp;<br />
+          {$config.admin_email_name}
+        </p>
+
+      </td>
+    </tr>
+  </table>
+  </div>
+  {include file="footer.html"}
+{else}
+  {assign var="title" value="Thanks for verifying your email address!"}
+  {include file="header.html"}
+  <div id="thanksmail">
+  <table cellpadding="5" align="center" width="60%">
+    <tr>
+      <td align="left">
+        <div><strong>Thanks for verifying your email address.</strong> </div>
+        <p>Click <strong><a href="{$config.root_url}/login.php">HERE</a></strong> to be taken
+        to the <a href="{$config.root_url}/login.php">{$config.site_title}</a>
+        login page where you can login.</p>
+      </td>
+    </tr>
+  </table>
+  </div>
+  {include file="footer.html"}
+{/if}
+

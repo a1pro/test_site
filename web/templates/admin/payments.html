@@ -1,0 +1,158 @@
+{assign var=title value="Payments"}
+{include file="admin/header.inc.html"}
+<script language="JavaScript">
+function sw1(frm, val){
+    el = frm.elements['type'];
+    for (var i=0;i<el.length;i++){
+        if (el[i].value == val) el[i].checked=true;
+    }
+}
+</script>
+<center>
+<br /><h3>{$title}</h3>
+<form action="{$smarty.server.PHP_SELF|escape}">
+<table class=hedit border=1 bordercolor=#909090>
+<tr><th colspan=4 style='text-align: left'>
+<input style='border: none;' type=radio name="type" value="date" {if $smarty.request.type ne "string"}checked{/if}> 
+<b>Search by date</b></th></tr>
+<tr>
+    <td>From:</td>
+    <td> 
+      {html_select_date time=$beg_date prefix=beg_date start_year=-2 all_extra="onclick=\"sw1(this.form, 'date')\"  onfocus=\"sw1(this.form, 'date')\""}
+    </td>
+    <td>To:</td>
+    <td>
+      {html_select_date time=$end_date prefix=end_date start_year=-2 all_extra="onclick=\"sw1(this.form, 'date')\" onfocus=\"sw1(this.form, 'date')\""}
+    </td>
+</tr>
+<tr><th colspan=4 style='text-align: left'>
+<input style='border: none;' type=radio name="type" value="string" {if $smarty.request.type eq "string"}checked{/if}> 
+<b>Search by string</td></tr>
+<tr>
+    <td>Search</td>
+    <td colspan=2> 
+        <input type=text onclick="return sw1(this.form, 'string')" onfocus="return sw1(this.form, 'string')" name=q value="{$smarty.request.q|escape}" size=20 class=small>
+    </td>
+    <td>
+        <select onclick="return sw1(this.form, 'search')" onfocus="return sw1(this.form, 'string')"  name=q_where size=1 class=small>
+        {html_options options=$q_where_options selected=$smarty.request.q_where}
+        </select>
+    </td>
+</tr>
+<tr>
+    <th colspan=4 style='text-align: center'>
+    Display completed payments only
+    <input type=checkbox name=only_completed value=1
+    {if $smarty.request.only_completed}checked{/if}
+    onchange='this.form.submit()'> 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    List payments by 
+    <script language="JavaScript">
+        function list_by_change(elem){
+            x = elem.options[ elem.selectedIndex ].value;
+            frm = elem.form;
+            if (x == "complete"){
+                frm.elements['only_completed'].checked = true;
+            } else {
+            }
+        }
+    </script>
+    <select name=list_by size=1 class=small onchange='list_by_change(this); this.form.submit()'>     
+    {html_options options=$list_by_options selected=$smarty.request.list_by}
+    </select>     
+     </td>
+</tr>
+</table>
+<br />
+<input type=submit value=Display>
+</form>
+{span}
+<br /><br />
+<table width=98% class=hedit border=1 bordercolor=#606060>
+<tr>
+    <th>#</th>
+    <th>{$list_by_title}</th>
+    <th>Member</th>
+    <th>Product</th>
+    <th>Period</th>
+    <th>Payment System</th>
+    <th>Receipt #</th>
+    <th>Amount</th>
+    <th>Paid</th>
+    <th>Status</th>
+    <th>&nbsp;</th>
+</tr>
+{counter name=count start=-1 skip=1 print=false}
+{counter name=coupons_count start=-1 skip=1 print=false}
+{assign var=amount value=0}
+{assign var=coupons_amount value=0}
+{foreach from=$list item=p}
+<tr class={cycle values="xx,odd"}>
+    <td align=right><a href="users.php?action=edit_payment&member_id={$p.member_id}&payment_id={$p.payment_id}">{$p.payment_id}</a>&nbsp;</td>
+    <td align=center><small>{$p.$list_by_field|date_format:$config.time_format}</small></td>
+    <td><a href="users.php?action=payments&member_id={$p.member_id}">{$p.member_login|escape}</a></td>
+    <td>{$p.product_title|escape}</td>
+    <td align=center>{$p.begin_date|amember_date_format} -
+        {$p.expire_date|amember_date_format}</td>
+    <td>{$p.paysys_id}&nbsp;</td>
+    <td>{$p.receipt_id}&nbsp;</td>
+    <td align=right>{$p.amount}&nbsp;</td>
+    <td>{if $p.completed}<b>YES</b>{else}NO{/if}</td>
+    <td>
+    {if $p.completed}
+    {if $p.expire_date >= date('Y-m-d') and $p.begin_date <= date('Y-m-d') }
+    <b>Active</b>
+    {elseif $p.expire_date < date('Y-m-d') }
+    <font color=red><b>Expired</b></font>
+    {elseif $p.begin_date > date('Y-m-d') }
+    Future
+    {/if}
+    {else}
+    Not-Paid
+    {/if}
+    {if $p.data.CANCELLED}<br /><font color=red>CANCELLED</font>{/if}
+    </td>
+    <td><a href="users.php?action=edit_payment&payment_id={$p.payment_id}&member_id={$p.member_id}">Edit</a> 
+    <a onclick="return confirm('Do you really want to delete this?')" href="users.php?action=del_payment&payment_id={$p.payment_id}&member_id={$p.member_id}">Del</a></td>
+    {math equation="a+y" a=$amount y=$p.amount assign=amount}
+    {if $p.coupon_id > 0}{math equation="a+y" a=$coupons_amount y=$p.amount assign=coupons_amount}{/if}
+</tr>    
+{counter name=count print=false}
+{if $p.coupon_id > 0}{counter name=coupons_count print=false}{/if}
+{foreachelse}
+<tr>
+    <td colspan=11 align=center><br /><b><font color=red>No payments found. 
+    Try to select different criteria.</font></b><br /><br /></td>
+</tr>    
+{/foreach}
+<tr>
+    <th colspan=6>{counter name=count skip=0} displayed</th>
+    <th style='text-align: right'>TOTAL</th>
+    <th align=right>{$amount|string_format:"%.2f"}&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+</tr>    
+<tr>
+    <th colspan=6>{counter name=coupons_count skip=0} displayed</th>
+    <th style='text-align: right'>COUPONS TOTAL</th>
+    <th align=right>{$coupons_amount|string_format:"%.2f"}&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+</tr>    
+{if $all_count > 20 }
+<tr>
+    <th colspan=6>{$all_count} records found</th>
+    <th style='text-align: right'> GRAND TOTAL</th>
+    <th align=right>{$all_amount|string_format:"%.2f"}&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+</tr>    
+{/if}
+</table>
+<br />
+{span}
+
+{include file="admin/footer.inc.html"}

@@ -1,0 +1,40 @@
+{assign var="title" value="Processing transaction"}
+{include file="header.html"}
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<form name="mainform" action="https://secure.metacharge.com/mcpe/purser" method="POST">
+<noscript>
+<br>
+<br>
+<center>
+<h1>Processing your Transaction</h1>
+<h2>
+JavaScript is currently disabled or is not supported
+by your browser.<br></h2>
+<h3>Please click Submit to continue
+the processing of your transaction.</h3>
+<input type="submit" value="Submit">
+</center>
+</noscript>
+<!--input type="hidden" name="intTestMode" value="1"-->
+<input type="hidden" name="intInstID" value="{$vars.MERCHKEY}">
+<input type="hidden" name="strCartID" value="{$vars.INVOICE}">
+<input type="hidden" name="fltAmount" value="{$vars.AMT}">
+<input type="hidden" name="strCurrency" value="{$vars.CURR}">
+<input type="hidden" name="strDesc" value="{$vars.DESC}">
+{$vars.RECURRING_FIELDS}
+<input type="hidden" name="intRecurs" value="{$vars.RECURRING}">
+</form>
+<SCRIPT LANGUAGE="Javascript" >
+<!--
+function OnLoadEvent()
+{
+document.mainform.submit();
+}
+//-->
+</SCRIPT>
+<script type="text/javascript">
+$(document).ready(function(){
+		OnLoadEvent();
+});
+</script>
+{include file="footer.html"}

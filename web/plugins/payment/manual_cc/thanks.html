@@ -1,0 +1,53 @@
+{assign var="title" value="Thank you for Signing up"}
+{include file="header.html"}
+
+<strong>Please wait your account activation</strong>
+<br />
+
+<!-- display payment receipt -->
+{if $payment.amount > "0.0"}
+
+Your payment will be verified manualy. It can take some time.<br />
+
+<br /><br />
+
+<table class="receipt">
+<tr>
+    <th>#_TPL_THX_PRDTITLE#</th>
+    <th style="width: 10%; text-align: right;">#_TPL_THX_PRICE#</th>
+</tr>
+{foreach from=$products item=p}
+<tr>
+    <td>{$p.title}</td>
+    <td style="text-align: right">{$config.currency|default:"$"}{$p.price}</td>
+</tr>
+{/foreach}
+<tr>
+    <td class="total"><strong>#_TPL_THX_SUBTOTAL#</strong></td>
+    <td class="total" style="text-align: right"><strong>{$config.currency|default:"$"}{$subtotal|string_format:"%.2f"}</strong></td>
+</tr>
+{if $payment.data.COUPON_DISCOUNT ne "" }
+<tr>
+    <td><strong>#_TPL_THX_DISCOUNT#</strong></td>
+    <td style="text-align: right"><strong>{$config.currency|default:"$"}{$payment.data.COUPON_DISCOUNT|string_format:"%.2f"}</strong></td>
+</tr>
+{/if}
+{if $payment.tax_amount ne ""}
+<tr>
+    <td><strong>#_TPL_THX_TAX#</strong></td>
+    <td style="text-align: right"><strong>{$config.currency|default:"$"}{$payment.tax_amount|string_format:"%.2f"}</strong></td>
+</tr>
+{/if}
+<tr>
+    <td class="total"><strong>#_TPL_THX_TOTAL#</strong></td>
+    <td class="total" style="text-align: right"><strong>{$config.currency|default:"$"}{$total|string_format:"%.2f"}</strong></td>
+</tr>
+</table>
+<br /><br />
+
+
+{/if}{* END Of receipt display *}
+
+<p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p>
+
+{include file="footer.html"}

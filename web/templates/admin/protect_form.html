@@ -1,0 +1,112 @@
+{assign var=title value="Protect Folder"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+
+<script>
+function browseForFolder(val){
+    wnd = window.open('protect.php?action=browse_dir&init_dir=1&dir='+val,
+            '', 'dependent=1,scrollbars=1,directories=0,height=550,width=400,location=0');
+    wnd.focus();
+}
+function browse_dir_clicked(dir){
+    var frm = document.forms[0];
+    var elem = frm.elements['path'];
+    elem.value = dir;
+}
+</script>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit width=80%>
+{if $path eq ""}
+<tr>
+    <th><b>Choose a folder for protection<b><br />
+    <small>click Browse button to get help with selection</small>
+    </th>
+    <td width=70%> <input type=text name=path value="{$path|escape}" size=40>
+    <input type=button name=browse value="Browse..." onclick='browseForFolder(this.form.elements["path"].value)'>
+    </td>
+</tr>
+{else}
+<tr>
+    <th><b>Folder for protection<b><br />
+    </th>
+    <td width=70%> <input type=hidden name=path value="{$path|escape}">
+    <b>{$path|escape}</b>
+    </td>
+</tr>
+<input type=hidden name=save value=1>
+<tr>
+    <th><b>Protected URL<b><br />
+    <small>If it has been correctly determined, keep it unchanged.
+    You cannot just change this field value - if you need to protect
+    another folder, return back and choose another folder. In any case
+    Path and URL must point to the same folder!<br />
+    </small>
+    </th>
+    <td> <input type=text name=url value="{$url|default:$url|escape}" size=40>
+    </td>
+</tr>
+<tr>
+    <th><b>Choose a protection method</b><br />
+    <small>it is better if you use one method for all your protected areas</small>
+    </th>
+    <td>
+    {foreach from=$protection_methods item=m}
+    {if $m.disabled && $m.disabled[0] ne "#" }<font color=gray>{/if}
+    <input style='border: none;' type=radio name=method value="{$m.name|escape}"
+    {if $method eq $m.name}checked{/if}
+    {if $m.disabled && $m.disabled[0] ne "#" }disabled{/if}
+    style='border-width: 0'
+    >
+    <b>{$m.title}</b>
+    {if $m.disabled}<font color=red><b>({$m.disabled})</b></font>{/if}
+    <br />{$m.description}<br />
+    {if $m.disabled}</font>{/if}
+    {/foreach}
+    </td>
+</tr>
+<tr>
+    <th><b>Require subscription<b><br />
+    <small>user must have active subscription to one<br />
+           from the following products to access <br />
+           the protected area</small>
+    </th>
+    <td> 
+    
+    <select name='product_id[]' multiple size=5 
+    style='border-width: 0'
+    {if $product_id_all}disabled{/if}>
+    {html_options options=$products selected=$product_id}
+    </select><br />
+
+    <input type=checkbox name=product_id_all value=1 
+    style='border-width: 0'
+    onclick="this.form.elements['product_id[]'].disabled=this.checked"
+    {if $product_id_all}checked{/if}> Just any active subscription is enough
+
+    </td>
+</tr>
+{/if}
+</table>
+<br />
+<input type=submit value="Continue" style='width: 90pt'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="Back" style='width: 90pt' onclick="window.location='protect.php'">
+<input type=hidden name=action value="{$smarty.request.action|escape}">
+<input type=hidden name=folder_id value="{$smarty.request.folder_id|escape}">
+<form action="{$smarty.server.PHP_SELF|escape}">
+<br /><br />
+<br />
+
+{include file="admin/footer.inc.html"}
+

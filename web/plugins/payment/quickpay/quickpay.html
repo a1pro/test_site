@@ -1,0 +1,49 @@
+{assign var="title" value="Processing transaction"}
+{include file="header.html"}
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<form action="https://secure.quickpay.dk/form/" method="post" name="quickpay" id="quickpay">
+<noscript>
+<br>
+<br>
+<center>
+<h1>Processing your Transaction</h1>
+<h2>
+JavaScript is currently disabled or is not supported
+by your browser.<br></h2>
+<h3>Please click Submit to continue
+the processing of your transaction.</h3>
+<input type="submit" value="Submit">
+</center>
+</noscript>
+
+    <input type="hidden" name="protocol" value="3" />
+    <input type="hidden" name="msgtype" value="{$vars.message}" />
+    <input type="hidden" name="merchant" value="{$vars.merchant}" />
+    <input type="hidden" name="language" value="en" />
+    <input type="hidden" name="ordernumber" value="000{$vars.ordernumber}" />
+    <input type="hidden" name="amount" value="{$vars.amount}" />
+    <input type="hidden" name="currency" value="{$vars.currency}" />
+{if $vars.message eq 'authorize'}
+	<input type="hidden" name="description" value="{$vars.description}" />
+{/if}
+    <input type="hidden" name="continueurl" value="{$config.root_url}/thanks.php" />
+    <input type="hidden" name="callbackurl" value="{$config.root_url}/plugins/payment/quickpay/ipn.php" />
+    <input type="hidden" name="cancelurl" value="{$config.root_url}/plugins/payment/quickpay/cancel.php" />
+    <input type="hidden" name="autocapture" value="1" />
+    <input type="hidden" name="testmode" value="{$vars.testmode}" />
+    <input type="hidden" name="md5check" value="{$vars.md5check}" />
+</form>
+<SCRIPT LANGUAGE="Javascript" >
+<!--
+function OnLoadEvent()
+{
+document.quickpay.submit();
+}
+//-->
+</SCRIPT>
+<script type="text/javascript">
+$(document).ready(function(){
+		OnLoadEvent();
+});
+</script>
+{include file="footer.html"}

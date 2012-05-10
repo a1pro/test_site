@@ -1,0 +1,47 @@
+<br><h3>{$title}</h3>
+
+<center>
+<form>
+<table class=vedit align=center>
+
+<tr>
+  <th>
+  Report Type
+  </th><td>
+  <b>{$report_title}</b> <a href="report.php?"><small>another report type</small></a>
+  </td>
+</tr>
+
+<tr>
+  <th>
+  Start date
+  </th><td>
+  {html_select_date time=$beg_date prefix=beg_date start_year="-5"}
+  </td>
+</tr>
+
+<tr>
+  <th>
+  End date
+  </th><td>
+  {html_select_date time=$end_date prefix=end_date start_year="-5"}
+  </td>
+</tr>
+
+<tr>
+  <th>
+  Discretion
+  </th><td> <select name=discretion size=1>
+    {html_options options=$discretion_options selected=$discretion}
+  </select></td>
+</tr>
+
+</table>
+<br>
+<input class=small type=submit value="Proceed >">
+<input type=hidden name=build value=1>
+<input type=hidden name=report value={$smarty.request.report}>
+</form>
+
+
+</center>

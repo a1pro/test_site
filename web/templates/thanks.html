@@ -1,0 +1,40 @@
+{assign var="title" value=$smarty.const._TPL_THX_TITLE}
+{include file="header.html"}
+<div id="center">
+<div id="d_over_iframe"></div>
+<!--MAIN CONTEINER-->
+<br/>
+<br/>
+<div id="main_t" style="width:560px;border:0px solid #ccc;text-align:center;">
+
+{include file="../plugins/protect/amail_aweber/thanks.html"}
+
+<strong>#_TPL_THX_ENJOY|<a href="{$config.root_url}/login.php">|</a>#</strong>
+<br />
+
+<!-- display payment receipt -->
+{if $payment.amount > "0.0"}
+
+#_TPL_THX_PAYPROC# <br />
+#_TPL_THX_ORDERREF|{$payment.payment_id}|{$payment.receipt_id}#<br />
+#_TPL_THX_DATETIME|{$payment.tm_completed|date_format:$config.time_format}#<br />
+
+<br /><br />
+
+{include file="receipt.inc.html"}
+<br /><br />
+
+
+{/if}{* END Of receipt display *}
+
+</div>
+</div>
+</div>
+
+<!-- <p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p> -->
+
+{if $config.google_analytics}
+{include file="google_analytics.js" sale="1"}
+{/if}
+
+{include file="footer.html"}

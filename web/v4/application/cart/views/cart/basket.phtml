@@ -1,0 +1,61 @@
+<?php
+$title = $di->config->get('site_title') . ' : ' . ___("Your Basket");
+$this->setLayout('cart/layout.phtml');
+?>
+<div id="basket-content">
+    <form id="basket" action="<?php $this->pUrl('index', 'view-basket') ?>" method="post">
+        <div class="grid-container">
+            <table class="grid basket">
+                <tr>
+                    <th>#</th>
+                    <th><?php __e('Item') ?></th>
+                    <th><?php __e('Price') ?></th>
+                    <th><?php __e('Qty') ?></th>
+                    <th><?php __e('Discount') ?></th>
+                    <th><?php __e('Tax') ?></th>
+                    <th><?php __e('Subtotal') ?></th>
+                    <th><i><?php __e('Delete') ?></i></th>
+                </tr>
+                <?php foreach ($cart->getItems() as $item): ?>
+                    <tr>
+                        <td><?php echo @++$ii ?></td>
+                        <td><?php p($item->item_title) ?></td>
+                        <td style="text-align: right;"><?php p($cart->getCurrency($item->first_price)) ?></td>
+                        <td style="text-align: center;">
+                            <?php
+                            echo $item->is_countable ? $this->formText("qty[$item->item_id]", $item->qty, array('size' => 3, 'style' => 'text-align:right')) : p($item->qty)
+                            ?></td>
+                        <td style="text-align: right;"><?php p($cart->getCurrency($item->first_discount)) ?></td>
+                        <td style="text-align: right;"><?php p($cart->getCurrency($item->first_tax)) ?></td>
+                        <td style="text-align: right;"><?php p($cart->getCurrency($item->first_total)) ?></td>
+                        <td style="text-align: center;"><input type="checkbox" name="d[<?php echo $item->item_id ?>]" value="1"></td>
+                    </tr>
+                <?php endforeach ?>
+                <tr class="total">
+                    <td colspan="4"><?php __e("Total") ?></td>
+                    <td style="text-align: right;"><?php p($cart->getCurrency($cart->getInvoice()->first_discount)) ?></td>
+                    <td style="text-align: right;"><?php p($cart->getCurrency($cart->getInvoice()->first_tax)) ?></td>
+                    <td style="text-align: right;"><?php p($cart->getCurrency($cart->getInvoice()->first_total)) ?></td>
+                    <td style="text-align: center;">&nbsp;</td>
+                </tr>
+                <?php if (!empty($cart->getInvoice()->rebill_times)): ?>
+                    <tr class="terms">
+                        <td colspan="4"><?php __e("Terms") ?></td>
+                        <td colspan="4"><?php echo $cart->getInvoice()->getTerms() ?></td>
+                    </tr>
+                <?php endif ?>
+            </table>
+        </div>        
+        <br />
+        <div id="coupon-enter">
+            <?php __e("Enter Coupon Code:") ?> <input type="text" name="coupon" value="<?php p($cart->getCouponCode()) ?>" size="16"/>
+            <?php if (!empty($coupon_error)): ?>  <div class="error"><?php p($coupon_error) ?></div> <?php endif ?>
+        </div>
+        <br />
+        <input type="submit" name="calculate" value="<?php __e("Update") ?>" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="do-checkout" value="<?php __e("Checkout") ?>" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="do-return" value="<?php __e("Return") ?>" />
+    </form>
+</div>

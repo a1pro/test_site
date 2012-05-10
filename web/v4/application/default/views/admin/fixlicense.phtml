@@ -1,0 +1,74 @@
+<script type="text/javascript">
+function fetchLicense(frm, ex_license){
+    $('#new_license').empty().append("Fetching new license from aMember.COM website, please wait...");
+    $('#new_license_js').remove();
+    var script=$('<script />');
+    script.attr({
+        id : 'new_license_js',
+        src : 'http://www.amember.com/amember/get_lifetime_license.php?ts=<?php echo time(); ?>&license='+encodeURIComponent(ex_license)
+    });
+    $('head').append(script); 
+    return false;
+}
+function handleNewLicense(json){
+    if (json.license){
+        $('#Am_Form_Admin_FixLicense textarea[name=license]').val(json.license);
+        $('#new_license').empty().append("<b>New license inserted, just press [Update License Information] to save it.</b>");
+    } else {
+        err = json.error || "Unknown error";
+        $('#new_license').empty().append("<b><font color=red>Cannot fetch new license: "+err+
+        ".<br />Please visit <a href='https://www.amember.com/amember/member.php' target=_blank>aMember Pro Members Area</a> to get new license and copy/paste it manually.</font></b>");
+    }
+}
+</script>
+
+<div  class="info">
+    <?php if (!$msg) : ?>    
+        <p><strong>No problems detected in your license key and URLs configuration.</strong></p>
+    <?php else : ?>
+        <p><strong>There is a license problem with aMember Pro as described in the following error message:</strong></p> 
+        <ul class="list">
+            <li><font color=red><strong><?php echo $msg ?></strong></font></li>
+        </ul>
+
+        <?php if (preg_match('/After upgrading from aMember Trial to aMember Pro/', $msg)) : ?>
+            <p><strong>Please go to <a target="_blank" href="https://www.amember.com/amember/member.php">aMember Pro Customers Area</a>,
+                    copy your license key to clipboard, then paste it to "License Key" field below,
+                    and press "Update License Information" button.</strong></p>
+        <?php endif; ?>
+
+        <p>Below your current Root and Secure Root URL, and license
+            key are listed.</p>
+
+        <p>According to aMember Pro <a href="http://www.amember.com/p/Main/License" target="_blank">license agreement</a>, 
+            you have to order a separate aMember Pro license for each aMember installation.
+            There are exceptions :</p>
+        <ul class="list">
+            <li>We can move your aMember installation to new domain within 3 months from the order date, providing you are stopped business on licensed domain.</li>
+            <li>We will add "hosting-provided SSL" domain name to your license for free, just let us know main domain name, and Secure URL of your aMember installation.</li>
+        </ul>
+
+        <p>Please login to <a target="_blank" href="https://www.amember.com/amember/member.php">aMember Pro Members Area</a> to review
+            your existing domains and order new licenses if necessary. 
+        </p>
+        <p>Go to <a target=_blank href="https://www.amember.com/support/">aMember Pro Helpdesk</a>
+            to request license changes and if you have any questions about licensing.</p> 
+    <?php endif; ?>
+</div>
+<?php include $this->_script('admin/form.phtml'); ?>
+<?php if ($msg == "License expired") : ?>
+<script type="text/javascript">
+(function($){
+    $(function(){
+        
+        var $a = $('<a href="#" />').append('Click here to fetch your lifetime license automatically');
+        $a.bind('click', function() {
+            return fetchLicense($('#Am_Form_Admin_FixLicense').get(0), $('textarea[name=license]').val());
+        })
+        
+        $('textarea[name=license]').after($a);
+        $a.wrap('<div id="new_license" />');
+    })
+})(jQuery);
+</script>
+<?php endif; ?>

@@ -1,0 +1,24 @@
+<html>
+<head>
+<script type="text/javascript" src="http://www.epay.dk/js/standardwindow.js"></script>
+<title>
+</title>
+</head>
+<body onload="open_ePay_window()" >
+<form action="https://ssl.ditonlinebetalingssystem.dk/popup/default.asp" method="post" name="ePay" target="ePay_window" id="ePay">
+<input type="hidden" name="paymenttype" VALUE="0" />
+<input type="hidden" name="merchantnumber" VALUE="{$vars.merchantnumber}"/>
+<input type="hidden" name="orderid" VALUE="{$vars.orderid}"/>
+<input type="hidden" name="currency" VALUE="{$vars.currency}"/>
+<input type="hidden" name="amount" VALUE="{$vars.amount}"/>
+<!--input type="hidden" name="accepturl" VALUE="{$config.root_url}/plugins/payment/epayeu/thanks.php"/-->
+<input type="hidden" name="accepturl" VALUE="{$config.root_url}/thanks.php"/>
+<input type="hidden" name="declineurl" VALUE="{$config.root_url}/plugins/payment/epayeu/cancel.php"/>
+<input type="hidden" name="callbackurl" VALUE="{$config.root_url}/plugins/payment/epayeu/ipn.php"/>
+<input type="hidden" name="md5key" VALUE="{$vars.md5key}"/>
+<input type="hidden" name="subscription" VALUE="{$vars.subscription}"/>
+<input type="hidden" name="instantcallback" VALUE="1"/>
+<input type="hidden" name="windowstate" VALUE="{$vars.windowstate}"/>
+</form>
+</body>
+</html>

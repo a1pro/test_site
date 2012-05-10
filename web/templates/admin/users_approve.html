@@ -1,0 +1,64 @@
+{assign var=title value="Not-Approved Users"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title} ({$users_total})</h3>
+
+{span}
+<br /><br />
+
+<form method=post action="users.php">
+<table width=80% class=hedit border=1 bordercolor=#909090>
+<tr>
+    <th>Login</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Payments</th>
+    <th>Status</th>
+    <th width=5%><font color=606060>Actions</font></th>
+</tr>
+{foreach from=$ul item=u}
+<tr class={cycle values="xx,odd"}>
+    <td> <a href="users.php?action=edit&member_id={$u.member_id}"><b>{$u.login|escape}</b></a> </td>
+    <td> {$u.name_f|escape} {$u.name_l|escape} </td>
+    <td> <a href="mailto: {$u.email}">{$u.email|escape}</a> </td>
+    <td> <a href="users.php?action=payments&member_id={$u.member_id}" title="Edit or Add Subscriptions">{if $u.count_of_completed}{$u.count_of_completed} - {$config.currency|default:"$"}{$u.summa_of_completed}{else}Never{/if}</a> </td>
+    <td> {if $u.data.is_active}
+    <b>Active</b>
+    {elseif $u.count_of_completed > 0}
+    <font color=red><b>Expired</b></font>
+    {else}
+    Pending
+    {/if}
+    </td>
+    <td>
+    <nobr><label><input type=radio name="act[{$u.member_id}]" value="approve">Approve</label></nobr>
+    <nobr><label><input type=radio name="act[{$u.member_id}]" value="remove">Remove</label></nobr>
+    <nobr><label><input type=radio name="act[{$u.member_id}]" value="">Keep&nbsp;untouched</label></nobr>
+    </select>
+     </td>
+</tr>
+{/foreach}
+</table>
+
+<br />
+<input type=submit value="Apply selected actions">
+<input type=hidden name=action value=approve>
+</form>
+<br />
+{span}
+
+{if $status_options}
+<form action="users.php">
+{php}
+foreach ($_GET as $k=>$v){
+    print "<input type=hidden name=\"$k\" value=\"$v\">\n";
+}
+{/php}
+Filter: <select name=status size=1 onchange='this.form.submit()'>
+{html_options options=$status_options selected=$smarty.request.status}
+</select>
+</form>
+{/if}
+
+{include file="admin/footer.inc.html"}
+

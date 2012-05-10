@@ -1,0 +1,25 @@
+{assign var=title value="Restore"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<table width=50% align=center><tr><td align=center>
+To restore the aMember database please pick a previously saved aMember Pro 
+backup. 
+<br />
+<br />
+<b><font color=red>WARNING! ALL YOUR CURRENT AMEMBER TABLES
+AND RECORDS WILL BE REPLACED WITH THE CONTENTS OF THE BACKUP!</font></b>
+<br /><br />
+
+<form action="{$smarty.server.PHP_SELF|escape}" method=post 
+    enctype="multipart/form-data" 
+    onsubmit="return confirm('It will replace all your exising database with backup. Do you really want to proceed?')">
+    <input type=file name=file>
+    <input type=submit value=Restore >
+</form>
+</td></tr></table>
+
+
+{include file="admin/footer.inc.html"}
+

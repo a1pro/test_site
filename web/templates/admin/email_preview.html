@@ -1,0 +1,55 @@
+{assign var=title value="Email To Users: Preview"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="email"}
+<center>
+
+<br /><h3>{$title}</h3>
+
+<i>Format - {if $preview.is_html}HTML{else}Plain-text{/if}</i><br />
+<i>This email will be sent to {$total_members} members</i><br />
+<table bgcolor=#F0F0F0>
+<tr>
+<td><b>From:</b> {$config.admin_email_from|default:$config.admin_email}<br />
+<b>Subject:</b> {$preview.subj}<br />
+<b>To:</b> {$preview.to}<br />
+{if $uploaded_files}
+<small><b>Attachments:</b></small><br />
+{foreach from=$uploaded_files item=f}
+<font color=red><small>{$f}</small></font><br />    
+{/foreach}
+{/if}
+<hr>
+<br />
+</td>
+</tr><tr>
+<td>
+{if $preview.is_html}
+    {$preview.text}
+{else}
+    <pre style='font-size: 9pt;'>{$preview.text}</pre>
+{/if}
+</td>
+</tr>
+</table>
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<input type=hidden name=email_type value="{$vars.email_type}">
+<input type=hidden name=subj value="{$vars.subj|escape}">
+<input type=hidden name=text value="{$vars.text|escape}">
+<input type=hidden name=is_html value="{$vars.is_html|escape}">
+<input type=hidden name=vars value="{$svars|escape}">
+<input type=hidden name=action value=send>
+<br />
+<input type=checkbox name=to_archive value=1 {if $to_archive eq 1}checked{/if}>Archive message
+<input type=checkbox name=to_send value=1 {if $to_send eq 1}checked{/if}>Send message
+<br /><br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Send&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" name=back>
+</form>
+
+{include file="admin/footer.inc.html"}
+

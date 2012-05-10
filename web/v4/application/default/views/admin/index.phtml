@@ -1,0 +1,181 @@
+<?php
+$this->layoutNoTitle = true;
+$this->setLayout('admin/layout.phtml');
+$this->enableReports();
+/* @var $controller AdminController */    
+
+?>
+
+<?php if (!$di->config->get('dont_check_updates') && Am_Di::getInstance()->authAdmin->getUser()->isSuper()):?>
+<script type="text/javascript">
+if (!document.cookie.match(/[^;]am_upgrade_checked=1[;$]/))
+{
+    $.getJSON(window.rootUrl + '/admin-upgrade/check', function(updates){
+        var $ul = $('<ul class="upgrades"></ul>');
+        var up_cnt = 0;
+        $.each(updates, function(k,record){
+            var link = $('<a href="javascript:" data-href="'+record.dismiss_url+'" class="dismiss">dismiss (x)</a>');
+            var changelog = $('<a href="javascript:;" class="changelog">changelog</a>');
+            changelog.data('text', record.text);
+            var update = $('<a href="' + window.rootUrl + '/admin-upgrade">update</a>');
+            var li = $("<li class='upgrade'>"
+                + record.notice
+                +"</li>");
+            li.append(" ").append(changelog);
+            li.append(" ").append(update);
+            li.append(" ").append(link);
+            changelog.click(function(){
+                var $div = $('<div style="display:none;" id="chagelog-popup"></div>');
+                $('body').append($div);
+                var $pre = $('<pre></pre>')
+                $div.append($pre.html($(this).data('text')));
+
+                $div.dialog({
+                    autoOpen: true,
+                    modal : true,
+                    title : "Changelog",
+                    width : 800,
+                    position : ['center', 100],
+                    close : function() {
+                        $div.remove();
+                    }
+                });
+            })
+            link.click(function(){
+                $.get(link.data('href'));
+                li.remove();
+                up_cnt--
+                $(".upgrade-caption-count").empty().append(up_cnt);
+                if (up_cnt <= 0) {
+                    $('.upgrades-conteiner').remove();
+                }
+            });
+            $ul.append(li);
+            up_cnt++;
+        });
+        if (up_cnt) {
+            var $div = $('<div class="upgrades-conteiner"></div>');
+            $div.append(
+              '<div class="upgarde-controll">[<a href="#" id="upgarde-controll-link">+</a>]</div>' +
+              '<div class="upgrade-caption"><span class="upgrade-caption-count">' + up_cnt + '</span> upgrades available' + '</div>'
+            ).append($ul)
+            $('.content').prepend($div);
+            
+            $('#upgarde-controll-link').click(function(){
+                var $a = $(this);
+                if ($a.hasClass('opened')) {
+                    $a.removeClass('opened').empty().append('+');
+                    $('.upgrades').hide();
+                    $('.upgrade-caption').show();
+                } else {
+                    $a.addClass('opened').empty().html('&minus;');
+                    $('.upgrade-caption').hide();
+                    $('.upgrades').show();
+                }
+                return false;
+            })
+        }
+    });
+}
+</script>
+<?php endif ?>
+
+<div class="dashboard">
+    <div class="aside">
+        <div>
+        <?php if ($controller->hasPermissions(Am_Auth_Admin::PERM_REPORT)): ?>
+<table class="admin-dashboard"><tr>
+        
+<td class="first">
+<?php list($count, $amount) = $controller->getSalesStats('-1 day', 'now'); ?>
+<dl>
+     <dt><?php  __e("Total Sales")?></dt>
+     <dd><?php echo $count; ?></dd>
+</dl>
+<dl>     
+     <dt><?php  __e("Sales Amount")?></dt>
+     <dd><?php echo Am_Currency::render($amount); ?></dd>
+</dl>
+<?php if (Am_Di::getInstance()->modules->isEnabled('aff')): ?>
+<dl>     
+     <dt><?php  __e("Affiliate Commission")?></dt>
+     <dd><?php echo moneyRound(Am_Di::getInstance()->affCommissionTable->getStats('-1 day', 'now'));?></dd>
+</dl>
+<?php endif ?>
+</td><td>
+<dl>     
+     <dt><?php  __e("Signups")?></dt>
+     <dd><?php echo $controller->getSignupsCount('-1 day', 'now')?></dd>
+</dl>
+<dl>     
+     <dt><?php  __e("Cancellations")?></dt>
+     <dd><?php echo $controller->getCancelsStats('-1 day', 'now')?></dd>
+</dl>
+<dl>     
+     <dt><?php  __e("Rebills Next Month")?></dt>
+     <dd><?php 
+        $rebills = $controller->getPlannedRebills('now', '+1 month');
+        $rebills[1] = Am_Currency::render($rebills[1]);
+        echo join(' / ', $rebills);
+     ?></dd>
+</dl>
+</td>
+</tr></table>
+<?php endif ?>
+        <?php if ($controller->hasPermissions(Am_Auth_Admin::PERM_REPORT)): ?>
+
+<div class="admin-index-report report-income">
+    <?php echo $controller->getIncomeReport()->setSize(498, 250)->render() ?>
+</div>
+
+<?php endif // reports ?>
+        </div>
+    </div>
+    <div class="main">
+        <div>
+        <?php if ($warnings = $controller->getWarnings()): ?>
+<div class="admin-warnings">
+<?php echo $this->htmlList($warnings, false, false, false); ?>
+</div>
+<?php endif ?>
+        
+        <?php if ($controller->hasPermissions('grid_user', 'browse')): ?>
+<?php $lastUsersList = Am_Di::getInstance()->userTable->selectLast(5); ?>
+<?php if (count($lastUsersList)) : ?>
+    <div class="admin-lastusers">
+    <h1><?php __e("Last %s Customers", 5);?></h1>
+    <div class="grid-container">
+    <table class="grid">
+        <tr>
+            <th class="helper-corner-left"><?php __e('User')?></th>
+            <th><?php __e('Added')?></th>
+            <th class="helper-corner-right"><?php __e('Paid')?></th>
+        </tr>
+    <?php foreach ($lastUsersList as $u): ?>
+        <tr<?php if (@$rownum++ % 2) { echo ' class="odd" '; } ?>>
+            <td><?php echo $this->escape($u->getName())?> 
+                (<a target="_top" href="<?php echo $this->userUrl($u->user_id) ?>"><?php echo $this->escape($u->login)?></a>)<br />
+                <strong><?php echo $this->escape($u->email)?></strong></td>
+            <td><?php echo amDatetime($u->added)?></td>
+            <td><?php echo $u->paid ? (Am_Currency::render($u->paid)) : ''; ?></td>
+        </tr>
+    <?php endforeach ?>
+    </table>
+    </div>
+    </div>
+    <br />
+<?php endif; ?>   
+<?php endif; ?> 
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+    
+
+
+<?php if ($controller->showQuickstart()) include $this->_script('admin/_quickstart.phtml'); ?>

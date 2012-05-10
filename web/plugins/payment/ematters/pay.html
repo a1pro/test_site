@@ -1,0 +1,45 @@
+{assign var=title value=$smarty.const._PLUG_PAY_EMATTERS_HTML_TITLE}
+{include file="header.html"}
+<h3 align=center>{$title}</h3>
+<hr>
+<center>
+
+<form method=post action="https://merchant.ematters.com.au/cmaonline.nsf/ePayForm?OpenForm&Seq=1">
+{foreach from=$vars key=k item=v}
+<input type=hidden name={$k} value="{$v|escape}">
+{/foreach}
+
+<table class=vedit>
+<tr>
+    <th>#_PLUG_PAY_EMATTERS_HTML_CCTYPE#</th>
+    <td><select name=CreditCardType>
+        <option value="&lt;select card&gt;">&lt;#_PLUG_PAY_EMATTERS_HTML_SELECTC#&gt;</option>
+        <option value="Visa">Visa</option>
+        <option value="Mastercard">Mastercard</option>
+        <option value="Bankcard">Bankcard</option>
+
+        <option value="Diners">Diners</option>
+        <option value="AMEX">AMEX</option>
+        <option value="JCB">JCB</option>    
+    </select></td>
+</tr>
+<tr>
+    <th>#_PLUG_PAY_EMATTERS_HTML_CCNUM#</th>
+    <td><input name=CreditCardNumber></td>
+</tr>
+<tr>
+    <th>#_PLUG_PAY_EMATTERS_HTML_CCEXP#</th>
+    <td>{html_select_date display_days=false prefix=CreditCardExpiry}</td>
+</tr>
+<tr>
+    <th>#_PLUG_PAY_EMATTERS_HTML_CCHNAME#</th>
+    <td><input name=CreditCardHolderName value="{$member.name_f|escape} {$member.name_l|escape}"></td>
+</tr>
+
+</table>
+
+<input type=submit value=#_PLUG_PAY_EMATTERS_HTML_GOTOSITE#>
+</form>
+<small>#_PLUG_PAY_EMATTERS_HTML_FORMSUBM#</small>
+</center>
+{include file="footer.html"}

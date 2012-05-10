@@ -1,0 +1,14 @@
+<form method="post" action="<?php
+            echo Am_Di::getInstance()->helpdeskStrategy->assembleUrl(array(
+                'page_id' => 'view',
+                'action' => 'reply',
+                'ticket_id' => $ticket_id,
+                'type' => $type
+            ), 'inside-pages')
+            ?>">
+    <textarea style="width:98%" rows="15" name="content"><?php p($content) ?></textarea>
+    <br /><br />
+    <input type="submit" name="submit" value="<?php __e('Save') ?>">
+    <input type="button" name="discard" value="<?php __e('Discard') ?>">
+    <?php echo $hiddens ?>
+</form>

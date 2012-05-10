@@ -1,0 +1,103 @@
+{assign var="title" value="Affiliate stats"}
+{include file="admin/header.inc.html"}
+<center>
+<br />
+<h3>{$title|escape} / <a href="aff_clicks.php?action=aff_clicks">Affiliate Clicks</a></h3>
+
+<a name="e">&nbsp;</a>
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form method="get" action="{$smarty.server.PHP_SELF|escape}">
+<table class=hedit>
+<tr>
+    <th>
+      &nbsp; &nbsp;
+        Period
+      &nbsp; &nbsp;
+</th>
+    <td> 
+      <select name=year_month>
+      {html_options options=$year_month_options selected=$smarty.request.year_month|default:$default_month}
+      </select>
+      &nbsp; &nbsp;
+    </td>
+</tr>
+</table>
+<br />
+<input type=hidden name=action value=aff_sales>
+<input type=submit value=Display>
+</form>
+
+
+{if $days}
+<h3 align=center>Stats for period</h3>
+
+<table align=center class=hedit>
+<tr>
+    <th>&nbsp;</th>
+    <th colspan=2>CLICKS</th>
+    <th colspan=4>COMMISSIONS</th>
+</tr>
+<tr>
+    <th>Date</th>
+    <th>Raw</th>
+    <th>Unique</th>
+    <th>Transactions</th>
+    <th>Credit</th>
+    <th>Debit</th>
+    <th>Total</th>
+</tr>
+{foreach from=$days item=d key=dd}
+<tr>
+    <td align=center>{$d.dat|amember_date_format}</td>
+    <td align=right>{$d.raw|string_format:"%d"}</td>
+    <td align=right>{$d.uniq|string_format:"%d"}</td>
+    <td align=right>{$d.trans|escape}</td>
+    <td align=right>{if $d.debit ne ""}<font color=red>{$d.debit|escape}</font>{/if}</td>
+    <td align=right>{$d.credit|escape}</td>
+    <td align=right>{if $d.total ne ""}{if $d.total < 0.0}<font color=red>{/if}{$d.total|string_format:"%.2f"}{/if}{if $d.total < 0.0}</font>{/if}</td>
+</tr>
+{/foreach}
+<tr>
+    <th><b>TOTAL</b></th>
+    <th align=right><b>{$total.raw|string_format:"%d"}</b></th>
+    <th align=right><b>{$total.uniq|string_format:"%d"}</b></th>
+    <th align=right><b>{$total.trans|string_format:"%d"}</b></th>
+    <th align=right><b>{if $total.debit ne ""}<font color=red>{$total.debit|string_format:"%.2f"}</font>{/if}</b></th>
+    <th align=right><b>{$total.credit|string_format:"%.2f"}</b></th>
+    <th align=right><b>{if $total.total < 0.0}<font color=red>{/if}{$total.total|string_format:"%.2f"}{if $total.total < 0.0}</font>{/if}</b></th>
+</tr>
+</table>
+
+{/if}
+
+
+{if $refs}
+<h3 align=center>Top 20 Referrers</h3>
+<table align=center width=80% class=hedit>
+<tr>
+    <th colspan=2>CLICKS</th>
+    <th rowspan=2>REFERRER</th>
+</tr>
+<tr>
+    <th>Raw</th>
+    <th>Unique</th>
+</tr>
+{foreach from=$refs item=r}
+<tr>
+    <td align=right>{$r.raw|string_format:"%d"}</td>
+    <td align=right>{$r.uniq|string_format:"%d"}</td>
+    <td align=left><a href="{$r.ref|escape}" target=_blank>{$r.ref|escape}</a></td>
+</tr>
+{/foreach}
+</table>
+
+{/if}
+</center>
+{include file="admin/footer.inc.html"}

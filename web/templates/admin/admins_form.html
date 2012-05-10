@@ -1,0 +1,76 @@
+{if $r.admin_id}
+{assign var=title value="Edit Admin"}
+{else}
+{assign var=title value="Add Admin"}
+{/if}
+{include file="admin/header.inc.html"}
+<center>
+
+<h3>{$title}</h3>
+
+<table><tr><td>{if $errors}{foreach from=$errors item=e}
+<font color=red><li><b>{$e}</b></font>
+{/foreach}{/if}</td></tr></table>
+
+<form method=post action="{$smarty.server.PHP_SELF|escape}">
+<input type=hidden name=admin_id value="{$r.admin_id}">
+<table class=vedit>
+<tr>
+    <th><b>Username</b></th>
+    <td><input type=text name=login value="{$r.login}" size=32 autocomplete="off">
+    </td>
+</tr>
+<tr>
+    <th><b>Password</b><br />
+    {if $r.admin_id > 0}<small>keep empty to don't change password</small>{/if}
+    </th>
+    <td> 
+    <input type=password name=pass0 size=32 value="{$smarty.request.pass0|escape}" autocomplete="off"><br />
+    </td>
+</tr>
+<tr>
+    <th><b>Confirm Password</b></th>
+    <td> 
+    <input type=password name=pass1 size=32 value="{$smarty.request.pass1|escape}" autocomplete="off"><br />
+    </td>
+</tr>
+<tr>
+    <th><b>Email</b></th>
+    <td> <input type=text name=email value="{$r.email}" size=32></td>
+</tr>
+<tr>
+    <th><b>Super-User</b><br />
+    <small>admin has no restrictions<br />
+    if this box is checked</small></th>
+    <td> 
+    <input type=checkbox name=super_user value=1
+    {if $r.super_user}checked{/if}>
+    no restrictions if this box is checked
+    </td>
+</tr>
+<tr>
+    <th><b>Admin permissions</b><br />
+    <small></small></th>
+    <td> 
+    {foreach from=$permissions key=p item=pn}
+    <input type=checkbox name="perms[{$p}]" value=1
+    {if $r.perms[$p]}checked{/if}> {$pn} ({$p})<br />
+    {/foreach}
+    </td>
+</tr>
+</table>
+
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+<input type=hidden name=action value={if $r.admin_id}edit_save{else}add_save{/if}>
+</form>
+
+<br /><br />
+
+
+{include file="admin/footer.inc.html"}

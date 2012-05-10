@@ -1,0 +1,21 @@
+{assign var="title" value=$smarty.const._TPL_AGREEMENT_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+#_TPL_AGREEMENT_REED_AGREE#<br />
+<table style='background-color: #e0e0e0; width: 80%'><tr><td>
+<pre><center>...Place your agreement text here...
+...it is better to insert already formatted text here...
+</center></pre>
+</td></tr></table>
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+    <strong>#_TPL_AGREEMENT_AGREE#</strong> 
+    <input type="checkbox" name="i_agree" value="1" />
+
+    <input type="submit" value="&nbsp;&nbsp;&nbsp;#_TPL_AGREEMENT_CONTINUE_BUT#&nbsp;&nbsp;&nbsp;" />
+    <input type="hidden" name="do_agreement" value="1" />
+    <input type="hidden" name="data" value="{$data|escape}" />
+</form>
+
+{include file="footer.html"}

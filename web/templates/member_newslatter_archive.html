@@ -1,0 +1,19 @@
+<h3>#_TPL_NEWSLETTER_ARCHIVE#</h3>
+{if $al}
+<table class="hedit" width="100%">
+<tr>
+<th>#_TPL_NEWSLETTER_ARCHIVE_DATE#</th>
+<th>#_TPL_NEWSLETTER_ARCHIVE_SUBJECT#</th>
+</tr>
+{foreach from=$al item=a}
+<tr>
+<td>{$a.add_date|date_format:$config.date_format}</td>
+<td><a href="newsletter.php?a=archive&amp;archive_id={$a.archive_id}">{$a.subject}</a></td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+{else}
+#_TPL_NEWSLETTER_ARCHIVE_NO_ARCHIVE#
+{/if}

@@ -1,0 +1,31 @@
+<script language="JavaScript">
+function showLayer(layName){                                    
+    if(document.getElementById)         //e5,e6,n6,n7,m1,o6,o7,s1?
+      document.getElementById(layName).style.visibility='visible'
+    else if(document.all)               //e4?
+      document.all(layName).style.visibility='visible'
+    else if(document.layers)            //n4?
+      document.layers[layName].visibility='show'
+}
+function hideLayer(layName){
+    if(document.getElementById)         //e5,e6,n6,n7,m1,o6,o7,s1?
+      document.getElementById(layName).style.visibility='hidden'
+    else if(document.all)               //e4?
+      document.all(layName).style.visibility='hidden'
+    else if(document.layers)            //n4?
+      document.layers[layName].visibility='hide'
+}
+function getVisible(layName){
+   if(document.getElementById){        //e5,e6,n6,n7,m1,o6,o7,s1?
+      if(document.getElementById(layName).style.visibility=='')return 'inherit'
+      return document.getElementById(layName).style.visibility
+    } else if(document.all){            //e4?
+      if(document.all(layName).style.visibility=='')return 'inherit'
+      return document.all(layName).style.visibility
+    } else if(document.layers){         //n4?
+      if(document.layers[layName].visibility=='show')   return 'visible'
+      if(document.layers[layName].visibility=='hide')   return 'hidden'
+      if(document.layers[layName].visibility=='inherit')return 'inherit'
+    } else return ''
+}
+</script>  

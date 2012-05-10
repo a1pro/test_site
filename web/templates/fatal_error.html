@@ -1,0 +1,31 @@
+{if $smarty.const._TPL_FATAL_ERROR_TITLE}
+    {assign var="title" value=$smarty.const._TPL_FATAL_ERROR_TITLE}
+{else}
+    {assign var="title" value="An Error has occured"}
+{/if}
+{include file="header.html"}
+
+<div id="center">
+<div id="d_over_iframe"></div>
+<div id="d_over_iframe"></div>
+
+<!--MAIN CONTEINER-->
+<div id="main_t">
+<table><tr><td><ul>
+{if is_array($error)}
+{foreach from=$error item=e}
+<li><span style="color: red; font-weight: bold;">{if $is_html}{$e}{else}{$e|escape}{/if}</span></li>
+{/foreach}
+{else}
+<span style="color: red; font-weight: bold;">{if $is_html}{$error}{else}{$error|escape}{/if}</span>
+{/if}
+<ul></td></tr></table>
+
+
+<br /><br />
+Please contact webmaster: <a href="mailto:{$admin_email|escape}">{$admin_email|escape}</a>.
+</div>
+</div>
+</div>
+
+{include file="footer.html"}

@@ -1,0 +1,106 @@
+{assign var=title value="Coupons payments"}
+{include file="admin/header.inc.html"}
+{include file="admin/coupon_nb.inc.html" selected="payments"}
+<script language="JavaScript">
+function sw1(frm, val){
+    el = frm.elements['type'];
+    for (var i=0;i<el.length;i++){
+        if (el[i].value == val) el[i].checked=true;
+    }
+}
+</script>
+<center>
+<br /><h3>{$title|escape}</h3>
+<form action="{$smarty.server.PHP_SELF|escape}">
+<table class=hedit border=1 bordercolor=#909090>
+<tr><th colspan=4 style='text-align: left'>
+<input style='border: none;' type=radio name="type" value="date" {if $smarty.request.type ne "string"}checked{/if}> 
+<b>Search by date</b></th></tr>
+<tr>
+    <td>From:</td>
+    <td> 
+      {html_select_date time=$beg_date prefix=beg_date start_year=-2 all_extra="onclick=\"sw1(this.form, 'date')\"  onfocus=\"sw1(this.form, 'date')\""}
+    </td>
+    <td>To:</td>
+    <td>
+      {html_select_date time=$end_date prefix=end_date start_year=-2 all_extra="onclick=\"sw1(this.form, 'date')\" onfocus=\"sw1(this.form, 'date')\""}
+    </td>
+</tr>
+<tr><th colspan=4 style='text-align: left'>
+<input style='border: none;' type=radio name="type" value="string" {if $smarty.request.type eq "string"}checked{/if}> 
+<b>Search by coupon code</td></tr>
+<tr>
+    <td>Search</td>
+    <td colspan=3> 
+        <input type=text onclick="return sw1(this.form, 'string')" onfocus="return sw1(this.form, 'string')" name=q value="{$smarty.request.q|escape}" size=20 class=small>
+    </td>
+</tr>
+<tr>
+    <th colspan=4 style='text-align: right'>
+    List payments by 
+    <select name=list_by size=1 class=small onchange='this.form.submit()'>     
+    {html_options options=$list_by_options selected=$smarty.request.list_by}
+    </select>     
+     </td>
+</tr>
+</table>
+<br />
+<input type=submit value=Display>
+</form>
+{span}
+<br /><br />
+<table width=98% class=hedit border=1 bordercolor=#606060>
+<tr>
+    <th>#</th>
+    <th>{$list_by_title}</th>
+    <th>Member</th>
+    <th>Product</th>
+    <th>Period</th>
+    <th>Discount</th>
+    <th>Coupon code / Batch #</th>
+    <th>Amount</th>
+    <th>Paid</th>
+</tr>
+{counter name=count start=-1 skip=1 print=false}
+{assign var=amount value=0}
+{foreach from=$list item=p}
+<tr class={cycle values="xx,odd"}>
+    <td align=right><a href="users.php?action=edit_payment&member_id={$p.member_id|escape}&payment_id={$p.payment_id|escape}">{$p.payment_id|escape}</a>&nbsp;</td>
+    <td align=center><small>{$p.$list_by_field|date_format:$config.time_format}</small></td>
+    <td><a href="users.php?action=payments&member_id={$p.member_id}">{$p.member_login|escape}</a></td>
+    <td>{$p.product_title|escape}</td>
+    <td align=center>{$p.begin_date|amember_date_format} -
+        {$p.expire_date|amember_date_format}</td>
+    <td align=center>{$p.discount|escape}&nbsp;</td>
+    <td align=center><a href="coupons.php?action=view_coupon&coupon_id={$p.coupon_id}" target=_blank onclick="window.open('coupons.php?action=view_coupon&coupon_id={$p.coupon_id}', '',
+    'dependent=1,directories=0,height=250,width=300,location=0'); return false;">{$p.code}</a> / <a href="coupons.php?action=view_batch&batch_id={$p.batch_id}">{$p.batch_id}</a>&nbsp;</td>
+    <td align=right>{$p.amount}&nbsp;</td>
+    <td>{if $p.completed}<b>YES</b>{else}NO{/if}</td>
+    {math equation="a+y" a=$amount y=$p.amount assign=amount}
+</tr>    
+{counter name=count print=false}
+{foreachelse}
+<tr>
+    <td colspan=9 align=center><br /><b><font color=red>No payments found. 
+    Try to select different criteria.</font></b><br /><br /></td>
+</tr>    
+{/foreach}
+<tr>
+    <th colspan=6>{counter name=count skip=0} displayed</th>
+    <th style='text-align: right'>TOTAL</th>
+    <th align=right>{$amount|string_format:"%.2f"}&nbsp;</th>
+    <th>&nbsp;</th>
+</tr>    
+{if $all_count > 20 }
+<tr>
+    <th colspan=6>{$all_count|escape} records found</th>
+    <th style='text-align: right'> GRAND TOTAL</th>
+    <th align=right>{$all_amount|string_format:"%.2f"}&nbsp;</th>
+    <th>&nbsp;</th>
+</tr>    
+{/if}
+</table>
+<br />
+{span}
+
+{include file="admin/footer.inc.html"}

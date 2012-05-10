@@ -1,0 +1,76 @@
+<?php
+echo $this->doctype('XHTML1_TRANSITIONAL');
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title><?php echo $title ?></title>
+        <?php $this->printLayoutHead(); ?>
+    </head>
+    <body>
+        <?php echo $this->placeholder('body-start'); ?>
+        <div class="am-layout">
+            <a name="top"></a>  
+            <div class="hdr_top_main">
+                <div class="hdr_top_main2">
+                    <div class="hdr_top_inr clearfix">
+                        <div class="logo"><a href="http://www.getaudiofromvideo.com/"><img src="/application/default/views/public/img/new/get-audio-from-video.png" alt="Get Audio From Video" title="Get Audio From Video" /></a></div>
+                    </div>
+                </div>
+            </div>
+<!--            <div class="am-header">
+                <div class="am-header-content-wrapper am-main">
+                    <div class="am-header-content">
+                        <img src="<?php echo $this->_scriptImg('/header-logo.png') ?>" alt="aMember Pro" />
+                    </div>
+                </div>
+            </div>
+            <div class="am-header-line">
+
+            </div> -->
+            <div class="am-body">
+                <div class="am-body-content-wrapper am-main">
+                    <div class="am-body-content">
+                        <?php include $this->_script('_top.phtml'); ?>
+                        <?php if (empty($this->layoutNoTitle)): ?>
+                            <?php if($title != 'Signup Form'){ ?>
+                            	<div class="title_gray box_shadow fl"><?php echo $title ?></div>
+                                <div class="clear22"></div>
+                            <?php } ?>                            
+                        <?php endif; ?>
+                        <!-- content starts here -->
+                        <?php echo $content ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer_inr">
+                <div class="ftr_lft">Copyright &copy; 2012 GetAudioFromVideo.com</div>
+                <div class="ftr_rgt">
+            <div class="ftr_rgt1">
+                <a href="http://www.getaudiofromvideo.com/terms-of-service/">Terms of Service</a>
+                <a href="http://www.getaudiofromvideo.com/privacy-policy/">Privacy Policy</a>
+                <a href="http://www.getaudiofromvideo.com/about-us/">About Us</a>
+            </div>
+            <div class="ftr_rgt2">
+                <a href="http://www.getaudiofromvideo.com/frequently-asked-questions/">Frequently Asked Questions</a>
+                <a href="http://www.getaudiofromvideo.com/contact/">Contact Us</a>
+            </div>
+        </div>
+            </div>
+        </footer>
+<?php /*?>        <div class="am-footer">
+            <div class="am-footer-content-wrapper am-main">
+                <div class="am-footer-content">
+                    <div class="am-footer-actions">
+                        <a href="#top"><img src="<?php echo $this->_scriptImg('/top.png') ?>" /></a>
+                    </div>
+                    Built on <a href="http://www.amember.com/p/" style="text-decoration: none;">aMember Pro&trade; membership software</a>
+                </div>
+            </div>
+        </div> <?php */?>
+        <?php echo $this->render('_popup.phtml'); ?>
+        <?php echo $this->placeholder('body-finish'); ?>
+    </body>
+</html>

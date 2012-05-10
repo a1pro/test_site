@@ -1,0 +1,150 @@
+    </table>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var tax_type = -1;
+	function onChangeTaxType(){
+		new_tax_type = $("#tax_type_2").attr('checked') ? 2 : 1;
+		if (new_tax_type != tax_type){
+			$("#tax_div_" + tax_type).hide("normal");
+			$("#tax_div_" + new_tax_type).show("normal");
+		}
+		tax_type = new_tax_type;
+	}
+	$("#tax_type_1,#tax_type_2").click(  onChangeTaxType );
+	onChangeTaxType();	
+		
+});	
+</script>
+{include file="js.country_state.js"}
+
+<style type="text/css">
+	div.main_select {
+		text-align: left;
+		left: 30%;
+		font-size: 120%;
+		font-weight: bold;
+		margin-top: 0px; margin-bottom: 0px;
+	}
+	#tax_div {
+		border: solid 1px #F0F0F0;
+	}
+	#tax_div_1, #tax_div_2 {
+		display: none;
+		font-size: 100%;
+		text-align: left;
+	}
+</style>    
+
+<div style="width: 50%; padding-top: 0px; padding-bottom: 0px;">
+<div class="main_select">
+{php}
+$disabled = $total = 0;
+foreach ($GLOBALS['db']->get_products_list() as $p){
+	if (!$p['use_tax']) $disabled++;
+	$total++;
+}
+$enabled = $total - $disabled;
+if ($disabled > 0 ) echo <<<CUT
+<div class="small" style="font-weight: normal; font-style: italic;">You currently have tax enabled for only $enabled products (you have total $total). To
+enable tax for remaining products (if necessary), visit aMember CP -> Manage Products -> Edit : "Add Tax".
+<br /><br />
+</div>  
+CUT;
+{/php}
+
+
+<label for="tax_type_1">
+	<input type="radio" id="tax_type_1" name="tax_type" value="1" {if $v.tax_type eq "1"}checked="checked"{/if}/>
+	Method 1 - Global Tax Settings
+</label><br />
+
+<label for="tax_type_2">
+	<input type="radio" name="tax_type" id="tax_type_2"  value="2" {if $v.tax_type eq "2"}checked="checked"{/if} />
+	Method 2 - Regional Tax Settings
+</label>
+</div>    
+
+<br />    
+<div id="tax_div">
+
+<div id="tax_div_1">
+<h3 style='text-align: left;'>Global Tax Configuration</h3>
+
+<table>
+	<tr>
+		<th>Global Tax Title<br />
+		<small>Sales Tax or VAT</small></th>
+		<td><input type=text name=tax_title value="{$v.tax_title|escape}"
+			size=12></td>
+	</tr>
+	<tr>
+		<th>Global Tax Value</th>
+		<td><input type=text name=tax_value value="{$v.tax_value}" size=4>
+		%</td>
+	</tr>
+</table>
+
+</div>
+
+<div id="tax_div_2">
+<h3 style='text-align: left;'>Regional Tax Configuration</h3>
+<div class="small"> <b>You may choose only a country, and do not choose any state to apply tax to entire country.</b>
+Also please note that sales tax will be calculated based on address entered by customer into
+his profile on aMember signup form. State choosen on payment page or during payment process
+in the payment processor does not matter.</div> 
+<table>
+<tr>
+<td>Country</td>
+<td><select name="country" id="f_country" size="1">{country_options}</select></td>
+</tr>
+<tr>
+<td>State</td>
+<td>
+<select name="state" id="f_state" size="1">
+<input type="text" name="state" id="t_state" size="10">
+</select></td>
+</tr>
+<tr>
+<td>Zip Codes<br/>
+<small>use ;  as separator, <br/>also can specify range: 123312;123324;123325-123329</small>
+</td>
+<td><textarea name="zip"></textarea>
+</td>
+
+<tr>
+<td>Tax Value</td>
+<td><input type="text" name="regional_tax_value" style='text-align: right' size="5" />%
+</td>
+</tr>
+</table>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" name="save" value="Add Tax" />
+
+
+{if $v.regional_taxes}
+<h3 style='text-align: left;'>Configured Tax Values</h3>
+<table class="hedit">
+<tr>
+	<th>Country</th>
+	<th>State</th>
+	<th>Zip</th>
+	<th>Tax Value</th>
+	<th>&nbsp;</th>
+</tr>
+{foreach from=$v.regional_taxes item=a key=id}
+<tr>
+	<td>{lookup_country key=$a.country}</td>
+	<td>{if $a.state}{lookup_state key=$a.state country=$a.country}{else}*{/if}</td>
+	<td>{if $a.zip}{$a.zip}{else}*{/if}</td>
+	<td style='text-align: right'>{$a.tax_value}%</td>
+	<td><a href='setup.php?notebook=Tax+Settings&save=1&remove_regional=1&id={$id}'>remove</a></td>
+</tr>
+{/foreach}
+</table>
+{/if}
+
+</div> <!-- #tax_div around  -->
+
+</div>
+<table style="display: none;"> 

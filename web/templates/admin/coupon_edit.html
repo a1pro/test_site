@@ -1,0 +1,32 @@
+{assign var=title value="Edit Coupon"}
+{include file="admin/header.inc.html"}
+{include file="admin/coupon_nb.inc.html"}
+<center>
+<h3>{$title|escape}</h3>
+
+{if $error}{foreach from=$error item=e}
+<font color=red><li><b>{$e|escape}</b></font>
+<br /><br />
+{/foreach}{/if}
+
+<form method=post action="coupons.php">
+<table class=vedit >
+<tr>
+    <th><b>Code</b><br />
+    <small>coupon code</small>
+    </th>
+    <td><input type=text size=15 name=code value="{$vars.code|escape}"></td>
+</tr><tr>
+    <th><b>Used Count</b><br />
+    <small>this coupon has been used ... times </small>
+    </th>
+    <td><input type=text size=3 name=used_count value="{$vars.used_count|escape}"></td>
+</tr>
+</table>
+<input type=hidden name=action value={$action|escape}>
+<input type=hidden name=coupon_id value={$vars.coupon_id|escape}>
+<input type=hidden name=batch_id value={$vars.batch_id|escape}>
+<input type=submit value="Save">
+</form>
+
+{include file="admin/footer.inc.html"}

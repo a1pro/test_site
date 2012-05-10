@@ -1,0 +1,138 @@
+{assign var="title" value=$smarty.const._TPL_PROFILE_TITLE}
+{include file="header.html"}
+<div class="backend-wrapper">
+{include file="member_menu.inc.html"}
+{include file="error.inc.html"}
+<form name="signup" method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class="vedit" width="100%">
+
+{if $fields_to_change.login}
+<tr>
+    <th style='width: 40%'>#_TPL_PROFILE_USERNAME#<br />
+    <div class="small">#_TPL_PROFILE_ANOTHERUSRNM#</div></th>
+    <td>
+        <input type="text" name="login" value="{$user.login|escape}" size="15" />
+    </td>
+</tr>
+{/if}
+
+{if $fields_to_change.name_f}
+<tr>
+    <th style='width: 40%'>#_TPL_PROFILE_FLNAME#<br /></th>
+    <td nowrap="nowrap">
+       <input type="text" name="name_f" value="{$user.name_f|escape}" size="15" />
+       <input type="text" name="name_l" value="{$user.name_l|escape}" size="15" />
+    </td>
+</tr>
+{/if}
+
+{if $fields_to_change.email}
+<tr>
+    <th style='width: 40%'>#_TPL_PROFILE_EMAIL#</th>
+    <td><input type="text" name="email" value="{$user.email|escape}" size="25" /> {if $email_confirmation_required}<div style="color:red;">#_TPL_PROFILE_EMAIL_NOT_VERIFIED#  <a href="profile.php?resend_email=1">#_TPL_PROFILE_EMAIL_RESEND_VERIFICATION_EMAIL#</a><div>{/if}
+    </td>
+</tr>
+{/if}
+
+{if $fields_to_change.pass0}
+<tr>
+    <th>#_TPL_PROFILE_CHPWD#<br />
+    <div class="small">#_TPL_PROFILE_BLANK#</div></th>
+    <td><input type="password" name="pass0" value="{$user.pass0|escape}" size="15" />
+    </td>
+</tr>
+
+<tr>
+    <th><b>#_TPL_PROFILE_CONFPWD#</b><br />
+    <div class="small">#_TPL_PROFILE_BLANK#</div></th>
+    <td><input type="password" name="pass1" value="{$user.pass1|escape}" size="15" />
+    </td>
+</tr>
+{/if}
+
+{$additional_fields_html}
+
+{if $config.use_address_info}
+{if $fields_to_change.street}
+<tr>
+    <th>#_TPL_PROFILE_STREET#</th>
+    <td><input type="text" name="street" value="{$user.street|escape}" size="30" />
+    </td>
+</tr>
+{/if}
+{if $fields_to_change.city}
+<tr>
+    <th>#_TPL_PROFILE_CITY#</th>
+    <td><input type="text" name="city" value="{$user.city|escape}" size="15" />
+    </td>
+</tr>
+{/if}
+{if $fields_to_change.country}
+<tr>
+    <th>#_TPL_PROFILE_COUNTRY#</th>
+    <td><select name="country" id="f_country" size="1">
+         {country_options selected=$user.country}
+    </select></td>
+</tr>
+{/if}    
+{if $fields_to_change.state}
+<tr>
+    <th>#_TPL_PROFILE_STATE#</th>
+    <td>
+    <input type="text" name="state" id="t_state" size="30"
+        value="{$user.state|escape}"
+        {if count($state_options)>1}disabled="true" style='display: none;' {/if}
+        />
+    <select name="state" id="f_state" size="1"
+        {if count($state_options)<=1}disabled="true" style='display: none;'{/if}
+        >        
+    {html_options options=$state_options selected=$user.state}
+    </select>
+    
+    </td>
+</tr>
+{/if}
+{if $fields_to_change.zip}
+<tr>
+    <th>#_TPL_PROFILE_ZIP#</th>
+    <td><input type="text" name="zip" value="{$user.zip|escape}" size="8" />
+    </td>
+</tr>
+{/if}
+{/if}
+
+{if $fields_to_change.unsubscribed}
+<tr>
+    <th><b>#_TPL_PROFILE_UNSUBSCR#</b><br />
+    <div class="small">#_TPL_PROFILE_NOEMAIL#</div><br />
+    </th>
+    <td>
+    <input type="hidden"   name="unsubscribed" value="0" />
+    <input type="checkbox" name="unsubscribed" value="1" {if $user.unsubscribed eq "1"}checked{/if} />
+    #_TPL_PROFILE_CHECKBOX#
+    </td>
+</tr>
+{/if}    
+
+</table>
+<br />
+<input type="hidden" name="do_save" value="1" />
+<div class="centered">
+<input type="submit" value="#_TPL_PROFILE_SAVEBUT#" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_PROFILE_BACKBUT#&nbsp;&nbsp;&nbsp;&nbsp;" onclick="window.location.href='{$config.root_url}/member.php'" />
+</div>
+</form>
+</div>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+
+{include file="js.country_state.js"}
+
+<br /><br />
+<p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p>
+
+{include file="footer.html"}

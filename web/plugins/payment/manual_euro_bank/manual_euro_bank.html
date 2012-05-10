@@ -1,0 +1,100 @@
+{include file="header.html"}
+<center>
+<div class=hdr>{$description}</div>
+<br />
+{if $error}
+<table align=center class=vedit><tr><td>
+{foreach from=$error item=e}
+<font color=red><b>{$e}</b></font><br />
+{/foreach}
+</td></tr></table>
+{/if}
+<br />
+<form name=signup method=post action="{$config.root_surl}/plugins/payment/manual_euro_bank/submit.php">
+<input type="hidden" name="member_id"  value="{$member_id|escape}" />
+<input type="hidden" name="payment_id" value="{$payment_id|escape}" />
+<input type="hidden" name="product_id" value="{$product_id|escape}" />
+<table align=center class=vedit>
+<tr>
+    <th>Account Holder Name *<br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" name="name" size="25" value="{$manual_euro.name|escape}" />
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>Account Number *</b><br />
+    <div class="small"></span></th>
+    <td nowrap><input type=text name="an" value="{$manual_euro.an|escape}" size=15>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>Bank Identifier Code *</b><br />
+    <div class="small"></span></th>
+    <td nowrap><input type=text name="bic" value="{$manual_euro.bic|escape}" size=15>
+    </td>
+</tr>
+<tr><th colspan="2" style='text-align:center'>
+Address Info<br />
+</th></tr>
+<tr>
+    <th><b>Street Address</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" name="street" value="{$manual_euro.street|escape}" />
+    </td>
+</tr>
+
+<tr>
+    <th><b>City</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" name="city" value="{$manual_euro.city|escape}" />
+    </td>
+</tr>
+{if $manual_euro_config.state}
+<tr>
+    <th><b>#_TPL_CC_INFO_STATE#</b><br />
+    <div class="small"></div></th>
+    <td>
+    <select name="state" size="1">{html_options 
+    options=$config.state_options selected=$manual_euro.state}</select>
+    </td>
+</tr>
+{/if}
+<tr>
+    <th><b>ZIP</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" name="zip" value="{$manual_euro.zip|escape}" size="9" />
+    </td>
+</tr>
+<tr>
+    <th><b>Country</b><br />
+    <div class="small"></div></th>
+    <td>
+    <select name="country" size="1">{html_options 
+    options=$config.country_options selected=$manual_euro.country}</select>
+    </td>
+</tr>
+{if $manual_euro_config.phone}
+<tr>
+    <th><b>Phone</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" name="phone" size="15" maxlength="15" value="{$manual_euro.phone|escape}" />
+    </td>
+</tr>
+{/if}
+</table>
+<br />
+{if $payment.amount <= 0}
+<input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CC_INFO_SUBMIT_BUT#&nbsp;&nbsp;&nbsp;&nbsp;" />
+{else}
+<input type="submit" name="paybtn" 
+    value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CC_INFO_SUBMIT_BUT_3# ({$config.currency|default:"$"}{$payment.amount})&nbsp;&nbsp;&nbsp;&nbsp;" />
+{/if}
+
+</form>
+</center>
+{include file="footer.html"}

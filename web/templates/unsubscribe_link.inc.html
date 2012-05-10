@@ -1,0 +1,16 @@
+{if !$config.disable_unsubscribe_link}
+{if $is_html}
+<br />
+<font color=gray>To unsubscribe from our periodic e-mail messages, please click the following <a href="{$link}">link</a></font>
+<br />
+{else}{* Text message *}
+
+
+-------------------------------------------------------------------
+To unsubscribe from our periodic e-mail messages, please click the following link:
+  {$link}
+  
+-------------------------------------------------------------------
+
+{/if}
+{/if}

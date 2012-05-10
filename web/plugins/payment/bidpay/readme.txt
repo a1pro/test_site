@@ -1,0 +1,2 @@
+    BidPay Plugin Configuration
+

@@ -1,0 +1,33 @@
+{assign var=title value=$smarty.const._PLUG_PAY_PAYPALPRO_HTML_TITLE}
+{include file="header.html"}
+
+<center>
+<div class=hdr>{$title}</div>
+<hr>
+
+
+<style type="text/css">
+    .receipt td {
+        background-color: #F0F0F0;
+    }
+    .receipt th {
+        background-color: #C0C0C0;
+    }
+    .receipt td.total {
+        background-color: #C0C0C0;
+    }
+</style>
+
+{include file='receipt.inc.html'}
+
+<br /><br />
+
+<form method=get action="{$config.root_url}/plugins/payment/paypal_pro/return.php">
+<input type=hidden name=confirm value=1>
+<input type=hidden name=token value="{$smarty.request.token}">
+<input type=submit value=#_PLUG_PAY_PAYPALPRO_HTML_SBBUT#."(${$payment.amount})">
+</form>
+
+</center>
+
+{include file="footer.html"}

@@ -1,0 +1,41 @@
+#  Sample Nginx rules configuration:
+#  aMember rules (replace /amember to actual aMember Pro path from site root)
+#
+#       location ~* ^/amember/.*\.(js|ico|gif|jpg|png|css|swf|csv)$ {}
+#       location ~* ^/amember/setup/index.php$ { try_files not-existing-file @php; }
+#       location ~* ^/amember/js.php { try_files not-exiting-file @php; }
+#       location ~* ^/amember/index.php$ { try_files not-existing-file @php; }
+#       location ~* ^/amember/public.php$ { try_files not-existing-file @php; }
+#
+#       location ~* ^/amember/public { rewrite ^.*$ /amember/public.php; } 
+#       location ~* ^/amember/setup { rewrite ^.*$ /amember/setup/index.php; }
+#       location ~* ^/amember { rewrite ^.*$ /amember/index.php; }
+#
+#  you must already have something like that in your nginx configuration:
+#
+#       location ~ \.php$ {
+#          try_files not-existing-file @php;
+#       }
+#       location @php {
+#         fastcgi_pass 127.0.0.1:9000;
+#         include fastcgi_params;
+#       }
+#
+#  it is necessary to have @php section, as it is referred by aMember rules, and 
+#  it must be located at bottom
+#
+#
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{SERVER_PORT} 80
+    RewriteRule ^(.*)$ https://members.getaudiofromvideo.com/$1 [R,L]
+    RewriteRule ^public public.php [L]
+    RewriteRule ^js.php js.php [L]
+    RewriteRule ^testajax.php testajax.php [L]
+    RewriteRule ^getses.php getses.php [L]
+    RewriteRule !\.(js|ico|gif|jpg|png|css|swf|csv)$ index.php
+</IfModule>
+
+<IfModule mod_php5.c>
+  php_flag magic_quotes_gpc off
+</IfModule>

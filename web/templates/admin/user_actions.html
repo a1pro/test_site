@@ -1,0 +1,83 @@
+{assign var=title value="User Actions"}
+{include file="admin/header.inc.html"}
+{include file="admin/user_nb.inc.html" selected="actions"}
+<center>
+
+<h3>{$title|escape}</h3>
+
+<table align=center width=60%><tr><td>
+<li><a href="users.php?action=delete&member_id={$member_id}">Delete 
+User</a>
+- Users are disabled automatically as their subscriptions expire.
+Disabled users remain in the system and are able to renew their
+subscriptions on the <i style="font-weight: bold;">member.php</i> page.<br /><br />
+Important! - Use "Delete User" only if you want to completely remove a user
+from the system. The user/customer along with all related
+records will be permanently deleted when you use this function!<br /><br />
+<li><a href="users.php?action=send_signup_email&member_id={$member_id}">Re-Send 
+Signup Email</a>
+- When a user/customer first signs up and payment is completed aMember
+automatically sends them an email containing their Username, Password,
+and URL for accessing the Members area on your site. If the user did
+not receive or cannot find the original email use this function to have
+aMember send the email again.<br /><br />
+<li><a href="users.php?action=send_verification_email&member_id={$member_id}">Re-Send
+Mail Verification Email</a><br /><br />
+
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+</li><li><b>Move User Payments To A Different Account And Delete Current 
+Customer Record</b>&nbsp; -&nbsp; Important! Please be careful with this 
+option! Normally a customer should use the Signup form&nbsp; to create their
+membership registration [ once ] and then use the <span style="font-style: italic; font-weight: bold;">member.php</span> form to add or
+purchase additional subscriptions for their account. The
+only time that you will probably need to use this is if a customer
+instead adds additional subscriptions by using the Signup form more
+than once,
+thus creating more than one user/customer record for the same person.<br /><br />
+Enter the Username here 
+ <input type="text" name="new_login" size="10" style="font-size: 8pt;">
+for the account that you want to move this user to and then click the "Move" 
+button. The other account(s) will then be deleted.
+<input type=submit value=Move style='font-size: 8pt'>
+<input type=hidden name=member_id value={$member_id|escape}>
+<input type=hidden name=action value=move>
+</form>
+
+<br /><br />
+<li><b>Email Customer:</b><br />
+<form method="post" action="{$smarty.server.PHP_SELF|escape}" name="mail">
+From: "{$admin_email_name|escape}" &lt;{$admin_email_from|escape}&gt;<br />
+To: "{$u.name_f|escape} {$u.name_l|escape}" &lt;{$u.email|escape}&gt;<br />
+Subject: <input type="text" name="subject" value="" size="40" /><br />
+<textarea name="text" cols="80" rows="20" class="small">
+</textarea><br />
+<input type="submit" value="Send" />
+<input type="hidden" name="member_id" value="{$member_id|escape}" />
+<input type="hidden" name="action" value="email" />
+</form>
+<script language=JavaScript>
+    function ins_tag(tag){
+        elem = document.forms['mail'].elements['text'];
+        elem.value = elem.value + ' ' + tag + ' ';
+        elem.focus();
+    }
+</script>
+<style>
+    .tag {
+        background-color: #FCFCFC;
+    }
+</style>
+
+<table bgcolor=#F0F0F0><tr><td>
+You may use following tags to personalize email:
+<ul><pre style='font-size: 9pt;'>{literal}
+    <span class=tag>{$user.name}</span>    - first and last name <a href="javascript:ins_tag('{$user.name}')">(insert)</a>
+    <span class=tag>{$user.email}</span>   - email <a href="javascript:ins_tag('{$user.email}')">(insert)</a>
+    <span class=tag>{$user.name_f}</span>  - first name <a href="javascript:ins_tag('{$user.name_f}')">(insert)</a>
+    <span class=tag>{$user.name_l}</span>  - last name <a href="javascript:ins_tag('{$user.name_l}')">(insert)</a>
+    <span class=tag>{$user.login}</span>   - login <a href="javascript:ins_tag('{$user.login}')">(insert)</a>
+    <span class=tag>{$user.pass}</span>    - password <a href="javascript:ins_tag('{$user.pass}')">(insert)</a>
+{/literal}</pre></ul>
+</td></tr></table>
+{include file="admin/footer.inc.html"}

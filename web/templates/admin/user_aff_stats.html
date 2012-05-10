@@ -1,0 +1,121 @@
+{assign var="title" value="Affiliate stats"}
+{include file="admin/header.inc.html"}
+{include file="admin/user_nb.inc.html" selected="aff_sales"}
+<center>
+<h3>{$title} / <a href="users.php?action=aff_clicks&member_id={$smarty.request.member_id|escape}">Affiliate Clicks</a></h3>
+<style type="text/css">
+</style>
+
+<a name="e">&nbsp;</a>
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form action="{$smarty.server.PHP_SELF|escape}">
+<table class=hedit>
+<tr>
+    <th>
+      &nbsp; &nbsp;
+        Period
+      &nbsp; &nbsp;
+</th>
+    <td> 
+      <select name=year_month onchange="this.form.submit()">
+      {html_options options=$year_month_options selected=$smarty.request.year_month|default:$default_month}
+      </select>
+      &nbsp; &nbsp;
+    </td>
+</tr>
+</table>
+<br />
+<input type=hidden name=action value=aff_sales>
+<input type=hidden name=member_id value={$smarty.request.member_id|escape}>
+<input type=submit value=Display>
+</form>
+
+
+{if $days}
+<h3 align=center>Stats for period</h3>
+
+<table align=center class=hedit>
+<tr>
+    <th>&nbsp;</th>
+    <th colspan=2>CLICKS</th>
+    <th colspan=4>COMMISSIONS</th>
+</tr>
+<tr>
+    <th>Date</th>
+    <th>Raw</th>
+    <th>Unique</th>
+    <th>Transactions</th>
+    <th>Credit</th>
+    <th>Debit</th>
+    <th>Total</th>
+</tr>
+{foreach from=$days item=d key=dd}
+{if $d.raw>0 || $d.debit>0 || $d.credit>0 }
+<tr>
+    <td align=center>{$d.dat|amember_date_format}</td>
+    <td class="right">{$d.raw|string_format:"%d"}</td>
+    <td class="right">{$d.uniq|string_format:"%d"}</td>
+    <td class="right">{$d.trans}</td>
+    <td class="right">{if $d.debit ne ""}<font color=red>{$d.debit}</font>{/if}</td>
+    <td class="right">{$d.credit}</td>
+    <td class="right">{if $d.total ne ""}{if $d.total < 0.0}<font color=red>{/if}{$d.total|string_format:"%.2f"}{/if}{if $d.total < 0.0}</font>{/if}</td>
+</tr>
+{if $d.detail}
+<tr class="odd">
+<td  colspan="7">
+{foreach from=$d.detail item=dv}
+	Payment #<a href="users.php?action=edit_payment&payment_id={$dv.payment_id}&member_id={$dv.member_id}" target=_blank>{$dv.payment_id|escape}</a>
+	for <b>{$dv.pr_title|escape}</b>,
+	paid by <a href="users.php?action=edit&member_id={$dv.member_id}" target=_blank>{$dv.login}</a> ({$dv.name_f|escape} {$dv.name_l|escape}),
+	paid: <i>{$dv.p_amount|escape}</i>, commission: <i>{$dv.c_amount|escape}</i>, level <i>{$dv.tier|escape}</i>
+	<br />
+{/foreach}
+	</td>
+</tr>
+{/if}
+{/if}
+{/foreach}
+<tr>
+    <th><b>TOTAL</b></th>
+    <th class="right"><b>{$total.raw|string_format:"%d"}</b></th>
+    <th class="right"><b>{$total.uniq|string_format:"%d"}</b></th>
+    <th class="right"><b>{$total.trans|string_format:"%d"}</b></th>
+    <th class="right"><b>{if $total.debit ne ""}<font color=red>{$total.debit|string_format:"%.2f"}</font>{/if}</b></th>
+    <th class="right"><b>{$total.credit|string_format:"%.2f"}</b></th>
+    <th class="right"><b>{if $total.total < 0.0}<font color=red>{/if}{$total.total|string_format:"%.2f"}{if $total.total < 0.0}</font>{/if}</b></th>
+</tr>
+</table>
+
+{/if}
+
+
+{if $refs}
+<h3 align=center>Top 20 Referrers</h3>
+<table align=center width=80% class=hedit>
+<tr>
+    <th colspan=2>CLICKS</th>
+    <th rowspan=2>REFERRER</th>
+</tr>
+<tr>
+    <th>Raw</th>
+    <th>Unique</th>
+</tr>
+{foreach from=$refs item=r}
+<tr>
+    <td class="right">{$r.raw|string_format:"%d"}</td>
+    <td class="right">{$r.uniq|string_format:"%d"}</td>
+    <td align=left><a href="{$r.ref}" target=_blank>{$r.ref}</a></td>
+</tr>
+{/foreach}
+</table>
+
+{/if}
+</center>
+{include file="admin/footer.inc.html"}

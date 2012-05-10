@@ -1,0 +1,53 @@
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e|escape}</b></font>
+{/foreach}
+</td></tr></table>
+{ /if}
+{if $warn}
+<table><tr><td>
+{foreach from=$warn item=e}
+<li><b>Warning: </b>{$e|escape}</font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<div style="width:80%">
+<p style="text-align: left">
+Imported {if $total_added}{$total_added|escape}{else}0{/if} users in {$import_took_time|escape} seconds.
+<br />
+{if $csv_duplicate_logins}
+aMember found duplicate Usernames in your CSV file this users was not imported:<br />
+{foreach from=$csv_duplicate_logins item=csv_login name=csv_foreach}
+{if $smarty.foreach.csv_foreach.last}
+{$csv_login|escape}
+{else}
+{$csv_login|escape},
+{/if}
+{/foreach}
+{/if}
+<br \>
+{if $amember_duplicate_logins}
+aMember found that some Usernames already exist in your aMember database, this users was not imported:<br />
+{foreach from=$amember_duplicate_logins item=amember_login name=amember_foreach}
+{if $smarty.foreach.amember_foreach.last}
+{$amember_login|escape}
+{else}
+{$amember_login|escape},
+{/if}
+{/foreach}
+{/if}
+<br /><br />
+To check that users were imported correctly go to <a href="users.php?letter=A%25">aMember CP -> Browse Users</a><br />
+If you have configured integration plugins click on <a href="rebuild.php">aMember CP -> Rebuild Db</a> and users will be automatically added
+to third-party scripts.<br /><br />
+Please don't forget to remove import file "{$file_for_import|escape}".
+</p></div>
+
+
+{include file="admin/footer.inc.html"}

@@ -1,0 +1,70 @@
+{if $add}
+{assign var=title value="Add Newsletter Thread"}
+{else}
+{assign var=title value="Edit Newsletter Thread"}
+{/if}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="threads"}
+
+<center>
+
+<br /><h3>{$title|escape}</h3>
+
+<table><tr><td>{if $errors}{foreach from=$errors item=e}
+<font color=red><li><b>{$e|escape}</b></font>
+{/foreach}{/if}</td></tr></table>
+
+<form method=post name=add_newsletter_thread action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit>
+<tr>
+    <th><b>Title</b></th>
+    <td>
+    <input type=text name=thread_title value="{$vars.thread_title|escape}" size=41>  
+    </td>
+</tr>
+<tr>
+    <th>Description</th>
+    <td><textarea name=thread_description cols=40 rows=5>{$vars.thread_description|escape}</textarea></td>
+</tr>
+<tr>
+    <th>Active</th>
+    <td><input style='border: none;' type=checkbox name=is_active value=1 {if $vars.is_active || $add}checked{/if}></td>
+</tr>
+<tr>
+    <th><b>Available to</b></th>
+    <td>
+    <select name='available_to[]' size=5 multiple>
+    {html_options options=$available_to_list selected=$vars.available_to}
+    </select>    
+    </td>
+</tr>
+<tr>
+    <th>Automatically subscribe</th>
+    <td>
+    <select name='auto_subscribe[]' size=5 multiple>
+    {html_options options=$auto_subscribe_list selected=$vars.auto_subscribe}
+    </select>    
+    </td>
+</tr>
+{if $add}
+<tr>
+    <th>Subscribe existing members</th>
+    <td><input style='border: none;' type=checkbox name=is_subscribe_members value=1 {if $vars.is_subscribe_members}checked{/if}></td>
+</tr>
+{/if}
+</table>
+<br />
+<input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+<input type=hidden name=action value={if $add}create{else}update{/if}>
+<input type=hidden name=thread_id value="{$thread_id|escape}">
+<br />
+
+</form>
+
+{include file="admin/footer.inc.html"}
+

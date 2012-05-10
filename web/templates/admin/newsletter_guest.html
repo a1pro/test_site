@@ -1,0 +1,65 @@
+{assign var=title value="Newsletter Guests"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="guests"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+<p>This page allows to search and manage site visitors who subscribed
+to newsletters without creating an account in aMember. Only email and 
+name are stored for these visitors.</p>
+
+
+<form action="{$smarty.server.PHP_SELF|escape}">
+<table class=hedit border=1 bordercolor=#909090>
+<tr><th colspan=4 style='text-align: left'>
+<input style='border: none;' type=radio name="type" value="thread" {if $smarty.request.type ne "string"}checked{/if}> 
+<b>Search by newsletter thread</b></th></tr>
+<tr>
+    <td>Threads</td>
+    <td> 
+    <select name='threads[]' size=5 multiple>
+    {html_options options=$threads_list selected=$smarty.request.threads}
+    </select>    
+    </td>
+</tr>
+<tr><th colspan=2 style='text-align: left'>
+<input style='border: none;' type=radio name="type" value="string" {if $smarty.request.type eq "string"}checked{/if}> 
+<b>Search by Name and Email</th></tr>
+<tr>
+    <td>Search</td>
+    <td> 
+        <input type=text onclick="return sw1(this.form, 'string')" onfocus="return sw1(this.form, 'string')" name=q value="{$smarty.request.q|escape}" size=20 class=small>
+    </td>
+</tr>
+</table>
+<br />
+<input type=submit value=Display>
+</form>
+
+{span}
+<br /><br />
+
+<table width=80% class=hedit border=1 bordercolor=#909090>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Subscriptions</th>
+    <th width=5%><font color=606060>Actions</font></th>
+</tr>
+{foreach from=$gl item=g}
+<tr class={cycle values="xx,odd"}>
+    <td> {$g.guest_name|escape} </td>
+    <td> <a href="mailto:{$g.guest_email}">{$g.guest_email|escape}</a> </td>
+    <td> {$g.threads|escape} </td>
+    <td nowrap>
+            <a href="newsletter_guests.php?action=edit&guest_id={$g.guest_id|escape}">Edit</a>
+            <a href="newsletter_guests.php?action=delete&guest_id={$g.guest_id|escape}" onclick="return confirm('You want to delete a guest {$g.guest_name|escape}?')">Delete</a>
+     </td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+
+
+{include file="admin/footer.inc.html"}

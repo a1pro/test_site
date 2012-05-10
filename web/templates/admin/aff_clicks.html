@@ -1,0 +1,38 @@
+{assign var=title value="Affiliate Clicks"}
+{include file="admin/header.inc.html"}
+<center>
+<br />
+<h3><a href="aff_clicks.php?action=aff_stats">Affiliate Stats</a> / Affiliate Clicks</h3>
+
+<table class=hedit width="70%">
+<tr>
+    <th>Time</th>
+    <th>Affiliate</th>
+    <th>URL</th>
+    <th>Remote IP</th>
+    <th>HTTP Referrer</th>
+</tr>
+{foreach from=$list item=p}
+<tr class={cycle values="xx,odd"}>
+    <td> {$p.time|date_format:$config.time_format} </td>
+    <td> <a href="users.php?action=edit&amp;member_id={$p.aff_id}">{$p.login|escape}</a> </td>
+    <td> <a href="{$p.url}">{$p.url|escape}</a> </td>
+    <td> {$p.remote_addr|escape} </td>
+    <td> <a href="{$p.referrer}">{$p.referrer|escape}</a></td>
+</tr>
+{/foreach}
+</table>
+
+{if $list_all}
+<br />
+<form action="" method="GET">
+<input type="hidden" name="action" value="aff_clicks">
+Show by user: <select name=member_id onchange="this.form.submit()">
+    <option value="">All users</option>
+    {html_options options=$list_all selected=$smarty.request.member_id|default:$member_id}
+</select>
+</form>
+{/if}
+
+{include file="admin/footer.inc.html"}
+

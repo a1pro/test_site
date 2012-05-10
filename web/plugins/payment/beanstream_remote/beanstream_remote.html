@@ -1,0 +1,127 @@
+{assign var=title value=$smarty.const._PLUG_PAY_BEANSTREAM_REM_HTML_TITLE}
+{include file=$header}
+<center>
+<br />
+<div class=hdr>{$title}</div>
+<hr>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form name=signup method=post action="https://www.beanstream.com/scripts/process_transaction.asp">
+{foreach from=$vars item=v key=k}
+<input type=hidden name="{$k|escape}" value="{$v|escape}">
+{/foreach} 
+
+<table align=center class=vedit>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_CNAME#</b><br />
+    <small>#_PLUG_PAY_BEANSTREAM_REM_HTML_CNAME2|<b>|</b>#</small></th>
+    <td nowrap><input type=text name=trnCardOwner value="{$smarty.request.trnCardOwner|default:$member.name}" size=30>
+    </td>
+</tr>
+<!-- CREDIT CARD INFO -->
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_CCNUM#</b><br />
+    </small></th>
+    <td nowrap><input type=text name=trnCardNumber value="{$smarty.request.trnCardNumber|escape}" size=21>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_CCEXP#</b><br />
+    </small></th>
+    <td nowrap>
+      <select name="trnExpMonth">
+<option value="01">#_PLUG_PAY_BEANSTREAM_REM_HTML_JAN#</option>
+<option value="02">#_PLUG_PAY_BEANSTREAM_REM_HTML_FEB#</option>
+<option value="03">#_PLUG_PAY_BEANSTREAM_REM_HTML_MAR#</option>
+<option value="04">#_PLUG_PAY_BEANSTREAM_REM_HTML_APR#</option>
+
+<option value="05">#_PLUG_PAY_BEANSTREAM_REM_HTML_MAY#</option>
+<option value="06">#_PLUG_PAY_BEANSTREAM_REM_HTML_JUN#</option>
+<option value="07">#_PLUG_PAY_BEANSTREAM_REM_HTML_JUL#</option>
+<option value="08">#_PLUG_PAY_BEANSTREAM_REM_HTML_AUG#</option>
+<option value="09">#_PLUG_PAY_BEANSTREAM_REM_HTML_SEP#</option>
+<option value="10">#_PLUG_PAY_BEANSTREAM_REM_HTML_OCT#</option>
+<option value="11">#_PLUG_PAY_BEANSTREAM_REM_HTML_NOV#</option>
+<option value="12">#_PLUG_PAY_BEANSTREAM_REM_HTML_DEC#</option>
+</select>
+
+<select name=trnExpYear size=1>
+{php}
+for ($y=substr(date('Y'), 2, 2);$y<substr(date('Y'), 2, 2)+10;$y++,$y=sprintf('%02d', $y))
+    print "<option value=$y>20$y</option>\n";
+{/php}
+</select>
+
+    </td>
+</tr>
+<tr>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_ADDR#</b><br />
+    <small>#_PLUG_PAY_BEANSTREAM_REM_HTML_ADDR2|<b>|</b>#</small></th>
+    <td nowrap><input type=text name=ordAddress1 value="{$smarty.request.ordAddress1|default:$member.street}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_CITY#</b><br />
+    <small>#_PLUG_PAY_BEANSTREAM_REM_HTML_CITY2|<b>|</b>#
+    </small></th>
+    <td nowrap><input type=text name=ordCity value="{$smarty.request.ordCity|default:$member.city}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_COUNTRY#</b><br />
+    <small>#_PLUG_PAY_BEANSTREAM_REM_HTML_COUNTRY2|<b>|</b>#
+    </small></th>
+    <td nowrap><select name=ordCountry size=1 id="f_country">
+    {country_options selected=$member.country options=$config.country_options}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_STATE#</b><br />
+    <small>#_PLUG_PAY_BEANSTREAM_REM_HTML_STATE2|<b>|</b>#
+    </small></th>
+    <td nowrap>
+    <input type="text" name="state" id="t_state" size="30"
+        {if $config.use_address_info eq '1'}_required="1" realname="State"
+        {else}_required="0"{/if}
+        value="{$smarty.request.state|escape}"
+        {if count($state_options)>1}disabled="true" style='display: none;' {/if}
+        />
+    <select name=ordProvince size=1 id="f_state">
+    {html_options selected=$member.state options=$config.state_options}
+    </select>
+
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_ZIP#</b><br />
+    </small></th>
+    <td nowrap><input type=text name=ordPostalCode value="{$smarty.request.ordPostalCode|default:$member.zip}" size=30>
+    </td>
+</tr>
+<tr>
+    <th width=40%><b>#_PLUG_PAY_BEANSTREAM_REM_HTML_PHONE#</b><br />
+    </small></th>
+    <td nowrap><input type=text name=ordPhoneNumber value="{$smarty.request.ordPhoneNumber|default:$member.data.phone}" size=30>
+    </td>
+</tr>
+</table>
+<input type=submit value=#_PLUG_PAY_BEANSTREAM_REM_HTML_PROCEED#>
+
+<i>#_PLUG_PAY_BEANSTREAM_REM_HTML_FSUMB#</i>
+</form>
+</center>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+
+{include file="js.country_state.js"}
+{include file=$footer}

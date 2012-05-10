@@ -1,0 +1,62 @@
+{assign var=title value="Access Log"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<table class=hedit width=70%>
+<tr>
+    <th>Time</th>
+    <th>Member</th>
+    <th>URL</th>
+	{if !$config.demo}
+    <th>Remote IP</th>
+	{/if}
+    <th>HTTP Referrer</th>
+</tr>
+{foreach from=$list item=p}
+<tr class={cycle values="xx,odd"}>
+    <td> {$p.time|date_format:$config.time_format} </td>
+    <td> <a href="users.php?action=edit&member_id={$p.member_id}">{$p.login}</a> </td>
+    <td> {$p.url|escape} </td>
+	{if !$config.demo}
+    <td> {$p.remote_addr|escape} </td>
+	{/if}
+    <td> {$p.referrer|escape} </td>
+</tr>
+{/foreach}
+</table>
+
+<br />
+<form action="access_log.php">
+  <select name=order1 size=1 onchange="this.form.submit()">
+  <option value="">** Order by ** 
+  {html_options options=$order_options selected=$smarty.request.order1}
+  </select>
+
+  <select name=order2 size=1 onchange="this.form.submit()">
+  <option value="">** Order by ** 
+  {html_options options=$order_options selected=$smarty.request.order2}
+  </select>
+</form>
+
+<a href="access_log.php?order1={$smarty.request.order1|escape}&order2={$smarty.request.order2|escape}&get_csv=1">Download CSV file</a>
+
+{span count=$count}
+
+<br /><br />
+<table width=70% bgcolor=#F0F0F0><tr><td>
+<b>ACCESS_LOG NOTES:</b><br />
+aMember logs each access, including users accessing protected pages.
+This helps you to detect and control Sales Agreement violations, such
+as access from different IP networks using the same password, which
+may be an indication that someone is sharing their password with
+someone who isn't supposed to have access.<br /><br />
+<font color="red">Please remember that aMember cannot log access to pages protected
+with .htpasswd.
+With new_rewrite protection it only logs first access, so account 
+sharing protection is working, but you cannot see which pages user accessed.
+</font>
+
+</td><tr></table>
+
+{include file="admin/footer.inc.html"}

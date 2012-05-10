@@ -1,0 +1,234 @@
+{assign var="title" value=$smarty.const._TPL_CC_INFO_TITLE}
+{include file="header.html"}
+<div class="backend-wrapper">
+{if $renew_cc}
+    {include file="member_menu.inc.html"}
+{/if}
+{include file="error.inc.html"}
+
+{if $display_receipt }
+{include file="receipt.inc.html"}
+<br /><br />
+{/if}
+
+<form id="ccForm" method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class="vedit" width="100%">
+
+{if $config.cc_type_options}
+<tr>
+    <th>#_TPL_CC_INFO_CCTYPE# *<br />
+    <div class="small">#_TPL_CC_INFO_SELECT1#</div></th>
+    <td><select name="cc_type" size="1" class="required">
+    <option value="">#_TPL_CC_INFO_CHOOSE#</option>
+    {html_options options=$config.cc_type_options selected=$smarty.request.cc_type}
+    </select>
+    </td>
+</tr>
+{/if}
+{if $config.cc_name}
+<tr>
+    <th>#_TPL_CC_INFO_HOLDERNAME# *<br />
+    <div class="small">#_TPL_CC_INFO_ASONCARD#</div></th>
+    <td>
+    <input type="text" class="required" name="cc_name" size="25" value="{$cc_address.cc_name|escape}" />
+    </td>
+</tr>
+{/if}
+{if $config.cc_name_f}
+<tr>
+    <th>#_TPL_CC_INFO_HOLDERNAME2# *<br />
+    <div class="small">#_TPL_CC_INFO_FLNAME|<br /># </div></th>
+    <td>
+    <input type="text" class="required" name=cc_name_f size=15 value="{$cc_address.cc_name_f|escape}">
+    <input type="text" class="required" name=cc_name_l size=15 value="{$cc_address.cc_name_l|escape}">
+    </td>
+</tr>
+{/if}
+{if $config.cc_company}
+<tr>
+    <th style="width: 40%"><b>#_TPL_CC_INFO_CNAME#</b><br />
+    <div class="small">#_TPL_CC_INFO_COMPNAME|<br />#
+    </div></th>
+    <td>
+    <input type="text" name=cc_company size=20 value="{$cc_address.cc_company|escape}" />
+    </td>
+</tr>
+{/if}
+<tr>
+    <th><b>#_TPL_CC_INFO_CCNUM#</b><br />
+    <div class="small">#_TPL_CC_INFO_EXAMPLE#</div></th>
+    <td><input type="text" class="required creditcard" name="cc_number" autocomplete="off" size="22" maxlength="22" value="{$smarty.request.cc_number|escape}" />
+    </td>
+</tr>
+<tr>
+    <th><b>#_TPL_CC_INFO_EXPIRE#</b><br />
+    <div class="small">#_TPL_CC_INFO_EXPDATE#</div></th>
+    <td>
+    {html_select_date prefix="cc_expire_" end_year="+10" display_days=0 month_format="%m (%B)" time="$time"}
+    </td>
+</tr>
+{if $config.cc_code}
+<tr>
+    <th><b>#_TPL_CC_INFO_CCCODE#</b><br />
+    <div class="small">#_TPL_CC_INFO_CCCODEDESC|<br />|<br />#</div></th>
+    <td>
+    <input type="text" class="required" name="cc_code" autocomplete="off" size="4" maxlength="4" />
+    </td>
+</tr>
+{/if}
+
+{if $config.cc_maestro_solo_switch}
+<tr>
+    <th><b>#_TPL_CC_INFO_ISSUENUM#</b><br />
+    <div class="small">#_TPL_CC_INFO_ISSUENUM_DESC#</div></th>
+    <td><input type="text" class="required" name="cc_issuenum" autocomplete="off" size="20" maxlength="22" value="{$smarty.request.cc_issuenum|escape}" />
+    </td>
+</tr>
+<tr>
+    <th><b>#_TPL_CC_INFO_STARTDATE#</b><br />
+    <div class="small">#_TPL_CC_INFO_STARTDATE_DESC#</div></th>
+    <td>
+    {html_select_date prefix="cc_startdate_" start_year="-10" display_days=0 month_format="%m (%B)"}
+    </td>
+</tr>
+{/if}
+
+{if $config.cc_input_bin}
+<tr><th colspan="2" style='text-align:center'>
+#_TPL_CC_INFO_BANK_IDENTIFICATION#<br />
+</th></tr>
+<tr>
+    <th><b>#_TPL_CC_INFO_BIN_NAME#</b><br />
+    <div class="small">#_TPL_CC_INFO_BIN_NAME_MORE#</div></th>
+    <td>
+    <input type="text" class="required" name="cc_bin_name" value="{$smarty.request.cc_bin_name|escape}" />
+    </td>
+</tr>
+<tr>
+    <th><b>#_TPL_CC_INFO_BIN_PHONE#</b><br />
+    <div class="small">#_TPL_CC_INFO_BIN_PHONE_MORE#</div></th>
+    <td>
+    <input type="text" class="required" name="cc_bin_phone" value="{$smarty.request.cc_bin_phone|escape}" />
+    </td>
+</tr>
+{/if}
+
+<tr><th colspan="2" style='text-align:center'>
+#_TPL_CC_INFO_ADDRINFO#<br />
+<div class="small">#_TPL_CC_INFO_MUSTMATCH#</div>
+</th></tr>
+
+<tr>
+    <th><b>#_TPL_CC_INFO_COUNTRY#</b><br />
+    <div class="small"></div></th>
+    <td>
+    <select class="required" id="f_cc_country" name="cc_country" size="1">
+    {country_options selected=$cc_address.cc_country}</select>
+    </td>
+</tr>
+<tr>
+    <th><b>#_TPL_CC_INFO_STATE#</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input class="required" type="text" name="cc_state" id="t_cc_state" size="30"
+        {if $f.validate_func ne ""}_required="1" realname="#_TPL_CC_INFO_STATE#"{/if}
+        value="{$cc_address.cc_state|escape}"
+        />
+    <select class="required" name="cc_state" id="f_cc_state" size="1"
+        {if $f.validate_func ne ""}_required="1" realname="#_TPL_CC_INFO_STATE#"{/if}
+        disabled="true" style='display: none;' >        
+        {state_options country=$cc_address.cc_country selected=$cc_address.cc_state}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b>#_TPL_CC_INFO_STRADDR#</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" class="required" name="cc_street" value="{$cc_address.cc_street|escape}" />
+    </td>
+</tr>
+{if $config.cc_housenumber}
+<tr>
+    <th><b>#_TPL_CC_INFO_HNUMB#</b></th>
+    <td>
+    <input type="text" class="required" name="cc_housenumber" size="15" maxlength="15" value="{$cc_address.cc_housenumber|escape}" />
+    </td>
+</tr>
+{/if}
+<tr>
+    <th><b>#_TPL_CC_INFO_CITY#</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" class="required" name="cc_city" value="{$cc_address.cc_city|escape}" />
+    </td>
+</tr>
+{if $config.cc_province_outside_of_us}
+<tr>
+    <th><b>#_TPL_CC_INFO_PROVINCE#</b><br />
+    <div class="small">#_TPL_CC_INFO_PROVINCE_DESC#</div></th>
+    <td>
+    <input type="text" class="required" name="cc_province" value="{$smarty.request.cc_province|escape}" />
+    </td>
+</tr>
+{/if}
+    <tr>
+    <th><b>#_TPL_CC_INFO_ZIP#</b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" class="required" name="cc_zip" value="{$cc_address.cc_zip|escape}" size="9" />
+    </td>
+</tr>
+{if $config.cc_phone}
+<tr>
+    <th><b>#_TPL_CC_INFO_PHONE# *</b><br />
+    <div class="small">#_TPL_CC_INFO_PHONENUM|<br />|<i>|</i># </div></th>
+    <td>
+    <input type="text" class="required" name="cc_phone" size="15" maxlength="15" value="{$cc_address.cc_phone|escape}" />
+    </td>
+</tr>
+{/if}
+    
+</table>
+
+<br /> 
+<input type="hidden" name="member_id"  value="{$smarty.get.member_id|default:$smarty.request.member_id|escape}" />
+<input type="hidden" name="payment_id" value="{$smarty.request.payment_id|escape}" />
+<input type="hidden" name="renew_cc" value="{$renew_cc}" />
+<input type="hidden" name="do_cc" value="1" />
+{foreach from=$add_fields item=v key=k}
+    <input type="hidden" name="{$k|escape}" value="{$v|escape}" />
+{/foreach}
+<div class="centered">
+{if $renew_cc}  
+    <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CC_INFO_SUBMIT_BUT#&nbsp;&nbsp;&nbsp;&nbsp;" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CC_INFO_BACK_BUT#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="document.location.href='{$config.root_url}/member.php';" />
+{elseif $payment.amount <= 0} {* looks like start of free trial *}
+    <input type="submit" name="paybtn" value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CC_INFO_SUBMIT_BUT2#&nbsp;&nbsp;&nbsp;&nbsp;" />
+{else}
+    <input type="submit" name="paybtn" 
+    value="&nbsp;&nbsp;&nbsp;&nbsp;#_TPL_CC_INFO_SUBMIT_BUT_3# ({$config.currency|default:"$"}{$payment.amount})&nbsp;&nbsp;&nbsp;&nbsp;" />
+{/if}
+</div>
+</form>
+</div>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.metadata.min.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.validate.pack.js?smarty"></script>
+
+{include file="js.country_state.js"}
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#ccForm").validate({
+  	errorPlacement: function(error, element) {
+		error.appendTo( element.parent());
+	}
+    });
+});
+</script>
+ 
+{include file="footer.html"}

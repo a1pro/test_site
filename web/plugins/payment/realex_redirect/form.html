@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Realex Payments Redirect</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no cache">
+<meta HTTP-EQUIV="Pragma" CONTENT="no cache">
+<meta HTTP-EQUIV="Expires" CONTENT="0">
+</head>
+<body OnLoad="AutoSubmitForm();">
+<form name="redirectForm" action="https://epage.payandshop.com/epage.cgi" method="post">
+<input type="hidden" name="MERCHANT_ID" value="{$vars.merchant_id}">
+<input type="hidden" name="ORDER_ID" value="{$vars.order_id}">
+<input type="hidden" name="ACCOUNT" value="{$vars.account}">
+<input type="hidden" name="AMOUNT" value="{$vars.amount}">
+<input type="hidden" name="CURRENCY" value="{$vars.currency}">
+<input type="hidden" name="TIMESTAMP" value="{$vars.timestamp}">
+<input type="hidden" name="COMMENT1" value="{$vars.comment1}">
+<input type="hidden" name="CUST_NUM" value="{$vars.cust_num}">
+<input type="hidden" name="MD5HASH" value="{$vars.md5hash}">
+<input type="hidden" name="AUTO_SETTLE_FLAG" value="{$vars.auto_settle_flag}">
+<script language="Javascript">
+<!--
+function AutoSubmitForm() {
+document.redirectForm.submit();
+}
+//-->
+</script>
+<noscript>
+<center>
+<input type="submit" name="continue" value="Click here to Purchase">
+</center>
+</noscript>
+</form>
+</body>
+</html>

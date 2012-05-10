@@ -1,0 +1,33 @@
+<table class="receipt">
+	<tbody>
+<tr>
+    <th style="width: 300px;">#_TPL_SKYPAY_ADDRESS_HOLDERNAME#</th>
+    <th style="width: 200px; text-align: left;">{$payment.data.billing.name_f}&nbsp;{$payment.data.billing.name_l|escape}</th>
+</tr>
+<tr>
+    <td><strong>#_TPL_SKYPAY_ADDRESS_STRADDR#</strong></td>
+    <td>{$payment.data.billing.street|escape}</td>
+</tr>
+
+<tr>
+    <td><strong>#_TPL_SKYPAY_ADDRESS_STRADDR2#</strong><br />
+    <div class="small"></div></td>
+    <td>{$payment.data.billing.street2|escape}</td>
+</tr>
+
+<tr>
+    <td><strong>#_TPL_SKYPAY_ADDRESS_ZIP#</strong></td>
+    <td>{$payment.data.billing.zip|escape}</td>
+</tr>
+
+<tr>
+    <td><strong>#_TPL_SKYPAY_ADDRESS_CITY#</strong></td>
+    <td>{$payment.data.billing.city|escape}</td>
+</tr>
+
+<tr>
+    <td><strong>#_TPL_SKYPAY_ADDRESS_COUNTRY#</strong></td>
+    <td>{lookup_country key=$payment.data.billing.country}</td>
+</tr>
+    </tbody>
+</table>

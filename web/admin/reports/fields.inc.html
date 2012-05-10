@@ -1,0 +1,56 @@
+<br /><h3>{$title}</h3>
+
+<center>
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<form>
+<table class=vedit align=center>
+
+<tr>
+  <th>
+  Report Type
+  </th><td>
+  <b>{$report_title}</b> <a href="report.php?"><small>another report type</small></a>
+  </td>
+</tr>
+
+<tr>
+  <th>
+  Select from the fields at right<br />
+  Hold down <b>Ctrl</b> to select more than one<br />
+  Use <b>Shift</b> to select all
+
+  </th><td> <select name='fields[]' size=10 multiple>
+  {html_options options=$fields selected=$smarty.request.fields}
+  </select></td>
+</tr>
+
+<tr>
+  <th>
+  <b>Maximum values to display</b><br />
+  <small>Using the 'State' field as an example, you would need to enter a<br />
+  value of 50 to display report data for all 50 states. If you only<br />
+  want to see data for the top 10 states then you would enter a value<br />
+  of 10. If there is more data than the number you enter it will be<br />
+  summarized and displayed under the heading: "Other Values"<br />
+  </th><td> 
+  <input type=text name=max_values value="{$smarty.request.max|default:10}"
+  size=5 maxlength=5>
+  </td>
+</tr>
+
+</table>
+<br />
+<input class=small type=submit value="Proceed >">
+<input type=hidden name=build value=1>
+<input type=hidden name=report value={$smarty.request.report}>
+</form>
+
+
+</center>

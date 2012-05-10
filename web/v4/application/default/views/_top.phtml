@@ -1,0 +1,12 @@
+<?php if (!defined('AM_ADMIN') || !AM_ADMIN): ?>
+<?php include $this->_script('_lang-choice.phtml'); ?>
+<?php $user = Am_Di::getInstance()->auth->getUser(); ?>
+<?php if ($user) : ?>
+<div class="am-user-identity-block">
+    <?php __e('Logged in as %s', $user->login) ?>. <a href="<?php echo REL_ROOT_URL?>/login/logout"><?php __e('Logout')?></a>
+</div>
+<?php endif; ?>
+<?php if ($user) : ?>
+    <?php include $this->_script('member/_menu.phtml'); ?>
+<?php endif; ?>
+<?php endif; ?>

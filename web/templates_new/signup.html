@@ -1,0 +1,268 @@
+{assign var="title" value=$smarty.const._TPL_SIGNUP_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+<form id="signup" method="post" action="{$smarty.server.PHP_SELF|escape}">
+    
+<table class="vedit" summary="Signup Form">
+<tr>
+    <th>#_TPL_SIGNUP_MEMB_TYPE# *</th>
+    <td>
+    {foreach from=$products item=p} 
+    {if count($products)>1}
+    {if $config.select_multiple_products}
+    <input class="required" type="checkbox" id="product{$p.product_id}" name="product_id[]" value="{$p.product_id|escape}"
+        {if in_array($p.product_id, (array)$smarty.request.product_id)}checked="checked"{/if}
+        />
+    {else}
+    <input class="required"  type="radio" id="product{$p.product_id}" name="product_id" value="{$p.product_id|escape}"
+        {if $p.product_id == $smarty.request.product_id }checked="checked"{/if}
+        />
+    {/if}{* end if $config.select_multiple_products *}
+    {else}
+    <input type="hidden" id="product{$p.product_id}" name="product_id" value="{$p.product_id}" />
+    {/if}   
+        <label for="product{$p.product_id}"><b>{$p.title}</b> ({$p.terms})<br />
+        <span class="small">{$p.description}</span></label><br />
+    {if $p.price <= 0.0 }     {assign var="paysys_id_not_required" value="1"}    {/if}        
+    {/foreach}
+    </td>
+</tr>
+
+{* Select Payment System in same way, only if its count > 1 *}
+{if $smarty.request.hide_paysys }
+    <input type="hidden" name="paysys_id" value="{$smarty.request.hide_paysys|escape}">
+    <input type="hidden" name="hide_paysys" value="{$smarty.request.hide_paysys|escape}">
+{else}
+{if $config.product_paysystem}
+{assign var="paysys_id_not_required" value="1"}
+{else}
+<tr>
+    <th>#_TPL_SIGNUP_PAYSYS# *</th>
+    <td>
+        {foreach from=$paysystems item=p} 
+        {if count($paysystems)>1}
+        <input type="radio" id="paysys_id{$p.paysys_id}" name="paysys_id" value="{$p.paysys_id|escape}"
+            {if $p.paysys_id eq $smarty.request.paysys_id }checked{/if} />
+        {else}            
+        <input type="hidden" id="paysys_id{$p.paysys_id}" name="paysys_id" value="{$p.paysys_id|escape}" />
+        {/if}<label for="paysys_id{$p.paysys_id}"><b>{$p.title}</b>
+            <span class="small">{$p.description}</span></label><br /><br />
+        {/foreach}
+    </td>
+</tr>
+{/if}
+{/if}
+
+<tr>
+    <th width="40%">#_TPL_SIGNUP_NAME# *<br />
+    <div class="small">#_TPL_SIGNUP_NAME_1#</div></th>
+    <td nowrap="nowrap"><input class="required" type="text" name="name_f" value="{$smarty.request.name_f|escape}" size="15" />
+        <input type="text" class="required" name="name_l" value="{$smarty.request.name_l|escape}" size="15" />
+    </td>
+</tr>
+
+<tr>
+    <th><b>#_TPL_SIGNUP_EMAIL# *</b><br />
+    <div class="small"><label for="id">#_TPL_SIGNUP_EMAIL_1#</label><br />#_TPL_SIGNUP_EMAIL_2#</div></th>
+    <td><input id="f_email" class="required email" type="text" name="email" value="{$smarty.request.email|escape}" size="30" />
+    </td>
+</tr>
+
+{if not $config.generate_login}
+<tr>
+    <th>#_TPL_SIGNUP_LOGIN# *<br />
+    <div class="small">#_TPL_SIGNUP_LOGIN_1|{$config.login_min_length}#<br />
+           #_TPL_SIGNUP_LOGIN_2#<br />#_TPL_SIGNUP_LOGIN_3#</div></th>
+    <td><input type="text" id="f_login" autocomplete="off"
+    class="{ldelim}required:true, rangelength:[{$config.login_min_length}, {$config.login_max_length}], remoteUniqLogin: 'ajax.php'{rdelim}"
+    name="login" value="{$smarty.request.login|escape}" size="15" />
+    <div id="d_login"></div>
+    </td>
+</tr>
+{/if}
+
+{if not $config.generate_pass}
+<tr>
+    <th>#_TPL_SIGNUP_PSWD# *<br />
+    <div class="small">#_TPL_SIGNUP_PSWD_1|{$config.pass_min_length}#</div></th>
+    <td><input id="f_pass0" type="password" autocomplete="off"
+    class="{ldelim}required:true, rangelength:[{$config.pass_min_length}, {$config.pass_max_length}]{rdelim}" 
+    name="pass0" value="{$smarty.request.pass0|escape}" size="15" />
+    </td>
+</tr>
+
+<tr>
+    <th>#_TPL_SIGNUP_CONF_PSWD# *<br />
+    <div class="small">#_TPL_SIGNUP_CONF_PSWD_1#</div></th>
+    <td><input id="pass1" type="password" autocomplete="off" class="{ldelim}equalTo: '#f_pass0'{rdelim}" name="pass1" value="{$smarty.request.pass1|escape}" size="15" />
+    </td>
+</tr>
+{/if}
+
+{if $config.use_captcha_signup && !$smarty.session.amember_captcha_verified}
+<tr>
+    <th>#_TPL_SIGNUP_CAPTCHA# *<br />
+    <div class="small">#_TPL_SIGNUP_CAPTCHA_1#</div></th>
+    <td> 
+    <img src="{if $smarty.server.HTTPS}{$config.root_surl}{else}{$config.root_url}{/if}/captcha.php?for=signup" width="122" height="62" alt="Verification Image" /> <br />
+    <input type="text" class="required" name="captcha" maxlength="6" style='width: 119px;' />
+    </div>
+    </td>
+    </tr>
+{/if}
+
+{$additional_fields_html}
+
+{if $newsletter_threads > 0}
+<tr>
+    <th><b>#_TPL_SIGNUP_NEWSLETTERS_SUBSCRIBE#</b><br />
+    <div class="small">#_TPL_SIGNUP_NEWSLETTERS_SUBSCRIBE_1#</div>
+    </th>
+    <td><input type="checkbox" name="to_subscribe" value="1"
+    {if $smarty.request.to_subscribe}checked="checked"{/if} />
+    </td>
+</tr>
+{/if}
+{if $config.use_address_info}
+{if $config.use_address_info eq "1"}
+{assign var="a_req" value="*"}
+{/if}
+<tr>
+    <th class="headrow" colspan="2">#_TPL_SIGNUP_ADDR#
+    </th>
+</tr>
+<tr>
+    <th><b><label for="country">#_TPL_SIGNUP_COUNTRY#{$a_req}</label></b><br />
+    <div class="small"></div></th> 
+    <td><select name="country" id="f_country" size="1" >
+    {country_options selected=$smarty.request.country}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b><label for="state">#_TPL_SIGNUP_STATE#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" name="state" id="t_state" size="30"
+        {if $config.use_address_info eq '1'}_required="1" realname="State"
+        {else}_required="0"{/if}
+        value="{$smarty.request.state|escape}"
+        {if count($state_options)>1}disabled="true" style='display: none;' {/if}
+        />
+    <select name="state" id="f_state" size="1"
+        {if $config.use_address_info eq '1'}_required="1" realname="State"{/if}
+        {if count($state_options)<=1}disabled="true" style='display: none;'{/if}
+        >        
+    {html_options options=$state_options selected=$smarty.request.state}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b><label for="city">#_TPL_SIGNUP_CITY#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td><input type="text" id="city" name="city" value="{$smarty.request.city|escape}" size="15" />
+    </td>
+</tr>
+<tr>
+    <th><b><label for="street">#_TPL_SIGNUP_STREET#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td><input type="text" id="street" name="street" value="{$smarty.request.street|escape}" size="30" />
+    </td>
+</tr>
+<tr>
+    <th><b><label for="zip">#_TPL_SIGNUP_ZIP#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td><input type="text" id="zip" name="zip" value="{$smarty.request.zip|escape}" size="6" />
+    </td>
+</tr>
+{/if}    
+{if $config.use_coupons}
+<tr>
+    <th colspan="2" class="headrow">#_TPL_SIGNUP_COUPONS#</th>
+</tr>
+<tr>
+    <th><b>#_TPL_SIGNUP_COUPON_CODE#</b><br />
+    <div class="small">#_TPL_SIGNUP_COUPON_1#<br />#_TPL_SIGNUP_COUPON_2#</div></th>
+    <td><input type="text" name="coupon" id="f_coupon"
+    class="{ldelim} remoteCoupon: 'ajax.php'{rdelim}" 
+    value="{$smarty.request.coupon|escape}" size="15" />
+    </td>
+</tr>
+{/if}
+</table>
+<br />
+<input type="hidden" name="do_payment" value="1" />
+<input type="hidden" name="price_group" value="{$smarty.request.price_group|escape}" />
+<input type="submit" value="&nbsp;&nbsp;&nbsp;#_TPL_SIGNUP_SUBMIT_CONTINUE#&nbsp;&nbsp;&nbsp;" />
+</form>
+
+<br /><br />
+<p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p>
+
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.metadata.min.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.validate.pack.js?smarty"></script>
+
+{if $config.use_address_info}
+{include file="js.country_state.js"}
+{/if}
+{include file="js.ajax_uniq_login.js"}
+{include file="js.ajax_coupon.js"}
+
+<script type="text/javascript">
+// TODO: coupon, uniq_login ajax check, additional fields
+function checkLogin(){
+    $("#signup").validate().element("#f_login");
+}
+function checkCoupon(){
+    $("#signup").validate().element("#f_coupon");
+}
+$(document).ready(function(){
+    var prevLogin = "";   
+    var prevCoupon = ""; 
+    var timeout = null;
+
+    $("#signup").validate({
+   	onkeyup: function(element) {
+   		if ( element.name in this.submitted || element == this.lastElement ) {
+            if (element.id == 'f_login'){
+                var l = element.value;
+                if (l == prevLogin) return; 
+                clearTimeout(timeout);
+                timeout = setTimeout(checkLogin, 1*1000);
+                prevLogin = l;
+            } else if (element.id == 'f_coupon'){
+                var c = element.value;
+                if (c == prevCoupon) return; 
+                clearTimeout(timeout);
+                timeout = setTimeout(checkCoupon, 1*1000);
+                prevCoupon = c;
+            } else
+       			this.element(element);
+   		}
+   	},
+    rules: {
+	    "_notexisting_": "required" // for the following comma
+	{/literal}
+		{if ! $paysys_id_not_required}
+		,paysys_id: "required"
+		{/if}
+	    {if $config.use_address_info eq "1"}
+    	,street: "required",
+    	city: "required",
+    	state: "required",
+    	zip: "required",
+    	country: "required"
+    	{/if}
+	{literal}
+	},
+  	errorPlacement: function(error, element) {
+		error.appendTo( element.parent());
+	}
+    });
+});
+</script>
+
+{include file="footer.html"}

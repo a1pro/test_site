@@ -1,0 +1,44 @@
+<?php
+$nMenu = $this->nMenu();
+$nMenu->setAcl($di->authAdmin->getUser());
+echo $nMenu->renderMenu(
+        $this->di->navigationAdmin,
+        array('ulClass' => 'admin-menu',)
+    );
+?>
+
+
+<div id="admin-login" style="display:none; padding-left: 0; padding-right: 0;">
+    <div class="error"></div>
+    <div class="am-form">
+        <form method="post" action="<?php p(REL_ROOT_URL) ?>/admin-auth">
+                <fieldset>
+                    <div class="row">
+                        <div class="element-title">
+                            <label for="login"><?php __e("Username") ?></label>
+                        </div>
+                        <div class="element">
+                            <input type="text" id="login" name="login" size="18" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="element-title">
+                            <label for="pass"><?php __e("Password") ?></label>
+                        </div>
+                        <div class="element">
+                            <input type="password" id="pass" name="passwd" size="18" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="element-title"></div>
+                        <div class="element">
+                            <input type=hidden name=do_login value=1>
+                            <input type=submit value="<?php __e("Log In")?>">
+                        </div>
+                    </div>
+                </fieldset>
+        </form>
+    </div>
+</div>

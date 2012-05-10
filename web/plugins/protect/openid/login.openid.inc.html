@@ -1,0 +1,72 @@
+{**
+ *
+ * OpenID v1.1
+ * Copyright 2010 (c) R Woodgate
+ * All Rights Reserved
+ *
+ * This file may not be distributed without permission.
+ *
+ * Purchasers of this plugin can modify it for the site
+ * it is installed on.
+ *
+ * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING
+ * THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE.
+ *
+ **}
+
+{php}
+global $db, $plugin_config, $config;
+$openid_config = $plugin_config['protect']['openid'];
+$openid_authenticate = $config['root_url'].'/plugins/protect/openid/authenticate.php';
+$openid_dir = $config['root_url'].'/plugins/protect/openid/';
+$newaccount = $plugin_config['newaccount'];
+$salutation = ($_SESSION['openid']['data']['namePerson'])?$_SESSION['openid']['data']['namePerson']:"Congratulations";
+if ($_SESSION['openid']['identity']) {
+	echo "<p style='width:50%;margin:1em auto;text-align:left;'><strong>$salutation</strong>, you've successfully logged in to your OpenID provider. <span style='color:red'>Now please login to your account on our site to complete the link.</span> You will only have to do this once. If you don't have an account with us, please <a href='{$config['root_url']}/plugins/protect/openid/signup.php'>signup here</a>.</p>";
+	
+	echo "<a href='{$config['root_url']}/logout.php'>Logout</a></p>";
+	
+} else {
+{/php}
+<!-- Simple OpenID Selector -->
+<script type="text/javascript" smarty="smarty">var openid_dir='{php}echo $openid_dir;{/php}';</script>
+<script type="text/javascript" src="{php}echo $openid_dir;{/php}js/jquery-1.2.6.min.js?smarty"></script>
+<script type="text/javascript" src="{php}echo $openid_dir;{/php}js/openid-jquery.js?smarty"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	openid.init('openid_identifier');
+});
+</script>
+<!--<form action="{php}echo $openid_authenticate;{/php}" method="get" id="openid_form" style="margin:2em auto 0">-->
+<form action="http://www.getaudiofromvideo.com/open/members/plugins/protect/openid/authenticate.php" method="get" id="openid_form" style="margin:2em auto 0">
+	<input type="hidden" name="action" value="verify" />
+
+	<fieldset>
+    		<legend>or Connect via <img src="{php}echo $openid_dir;{/php}images/openid-inputicon.gif" style="vertical-align:middle"/>OpenID using one of your accounts from below</legend>
+			<noscript>
+			<p>OpenID is service that allows you to log-on to many different websites using a single indentity.
+			Find out <a href="http://openid.net/what/">more about OpenID</a> and <a href="http://openid.net/get/">how to get an OpenID enabled account</a>.</p>
+			</noscript>
+    		
+    		{php}
+				if ($_SESSION['openid']['error']) { 
+					echo "<p style='color:red;font-weight:bold'>Sorry, an error occured:<br/>{$_SESSION['openid']['error']}</p>";
+					unset($_SESSION['openid']['error']);
+				}
+			{/php}
+			<div id="openid_choice">
+				<p>Do you already have an account on one of these sites? You can use that to login here! Please click your account provider:</p>
+	    		<div id="openid_btns"></div>
+			</div>
+			
+			<div id="openid_input_area">
+				<input id="openid_identifier" name="openid_identifier" type="text" value="http://" />
+				<input id="openid_submit" type="submit" value="Sign-In"/>
+			</div>
+	</fieldset>
+</form>
+<!-- /Simple OpenID Selector -->
+{php}
+} // End if
+{/php}

@@ -1,0 +1,35 @@
+{if $member_id}{else}{assign var=member_id value=$u.member_id}{/if}
+{if $member_id}{else}{assign var=member_id value=$smarty.post.member_id}{/if}
+{if $member_id}{else}{assign var=member_id value=$smarty.get.member_id}{/if}
+{if !$member_id}{assign var=hide_notebook value=1}{/if}
+{if !$hide_notebook}
+{if $member_id}{else}{assign var=member_id value=$u.member_id}{/if}
+{if $member_id}{else}{assign var=member_id value=$smarty.post.member_id}{/if}
+{if $member_id}{else}{assign var=member_id value=$smarty.get.member_id}{/if}
+{if $config.use_affiliates}
+    {assign var=pc value="20%"}
+{else}
+    {assign var=pc value="25%"}
+{/if}
+
+<table width=100% cellspacing=1 cellpadding=0 class=notebook><tr>
+    <td width={$pc} class={if $selected eq "user"}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=edit">User Info</a>
+    </td>
+    <td width={$pc} class={if $selected eq "payments"}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=payments">User Payments/Subscriptions</a>
+    </td>
+    <td width={$pc} class={if $selected eq "actions"}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=actions">Actions</a>
+    </td>
+    <td width={$pc} class={if $selected eq "access_log"}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=access_log">Access Log</a>
+    </td>
+    {if $config.use_affiliates}
+    <td width={$pc} class={if ($selected eq "aff_clicks") || ($selected eq "aff_sales")}sel{else}notsel{/if}>
+    <a href="users.php?member_id={$member_id}&action=aff_sales">Affiliate Stats</a>
+    </td>
+    {/if}
+</tr>
+</table>
+{/if}

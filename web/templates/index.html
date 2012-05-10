@@ -1,0 +1,7 @@
+{assign var="title" value=$config.site_title}
+{include file="header.html"}
+<div style="float:left; width:960px; border:1px solid #ccc; margin:25px 0 0 150px; padding:10px 0 10px 0; text-align:center;">
+#_TPL_INDEX_IF_YOU_ARE_REGISTERED|<a href="member.php">|</a>#.
+#_TPL_INDEX_IF_YOU_ARE_NOT_REGISTERED|<a href="signup.php">|</a>#.
+</div>
+{include file="footer.html"}

@@ -1,0 +1,84 @@
+{assign var=title value="Import. Step 3 of 4: Confirmation"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+{if $error}
+<table><tr><td>
+{foreach from=$error item=e}
+<li><font color=red><b>{$e}</b></font>
+{/foreach}
+</td></tr></table>
+{ /if}
+{if $warn}
+<table><tr><td>
+{foreach from=$warn item=e}
+<li><b>Warning: </b>{$e}</font>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<table class=hedit>
+<tr>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Email</th>
+    <th colspan=2>Name</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>State</th>
+    <th>ZIP</th>
+    <th>Country</th>
+    <th>Gender</th>
+    <th>&nbsp;</th>
+    <th>Product</th>
+    <th colspan=2>Period</th>
+    <th>Paysystem</th>
+    <th>Amount</th>
+    <th>Receipt#</th>
+    {foreach from=$member_additional_fields item=f}{if $f.name ne 'cc-hidden'}
+    {assign var=fname value=$f.name}
+    <th>{$f.title}</th>
+    {/if}{/foreach}
+</tr>
+{foreach from=$file_content item=i}
+<tr>
+    <td>{$i.login|escape}</td>
+    <td>{$i.pass|escape}</td>
+    <td>{$i.email|escape}</td>
+    <td>{$i.name_f|escape}</td>
+    <td>{$i.name_l|escape}</td>
+    <td>{$i.street|escape}</td>
+    <td>{$i.city|escape}</td>
+    <td>{$i.state|escape}</td>
+    <td>{$i.zip|escape}</td>
+    <td>{$i.country|escape}</td>
+    <td>{$i.gender|escape}</td>
+    <td>&nbsp;</td>
+    <td>{$i.product|escape}</td>
+    <td>{$i.begin_date|escape}</td>
+    <td>{$i.expire_date|escape}</td>
+    <td>{$i.paysys_id|escape}</td>
+    <td>{$i.amount|escape}</td>
+    <td>{$i.receipt_id|escape}</td>
+    {foreach from=$member_additional_fields item=f}
+    {assign var=fname value=$f.name}{if $f.name ne 'cc-hidden'}
+    <td>{$i.$fname|escape}</td>
+    {/if}{/foreach}
+</tr>
+{/foreach}
+</table>
+
+<br />
+
+<b>only first 20 records shown</b>
+
+<form method=post enctype="multipart/form-data" action="{$smarty.server.PHP_SELF|escape}">
+<input type=hidden name=action value=do_import>
+<input type=submit value="Do Import >">
+
+</form>
+
+
+{include file="admin/footer.inc.html"}
+

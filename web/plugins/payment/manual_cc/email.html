@@ -1,0 +1,22 @@
+{if $charge_type eq 3}
+		- Manual Credit Card Recurring Billing -
+{else}
+		- Manual Credit Card New Signup -
+{/if}
+		Product: {$currency|default:"$"}{$payment.amount} {$product.title}
+		Login: {$member.login}
+		Credit Card Type: {$cc_type}
+		Cardholder Name: {$cc_info.cc_name_f} {$cc_info.cc_name_l}
+		Credit Card #: {$cc_number}
+		Card Expire: {$cc_expire}
+		Credit Card Code: {$cc_info.cc_code}
+		
+			- Address Info -
+		Street Address: {$cc_info.cc_street}
+		City: {$cc_info.cc_city}
+		State: {$cc_info.cc_state}
+		ZIP: {$cc_info.cc_zip}
+		Country: {$cc_info.cc_country}
+		Phone: {$cc_info.cc_phone}
+		Please login and check it:
+		{$admin_url}/users.php?action=edit_payment&payment_id={$payment.payment_id}&member_id={$member.member_id}

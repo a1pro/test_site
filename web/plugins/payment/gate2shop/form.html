@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Gate2Shop Redirect</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no cache">
+<meta HTTP-EQUIV="Pragma" CONTENT="no cache">
+<meta HTTP-EQUIV="Expires" CONTENT="0">
+</head>
+<body OnLoad="AutoSubmitForm();">
+<form name="redirectForm" method="post" action="https://secure.Gate2Shop.com/ppp/purchase.do">
+<!--Required-->
+<input type="hidden" name="version" value="{$vars.version}"/>
+
+<input type="hidden" name="merchant_id" value="{$vars.merchant_id}"/>
+<input type="hidden" name="merchant_site_id" value="{$vars.merchant_site_id}"/>
+<input type="hidden" name="currency" value="{$vars.currency}"/>
+
+<input type="hidden" name="numberofitems" value="{$vars.numberofitems}"/>
+<input type="hidden" name="item_name_1" value="{$vars.item_name_1}"/>
+<input type="hidden" name="item_amount_1" value="{$vars.item_amount_1}"/>
+<input type="hidden" name="total_amount" value="{$vars.total_amount}"/>
+
+<input type="hidden" name="time_stamp" value="{$vars.time_stamp}"/>
+<input type="hidden" name="checksum" value="{$vars.checksum}"/>
+<!--Optional-->
+<input type="hidden" name="total_tax" value="{$vars.total_tax}"/>
+<input type="hidden" name="productId" value="{$vars.productId}"/>
+<input type="hidden" name="merchantLocale" value="{$vars.merchantLocale}"/>
+<input type="hidden" name="userid" value="{$vars.userid}"/>
+
+<input type="hidden" name="first_name" value="{$vars.first_name}"/>
+<input type="hidden" name="last_name" value="{$vars.last_name}"/>
+<input type="hidden" name="address1" value="{$vars.address1}"/>
+<input type="hidden" name="address2" value=""/>
+<input type="hidden" name="city" value="{$vars.city}"/>
+<input type="hidden" name="state" value="{$vars.state}"/>
+<input type="hidden" name="country" value="{$vars.country}"/>
+<input type="hidden" name="zip" value="{$vars.zip}"/>
+<input type="hidden" name="email" value="{$vars.email}"/>
+<input type="hidden" name="invoice_id" value="{$vars.invoice_id}"/>
+<input type="hidden" name="customField1" value="{$vars.customField1}"/>
+<input type="hidden" name="customData" value="{$vars.customData}"/>
+</form>
+<script language="Javascript">
+<!--
+function AutoSubmitForm() {
+document.redirectForm.submit();
+}
+//-->
+</script>
+<noscript>
+<center>
+<input type="submit" name="continue" value="Click here to Purchase">
+</center>
+</noscript>
+</form>
+</body>
+</html>

@@ -1,0 +1,200 @@
+{assign var="title" value=$smarty.const._TPL_AFF_SIGNUP_TITLE}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+<form name="signup" id="signup" method="post" action="aff_signup.php#e" >
+<table align="center" class="vedit" summary="Affiliate Signup Form">
+
+<tr>
+    <th width="40%">#_TPL_SIGNUP_NAME# *<br />
+    <div class="small">#_TPL_SIGNUP_NAME_1#</div></th>
+    <td nowrap="nowrap"><input type="text" class="required" name="name_f" value="{$smarty.request.name_f|escape}" size="15" />
+        <input type="text" class="required" name="name_l" value="{$smarty.request.name_l|escape}" size="15" />
+    </td>
+</tr>
+
+<tr>
+    <th>#_TPL_SIGNUP_EMAIL# *<br />
+    <div class="small">#_TPL_SIGNUP_EMAIL_1#<br />#_TPL_SIGNUP_EMAIL_2#</div></th>
+    <td><input type="text" class="required email" name="email" id="f_email" value="{$smarty.request.email|escape}" size="30" />
+    </td>
+</tr>
+
+{if not $config.generate_login}
+<tr>
+    <th>#_TPL_SIGNUP_LOGIN# *<br /><br />
+    <div class="small">#_TPL_SIGNUP_LOGIN_1|{$config.login_min_length}#<br />
+           #_TPL_SIGNUP_LOGIN_2#<br />#_TPL_SIGNUP_LOGIN_3#</div></th>
+    <td><input type="text" name="login" 
+	class="{ldelim}required:true, rangelength:[{$config.login_min_length}, {$config.login_max_length}],
+        remoteUniqLogin: 'ajax.php'{rdelim}" id="f_login" value="{$smarty.request.login|escape}" size="15" />
+    </td>
+</tr>
+{/if}
+
+{if not $config.generate_pass}
+<tr>
+    <th>#_TPL_SIGNUP_PSWD# *<br />
+    <div class="small">#_TPL_SIGNUP_PSWD_1|{$config.pass_min_length}#</div></th>
+    <td><input type="password" name="pass0" 
+	class="{ldelim}required:true, rangelength:[{$config.pass_min_length}, {$config.pass_max_length}]{rdelim}" 
+	id="f_pass0" value="{$smarty.request.pass0|escape}" size="15" />
+    </td>
+</tr>
+
+<tr>
+    <th>#_TPL_SIGNUP_CONF_PSWD# *<br />
+    <div class="small">#_TPL_SIGNUP_CONF_PSWD_1#</div></th>
+    <td><input type="password" name="pass1" class="{ldelim}equalTo: '#f_pass0'{rdelim}" id="f_pass1" value="{$smarty.request.pass1|escape}" size="15" />
+    </td>
+</tr>
+{/if}
+
+{if $config.use_captcha_signup && !$smarty.session.amember_captcha_verified}
+<tr>
+    <th>#_TPL_SIGNUP_CAPTCHA# *<br />
+    <div class="small">#_TPL_SIGNUP_CAPTCHA_1#</div></th>
+    <td> 
+    <img src="{if $smarty.server.HTTPS}{$config.root_surl}{else}{$config.root_url}{/if}/captcha.php?for=signup" width="122" height="62" alt="Verification Image" /> <br />
+    <input type="text" class="required" name="captcha" maxlength="6" style='width: 119px;' />
+    </div>
+    </td>
+    </tr>
+{/if}
+
+
+{$additional_fields_html}
+
+{if $newsletter_threads > 0}
+<tr>
+    <th>#_TPL_SIGNUP_NEWSLETTERS_SUBSCRIBE#<br />
+    <div class="small">#_TPL_SIGNUP_NEWSLETTERS_SUBSCRIBE_1#</div>
+    </th>
+    <td><input type="checkbox" name="to_subscribe" value="1"
+    {if $smarty.request.to_subscribe}checked="checked"{/if} />
+    </td>
+</tr>
+{/if}
+
+{if count($aff_payout_types) > 1}
+<tr>
+    <th>#_AFF_PAYOUT_TYPE# *</th>
+    <td><select name="aff_payout_type" size="1">
+    <option value=''>#_TPL_AFF_PAYOUT_NOT_SELECTED#</option>
+    {html_options options=$aff_payout_types selected=$smarty.request.aff_payout_type}
+    </select></td>
+</tr>
+{/if}
+
+{if $config.use_address_info}
+{* required for affiliates *}{assign var="a_req" value=" *"}
+<tr>
+    <th class="headrow" colspan="2">#_TPL_SIGNUP_ADDR#</th>
+</tr>
+<tr>
+    <th><b><label for="street">#_TPL_SIGNUP_STREET#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td><input type="text" id="street" name="street" value="{$smarty.request.street|escape}" size="30" />
+    </td>
+</tr>
+<tr>
+    <th><b><label for="city">#_TPL_SIGNUP_CITY#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td><input type="text" id="city" name="city" value="{$smarty.request.city|escape}" size="15" />
+    </td>
+</tr>
+<tr>
+    <th><b><label for="zip">#_TPL_SIGNUP_ZIP#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td><input type="text" id="zip" name="zip" value="{$smarty.request.zip|escape}" size="6" />
+    </td>
+</tr>
+<tr>
+    <th><b><label for="country">#_TPL_SIGNUP_COUNTRY#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td><select name="country" id="f_country" size="1">
+    {country_options selected=$smarty.request.country}
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><b><label for="state">#_TPL_SIGNUP_STATE#{$a_req}</label></b><br />
+    <div class="small"></div></th>
+    <td>
+    <input type="text" name="state" id="t_state" size="30"
+        {if $config.use_address_info eq '1'}_required="1" realname="State"
+        {else}_required="0"{/if}
+        value="{$smarty.request.state|escape}"
+        {if count($state_options)>1}disabled="true" style='display: none;' {/if}
+        />
+    <select name="state" id="f_state" size="1"
+        {if $config.use_address_info eq '1'}_required="1" realname="State"{/if}
+        {if count($state_options)<=1}disabled="true" style='display: none;'{/if}
+        >        
+    {html_options options=$state_options selected=$smarty.request.state}
+    </select>
+    </td>
+</tr>
+{/if}    
+
+</table>
+<br />
+<input type="hidden" name="do_affiliate" value="1" />
+<input type="submit" value="&nbsp;&nbsp;&nbsp;#_TPL_SIGNUP_SUBMIT_CONTINUE#&nbsp;&nbsp;&nbsp;" />
+</form>
+
+<br /><br />
+<!-- <p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p> -->
+
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.select.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.metadata.min.js?smarty"></script>
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.validate.pack.js?smarty"></script>
+
+{include file="js.country_state.js"}
+{include file="js.ajax_uniq_login.js"}
+
+<script type="text/javascript">
+function checkLogin(){
+    $("#signup").validate().element("#f_login");
+}
+$(document).ready(function(){
+    var prevLogin = "";   
+    var timeout = null;
+
+    $("#signup").validate({
+   	onkeyup: function(element) {
+   		if ( element.name in this.submitted || element == this.lastElement ) {
+            if (element.id == 'f_login'){
+                var l = element.value;
+                if (l == prevLogin) return; 
+                clearTimeout(timeout);
+                timeout = setTimeout(checkLogin, 1*1000);
+                prevLogin = l;
+            } else
+       			this.element(element);
+   		}
+   	},
+    rules: {
+	    "_notexisting_": "required" // for the following comma
+	{/literal}
+		{if ! $paysys_id_not_required}
+		,paysys_id: "required"
+		{/if}
+	    {if $config.use_address_info eq "1"}
+    	,street: "required",
+    	city: "required",
+    	state: "required",
+    	zip: "required",
+    	country: "required"
+    	{/if}
+	{literal}
+	},
+  	errorPlacement: function(error, element) {
+		error.appendTo( element.parent());
+	}
+    });
+});
+</script>
+
+{include file="footer.html"}

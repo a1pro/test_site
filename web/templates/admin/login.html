@@ -1,0 +1,39 @@
+{assign var=title value="Administrator Log-in"}
+{include file="admin/header.inc.html"}
+<script language="JavaScript">
+<!--
+if (self.location.href != top.location.href) {
+    top.location.href = self.location.href;
+}
+// -->
+</script>
+
+<center>
+<h3>{$title|escape}</h3>
+
+
+{if $error}
+<br />
+<font color=red><b>{$error|escape}</b></font>
+<br /><br />
+{/if}
+<br /><br /><br />
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table align=center class=vedit>
+    <tr>
+        <th><b>Login</b></th>
+        <td><input type=text name=login value='' size=12></td>
+    </tr>
+    <tr>
+        <th><b>Password</b></th>
+        <td><input type=password name=passwd value='' size=12></td>
+    </tr>
+</table>
+<br />
+    <input type=hidden name=do_login value=1>
+    <input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
+</form>
+
+
+{include file="admin/footer.inc.html"}
+

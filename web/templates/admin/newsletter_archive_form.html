@@ -1,0 +1,59 @@
+{if $add}
+{assign var=title value="Add Newsletter"}
+{else}
+{assign var=title value="Edit Newsletter"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="archive"}
+{/if}
+<center>
+
+<br /><h3>{$title|escape}</h3>
+
+<table><tr><td>{if $errors}{foreach from=$errors item=e}
+<font color=red><li><b>{$e|escape}</b></font>
+{/foreach}{/if}</td></tr></table>
+
+<form method=post name=add_newsletter action="{$smarty.server.PHP_SELF|escape}">
+<table class="vedit">
+<tr>
+    <th><b>Subject</b></th>
+    <td>
+    <input type=text name=subject value="{$vars.subject|escape}" size=41>  
+    </td>
+</tr>
+<tr>
+    <th>Newsletter threads</th>
+    <td>
+    <select name='threads[]' size=5 multiple>
+    {html_options options=$threads_list selected=$threads}
+    </select>    
+    </td>
+</tr>
+<tr>
+    <th><b>Message</b></th>
+    <td><textarea name=message cols=90 rows=30>{$vars.message|escape}</textarea></td>
+</tr>
+<tr>
+    <td colspan="2" align="center">
+    <input type=submit value="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=button value="&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)">
+    <input type=hidden name=action value={if $add}create{else}update{/if}>
+    <input type=hidden name=archive_id value="{$archive_id}">
+    </td>
+</tr>
+{if $a}
+<tr><td colspan="2" align="left">
+<h2 style='text-align:left; margin-left: 0px;'>{$a.subject}</h2>
+{if !$a.is_html}<pre>{/if}{$a.message}{if !$a.is_html}</pre>{/if}
+<div class="small">{$a.add_date|amember_date_format}</div>
+</td></tr>
+{/if}
+</table>
+</form>
+
+{include file="admin/footer.inc.html"}
+

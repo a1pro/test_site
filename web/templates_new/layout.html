@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{$title}</title>
+    {php}echo amember_get_header_code();{/php}
+</head>
+<body>
+
+{if $config.lang.display_choice}{* Display Language choice if this option enabled *}
+<div style='width: 100%; text-align: right;'>
+{php}echo display_lang_choice();{/php}
+</div>
+{/if}
+<br /><br />
+<div class="centered">
+
+<h1>{$title}</h1>
+<hr />
+<br />
+
+{* Don not remove or modify anything between these lines *}
+{$CONTENT}
+{* Don not remove or modify anything between these lines *}
+
+</div>
+<hr />
+<p class="powered">&copy; <a href="http://www.cgi-central.net">CGI-Central.NET</a>, 2002&ndash;{php}echo date('Y'){/php}</p>
+</body></html>

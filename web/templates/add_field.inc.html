@@ -1,0 +1,49 @@
+{* YOU NEVER NEED TO EDIT THIS FILE *}
+{* This block of code will be inserted to signup.html and profile.htm for each addtitional field *}
+<tr>
+<th><b>{$f.title}
+{if $f.validate_func ne ""} *{/if}
+</b>
+{if $f.description}<br />
+<div class="small">{$f.description}</div>{/if}
+</th>
+<td>
+{if $f.type eq "text"}
+    <input type="text" id="f_{$f.name|escape}" name="{$f.name|escape}" size="{$f.size|default:20}"
+        {if $f.validate_func ne ""}class="required"{/if}
+        {if $f.maxlength}maxlength={$f.maxlength}{/if} value="{$value|escape}" />
+{elseif $f.type eq 'state'}
+  <input type="text" name="{$f.name|escape}" id="t_{$f.name|escape}" size="30" value="{$value.0}" />
+    <select name="{$f.name|escape}" id="f_{$f.name|escape}" size="1" disabled="true" style='display: none;'>
+    {state_options selected=$value.0 country=$value.1}
+    </select>    
+{elseif $f.type eq "textarea"}
+    <textarea id="f_{$f.name|escape}" name="{$f.name|escape}" cols="{$f.cols|default:20}"
+    {if $f.validate_func ne ""}class="required"{/if}
+     rows="{$f.rows|default:5}">{$value|escape:"html"}</textarea>
+{elseif $f.type eq "select"}
+    <select name="{$f.name|escape}" size="{$f.size|default:1}"
+        id="f_{$f.name|escape}"
+        {if $f.validate_func ne ""}class="required"{/if}
+    >        
+    {html_options options=$f.options selected=$value}
+    </select>
+{elseif $f.type eq "multi_select"}
+    <select id="f_{$f.name|escape}" name="{$f.name|escape}[]" size="{$f.size|default:5}" multiple
+        {if $f.validate_func ne ""}class="required"{/if}
+    >
+    {html_options options=$f.options selected=$value}
+    </select>
+{elseif $f.type eq "radio"}
+    {html_radios  name=$f.name options=$f.options checked=$value separator="<br />"}
+{elseif $f.type eq "checkbox"}
+    <input type=hidden name="{$f.name|escape}[]" value="" />
+    {html_checkboxes name=$f.name options=$f.options checked=$value separator="<br />"}
+{elseif $f.type eq 'cc-number'}
+    <input type=text id="f_{$f.name|escape}" name="{$f.name|escape}" size="{$f.size|default:20}"
+        {if $f.maxlength}maxlength={$f.maxlength}{/if} value="{$value|escape}" />
+{elseif $f.type eq 'readonly'}
+    {$value}
+{/if}
+</td>
+</tr>

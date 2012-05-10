@@ -1,0 +1,42 @@
+{assign var="title" value="Processing transaction"}
+{include file="header.html"}
+<script type="text/javascript" src="{$config.root_surl}/includes/jquery/jquery.js?smarty"></script>
+<form name="mainform" method="post" action="https://secure.zombaio.com/?{$vars.SITE_ID}.{$vars.PRICING_ID}.{$vars.LANG}">
+<noscript>
+<br>
+<br>
+<center>
+<h1>Processing your Transaction</h1>
+<h2>
+JavaScript is currently disabled or is not supported
+by your browser.<br></h2>
+<h3>Please click Submit to continue
+the processing of your transaction.</h3>
+<input type="submit" value="Continue -->" name="zomPay">
+</center>
+</noscript>
+<input type="hidden" name="FirstName" value="{$vars.FirstName}">
+<input type="hidden" name="LastName" value="{$vars.LastName}">
+<input type="hidden" name="Address" value="{$vars.Address}">
+<input type="hidden" name="Postal" value="{$vars.Postal}">
+<input type="hidden" name="City" value="{$vars.City}">
+<input type="hidden" name="Email" value="{$vars.Email}">
+<input type="hidden" name="Username" value="{$vars.Username}">
+<input type="hidden" name="Password" value="{$vars.Password}">
+<input type="hidden" name="extra" value="&variable1={$vars.INVOICE}">
+<input type="hidden" name="return_url_approve" value="{$config.root_url}/plugins/payment/zombaio/thanks.php">
+</form>
+<SCRIPT LANGUAGE="Javascript" >
+<!--
+function OnLoadEvent()
+{
+document.mainform.submit();
+}
+//-->
+</SCRIPT>
+<script type="text/javascript">
+$(document).ready(function(){
+		OnLoadEvent();
+});
+</script>
+{include file="footer.html"}

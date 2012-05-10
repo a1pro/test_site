@@ -1,0 +1,21 @@
+{assign var="title" value=$smarty.const._AFF_MEMBER_TITLE}
+{include file="header.html"}
+<div id="center">
+
+<div id="d_over_iframe"></div>
+<!--MAIN CONTEINER-->
+<div id="main_t">
+    <div id="main_l">
+
+<div class="backend-wrapper">
+{include file="member_menu.inc.html"}
+{include file="error.inc.html"}
+
+{$aff_stats}
+
+</div>
+<br /><!-- <p class="powered">#_TPL_POWEREDBY|<a href="http://www.amember.com/">|</a>#</p> -->
+</div>
+</div>
+</div>
+{include file="footer.html"}

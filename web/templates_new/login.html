@@ -1,0 +1,52 @@
+{assign var="title" value=$smarty.const._TPL_LOGIN_PLEASE_LOGIN}
+{include file="header.html"}
+{include file="error.inc.html"}
+
+<form name="login" method="post" {if $form_action}action="{$form_action|escape}"{/if}>
+
+<table align="center" class="vedit" >
+    <tr>
+        <th>#_TPL_LOGIN_USERNAME#</th>
+        <td><input type="text" name="amember_login" size="15" value="{$smarty.request.amember_login|escape}" /></td>
+    </tr>
+    <tr>
+        <th>#_TPL_LOGIN_PASSWORD#</th>
+        <td><input type="password" name="amember_pass" size="15" /></td>
+    </tr>
+    {if $this_config.remember_login && !$this_config.remember_auto}
+    <tr>
+        <td colspan="2" style='padding:0px; padding-bottom: 2px;'>
+<input type="checkbox" name="remember_login" value="1">
+<span class="small">#_TPL_LOGIN_REMEMBER_MY_PASSWORD#</span>
+        </td>
+    </tr>
+    {/if}
+</table>
+<input type="hidden" name="login_attempt_id" value="{php}print time();{/php}" />
+{if $redirect_url}
+    <input type="hidden" name="amember_redirect_url" value="{$redirect_url|escape}" />
+{/if}
+<br />
+
+<input type="submit" value="&nbsp;&nbsp;&nbsp;#_TPL_LOGIN_BTN_LOGIN#&nbsp;&nbsp;&nbsp;" />&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="&nbsp;&nbsp;&nbsp;#_TPL_LOGIN_BTN_BACK#&nbsp;&nbsp;&nbsp;" onclick="history.back(-1)" />
+</form>
+
+<br />
+<p>#_TPL_LOGIN_NOT_REGISTERED_YET# <a href="{$config.root_url}/{if $affiliates_signup}aff_{/if}signup.php">#_TPL_LOGIN_SIGNUP_HERE#</a></p>
+<br />
+
+<h3>#_TPL_LOGIN_LOST_PASSWORD#?</h3>
+<form name="sendpass" method="post" action="{$config.root_url}/sendpass.php">
+<table align="center" class="vedit" width="30%">
+    <tr>
+        <th>#_TPL_LOGIN_ENTER_YOUR_EMAIL_OR_USERNAME#</th>
+        <td><input type="text" name="login" size="12" /></td>
+    </tr>
+</table>
+<input type="submit" value="#_TPL_LOGIN_BTN_GET_PASSWORD#" />
+</form>
+
+{include file="footer.html"}

@@ -1,0 +1,280 @@
+{assign var=title value="Welcome to aMember Pro Control Panel"}
+
+{include file="admin/header.inc.html"}
+<style type="text/css">
+#template_url_error, #root_url_error, #root_surl_error {
+    display: none;
+    position: absolute;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10px 10px 10px 10px;
+    border: solid 5px red;
+    background-color: #fdd;
+}
+#root_url_error {
+    z-index: 100;
+}
+#root_surl_error {
+    z-index: 90;
+}
+}
+.small_link {
+    font-size: 8pt; 
+    font-family: Arial;
+}
+xmp {
+    padding-bottom: 0px;
+}
+</style>
+
+<div id="msg" style="width:100%; height: 3em; position: absolute; 
+ 	left: 0px; top: 1em; padding-left: 20%; padding-top: 1em;
+ 	font-weight: bold; font-family: helvetica;
+    font-size: 10pt;
+ 	display: none;
+	background-color: #D1FF5F;"></div>
+
+
+<div id="root_url_error" ></div>
+<div id="root_surl_error" ></div>
+<div id="template_url_error">
+<h3>-title- Configuration Problem</h3>
+Looks like <b>-title-</b> is configured incorrectly at 
+<a href="setup.php">aMember CP->Setup</a>. Current value
+is 
+<xmp>-current_url-</xmp>
+which does not seem to be valid. At least accessing the login URL
+(<a href="-current_url-/login.php" target=_blank class="small_link">try it</a>)
+<xmp>-current_url-/login.php</xmp> 
+results to HTTP Error <span style='color: red'>(-error_code-/-error_text-)</span>. 
+<p>As we can guess correct -title- is 
+<xmp>-guess_url-</xmp> 
+<a href="#" onclick="setRootUrl('-id-', '-title-', '-guess_url-')">Click here</a> 
+to set -title- into this value in the config records.
+</p>
+<br />
+<a href="#" onclick='$("#-id-_error").hide();' class="small_link">Close this warning</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#" onclick='urlCheckDisable()' class="small_link">Disable Root URL checking completely</a>
+</div>
+
+
+
+<h3><br /><br />{$title}</h3>
+<center>
+<br />
+
+
+
+{if $warnings}
+<table bgcolor=red border=0 cellpadding=4 width=90%><tr><td align="left">
+{foreach from=$warnings item=e}
+<li><b>{$e}</b>
+{/foreach}
+</td></tr></table>
+{/if}
+
+<table bgcolor=#CCCCFF border=0 cellpadding=4 width=90% 
+    id="version_table" style="display: none;">
+<tr><td align="left">
+<div id="version_check"></div>
+</td></tr></table>
+
+<table width=90% align=center cellpadding=4>
+<tr>
+    <td width=50% valign=top>
+<div class=smallheader>Software version info</div>
+<table class=infotbl border=1>
+<tr>
+    <td align=right>&nbsp;aMember </td>
+    <td> <b>{$config.version}</b></td>
+</tr>
+<tr>
+    <td align=right>&nbsp;PHP </td>
+    <td> <b>{php}print phpversion() . " (".php_sapi_name().")"; {/php}</b></td>
+</tr>
+<tr>
+    <td align=right>OS </td>
+    <td> <b>{php}$u=substr(php_uname(),0,28);if (strlen($u)==28) $u="$u...";print $u;{/php}</b></td>
+</tr>
+<tr>
+    <td align=right>&nbsp;MySQL </td>
+    <td> <b>{php}global $db; $q=$db->query("SELECT VERSION();");$x=mysql_fetch_row($q);print $x[0];{/php}</b></td>
+</tr>
+<tr>
+    <td align=right>Root Folder </td>
+    <td> <b>{$config.root_dir}</b></td>
+</tr>
+</td></tr></table>
+    </td>
+    <td width=50% valign=top>
+    <div class=smalltext>Hello, <b>{$smarty.session.amember_admin.login}</b>! You last
+    logged in from <font color=red>{$smarty.session.amember_admin.last_ip} at {$smarty.session.amember_admin.last_login|date_format:$config.time_format}.</font> 
+    </div>
+    </td>
+</tr>              
+<tr><td colspan=2><br /></td></tr>
+<tr><td width=50% valign=top>
+
+{if $smarty.session.amember_admin.perms.report ||  $smarty.session.amember_admin.super_user }
+
+<div class=smallheader>Payments for last 7 days</div>
+<table class=infotbl width=95%>
+<tr>
+<th>Date</th>
+<th colspan=2>Added</th>
+<th colspan=2>Paid</th>
+<th>&nbsp;</th>
+</tr>
+{foreach from=$income item=i}
+{assign var=i_added_count value=`$i_added_count+$i.added_count`}
+{assign var=tmp_i_added_amount value=$i.added_amount|replace:',':''}
+{assign var=i_added_amount value=`$i_added_amount+$tmp_i_added_amount`}
+{assign var=i_completed_count value=`$i_completed_count+$i.completed_count`}
+{assign var=tmp_i_completed_amount value=$i.completed_amount|replace:',':''}
+{assign var=i_completed_amount value=`$i_completed_amount+$tmp_i_completed_amount`}
+<tr>
+<td align=right><a href="payments.php?beg_date={$i.date}&end_date={$i.date}&list_by=complete">{$i.date_print}</a></td>
+<td id="infotblnum" width=10%>{$i.added_count}</td>
+<td id="infotblnum" width=15%>{$config.currency|default:"$"}{$i.added_amount}</td>
+<td id="infotblnum" width=10%><b>{$i.completed_count}</b></td>
+<td id="infotblnum" width=15%><b>{$config.currency|default:"$"}{$i.completed_amount}</b></td>
+<td nowrap>
+{if $i.percent}
+<table border=0 cellpadding=0 cellspacing=0>
+<tr><td width={$i.percent} height=5 style='font-size:6px; background-color: #f0f000;'>&nbsp;</td>
+<td style='font-size:8px; color: black;'>{$i.percent}%</td>
+</tr></table>
+{/if}
+</td>
+</tr>
+{/foreach}
+<tr>
+<th align=right>Totals</th>
+<th id="infotblnum">{$i_added_count}</th>
+<th id="infotblnum">{$config.currency|default:"$"}{$i_added_amount|@number_format:2:".":","}</th>
+<th id="infotblnum">{$i_completed_count}</th>
+<th id="infotblnum">{$config.currency|default:"$"}{$i_completed_amount|@number_format:2:".":","}</th>
+<th>&nbsp;</th>
+</table> 
+
+</td><td width=50% valign=top>
+
+<div class=smallheader>Users total</div>
+<table class=infotbl width=40% border=0>
+{foreach from=$users item=i}
+<tr>
+    <td align=right> {$i.title}</td>
+    <td align=right>{$i.count} </td>
+</tr>
+{/foreach}
+</table> 
+<br />
+<div class=smalltext>Error/debug log messages today: <a 
+href="error_log.php">{$errors}</a></div>
+<div class=smalltext>Access log records today: <a 
+href="access_log.php">{$access}</a></div>
+
+{/if}
+
+</td></tr></table>
+
+<script language=JavaScript src="../includes/jquery/jquery.js" smarty="1"></script>
+{if !$config.disable_url_checking}
+<!-- validate root_url and root_surl -->
+<script language="JavaScript">
+    function urlCheckDisable(){
+        if (!confirm(
+            "aMember will for sure works incorrectly\n" +
+            "if Root URLs are configured wrong.\n" +
+            "Are you sure you want to disable\n" +
+            "automatic Root URL checking?"))
+             return false;
+        var opts = { 'do' : 'ajax'};
+        opts['disable_url_checking'] = 1;
+        $.post('index.php', opts);
+        $("#root_url_error").hide();
+        $("#root_surl_error").hide();
+		$("#msg").append("Automatic URL checking has been disabled<br />").show();
+    }
+    function setRootUrl(tp, txtp, url){
+        if (!confirm('Are you sure you want to change ' + txtp + "to new value\n"
+          + url + "?"))
+             return false;
+        var opts = { 'do' : 'ajax'};
+        opts[tp] = url;
+        $.post('index.php', opts);
+        $("#"+tp+"_error").hide();
+		$("#msg").append(txtp + " has been changed to " + url + "<br />").show();
+        if (tp == 'root_surl'){
+            w = window;
+            if (w.parent) w = w.parent;
+            w.location = url + '/admin/';
+        }
+    }
+    var tested = {};
+    {/literal}{php}
+    $u  = $_SERVER['SERVER_PORT'] == 443 ? 'https://' : 'http://';
+    $u .= $_SERVER['HTTP_HOST'];
+    $u .= preg_replace('|^(.+)/admin.*$|', '\\1', $_SERVER['PHP_SELF']);
+    $u = preg_replace('|[^a-zA-Z0-9/:.,_+-]|', '', $u);
+    print "var guess_url = '$u'";
+    {/php}{literal}
+    function urlError(txtp, tp, req, status, error){
+        console.log(tp, req, status, error);
+        var current_url = tp == 'root_surl' ? 
+            "{/literal}{$config.root_surl|escape:'javascript'}{literal}" : 
+            "{/literal}{$config.root_url|escape:'javascript'}{literal}" ;
+        html = $("#template_url_error").html();
+        html = html.replace(/-title-/g, txtp)
+        .replace(/-current_url-/g, current_url)
+        .replace(/-guess_url-/g, guess_url)
+        .replace(/-error_code-/g, req.status)
+        .replace(/-error_text-/g, req.statusText)
+        .replace(/-id-/g, tp)
+        ;
+        $("#" + tp + "_error").html(html);
+        $("#" + tp + "_error").show();
+    }
+    function urlTestCalled(data){
+        if (data == 'file') {
+            $.ajax({'url' :'{/literal}{$config.root_url|escape:"javascript"}{literal}/login.php?_test_=root_url',
+                'dataType' : 'text',
+                'error' : function(req, status, error){
+                    urlError('Root URL', 'root_url', req, status, error);
+                }
+            });
+            $.ajax({'url' :'{/literal}{$config.root_surl|escape:"javascript"}{literal}/login.php?_test_=root_surl',
+                'dataType' : 'text',
+                'error' : function(req, status, error){
+                    urlError('Secure Root URL', 'root_surl', req, status, error);
+                }
+            });
+        }
+    }
+    $(document).ready(function() {
+        $.get("../login.php?_test_=file", urlTestCalled);
+    });
+</script>
+{/if}
+
+{if $config.dont_check_updates ne "1" }
+<script language=JavaScript src="https://www.amember.com/version.php?v=#$config.version#&pv={$smarty.const.PHP_VERSION}&pi={$pi}" smarty=1></script>
+
+{if defined('AMEMBER_LICENSE_EXPIRES_SOON')}
+<script language="JavaScript">
+function handleNewLicense(json){
+    if (json.license){        
+        $.post('setup.php', { license : json.license, notebook: 'License', save: 1});
+		$("#msg").append("Your temporary license key has been automatically replaced to lifetime license. \
+		<a href='#' onclick='window.location.reload();' style='font-size: 8pt;'>Hide this message</a>").show(); 
+    }
+}
+</script>
+<script language=JavaScript src="https://www.amember.com/amember/get_lifetime_license.php?v=#$config.version#&license={$config.license|escape:"url"}" smarty=1></script>
+{/if}
+{/if}
+
+
+{include file="admin/footer.inc.html"}

@@ -1,0 +1,121 @@
+{assign var=title value="Fix aMember Pro License Key "}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title}</h3>
+
+<script type="text/javascript" src="../includes/jquery/jquery.js"></script>
+<script type="text/javascript">
+function fetchLicense(frm){
+    ex_license = frm.existing_license.value;
+    document.getElementById('new_license').innerHTML="Fetching new license from aMember.COM website, please wait...";
+    var script=document.getElementById('new_license_js');
+    if (script) script.parentNode.removeChild(script);
+    script=document.createElement('SCRIPT');
+    script.id='new_license_js';
+    script.src='http://www.amember.com/amember/get_lifetime_license.php?ts={/literal}{php}print time();{/php}{literal}&license='+encodeURIComponent(ex_license);
+    var head=document.getElementsByTagName('HEAD')[0];
+    head.appendChild(script);
+}
+function handleNewLicense(json){
+    if (json.license){
+        document.getElementById('frm').elements['license'].value = json.license;
+        document.getElementById('new_license').innerHTML="<b>New license inserted, just press [Update License Information] to save it.</b>";
+    } else {
+        err = json.error || "Unknown error";
+        document.getElementById('new_license').innerHTML="<b><font color=red>Cannot fetch new license: "+err+
+        ".<br />Please visit <a href='https://www.amember.com/amember/member.php' target=_blank>aMember Pro Members Area</a> to get new license and copy/paste it manually.</font></b>";
+    }
+}
+</script>
+
+
+
+<div style="width: 80%; text-align: left;">
+
+{if $msg eq ""}
+<b>No problems detected in your license key and URLs configuration.</b>
+{else}
+<div style="width: 500px; text-align: left">There is a license problem with aMember Pro
+as described in the following error message:<br />
+<font color=red><b>{$msg}</b></font>. <br />
+
+
+{if preg_match('/After upgrading from aMember Trial to aMember Pro/', $msg) }
+<p><b>Please go to <a target="_blank" href="https://www.amember.com/amember/member.php">aMember Pro Customers Area</a>,
+copy your license key to clipboard, then paste it to "License Key" field below,
+and press "Update License Information" button.</b>
+</p>
+{/if}
+
+
+<p>Below your current Root and Secure Root URL, and license
+key are listed.</p>
+
+<p><small>According to aMember Pro <a href="http://www.amember.com/p/Main/License" target=_blank>license agreement</a>, 
+you have to order a separate aMember Pro license for each aMember installation.
+There are exceptions :
+<ul>
+<li>We can move your aMember installation to new domain within 3 months from the order date, providing you are stopped business on licensed domain.</li>
+<li>We will add "hosting-provided SSL" domain name to your license for free, just let us know main domain name, and Secure URL of your aMember installation.</li>
+</ul>
+</small></p>
+
+<p>Please login to <a target=_blank href="https://www.amember.com/amember/member.php">aMember Pro Members Area</a> to review
+your existing domains and order new licenses if necessary. 
+</p>
+<p>Go to <a target=_blank href="https://www.amember.com/support/">aMember Pro Helpdesk</a>
+to request license changes and if you have any questions about licensing.</p>
+</div>
+{/if}
+
+<form method="post" action="license.php" id="frm">
+<input type="hidden" name="do" value="save" />
+<b>License and URLs Information</b>
+<table class="vedit"s>
+<tr>
+    <th>Current URL</th>
+    <td><b>{$current_url}</b>
+    <br /><small>
+    This outlines current aMember Root URL that is used<br />
+    to access this page. It may match or mismatch your actual<br />
+    Root and Secure Root URL, but usually it matches.</small>
+    </td>
+</tr>
+<tr>
+    <th>Root URL</th>
+    <td>
+    <input type="text" name="root_url" size=90 value="{$config.root_url|escape}" />
+    </td>
+</tr>
+<tr>
+    <th>Secure Root URL</th>
+    <td><input type="text" name="root_surl" size=90 value="{$config.root_surl|escape}" />
+    
+    <br /><small>
+    If you are not sure, just set Secure Root URL to the same value as Root URL above
+    </small>
+    </td>
+</tr>
+<tr>
+    <th>License Key</th>
+    <td><textarea name="license" rows="10" cols="90">{$config.license|escape:"html"}</textarea>
+    {if $msg eq "License expired"}
+    <br />
+    <input type="hidden" name="existing_license" value="{$config.license|escape}" />
+    <input type="button" value="Click here to fetch your lifetime license automatically" onclick="fetchLicense(this.form);" />
+    
+    <div id="new_license"></div>
+    {/if}
+    </td>
+</tr>
+</table>
+<input type="submit" value="&nbsp; Update License Information &nbsp;" />
+{if $msg eq ""}
+<input type="button" value="&nbsp; Go to aMember Admin Control Panel &nbsp;" onclick="window.location='{$config.root_url|escape:"javascript"}/admin/'" />
+{/if}
+</form>
+
+<br /><br /><br />
+</div>
+</center>
+{include file="admin/footer.inc.html"}

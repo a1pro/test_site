@@ -1,0 +1,54 @@
+{assign var=title value="Newsletter Archive"}
+{include file="admin/header.inc.html"}
+{include file="admin/email_nb.inc.html" selected="archive"}
+<center>
+<br /><h3>{$title}</h3>
+
+{if $al}
+{span}
+<br /><br />
+
+<table width=80% class=hedit border=1 bordercolor=#909090>
+<tr>
+    <th>Date</th>
+    <th>Subject</th>
+    <th>Message</th>
+    <th>Threads</th>
+    <th width=5%><font color=606060>Actions</font></th>
+</tr>
+{foreach from=$al item=a}
+<tr class={cycle values="xx,odd"}>
+    <td> {$a.add_date|date_format:$config.time_format} </td>
+    <td> <a href="newsletter_archive.php?action=edit&archive_id={$a.archive_id}"><b>{$a.subject|escape}</b></a> </td>
+    <td>{if !$a.is_html}<pre>{/if}{php}
+    $message = $this->_tpl_vars['a']['message'];
+    $message = strip_tags($message);
+    if (strlen($message) > 255) {
+        print (substr($message, 0, 255) . " ...");
+    } else {
+        print ($message);
+    }
+    {/php}{if !$a.is_html}</pre>{/if}</td>
+    <td>
+    {foreach from=$a.threads item=thread_title name=titles}
+        {if $thread_title}
+        {$thread_title}{if not $smarty.foreach.titles.last}, {/if}
+        {/if}
+    {/foreach}
+    </td>
+    <td nowrap>
+            <a href="newsletter_archive.php?action=edit&archive_id={$a.archive_id}">Edit</a>
+            <a href="newsletter_archive.php?action=delete&archive_id={$a.archive_id}" onclick="return confirm('You want to delete newsletter {$a.subject}?')">Delete</a>
+     </td>
+</tr>
+{/foreach}
+</table>
+<br />
+{span}
+{else}
+No messages in archive.
+{/if}
+
+
+{include file="admin/footer.inc.html"}
+

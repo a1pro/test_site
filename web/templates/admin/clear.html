@@ -1,0 +1,58 @@
+{assign var=title value="Delete Old Records"}
+{include file="admin/header.inc.html"}
+<center>
+<br /><h3>{$title|escape}</h3>
+
+
+<form method="post" action="{$smarty.server.PHP_SELF|escape}">
+<table class=vedit width=70%>
+<tr>
+    <th><b>Date to purge</b><br /><small>All records from checked tables
+    will be deleted before the specified date.</small></th>
+    <td nowrap>{html_select_date time=$dt prefix='dat' start_year="-3"}
+    </td>
+</tr>
+<tr>
+    <th style='border: #909090 solid 1px; text-align:center;' colspan=2><b>TABLES TO PURGE</b></td>
+</tr>                     
+<tr>
+    <th><b>Access Log</b><br /><small>access log table (used by admin only)</small></th>
+    <td><input type=checkbox name=access_log value=1 checked></td>
+</tr>
+<tr>
+    <th><b>Error Log</b><br /><small>error_log table (used by admin only)</small></th>
+    <td><input type=checkbox name=error_log value=1 checked></td>
+</tr>
+<tr>
+    <th><b>Incomplete Users</b><br /><small>records of users with incomplete payment attempts</small></th>
+    <td><input type=checkbox name=inc_users value=1 checked></td>
+</tr>
+<tr>
+    <th><b>Expired Users</b><br /><small>records of users with expired subscriptions</small></th>
+    <td><input type=checkbox name=exp_users value=1 checked></td>
+</tr>
+<tr>
+    <th><b>Incomplete Payments</b><br /><small>records of incomplete payments</small></th>
+    <td><input type=checkbox name=inc_payments value=1 checked></td>
+</tr>
+<tr>
+    <th><b>Admin Log</b><br /><small>admin log table (used by admin only)</small></th>
+    <td><input type=checkbox name=admin_log value=1 checked></td>
+</tr>
+</table>    
+<input type=submit value=Clear>
+<input type=hidden name=clear value=1>
+</form>
+
+
+
+<br /><br />
+<table width=70% bgcolor=#F0F0F0><tr><td>
+<small><b><div style='font-weight: bold;'>DELETE OLD RECORDS:</b><br />
+You can delete your old records here. <br />
+Deleting unnecessary data will improve the script speed, and site performance. 
+</small>
+</td><tr></table>
+
+{include file="admin/footer.inc.html"}
+

@@ -1,0 +1,97 @@
+{assign var=title value="Generate Coupons"}
+{include file="admin/header.inc.html"}
+{include file="admin/coupon_nb.inc.html"}
+<center>
+<h3>{$title|escape}</h3>
+
+{if $error}{foreach from=$error item=e}
+<font color=red><li><b>{$e|escape}</b></font>
+<br /><br />
+{/foreach}{/if}
+
+<form method=post action="coupons.php">
+<table class=vedit >
+<tr>
+    <th><b>Coupons Count</b><br />
+    <small>how many coupons need to be generated</small>
+    </th>
+    <td><input type=text size=5 name=count value="{$vars.count|default:1|escape}"></td>
+</tr><tr>
+    <th><b>Coupons Usage Count</b><br />
+    <small>how much times coupon can be used<br />
+    enter big value (ex.:<i>99999</i>) for unlimited</small>
+    </th>
+    <td><input type=text size=5 name=use_count value="{$vars.use_count|default:1|escape}"></td>
+</tr><tr>
+    <th><b>Member Coupons Usage Count</b><br />
+    <small>how much times coupon can be used<br />
+    by member</small>
+    </th>
+    <td><input type=text size=5 name=member_use_count value="{$vars.member_use_count|default:1|escape}"></td>
+</tr><tr>
+    <th><b>Code Length</b><br />
+    <small>generated coupon code length</small>
+    </th>
+    <td><input type=text size=3 name=code_len value="{$vars.code_len|default:10|escape}"></td>
+</tr><tr>
+    <th><b>Discount</b><br />
+    <small>order discount</small>
+    </th>
+    <td><input type=text size=3 name=discount_v value="{$vars.discount_v|default:10|escape}">
+    <select size=1 name=discount_t>{html_options options=$discount_types}</select>
+    </td>
+</tr><tr>
+    <th><b>Comment</b><br />
+    <small>comment - visible only for admin</small>
+    </th>
+    <td><input type=text size=20 name=comment value="{$vars.comment|escape}"></td>
+</tr><tr>
+    <th><b>Dates</b><br />
+    <small>date range when coupon can be used</small>
+    </th>
+    <td>
+    <input type=checkbox name=disable_date value=1 
+        {if $smarty.request.disable_date > 0}checked{/if}>
+        Don't limit date of usage<br />
+     {html_select_date prefix="begin_date" start_year=-3 end_year=+3}<br />
+     {html_select_date prefix="expire_date" start_year=-3 end_year=+3}
+    </td>
+</tr><tr>
+    <th><b>Apply to recurring?</b><br />
+    <small>
+    apply coupon discount to recurring transactions?<br />
+    default is "no". "Member Usage Count" setting<br />
+    may work incorrectly if you enable this option,<br /> 
+    please set "Member Usage Count" to big value <br />
+    like "10000" if you enable this option<br />
+    </small>
+    </th>
+    <td><input type=checkbox name=is_recurring value=1 {if $batch.is_recurring}checked{/if}></td>
+</tr><tr>
+    <th><b>Locked</b><br />
+    <small>disable this coupons batch, but keep in database<br />
+    it can be enabled later</small>
+    </th>
+    <td> <input type=checkbox name=locked value=1 
+        {if $smarty.request.locked > 0}checked{/if}>
+        Lock batch
+    </td>
+</tr><tr>
+    <th><b>Products</b><br />
+    <small>coupons can be used with selected products<br />
+    hold <i>Ctrl Key</i> to select multple products<br />
+    if nothing selected, coupon can be used with ANY product
+    </small>
+    </th>
+    <td><select name='product_id[]' size=5 multiple>
+    {html_options options=$products}
+    </select>
+    </td>
+</tr>
+</table>
+<input type=hidden name=action value={$action|escape}>
+<input type=submit value="Generate">
+</form>
+
+{include file="admin/footer.inc.html"}
+
