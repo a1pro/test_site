@@ -1,0 +1,15 @@
+<?php $title=___('Change Password'); $this->setLayout('layout.phtml'); ?>
+<?php
+$this->headScript()
+    ->prependFile(REL_ROOT_URL . '/application/default/themes/getaudiofromvideo/public/js/jquery/jquery.js')
+    ->appendFile(REL_ROOT_URL . '/application/default/themes/getaudiofromvideo/public/js/jquery/jquery.validate.js');
+?>
+
+
+<?php
+    include $this->_script('_form.phtml');
+?>
+
+<br /><br />
+<p class="powered"><?php __e('Powered by %saMember Pro%s membership software','<a href="http://www.amember.com/">','</a>') ?></p>
+

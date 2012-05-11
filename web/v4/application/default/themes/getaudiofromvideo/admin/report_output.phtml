@@ -1,0 +1,16 @@
+<?php 
+$this->setLayout('admin/layout.phtml'); 
+$this->layoutNoTitle = true;
+$this->enableReports();
+$title = $report->getTitle();
+?>
+
+<h1 id='pageTitle'><?php echo $title ?> <a href="<?php $this->pUrl(null, 'index') ?>">Choose another Report</a></h1>
+<div>
+    <h2>Report Settings</h2>
+    <?php
+    echo $form ?>
+    
+</div>
+
+<?php echo $content ?>

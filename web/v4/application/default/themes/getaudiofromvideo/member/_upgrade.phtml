@@ -1,0 +1,12 @@
+<form method="post" name="upgrade" action="<?php p(REL_ROOT_URL)?>/member/upgrade">
+<?php foreach ($invoice->_upgrades as $upgrade): $id = "upgrade-" . $upgrade->product_upgrade_id ?>
+    <input type="radio" id="<?php echo $id?>" name="upgrade" value="<?php echo $upgrade->product_upgrade_id ?>" />
+    <label for="<?php echo $id?>">
+        <?php echo $upgrade->getToProduct()->defaultRender($upgrade->getToPlan()) ?>
+    
+    </label>
+<?php endforeach ?>
+<input type="hidden" name="invoice_id" value="<?php echo $invoice->public_id ?>" />
+<input type="submit" class="upgrade-subscription-yes" value="<?php __e('Upgrade Subscription')?>" />
+<input type="button" class="upgrade-subscription-no" value="<?php __e('Cancel')?>" />
+</form>

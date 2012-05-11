@@ -1,0 +1,29 @@
+<?php
+/** That is template for an invoice in member/payment-history.phtml */
+?>
+<div class="am-active-invoice">
+    <div class="am-active-invoice-header"><?php __e('Invoice')?> #<?php p($invoice->public_id) ?></div>
+    <div class="am-active-invoice-terms"><?php p($invoice->getTerms()) ?></div>
+    
+    <?php if (!empty($invoice->_upgrades)): ?>
+    <span class="am-active-invoice-upgrade">
+        <a href="javascript:" class="upgrade-subscription" data-invoice_id="<?php echo $invoice->invoice_id?>"><?php __e("Upgrade Subscription") ?></a>
+    </span>
+    <?php endif ?>
+    <?php if (!empty($invoice->_cancelUrl)): ?>
+    <div class="am-active-invoice-cancel">
+        <a class="cancel-subscription" href="<?php p($invoice->_cancelUrl)?>"><?php __e("Cancel Subscription") ?></a>
+    </div>
+    <?php elseif ($invoice->isCancelled()): ?>
+    <div class="am-active-invoice-cancel">
+        <?php __e("Cancelled") ?>
+    </div>
+    <?php endif ?>
+    
+    <div class="am-active-invoice-paysys"><?php p($invoice->_paysysName) ?></div>
+    <?php foreach ($invoice->getItems() as $item): ?>
+    <div class="am-active-invoice-product">
+        <span class="am-active-invoice-item-title"><?php p($item->item_title) ?></span>
+    </div>
+    <?php endforeach ?>
+</div>
